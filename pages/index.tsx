@@ -46,14 +46,22 @@ export default function IndexPage() {
             GitHub
           </Link>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 border-solid border-2 p-2 border-grey-600">
           <Link
             href={siteConfig.links.accordion}
             target="_blank"
             rel="noreferrer"
-            className={buttonVariants({ size: "lg" })}
+            className={buttonVariants({ size: "lg", variant: "outline" })}
           >
             Accordion
+          </Link>
+          <Link
+            href={siteConfig.links.alert}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({ size: "lg", variant: "outline" })}
+          >
+            Alert Dialogue
           </Link>
         </div>
       </section>

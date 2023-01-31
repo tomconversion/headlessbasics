@@ -9,6 +9,7 @@ interface SiteConfig {
     github: string
     docs: string
     accordion: string
+    alert: string
   }
 }
 
@@ -27,5 +28,6 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/shadcn/ui",
     docs: "https://ui.shadcn.com",
     accordion: "/accordion",
+    alert: "/alert-dialog",
   },
 }

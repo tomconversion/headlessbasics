@@ -46,6 +46,16 @@ export default function IndexPage() {
             GitHub
           </Link>
         </div>
+        <div className="flex gap-4">
+          <Link
+            href={siteConfig.links.accordion}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({ size: "lg" })}
+          >
+            Accordion
+          </Link>
+        </div>
       </section>
     </Layout>
   )

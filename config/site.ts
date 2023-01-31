@@ -8,6 +8,7 @@ interface SiteConfig {
     twitter: string
     github: string
     docs: string
+    accordion: string
   }
 }
 
@@ -25,5 +26,6 @@ export const siteConfig: SiteConfig = {
     twitter: "https://twitter.com/shadcn",
     github: "https://github.com/shadcn/ui",
     docs: "https://ui.shadcn.com",
+    accordion: "/accordion",
   },
 }

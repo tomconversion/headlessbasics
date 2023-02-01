@@ -69,7 +69,7 @@ export async function getAllPostsForHome(preview) {
               url(width: 2000, height: 1000, cropMode: CROP, upscale: true)
             }
             author {
-              ...on Author {
+              ...on Author{
                 name
                 picture {
                   url(width: 100, height: 100, cropMode: CROP, upscale: true)

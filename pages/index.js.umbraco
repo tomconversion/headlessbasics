@@ -5,7 +5,7 @@ import Intro from '../components/intro'
 import Layout from '../components/layout'
 import { getAllPostsForHome } from '../lib/umbraco-heartcore'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import { CMS_NAME } from '../../lib/constants'
 
 export default function Index({ posts, preview }) {
   const heroPost = posts[0]

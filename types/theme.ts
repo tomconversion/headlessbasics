@@ -1,0 +1,10 @@
+export type ColorOptions =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "neutral"
+  | "base-100"
+  | "info"
+  | "success"
+  | "warning"
+  | "error"

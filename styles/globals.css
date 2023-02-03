@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* :root {
+  --primary-bg: #570df8;
+  --primary-text: #fff;
+  --secondary-bg: #f000b8;
+  --secondary-text: #ffffff;
+} */
+
+
+/* .btn-primary {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+.btn-primary:hover {
+  background-color: var(--primary-bg);
+}
+.btn-secondary {
+  background-color: var(--secondary-bg);
+  color: var(--secondary-text);
+}
+.btn-secondary:hover {
+  background-color: var(--secondary-bg);
+} */

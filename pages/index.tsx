@@ -33,7 +33,7 @@ export default function IndexPage() {
             href={siteConfig.links.docs}
             target="_blank"
             rel="noreferrer"
-            className={buttonVariants({ size: "lg" })}
+            className={buttonVariants({ size: "lg", color: "primary" })}
           >
             Documentation
           </Link>
@@ -41,17 +41,23 @@ export default function IndexPage() {
             target="_blank"
             rel="noreferrer"
             href={siteConfig.links.github}
-            className={buttonVariants({ variant: "outline", size: "lg" })}
+            className={buttonVariants({
+              size: "lg",
+              color: "secondary",
+            })}
           >
             GitHub
           </Link>
         </div>
-        <div className="flex gap-4 border-solid border-2 p-2 border-grey-600">
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
           <Link
             href={siteConfig.links.accordion}
             target="_blank"
             rel="noreferrer"
-            className={buttonVariants({ size: "lg", variant: "outline" })}
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+            })}
           >
             Accordion
           </Link>
@@ -59,7 +65,11 @@ export default function IndexPage() {
             href={siteConfig.links.alert}
             target="_blank"
             rel="noreferrer"
-            className={buttonVariants({ size: "lg", variant: "outline" })}
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "primary",
+            })}
           >
             Alert Dialogue
           </Link>

@@ -12,7 +12,7 @@ export const AccordionDemo = () => (
       <AccordionItem className="AccordionItem" value="item-2">
         <AccordionTrigger>Is it unstyled?</AccordionTrigger>
         <AccordionContent>
-          Yes. It's unstyled by default, giving you freedom over the look and feel.
+          Yes. It&apos;s unstyled by default, giving you freedom over the look and feel.
         </AccordionContent>
       </AccordionItem>
   

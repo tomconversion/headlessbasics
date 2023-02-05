@@ -1,4 +1,4 @@
-async function fetchAPI(query, { variables, preview } = {}) {
+async function fetchAPI(query, { variables, preview } = { variables: {}, preview: false }) {
   const res = await fetch('https://graphql.umbraco.io', {
     method: 'POST',
     headers: {

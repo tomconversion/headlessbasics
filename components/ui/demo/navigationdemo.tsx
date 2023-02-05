@@ -64,9 +64,9 @@ const NavigationMenuDemo = () => {
               <ListItem title="Releases" href="/docs/primitives/overview/releases">
                 Radix Primitives releases and their changelogs.
               </ListItem> */}
-              <ListItem title="Releases" href="/docs/primitives/overview/releases">
+              {/* <ListItem title="Releases" href="/docs/primitives/overview/releases">
                 Radix Primitives releases and their changelogs.
-              </ListItem>
+              </ListItem> */}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

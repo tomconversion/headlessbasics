@@ -89,7 +89,7 @@ const NavigationMenuDemo = () => {
   );
 };
 
-const ListItem = ({ children, className, title, ...props }) => {
+const ListItem = ({ children, className, title, ...props }: { children: React.ReactNode, className?: string, title?: string }) => {
   return (
     <li>
       <NavigationMenuLink asChild>

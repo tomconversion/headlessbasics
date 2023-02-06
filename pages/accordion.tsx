@@ -1,11 +1,11 @@
 import Head from "next/head"
 import Link from "next/link"
 
-import { siteConfig } from "@/config/site"
-import { Layout } from "@/components/layout"
-import { buttonVariants } from "@/components/ui/button"
-import { Accordion } from "@/components/ui/accordion"
-import { AccordionDemo } from "@/components/ui/demo/accordiondemo"
+import { siteConfig } from "../config/site"
+import { Layout } from "../components/layout"
+import { buttonVariants } from "../components/ui/button"
+import { Accordion } from "../components/ui/accordion"
+import { AccordionDemo } from "../components/ui/demo/accordiondemo"
 
 export default function IndexPage() {
   return (

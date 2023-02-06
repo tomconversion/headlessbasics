@@ -3,12 +3,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],purge: [
-		'./components/**/*.{js,ts,jsx,tsx}',
-		'./pages/**/*.{js,ts,jsx,tsx}'],
+  content: ["pages/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -35,11 +30,13 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      colors: {
+        primary: "#570df8",
+        primaryText: "#fff",
+        secondary: "#f000b8",
+        secondaryText: "#ffffff",
+      },
     },
   },
-  plugins: [
-    require( 'tailwindcss' ),
-		// require( 'precss' ),
-		// require( 'autoprefixer' )    
-  ],
+  plugins: [require("tailwindcss-animate")],
 }

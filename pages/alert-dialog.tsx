@@ -1,6 +1,6 @@
 import Head from "next/head"
-import { Layout } from "@/components/layout"
-import AlertDialogDemo from "@/components/ui/demo/alert-dialog-demo"
+import { Layout } from "../components/layout"
+import AlertDialogDemo from "../components/ui/demo/alert-dialog-demo"
 
 export default function IndexPage() {
   return (

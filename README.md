@@ -35,7 +35,7 @@ import "@/styles/globals.css"
 import { twMerge } from "tailwind-merge"
 
 import { NavItem } from "@/types/nav"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 ```
 
 ### Output
@@ -55,7 +55,7 @@ import { NavItem } from "@/types/nav"
 // types
 import { siteConfig } from "@/config/site"
 // config
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 // lib
 import { buttonVariants } from "@/components/ui/button"
 

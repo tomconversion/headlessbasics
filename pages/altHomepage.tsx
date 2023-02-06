@@ -7,8 +7,8 @@ import { getAltHomepageNavigation } from '../lib/umbraco-heartcore'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import { json } from 'stream/consumers'
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu'
-import NavigationMenuDemo from '@/components/ui/demo/navigationdemo'
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '../components/ui/navigation-menu'
+import NavigationMenuDemo from '../components/ui/demo/navigationdemo'
 
 export default function Index({ navItems, preview }) {
 

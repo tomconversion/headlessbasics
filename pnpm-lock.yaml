@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fullhuman/postcss-purgecss': ^5.0.0
   '@ianvs/prettier-plugin-sort-imports': ^3.7.1
   '@next/font': ^13.1.6
   '@radix-ui/colors': ^0.1.8
@@ -62,7 +61,6 @@ specifiers:
   typescript: ^4.9.5
 
 dependencies:
-  '@fullhuman/postcss-purgecss': 5.0.0_postcss@8.4.21
   '@next/font': 13.1.6
   '@radix-ui/colors': 0.1.8
   '@radix-ui/react-accessible-icon': 1.0.1_biqbaboplfbrettd7655fr4n2y
@@ -373,15 +371,6 @@ packages:
       use-isomorphic-layout-effect: 1.1.2_3stiutgnnbnfnf3uowm5cip22i
     transitivePeerDependencies:
       - '@types/react'
-    dev: false
-
-  /@fullhuman/postcss-purgecss/5.0.0_postcss@8.4.21:
-    resolution: {integrity: sha512-onDS/b/2pMRzqSoj4qOs2tYFmOpaspjTAgvACIHMPiicu1ptajiBruTrjBzTKdxWdX0ldaBb7wj8nEaTLyFkJw==}
-    peerDependencies:
-      postcss: ^8.0.0
-    dependencies:
-      postcss: 8.4.21
-      purgecss: 5.0.0
     dev: false
 
   /@humanwhocodes/config-array/0.11.8:

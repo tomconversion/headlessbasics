@@ -39,7 +39,7 @@ module.exports = {
   },
   plugins: [
     require( 'tailwindcss' ),
-		require( 'precss' ),
-		require( 'autoprefixer' )    
+		// require( 'precss' ),
+		// require( 'autoprefixer' )    
   ],
 }

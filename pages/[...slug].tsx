@@ -59,6 +59,7 @@ export async function getStaticProps({ params, preview = false }) {
       post: data.post,
       morePosts: data.morePosts || [],
     },
+    revalidate: 60,
   }
 }
 

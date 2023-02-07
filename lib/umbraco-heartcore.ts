@@ -77,6 +77,22 @@ export async function getAltHomepageNavigation() {
   return data.allHomepage1.edges.map((x) => x.node)
 }
 
+export async function getGridPage1() {
+  const data = await fetchAPI(`
+  {
+    allStaticPage1{
+          edges{
+            node {
+              name
+              id
+              contentMain
+            }
+          }
+      }
+  }
+  `)
+  return data.allStaticPage1.edges.map((x) => x.node)
+}
 
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(

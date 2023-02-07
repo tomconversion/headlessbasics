@@ -10,6 +10,8 @@ interface SiteConfig {
     docs: string
     accordion: string
     alert: string
+    subMenu: string
+    globalNavigation: string
   }
 }
 
@@ -29,5 +31,7 @@ export const siteConfig: SiteConfig = {
     docs: "https://ui.shadcn.com",
     accordion: "/accordion",
     alert: "/alert-dialog",
+    subMenu: "/subMenu",
+    globalNavigation: "/globalNavigation",
   },
 }

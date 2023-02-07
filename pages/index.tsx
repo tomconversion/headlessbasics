@@ -74,6 +74,30 @@ export default function IndexPage() {
           >
             Alert Dialogue
           </Link>
+          <Link
+            href={siteConfig.links.subMenu}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            Sub Menu
+          </Link>
+          <Link
+            href={siteConfig.links.globalNavigation}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            Global Navigation
+          </Link>
         </div>
       </section>
     </Layout>

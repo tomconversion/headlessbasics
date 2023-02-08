@@ -1,13 +1,8 @@
 
 import Head from 'next/head'
-import Link from "next/link"
-
 import { Layout } from "@/components/layout"
-import { buttonVariants } from "@/components/ui/button"
-import { siteConfig } from "@/config/site"
-import { json } from 'stream/consumers'
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu'
-import NavigationMenuDemo from '@/components/ui/demo/subNavigationDemo'
+import AvatarDemo from '@/components/ui/demo/avatarDemo'
+import ExampleCode from '@/components/ui/code'
 
 const demoJson = [{}];
 const title = "Avatar";
@@ -43,9 +38,14 @@ export default function IndexPage() {
 const renderComponent = () => {
   return (
     <>
-      <div className='w-full'>{JSON.stringify(demoJson)}</div>
-      <div className='w-full break-after-auto'>{JSON.stringify(demoJson.length)}</div>
-      
+      <div className="w-full divide-y space-y-4">
+      <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode>...</ExampleCode></div>
+        <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode>{JSON.stringify(demoJson)}</ExampleCode></div>
+        <div className='w-full break-after-auto py-4'>JSON Object Length: <ExampleCode>{JSON.stringify(demoJson.length)}</ExampleCode></div>
+        <div className='w-full break-after-auto py-4'>
+          <AvatarDemo/>
+        </div>
+      </div>
     </>
   )
 }

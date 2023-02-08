@@ -98,6 +98,18 @@ export default function IndexPage() {
           >
             Global Navigation
           </Link>
+          <Link
+            href={siteConfig.links.avatar}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            avatar
+          </Link>
         </div>
       </section>
     </Layout>

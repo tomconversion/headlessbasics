@@ -12,6 +12,7 @@ interface SiteConfig {
     alert: string
     subMenu: string
     globalNavigation: string
+    avatar: string
   }
 }
 
@@ -33,5 +34,6 @@ export const siteConfig: SiteConfig = {
     alert: "/alert-dialog",
     subMenu: "/subMenu",
     globalNavigation: "/globalNavigation",
+    avatar: "/avatar",
   },
 }

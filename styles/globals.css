@@ -4,3 +4,4 @@
 @import "./components.css";
 
 @tailwind utilities;
+@import "./code.css";

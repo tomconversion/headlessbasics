@@ -13,6 +13,8 @@ interface SiteConfig {
     subMenu: string
     globalNavigation: string
     avatar: string
+    button: string
+    checkbox: string
   }
 }
 
@@ -35,5 +37,7 @@ export const siteConfig: SiteConfig = {
     subMenu: "/subMenu",
     globalNavigation: "/globalNavigation",
     avatar: "/avatar",
+    button: "/button",
+    checkbox: "/checkbox",
   },
 }

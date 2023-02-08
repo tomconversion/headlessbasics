@@ -52,7 +52,7 @@ export default function IndexPage() {
         <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
           <Link
             href={siteConfig.links.accordion}
-            target="_blank"
+            target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
@@ -64,7 +64,7 @@ export default function IndexPage() {
           </Link>
           <Link
             href={siteConfig.links.alert}
-            target="_blank"
+            target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
@@ -76,7 +76,7 @@ export default function IndexPage() {
           </Link>
           <Link
             href={siteConfig.links.subMenu}
-            target="_blank"
+            target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
@@ -88,7 +88,7 @@ export default function IndexPage() {
           </Link>
           <Link
             href={siteConfig.links.globalNavigation}
-            target="_blank"
+            target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
@@ -100,7 +100,7 @@ export default function IndexPage() {
           </Link>
           <Link
             href={siteConfig.links.avatar}
-            target="_blank"
+            target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
@@ -109,6 +109,30 @@ export default function IndexPage() {
             })}
           >
             avatar
+          </Link>
+          <Link
+            href={siteConfig.links.button}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            button
+          </Link>
+          <Link
+            href={siteConfig.links.checkbox}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            checkbox
           </Link>
         </div>
       </section>

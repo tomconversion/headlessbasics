@@ -1,11 +1,30 @@
 import React from "react";
+import Prism from "prismjs";
+import "../../node_modules/prismjs/components/prism-jsx.min.js";
 
-function ExampleCode({ children }) {
-  return (
-    <pre className="example-code">
-      <code>{children}</code>
-    </pre>
-  );
+interface Props {
+  language: string;
+  children: string;
+}
+
+class ExampleCode extends React.Component<Props> {
+  componentDidMount() {
+    Prism.highlightAll();
+  }
+
+  componentDidUpdate() {
+    Prism.highlightAll();
+  }
+
+  render() {
+    return (
+      <pre className="example-code">
+        <code className={`language-${this.props.language}`}>
+          {this.props.children}
+        </code>
+      </pre>
+    );
+  }
 }
 
 export default ExampleCode;

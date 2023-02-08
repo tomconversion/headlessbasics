@@ -1,7 +1,7 @@
 import * as React from "react"
 import { VariantProps, cva } from "class-variance-authority"
 import { ClassProp } from "class-variance-authority/dist/types"
-
+import RadixUI from '@radix-ui/react-icons';
 import { ColorOptions } from "@/types/theme"
 import { cn } from "@/lib/utils"
 
@@ -101,20 +101,21 @@ const buttonVariants = (
   return cn(buttonVariantsStyle(objs))
 }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariantsStyle> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariantsStyle> {
   color?: ColorOptions
+  icon?: string
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, color, ...props }, ref) => {
+  ({ className, variant, size, color, icon, ...props }, ref) => {
     return (
       <button
         className={buttonVariants({ color, variant, size, className })}
         ref={ref}
         {...props}
-      />
+      >
+        {props.children}
+      </button>
     )
   }
 )

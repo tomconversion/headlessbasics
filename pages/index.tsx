@@ -2,10 +2,11 @@ import Head from "next/head"
 import Link from "next/link"
 
 import { Layout } from "@/components/layout"
-import { buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { siteConfig } from "@/config/site"
 import LabelDemo from "@/components/ui/demo/labelDemo"
 import { Label } from "../components/ui/label"
+import { BackpackIcon, StarFilledIcon } from "@radix-ui/react-icons"
 
 export default function IndexPage() {
   return (
@@ -20,18 +21,22 @@ export default function IndexPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-            Beautifully designed components <br className="hidden sm:inline" />
-            built with Radix UI and Tailwind CSS.
-          </h1>
-          <p className="max-w-[700px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
-            Accessible and customizable components that you can copy and paste
-            into your apps. Free. Open Source. And Next.js 13 Ready.
+        <div className="flex flex-col items-start gap-2">
+          <h2 className="text-3xl font-extrabold leading-tight tracking-tighter">
+            <br className="hidden sm:inline" />
+            Tailwind CSS Based Component Library
+          </h2>
+          <p className="max-w-[1080px] min-w-[500px]">
+            References: 
+            <ul className="text-blue-600 hover:text-blue-800 visited:text-purple-600">
+              <li><a className="" href='https://github.com/shadcn/ui'> Shadcn UI (Radix UI Components)<BackpackIcon className="inline"  /></a> </li>
+              <li><a href='https://www.radix-ui.com/'> Radix UI</a></li>
+              <li><a href='https://daisyui.com/'> Daisy UI<StarFilledIcon className="inline"  /></a></li>
+            </ul>
           </p>
         </div>
         <div className="flex gap-4">
-          <Link
+          {/* <Link
             href={siteConfig.links.docs}
             target="_blank"
             rel="noreferrer"
@@ -49,7 +54,7 @@ export default function IndexPage() {
             })}
           >
             GitHub
-          </Link>
+          </Link> */}
         </div>
 
 
@@ -62,6 +67,11 @@ export default function IndexPage() {
             </Label>
           </div>
 
+          <Button>
+            Sub Menu
+            <BackpackIcon  />
+          </Button>
+
           <Link
             href={siteConfig.links.subMenu}
             target="_self"
@@ -73,6 +83,7 @@ export default function IndexPage() {
             })}
           >
             Sub Menu
+            <BackpackIcon  />
           </Link>
 
           <Link
@@ -85,7 +96,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Global Navigation
+            Global Navigation<BackpackIcon  />
           </Link>
 
           <Link
@@ -98,7 +109,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Menu Bar
+            Menu Bar<BackpackIcon  />
           </Link>
 
           <Link
@@ -111,7 +122,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Drop Down Menu
+            Drop Down Menu<BackpackIcon  />
           </Link>
           <Link
             href={siteConfig.links.collapsible}
@@ -123,7 +134,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            collapsible
+            collapsible<BackpackIcon  />
           </Link>
 
           <Link
@@ -136,7 +147,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Context Menu
+            Context Menu<BackpackIcon  />
           </Link>
 
           <Link
@@ -149,7 +160,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Accordion
+            Accordion<BackpackIcon  />
           </Link>
 
           <Link
@@ -162,7 +173,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            button
+            button<BackpackIcon  />
           </Link>
 
           <Link
@@ -175,7 +186,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Tabs
+            Tabs<BackpackIcon  />
           </Link>
         </div>
 
@@ -260,7 +271,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Input
+            Input<BackpackIcon  />
           </Link>
 
 
@@ -276,7 +287,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Radio Group
+            Radio Group<BackpackIcon  />
           </Link>
 
           <Link
@@ -289,7 +300,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            checkbox
+            checkbox<BackpackIcon  />
           </Link>
 
           
@@ -303,7 +314,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            select
+            select<BackpackIcon  />
           </Link>
           
           <Link
@@ -316,7 +327,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Text Area
+            Text Area<BackpackIcon  />
           </Link>
 
         </div>
@@ -340,7 +351,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            avatar
+            avatar<BackpackIcon  />
           </Link>
 
         </div>
@@ -363,7 +374,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Progress
+            Progress<BackpackIcon  />
           </Link>
 
         </div>
@@ -386,7 +397,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Scroll Area
+            Scroll Area<BackpackIcon  />
           </Link>
 
           <Link
@@ -399,7 +410,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Slider
+            Slider<BackpackIcon  />
           </Link>
 
         </div>
@@ -422,7 +433,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Label
+            Label<BackpackIcon  />
           </Link>
 
           <Link
@@ -435,7 +446,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Code Area
+            Code Area<BackpackIcon  />
           </Link>
 
         </div>
@@ -458,7 +469,7 @@ export default function IndexPage() {
               color: "primary",
             })}
           >
-            Seperator
+            Seperator<BackpackIcon  />
           </Link>
 
          

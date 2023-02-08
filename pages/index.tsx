@@ -4,6 +4,8 @@ import Link from "next/link"
 import { Layout } from "@/components/layout"
 import { buttonVariants } from "@/components/ui/button"
 import { siteConfig } from "@/config/site"
+import LabelDemo from "@/components/ui/demo/labelDemo"
+import { Label } from "../components/ui/label"
 
 export default function IndexPage() {
   return (
@@ -43,120 +45,82 @@ export default function IndexPage() {
             href={siteConfig.links.github}
             className={buttonVariants({
               size: "lg",
-              color: "secondary",
+              color: "primary",
             })}
           >
             GitHub
           </Link>
         </div>
+
+
+
+        {/* Menus, Navigation, Buttons, Helpers */}
         <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
-          <Link
-            href={siteConfig.links.accordion}
-            target="_self"
-            rel="noreferrer"
-            className={buttonVariants({
-              size: "lg",
-              variant: "outline",
-              color: "primary",
-            })}
-          >
-            Accordion
-          </Link>
-          <Link
-            href={siteConfig.links.alert}
-            target="_self"
-            rel="noreferrer"
-            className={buttonVariants({
-              size: "lg",
-              variant: "outline",
-              color: "secondary",
-            })}
-          >
-            Alert Dialogue
-          </Link>
+          <div className="min-w-[300px]">
+            <Label className="">
+              Menus, Navigation, Buttons, Helpers
+            </Label>
+          </div>
+
           <Link
             href={siteConfig.links.subMenu}
             target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
-              variant: "outline",
-              color: "secondary",
+              variant: "default",
+              color: "primary",
             })}
           >
             Sub Menu
           </Link>
+
           <Link
             href={siteConfig.links.globalNavigation}
             target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
-              variant: "outline",
-              color: "secondary",
+              variant: "default",
+              color: "primary",
             })}
           >
             Global Navigation
           </Link>
+
           <Link
-            href={siteConfig.links.avatar}
+            href={siteConfig.links.menuBar}
             target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
-              variant: "outline",
-              color: "secondary",
+              variant: "default",
+              color: "primary",
             })}
           >
-            avatar
-          </Link>
-          <Link
-            href={siteConfig.links.button}
-            target="_self"
-            rel="noreferrer"
-            className={buttonVariants({
-              size: "lg",
-              variant: "outline",
-              color: "secondary",
-            })}
-          >
-            button
-          </Link>
-          <Link
-            href={siteConfig.links.checkbox}
-            target="_self"
-            rel="noreferrer"
-            className={buttonVariants({
-              size: "lg",
-              variant: "outline",
-              color: "secondary",
-            })}
-          >
-            checkbox
+            Menu Bar
           </Link>
 
           <Link
-            href={siteConfig.links.code}
+            href={siteConfig.links.dropDown}
             target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
-              variant: "outline",
-              color: "secondary",
+              variant: "default",
+              color: "primary",
             })}
           >
-            Code Area
+            Drop Down Menu
           </Link>
-
-
           <Link
             href={siteConfig.links.collapsible}
             target="_self"
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
-              variant: "outline",
-              color: "secondary",
+              variant: "default",
+              color: "primary",
             })}
           >
             collapsible
@@ -168,12 +132,49 @@ export default function IndexPage() {
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
-              variant: "outline",
-              color: "secondary",
+              variant: "default",
+              color: "primary",
             })}
           >
             Context Menu
           </Link>
+
+          <Link
+            href={siteConfig.links.accordion}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Accordion
+          </Link>
+
+          <Link
+            href={siteConfig.links.button}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            button
+          </Link>
+
+        </div>
+
+
+        {/* Modals, Hover */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+              Modals, Hover
+            </Label>
+          </div>
 
           <Link
             href={siteConfig.links.dialog}
@@ -181,41 +182,226 @@ export default function IndexPage() {
             rel="noreferrer"
             className={buttonVariants({
               size: "lg",
-              variant: "outline",
-              color: "secondary",
+              variant: "default",
+              color: "primary",
             })}
           >
             Dialog
           </Link>
-        </div>
-        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+
           <Link
-              href={siteConfig.links.dropDown}
-              target="_self"
-              rel="noreferrer"
-              className={buttonVariants({
-                size: "lg",
-                variant: "default",
-                color: "primary",
-              })}
-            >
-              Drop Down Menu
-            </Link>
+            href={siteConfig.links.hoverCard}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Hover Card
+          </Link>
 
-            <Link
-              href={siteConfig.links.hoverCard}
-              target="_self"
-              rel="noreferrer"
-              className={buttonVariants({
-                size: "lg",
-                variant: "default",
-                color: "primary",
-              })}
-            >
-              Hover Card
-            </Link>
+          <Link
+            href={siteConfig.links.popover}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Popover
+          </Link>
+
+          <Link
+            href={siteConfig.links.alert}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Alert Dialogue
+          </Link>
 
         </div>
+
+        {/* User Input Components */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+              User Input Components
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.input}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Input
+          </Link>
+
+
+
+
+          <Link
+            href={siteConfig.links.radioGroup}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Radio Group
+          </Link>
+
+          <Link
+            href={siteConfig.links.checkbox}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            checkbox
+          </Link>
+
+          
+          <Link
+            href={siteConfig.links.select}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            select
+          </Link>
+
+        </div>
+
+
+        {/* User Account */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+              User Account
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.avatar}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            avatar
+          </Link>
+
+        </div>
+
+        {/* Loaders, Indicators */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+              Loaders, Indicators
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.progress}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Progress
+          </Link>
+
+        </div>
+
+        {/* Interactive */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+              Interactive
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.scrollArea}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Scroll Area
+          </Link>
+
+        </div>
+
+        {/* Text Formatting */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+              Text Formatting
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.label}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Label
+          </Link>
+
+          <Link
+            href={siteConfig.links.code}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Code Area
+          </Link>
+
+        </div>
+
       </section>
     </Layout>
   )

@@ -5,6 +5,12 @@
 @import "../components/ui/demo/dialogueStyles.module.css";
 @import "../components/ui/demo/dropDownMenuDemo.module.css";
 @import "../components/ui/demo/hoverCardDemo.module.css";
+@import "../components/ui/demo/menuBarDemo.module.css";
+@import "../components/ui/demo/popoverDemo.module.css";
+@import "../components/ui/demo/progress.module.css";
+@import "../components/ui/demo/radioGroup.module.css";
+@import "../components/ui/demo/scrollArea.module.css";
+@import "../components/ui/demo/select.module.css";
 @import "./demo.css";
 
 

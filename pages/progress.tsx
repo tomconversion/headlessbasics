@@ -8,10 +8,12 @@ import { DropdownMenu } from '@radix-ui/react-dropdown-menu';
 import DropdownMenuDemo from '@/components/ui/demo/dropDownMenuDemo';
 import HoverCardDemo from '@/components/ui/demo/hoverCardDemo';
 import MenuBarDemo from '@/components/ui/demo/menuBarDemo';
-import NavigationMenuDemo from '@/components/ui/demo/subNavigationDemo';
+import PopoverDemo from '@/components/ui/demo/popoverDemo';
+import ProgressDemo from '@/components/ui/demo/progressDemo';
 
+// Use the following variable to control the technical template contents
 const demoJson = [{}];
-const title = "Navigation Menu Bar";
+const title = "Progress";
 const description = "...";
 
 export default function IndexPage() {
@@ -44,12 +46,12 @@ export default function IndexPage() {
 const renderComponent = () => {
   return (
     <>
-      <div className="w-full divide-y">
-      <div className='w-full py-4'>Developer Notes: <ExampleCode language='text'>...</ExampleCode></div>
+      <div className="w-full divide-y space-y-4">
+      <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode language='text'>...</ExampleCode></div>
         {/* <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode language='text'>{JSON.stringify(demoJson)}</ExampleCode></div> */}
         {/* <div className='w-full break-after-auto py-4'>JSON Object Length: <ExampleCode language='text'>{JSON.stringify(demoJson.length)}</ExampleCode></div> */}
-        <div className='demoBackground'>
-          <NavigationMenuDemo/>
+        <div className='w-full break-after-auto py-4 demoBackground dropDown min-h-screen'>
+          <ProgressDemo/>
         </div>
       </div>
     </>

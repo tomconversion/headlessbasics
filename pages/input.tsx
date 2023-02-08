@@ -7,12 +7,11 @@ import ContextMenuDemo from '@/components/ui/demo/ContextMenuDemo';
 import { DropdownMenu } from '@radix-ui/react-dropdown-menu';
 import DropdownMenuDemo from '@/components/ui/demo/dropDownMenuDemo';
 import HoverCardDemo from '@/components/ui/demo/hoverCardDemo';
-import MenuBarDemo from '@/components/ui/demo/menuBarDemo';
-import NavigationMenuDemo from '@/components/ui/demo/subNavigationDemo';
+import InputDemo from '@/components/ui/demo/inputDemo';
 
 const demoJson = [{}];
-const title = "Navigation Menu Bar";
-const description = "...";
+const title = "Input Field";
+const description = "The input is below. You need to click into it.";
 
 export default function IndexPage() {
   return (
@@ -44,12 +43,12 @@ export default function IndexPage() {
 const renderComponent = () => {
   return (
     <>
-      <div className="w-full divide-y">
-      <div className='w-full py-4'>Developer Notes: <ExampleCode language='text'>...</ExampleCode></div>
+      <div className="w-full divide-y space-y-4">
+      <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode language='text'>...</ExampleCode></div>
         {/* <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode language='text'>{JSON.stringify(demoJson)}</ExampleCode></div> */}
         {/* <div className='w-full break-after-auto py-4'>JSON Object Length: <ExampleCode language='text'>{JSON.stringify(demoJson.length)}</ExampleCode></div> */}
-        <div className='demoBackground'>
-          <NavigationMenuDemo/>
+        <div className='w-full break-after-auto py-4 min-h-screen'>
+          <InputDemo/>
         </div>
       </div>
     </>

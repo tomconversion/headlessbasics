@@ -5,6 +5,14 @@ interface SiteConfig {
   description: string
   mainNav: NavItem[]
   links: {
+    select: string
+    scrollArea: string
+    radioGroup: string
+    progress: string
+    popover: string
+    menuBar: string
+    label: string
+    input: string
     hoverCard: string
     dropDown: string
     dialog: string
@@ -50,6 +58,14 @@ export const siteConfig: SiteConfig = {
     contextMenu : "/contextMenu",
     dialog: "/dialog",
     dropDown : "/dropDown",
-    hoverCard : "/hoverCard"
+    hoverCard : "/hoverCard",
+    input : "/input",
+    label : "/label",
+    menuBar : "/menuBar",
+    popover : "/popover",
+    progress : "/progress",
+    radioGroup : "/radioGroup",
+    scrollArea : "/scrollArea",
+    select : "/select",
   },
 }

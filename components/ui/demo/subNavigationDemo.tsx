@@ -96,5 +96,6 @@ const ListItem = React.forwardRef(({ className, children, title, ...props }, for
     </NavigationMenu.Link>
   </li>
 ));
+ListItem.displayName = "ListItem";
 
 export default NavigationMenuDemo;

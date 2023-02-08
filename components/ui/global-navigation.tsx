@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // render a tailwind navigation menu
-function globalTailwindNavigationMenu({ menu }: { menu: any }){
+const GlobalTailwindNavigationMenu = ({ menu }) => {
 
   const [isOpen, setOpen] = useState(false);
 
@@ -50,5 +50,5 @@ function globalTailwindNavigationMenu({ menu }: { menu: any }){
 }
 
 export {
-  globalTailwindNavigationMenu
+  GlobalTailwindNavigationMenu
 }

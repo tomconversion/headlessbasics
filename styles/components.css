@@ -1,2 +1,10 @@
 /* components.css */
 @import "../components/ui/demo/subNavigationStyles.module.css";
+@import "../components/ui/demo/collapsibleDemo.module.css";
+@import "../components/ui/demo/contextMenuDemo.module.css";
+@import "../components/ui/demo/dialogueStyles.module.css";
+@import "../components/ui/demo/dropDownMenuDemo.module.css";
+@import "../components/ui/demo/hoverCardDemo.module.css";
+@import "./demo.css";
+
+

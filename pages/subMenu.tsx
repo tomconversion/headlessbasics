@@ -38,26 +38,6 @@ export default function IndexPage() {
   )
 }
 
-function RenderGrandChild(grandChildren: any): any {
-  return grandChildren.map((grandChild: any) => {
-    return (
-      <div key={grandChild.id}>
-        <h3>{grandChild.name}</h3>
-        {grandChild.children && RenderGreatGrandChild(grandChild.children)}
-      </div>
-    );
-  });
-}
-
-function RenderGreatGrandChild(greatGrandChildren: any): any {
-  return greatGrandChildren.map((greatGrandChild: any) => {
-    return (
-      <div key={greatGrandChild.id}>
-        <h4>{greatGrandChild.name}</h4>
-      </div>
-    );
-  });
-}
 
 function RenderChilden(children: any) {
 

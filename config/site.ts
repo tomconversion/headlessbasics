@@ -5,6 +5,11 @@ interface SiteConfig {
   description: string
   mainNav: NavItem[]
   links: {
+    hoverCard: string
+    dropDown: string
+    dialog: string
+    code: string
+    collapsible: string
     twitter: string
     github: string
     docs: string
@@ -15,6 +20,7 @@ interface SiteConfig {
     avatar: string
     button: string
     checkbox: string
+    contextMenu: string
   }
 }
 
@@ -39,5 +45,11 @@ export const siteConfig: SiteConfig = {
     avatar: "/avatar",
     button: "/button",
     checkbox: "/checkbox",
+    collapsible: "/collapsible",
+    code: "/code",
+    contextMenu : "/contextMenu",
+    dialog: "/dialog",
+    dropDown : "/dropDown",
+    hoverCard : "/hoverCard"
   },
 }

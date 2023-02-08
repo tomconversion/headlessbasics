@@ -134,6 +134,87 @@ export default function IndexPage() {
           >
             checkbox
           </Link>
+
+          <Link
+            href={siteConfig.links.code}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            Code Area
+          </Link>
+
+
+          <Link
+            href={siteConfig.links.collapsible}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            collapsible
+          </Link>
+
+          <Link
+            href={siteConfig.links.contextMenu}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            Context Menu
+          </Link>
+
+          <Link
+            href={siteConfig.links.dialog}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "outline",
+              color: "secondary",
+            })}
+          >
+            Dialog
+          </Link>
+        </div>
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <Link
+              href={siteConfig.links.dropDown}
+              target="_self"
+              rel="noreferrer"
+              className={buttonVariants({
+                size: "lg",
+                variant: "default",
+                color: "primary",
+              })}
+            >
+              Drop Down Menu
+            </Link>
+
+            <Link
+              href={siteConfig.links.hoverCard}
+              target="_self"
+              rel="noreferrer"
+              className={buttonVariants({
+                size: "lg",
+                variant: "default",
+                color: "primary",
+              })}
+            >
+              Hover Card
+            </Link>
+
         </div>
       </section>
     </Layout>

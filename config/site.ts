@@ -5,6 +5,10 @@ interface SiteConfig {
   description: string
   mainNav: NavItem[]
   links: {
+    textarea: string
+    tabs: string
+    slider: string
+    separator: string
     select: string
     scrollArea: string
     radioGroup: string
@@ -67,5 +71,9 @@ export const siteConfig: SiteConfig = {
     radioGroup : "/radioGroup",
     scrollArea : "/scrollArea",
     select : "/select",
+    separator: "/separator",
+    slider: "/slider",
+    tabs: "/tabs",
+    textarea: "/textarea"
   },
 }

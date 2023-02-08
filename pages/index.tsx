@@ -165,6 +165,18 @@ export default function IndexPage() {
             button
           </Link>
 
+          <Link
+            href={siteConfig.links.tabs}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Tabs
+          </Link>
         </div>
 
 
@@ -293,6 +305,19 @@ export default function IndexPage() {
           >
             select
           </Link>
+          
+          <Link
+            href={siteConfig.links.textarea}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Text Area
+          </Link>
 
         </div>
 
@@ -364,6 +389,19 @@ export default function IndexPage() {
             Scroll Area
           </Link>
 
+          <Link
+            href={siteConfig.links.slider}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Slider
+          </Link>
+
         </div>
 
         {/* Text Formatting */}
@@ -399,6 +437,31 @@ export default function IndexPage() {
           >
             Code Area
           </Link>
+
+        </div>
+
+        {/* Structures */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+            Structures
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.separator}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Seperator
+          </Link>
+
+         
 
         </div>
 

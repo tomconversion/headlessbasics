@@ -39,9 +39,9 @@ const renderComponent = () => {
   return (
     <>
       <div className="w-full divide-y space-y-4">
-      <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode>...</ExampleCode></div>
-        <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode>{JSON.stringify(demoJson)}</ExampleCode></div>
-        <div className='w-full break-after-auto py-4'>JSON Object Length: <ExampleCode>{JSON.stringify(demoJson.length)}</ExampleCode></div>
+      <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode language='text'>...</ExampleCode></div>
+        <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode language='text'>{JSON.stringify(demoJson)}</ExampleCode></div>
+        <div className='w-full break-after-auto py-4'>JSON Object Length: <ExampleCode language='text'>{JSON.stringify(demoJson.length)}</ExampleCode></div>
         <div className='w-full break-after-auto py-4'>
           <Checkbox/>
         </div>

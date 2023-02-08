@@ -2,7 +2,6 @@
 import Head from 'next/head'
 import { Layout } from "@/components/layout"
 import ExampleCode from '@/components/ui/code'
-import { Html } from 'next/document';
 
 const demoJson = [{}];
 const title = "Code";
@@ -39,9 +38,9 @@ const renderComponent = () => {
   return (
     <>
       <div className="w-full divide-y space-y-4">
-      <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode>This component is simply a background component to render code. It uses the prismjs library.</ExampleCode></div>
-        <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode>{JSON.stringify(demoJson)}</ExampleCode></div>
-        <div className='w-full break-after-auto py-4'>JSON Object Length: <ExampleCode>{JSON.stringify(demoJson.length)}</ExampleCode></div>
+      <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode language='text'>This component is simply a background component to render code. It uses the prismjs library.</ExampleCode></div>
+        <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode language='text'>{JSON.stringify(demoJson)}</ExampleCode></div>
+        <div className='w-full break-after-auto py-4'>JSON Object Length: <ExampleCode  language='text'>{JSON.stringify(demoJson.length)}</ExampleCode></div>
         <div className='w-full break-after-auto py-4'>
         <ExampleCode language='jsx'>
         {`

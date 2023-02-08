@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { CaretDownIcon } from '@radix-ui/react-icons';
 import { cn } from '@/lib/utils';
@@ -86,22 +86,20 @@ const NavigationMenuDemo = () => {
   );
 };
 
-interface ListItemProps {
-  className?: string;
-  children?: React.ReactNode;
-  title?: string;
-}
+type Props = {
+  title: string,
+  children: React.ReactNode,
+  className?: string,
+};
 
-const ListItem = React.forwardRef(({ className, children, title, ...props }: ListItemProps, forwardedRef) => (
-  <li>
-    <NavigationMenu.Link asChild>
-      <a className={cn('ListItemLink', className)} {...props} ref={forwardedRef}>
-        <div className="ListItemHeading">{title}</div>
-        <p className="ListItemText">{children}</p>
-      </a>
-    </NavigationMenu.Link>
-  </li>
-));
-ListItem.displayName = "ListItem";
+const NavigationMenuLink = forwardRef<HTMLAnchorElement, Props>(
+  ({ title, children, className, ...props }, ref) => (
+    <a className={cn('ListItemLink', className)} {...props} ref={ref}>
+      <div className="ListItemHeading">{title}</div>
+      <p className="ListItemText">{children}</p>
+    </a>
+  )
+);
+NavigationMenuLink.displayName = "ListItem";
 
 export default NavigationMenuDemo;

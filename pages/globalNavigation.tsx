@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site"
 import { json } from 'stream/consumers'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu'
 import NavigationMenuDemo from '@/components/ui/demo/subNavigationDemo'
-import { GlobalTailwindNavigationMenu, globalTailwindNavigationMenu } from '@/components/ui/global-navigation'
+import { GlobalTailwindNavigationMenu } from '@/components/ui/global-navigation'
 
 const demoNav = [{"name":"Static","id":"2249abfe-5710-489e-bcbc-43223cad1427","level":2},{"name":"DyanmicGrid","id":"d40d46bb-2165-4f4e-bd65-78d7282c0ca1","level":2},{"name":"Static2","id":"0309a2ec-d20f-4304-b80e-94cfba4d09a5","level":2},{"name":"FlexExample","id":"63c5d7e3-74db-43d6-84ce-d71b48012d5f","level":2}];
 

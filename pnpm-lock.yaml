@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@ianvs/prettier-plugin-sort-imports': ^3.7.1
   '@next/font': ^13.1.6
+  '@radix-ui/colors': ^0.1.8
   '@radix-ui/react-accessible-icon': ^1.0.1
   '@radix-ui/react-accordion': ^1.1.0
   '@radix-ui/react-alert-dialog': ^1.0.2
@@ -56,6 +57,7 @@ specifiers:
 
 dependencies:
   '@next/font': 13.1.6
+  '@radix-ui/colors': 0.1.8
   '@radix-ui/react-accessible-icon': 1.0.1_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-accordion': 1.1.0_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-alert-dialog': 1.0.2_5ndqzdd6t4rivxsukjv3i3ak2q
@@ -589,6 +591,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+
+  /@radix-ui/colors/0.1.8:
+    resolution: {integrity: sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==}
+    dev: false
 
   /@radix-ui/number/1.0.0:
     resolution: {integrity: sha512-Ofwh/1HX69ZfJRiRBMTy7rgjAzHmwe4kW9C9Y99HTRUcYLUuVT0KESFj15rPjRgKJs20GPq8Bm5aEDJ8DuA3vA==}

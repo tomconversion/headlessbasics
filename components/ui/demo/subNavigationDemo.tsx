@@ -86,7 +86,13 @@ const NavigationMenuDemo = () => {
   );
 };
 
-const ListItem = React.forwardRef(({ className, children, title, ...props }, forwardedRef) => (
+interface ListItemProps {
+  className?: string;
+  children?: React.ReactNode;
+  title?: string;
+}
+
+const ListItem = React.forwardRef(({ className, children, title, ...props }: ListItemProps, forwardedRef) => (
   <li>
     <NavigationMenu.Link asChild>
       <a className={cn('ListItemLink', className)} {...props} ref={forwardedRef}>

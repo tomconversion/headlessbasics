@@ -1,8 +1,7 @@
 import React from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import classNames from 'classnames';
 import { CaretDownIcon } from '@radix-ui/react-icons';
-import { NavigationMenuItem } from '@radix-ui/react-navigation-menu';
+import { cn } from '@/lib/utils';
 
 const NavigationMenuDemo = () => {
   return (
@@ -90,7 +89,7 @@ const NavigationMenuDemo = () => {
 const ListItem = React.forwardRef(({ className, children, title, ...props }, forwardedRef) => (
   <li>
     <NavigationMenu.Link asChild>
-      <a className={classNames('ListItemLink', className)} {...props} ref={forwardedRef}>
+      <a className={cn('ListItemLink', className)} {...props} ref={forwardedRef}>
         <div className="ListItemHeading">{title}</div>
         <p className="ListItemText">{children}</p>
       </a>

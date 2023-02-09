@@ -2,8 +2,7 @@
 import Head from 'next/head'
 import { Layout } from "@/components/layout"
 import ExampleCode from '@/components/ui/code'
-import CTASectionTwoColumn, { CtaTwoColumnVariants, CtaTwoColumnVariant } from '@/components/ui/sections/ctaSectionTwoColumn';
-
+import CTASectionTwoColumn from '@/components/ui/sections/ctaSectionTwoColumn';
 
 const title = "Two Column Section";
 const description = "Displays CTA in a two column layout";

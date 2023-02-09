@@ -530,6 +530,19 @@ export default function IndexPage() {
             Two Column Section
           </Link>
 
+          <Link
+            href={siteConfig.links.ctaSectionThreeColumn}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Three Column Section
+          </Link>
+
          
 
         </div>        

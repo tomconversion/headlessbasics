@@ -15,9 +15,9 @@ const SectionThreeColumn: React.FC<{
   leftChild,
   middleChild,
   rightChild,
-  leftColumnClass = "w-1/3 pr-4",
-  middleColumnClass = "w-2/3 pl-40",
-  rightColumnClass = "w-2/3 pl-40"
+  leftColumnClass = "w-1/3",
+  middleColumnClass = "w-1/3",
+  rightColumnClass = "w-1/3"
 }) => {
   return (
     <SectionWrapperTailwind>

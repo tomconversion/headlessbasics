@@ -36,6 +36,7 @@ interface SiteConfig {
     checkbox: string
     contextMenu: string
     promotion: string
+    ctaSectionThreeColumn: string
   }
 }
 
@@ -80,6 +81,7 @@ export const siteConfig: SiteConfig = {
     textarea: "/textarea",
     carousel: "/carousel",
     promotion: "/contentBlocks/promotion",
-    ctaSectionTwoColumn : "ctaSectionTwoColumn"
+    ctaSectionTwoColumn : "/contentBlocks/ctaSectionTwoColumn",
+    ctaSectionThreeColumn : "/contentBlocks/ctaSectionThreeColumn"
   },
 }

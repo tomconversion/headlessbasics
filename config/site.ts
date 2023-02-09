@@ -34,6 +34,7 @@ interface SiteConfig {
     button: string
     checkbox: string
     contextMenu: string
+    promotion: string
   }
 }
 
@@ -76,6 +77,7 @@ export const siteConfig: SiteConfig = {
     slider: "/slider",
     tabs: "/tabs",
     textarea: "/textarea",
-    carousel: "/carousel"
+    carousel: "/carousel",
+    promotion: "/contentBlocks/promotion"
   },
 }

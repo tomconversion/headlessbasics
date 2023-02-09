@@ -67,11 +67,6 @@ export default function IndexPage() {
             </Label>
           </div>
 
-          <Button>
-            Sub Menu
-            <BackpackIcon  />
-          </Button>
-
           <Link
             href={siteConfig.links.subMenu}
             target="_self"
@@ -476,8 +471,8 @@ export default function IndexPage() {
 
         </div>
 
-                {/* Media Display */}
-                <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+        {/* Media Display */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
           <div className="min-w-[300px]">
             <Label>
             Media Display
@@ -500,6 +495,31 @@ export default function IndexPage() {
          
 
         </div>
+
+        {/* Content Blocks */}
+        <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+            CTA / Promotions
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.promotion}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            CTA / Promotions
+          </Link>
+
+         
+
+        </div>        
 
       </section>
     </Layout>

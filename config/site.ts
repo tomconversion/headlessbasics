@@ -5,6 +5,7 @@ interface SiteConfig {
   description: string
   mainNav: NavItem[]
   links: {
+    ctaSectionTwoColumn: string
     carousel: string
     textarea: string
     tabs: string
@@ -78,6 +79,7 @@ export const siteConfig: SiteConfig = {
     tabs: "/tabs",
     textarea: "/textarea",
     carousel: "/carousel",
-    promotion: "/contentBlocks/promotion"
+    promotion: "/contentBlocks/promotion",
+    ctaSectionTwoColumn : "ctaSectionTwoColumn"
   },
 }

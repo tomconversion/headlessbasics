@@ -517,6 +517,19 @@ export default function IndexPage() {
             CTA / Promotions
           </Link>
 
+          <Link
+            href={siteConfig.links.ctaSectionTwoColumn}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Two Column Section
+          </Link>
+
          
 
         </div>        

@@ -5,6 +5,7 @@ interface SiteConfig {
   description: string
   mainNav: NavItem[]
   links: {
+    carousel: string
     textarea: string
     tabs: string
     slider: string
@@ -74,6 +75,7 @@ export const siteConfig: SiteConfig = {
     separator: "/separator",
     slider: "/slider",
     tabs: "/tabs",
-    textarea: "/textarea"
+    textarea: "/textarea",
+    carousel: "/carousel"
   },
 }

@@ -11,7 +11,7 @@ export default class SimpleSlider extends Component {
       slidesToScroll: 1
     };
     return (
-      <div className="full-width flex">
+      <div className="w-full flex">
         <h2> Single Item</h2>
         <Slider {...settings}>
           <div>

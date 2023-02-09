@@ -476,6 +476,31 @@ export default function IndexPage() {
 
         </div>
 
+                {/* Media Display */}
+                <div className="border-grey-600 flex gap-4 border-2 border-solid p-2">
+          <div className="min-w-[300px]">
+            <Label>
+            Media Display
+            </Label>
+          </div>
+
+          <Link
+            href={siteConfig.links.carousel}
+            target="_self"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              variant: "default",
+              color: "primary",
+            })}
+          >
+            Carousel
+          </Link>
+
+         
+
+        </div>
+
       </section>
     </Layout>
   )

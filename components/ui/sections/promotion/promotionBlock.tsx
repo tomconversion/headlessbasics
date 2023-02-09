@@ -13,7 +13,7 @@ const Promotion: React.FC<PromotionProps> = ({ imgSrc, title, description, butto
             <img alt="" src={imgSrc} className="h-40 mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-2">{title}</h3>
             <p className="text-gray-700 leading-tight  text-justify">{description}</p>
-            {buttonText && <button className="bg-blue-500 text-white mt-2 py-2 px-4 rounded">{buttonText}</button>}
+            {buttonText && <button className="w-full bg-blue-500 text-white mt-2 py-2 rounded">{buttonText}</button>}
         </div>
     );
 };

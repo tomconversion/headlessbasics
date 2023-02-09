@@ -11,6 +11,9 @@
 @import "../components/ui/demo/radioGroup.module.css";
 @import "../components/ui/demo/scrollArea.module.css";
 @import "../components/ui/demo/select.module.css";
+@import "../components/ui/sections/carousel/slick.min.css";
+@import "../components/ui/sections/carousel/slick-theme.min.css";
+@import "../components/ui/sections/carousel/carousel.module.css";
 @import "./demo.css";
 
 

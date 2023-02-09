@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import Slider from 'react-slick';
 import Image from 'next/image';
 
+
+// https://react-slick.neostack.com/docs/example/
 interface Props {
   items: Array<{ src: string; alt: string }>;
 }
@@ -19,7 +21,7 @@ const Carousel: FC<Props> = ({ items }) => {
     <Slider {...settings}>
       {items.map((item, index) => (
         <div key={index}>
-          <Image src={item.src} alt={item.alt} width={800} height={600} />
+          <Image src={item.src} alt={item.alt} width={1980} height={600} />
         </div>
       ))}
     </Slider>

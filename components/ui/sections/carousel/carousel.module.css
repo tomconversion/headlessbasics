@@ -1,4 +1,3 @@
-@import "./slick-theme.min.css";
 /* .container {
   width: 800px;
   margin: auto;
@@ -13,3 +12,11 @@
 .slick-slide h3 {
   padding: 100px 0;
 } */
+
+.slick-next:before, .slick-prev:before {
+  color: #000;
+}
+
+.slick-prev:before {
+  content: "\2190";
+}

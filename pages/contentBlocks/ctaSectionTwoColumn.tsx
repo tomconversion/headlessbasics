@@ -55,7 +55,7 @@ const renderComponent = () => {
     <>      
             <section className="container items-center gap-6 pt-6 pb-8 md:py-10">
               <div className="flex max-w-[980px] flex-col items-start gap-2">
-                <h2>Variation 1: 1/3 & 2/3</h2>
+                <h2>Variation 1: 1/2 & 1/2</h2>
               </div>
             </section>
 
@@ -72,7 +72,7 @@ const renderComponent = () => {
 
             <section className="container items-center gap-6 pt-6 pb-8 md:py-10">
               <div className="flex max-w-[980px] flex-col items-start gap-2">
-                <h2>Variation 2: 1/2 & 1/2</h2>
+                <h2>Variation 2: 2/3 & 1/3</h2>
               </div>
             </section>
 
@@ -87,8 +87,23 @@ const renderComponent = () => {
             variation={"twoThirds"}              
             />
 
-          
+            <section className="container items-center gap-6 pt-6 pb-8 md:py-10">
+              <div className="flex max-w-[980px] flex-col items-start gap-2">
+                <h2>Variation 3: 1/3 & 2/3</h2>
+              </div>
+            </section>
 
+            <CTASectionTwoColumn 
+            data={{
+              title: ctaJson.title,
+              description: ctaJson.description,
+              image: 'https://picsum.photos/id/1019/1980/600',
+              buttonText: ctaJson.buttonText,
+              buttonLink: ctaJson.buttonLink
+            }}
+            variation={"oneThird"}              
+            />
+          
     </>
   )
 }

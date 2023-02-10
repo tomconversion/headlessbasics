@@ -1,12 +1,10 @@
 import Container from '../components/umbraco/container'
 import Intro from '../components/umbraco/intro'
 import Layout from '../components/umbraco/layout'
-import { getAltHomepageNavigation, getGridPage1 } from '../lib/umbraco-heartcore'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
-import { json } from 'stream/consumers'
-import { cn } from '@/lib/utils'
-import Flex from '@/lib/umbraco-heartcore-grid'
+import { CMS_NAME } from '../lib/cms/constants'
+import Flex from '@/lib/cms/heartcore/umbraco-heartcore-grid'
+import { getGridPage1 } from '@/lib/cms/heartcore/umbraco-heartcore'
 
 
 export default function Index({ navItems, preview }) {

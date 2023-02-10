@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { NavItem } from "../types/nav"
 import { siteConfig } from "../config/site"
-import { cn } from "../lib/utils"
+import { cn } from "../lib/util/utils"
 import { Icons } from "./icons"
 import { Button } from "./ui/button"
 import {

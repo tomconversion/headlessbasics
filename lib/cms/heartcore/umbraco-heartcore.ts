@@ -1,28 +1,9 @@
-async function fetchAPI(query, { variables, preview } = { variables: {}, preview: false }) {
-  const res = await fetch('https://graphql.umbraco.io', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Api-Key': process.env.UMBRACO_API_KEY,
-      'Umb-Project-Alias': process.env.UMBRACO_PROJECT_ALIAS,
-    },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  })
-  const json = await res.json()
+import { fetchAPI } from "@/lib/services/graphqlDataService"
+import { fetchAPIGatewayWrapper } from "../cmsDataQueryGateway"
 
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error('Failed to fetch API')
-  }
-
-  return json.data
-}
 
 export async function getPreviewPostBySlug(slug) {
-  const data = await fetchAPI(
+  const data = await fetchAPIGatewayWrapper(
     `
     query PostBySlug($slug: String!) {
       post(url: $slug, preview: true) {
@@ -40,7 +21,7 @@ export async function getPreviewPostBySlug(slug) {
 }
 
 export async function getAllPostsWithSlug() {
-  const data = await fetchAPI(`
+  const data = await fetchAPIGatewayWrapper(`
     {
       allPost {
         edges {
@@ -54,31 +35,8 @@ export async function getAllPostsWithSlug() {
   return data.allPost.edges.map((x) => x.node)
 }
 
-export async function getAltHomepageNavigation() {
-  const data = await fetchAPI(`
-  {
-    allHomepage1{
-      edges{
-        node {
-          name
-          id
-          children{
-            items{
-              name
-              id
-              level
-            }
-          }
-        }
-      }
-    }
-}
-  `)
-  return data.allHomepage1.edges.map((x) => x.node)
-}
-
 export async function getGridPage1() {
-  const data = await fetchAPI(`
+  const data = await fetchAPIGatewayWrapper(`
   {
     allStaticPage1{
           edges{
@@ -95,7 +53,7 @@ export async function getGridPage1() {
 }
 
 export async function getAllPostsForHome(preview) {
-  const data = await fetchAPI(
+  const data = await fetchAPIGatewayWrapper(
     `
     query ($preview: Boolean) {
       allPost(first: 20, orderBy: [date_DESC], preview: $preview) {
@@ -132,7 +90,7 @@ export async function getAllPostsForHome(preview) {
 }
 
 export async function getPostAndMorePosts(slug, preview) {
-  const data = await fetchAPI(
+  const data = await fetchAPIGatewayWrapper(
     `
     query PostBySlug($slug: String!, $preview: Boolean!) {
       post(url: $slug, preview: $preview) {

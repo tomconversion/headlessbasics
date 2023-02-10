@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import { CMS_NAME } from '../lib/cms/constants'
 
 import { Layout } from "@/components/layout"
 import { Button, buttonVariants } from "@/components/ui/button"
@@ -7,6 +7,7 @@ import { siteConfig } from "@/config/site"
 import LabelDemo from "@/components/ui/demo/labelDemo"
 import { Label } from "../components/ui/label"
 import { BackpackIcon, StarFilledIcon } from "@radix-ui/react-icons"
+import Link from 'next/link'
 
 export default function IndexPage() {
   return (
@@ -550,12 +551,4 @@ export default function IndexPage() {
       </section>
     </Layout>
   )
-}
-
-export async function getStaticProps({ preview = false }) {
-  const posts = (await getAllPostsForHome(preview)) || []
-  return {
-    props: { posts, preview },
-    revalidate: 120,
-  }
 }

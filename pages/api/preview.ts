@@ -1,4 +1,4 @@
-import { getPreviewPostBySlug } from '../../lib/umbraco-heartcore'
+import { getPreviewPostBySlug } from '../../lib/cms/heartcore/umbraco-heartcore'
 
 export default async function handler(req, res) {
   // Check the secret and next parameters

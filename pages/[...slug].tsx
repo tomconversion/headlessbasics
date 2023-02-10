@@ -7,10 +7,11 @@ import Header from '../components/umbraco/header'
 import PostHeader from '../components/umbraco/post-header'
 import SectionSeparator from '../components/umbraco/section-separator'
 import Layout from '../components/umbraco/layout'
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../lib/umbraco-heartcore'
+// import { getAllPostsWithSlug, getPostAndMorePosts } from '../lib/umbraco-heartcore'
 import PostTitle from '../components/umbraco/post-title'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import { CMS_NAME } from '../lib/cms/constants'
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/cms/heartcore/umbraco-heartcore'
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()

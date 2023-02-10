@@ -1,7 +1,11 @@
 import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants'
+import { CmsVariants, HOME_OG_IMAGE_URL } from '../../lib/cms/constants'
 
 export default function Meta() {
+
+  const variant = process.env.NEXT_PUBLIC_CMS_VARIANT;
+  const cmsName = CmsVariants.variants[variant].cmsName;
+
   return (
     <Head>
       <link
@@ -34,7 +38,7 @@ export default function Meta() {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
+        content={`A statically generated blog example using Next.js and ${cmsName} THIS.`}
       />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>

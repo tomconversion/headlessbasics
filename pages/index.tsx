@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/cms/constants'
 
 import { Layout } from "@/components/layout"
 import { Button, buttonVariants } from "@/components/ui/button"

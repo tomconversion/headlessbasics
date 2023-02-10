@@ -1,6 +1,5 @@
 import Container from './container'
 import cn from 'classnames'
-import { EXAMPLE_PATH } from '../../lib/cms/constants'
 
 export default function Alert({ preview } : {preview: boolean}): JSX.Element {
   return (
@@ -27,7 +26,7 @@ export default function Alert({ preview } : {preview: boolean}): JSX.Element {
             <>
               The source code for this blog is{' '}
               <a
-                href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
+                href={`https://github.com/vercel/next.js/tree/canary/examples`}
                 className="underline hover:text-success duration-200 transition-colors"
               >
                 available on GitHub

@@ -1,0 +1,20 @@
+/* demo.css */
+
+.demoBackground {
+    background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    border-top-left-radius: var(--radii-3);
+    border-top-right-radius: var(--radii-3);
+}
+
+.dropDown {
+    margin-left: calc(var(--space-8)*-1);
+    margin-right: calc(var(--space-8)*-1);
+}
+
+

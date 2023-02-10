@@ -1,10 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { buttonVariants } from '../button';
-import SectionTwoColumn, { CtaTwoColumnVariant, CtaTwoColumnVariants } from './sectionTwoColumn';
 import SectionThreeColumn from './sectionThreeColumn';
 import { Promotion, PromotionInputProps } from './promotion/promotionBlock';
+import { CtaTwoColumnVariant } from '../interface/columnSettings';
 
 const CTASectionThreeColumn: React.FC<{ 
   data: PromotionInputProps []

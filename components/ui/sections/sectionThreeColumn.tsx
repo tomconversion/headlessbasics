@@ -22,13 +22,13 @@ const SectionThreeColumn: React.FC<{
   return (
     <SectionWrapperTailwind>
       <div className={leftColumnClass}>
-        {leftChild}
+        {leftChild && leftChild}
       </div>
       <div className={middleColumnClass}>
-        {middleChild}
+        {middleChild && middleChild}
       </div>
       <div className={rightColumnClass}>
-        {rightChild}
+        {rightChild && rightChild}
       </div>
     </SectionWrapperTailwind>
   );

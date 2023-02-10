@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buttonVariants } from '../button';
-import SectionTwoColumn, { CtaTwoColumnVariant, CtaTwoColumnVariants } from './sectionTwoColumn';
+import { CtaTwoColumnVariant, CtaTwoColumnVariants } from '../interface/columnSettings';
+import SectionTwoColumn from './sectionTwoColumn';
 
 const CTASectionTwoColumn: React.FC<{ 
   data: { title: string; description: string; image: string; buttonText: string; buttonLink: string } 

@@ -12,6 +12,12 @@ export async function fetchAPIGatewayWrapper(query, { variables, preview } = { v
     if(cmsVariant === 'kontent') {
         const endpoint = `${CmsVariants.variants[cmsVariant].deliveryApiDomain}/${CmsVariants.variants[cmsVariant].projectId}`;
         return await fetchAPI(query, { variables, preview }, endpoint, headers);
+    } else if(cmsVariant === 'contentful') {
+        const endpoint = `${CmsVariants.variants[cmsVariant].deliveryApiDomain}/${CmsVariants.variants[cmsVariant].deliveryApiUrl}/${CmsVariants.variants[cmsVariant].spaceId}`;
+        
+        headers["Authorization"] = `Bearer ${CmsVariants.variants[cmsVariant].deliveryApiKey}`;
+
+        return await fetchAPI(query, { variables, preview }, endpoint, headers);
     } else if(cmsVariant === 'heartcore') {
         const endpoint = `${CmsVariants.variants[cmsVariant].deliveryApiDomain}`;
 

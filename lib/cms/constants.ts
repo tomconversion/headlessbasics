@@ -52,13 +52,15 @@ const CmsVariants = {
     },
     contentful: {
       cmsName: "Contentful",
-      deliveryApiDomain: "https://graphql.umbraco.io",
-      deliveryApiUrl: "w-1/3",
-      cmsUrl: "https://umbraco.com/heartcore",
-      deliveryApiKey: process.env.UMBRACO_API_KEY,
+      deliveryApiDomain: "https://graphql.contentful.com",
+      deliveryApiUrl: "/content/v1/spaces/",
+      cmsUrl: "https://app.contentful.com/spaces/3j9y7hnidlox",
+      deliveryApiKey: process.env.CONTENTFUL_DELIVERY_API_KEY,
       contentApiKey: '',
-      previewApiKey: '',
-      projectAlias: process.env.UMBRACO_PROJECT_ALIAS
+      previewApiKey: process.env.CONTENTFUL_PREVIEW_API_KEY,
+      projectAlias: 'contentful-CD',
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
+      environmentId: process.env.CONTENTFUL_ENVIRONMENT,
     }
   }
 }

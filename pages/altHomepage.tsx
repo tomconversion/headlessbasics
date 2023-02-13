@@ -62,18 +62,10 @@ const renderNavigation = (navItems) => {
 
   return (
     <>
+      <div>{JSON.stringify(navItems)}</div>
       {/* <div>{JSON.stringify(navItems)}</div>
       <div>{JSON.stringify(navItems.length)}</div> */}
-      {navItems.map((item: any) => {
-        // <hr>{JSON.stringify(item)}</hr>
-        return (
-          <>           
-            {item.children && Array.isArray(item.children.items) && RenderChilden(item.children.items)}
-          </>
-        );
-      }
-      )
-      }
+      {navItems && RenderChilden(navItems)}
     </>
   )
 }

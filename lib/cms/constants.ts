@@ -41,7 +41,7 @@ const CmsVariants = {
     },
     kontent: {
       cmsName: "Kentico Kontent",
-      deliveryApiDomain: "https://deliver.kontent.ai",
+      deliveryApiDomain: "https://graphql.kontent.ai",
       deliveryApiUrl: "w-1/3",
       cmsUrl: "https://umbraco.com/heartcore",
       deliveryApiKey: process.env.UMBRACO_API_KEY,

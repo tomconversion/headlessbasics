@@ -10,7 +10,7 @@ export async function fetchAPIGatewayWrapper(query, { variables, preview } = { v
     };
 
     if(cmsVariant === 'kontent') {
-        const endpoint = `${CmsVariants.variants[cmsVariant].deliveryApiDomain}/${CmsVariants.variants[cmsVariant].projectId}/graphql`;
+        const endpoint = `${CmsVariants.variants[cmsVariant].deliveryApiDomain}/${CmsVariants.variants[cmsVariant].projectId}`;
         return await fetchAPI(query, { variables, preview }, endpoint, headers);
     } else if(cmsVariant === 'heartcore') {
         const endpoint = `${CmsVariants.variants[cmsVariant].deliveryApiDomain}`;

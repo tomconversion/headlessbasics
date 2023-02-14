@@ -14,6 +14,19 @@
 @import "../components/ui/sections/carousel/slick.min.css";
 @import "../components/ui/sections/carousel/slick-theme.min.css";
 @import "../components/ui/sections/carousel/carousel.module.css";
+
+
+@import "../components/ui/landify/style.css";
+@import "../components/ui/landify/views/home.css";
+@import "../components/ui/landify/components/feature-card.css";
+@import "../components/ui/landify/components/link-icon-button.css";
+@import "../components/ui/landify/components/primary-button.css";
+@import "../components/ui/landify/components/secondary-button.css";
+@import "../components/ui/landify/components/stats-card.css";
+@import "../components/ui/landify/components/store-banner.css";
+@import "../components/ui/landify/components/testimonials-card.css";
+
+
 @import "./demo.css";
 
 

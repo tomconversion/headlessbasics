@@ -1,6 +1,8 @@
+import { ImageInputProps } from "@/components/ui/interface/Images"
 import { NavItem } from "../types/nav"
 
 interface SiteConfig {
+  logo: ImageInputProps
   name: string
   description: string
   mainNav: NavItem[]
@@ -42,12 +44,11 @@ interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Next.js",
-  description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  description: "Beautifully designed components built with Radix UI and Tailwind CSS.",
   mainNav: [
     {
       title: "Home",
-      href: "/",
+      href: "/"
     },
   ],
   links: {
@@ -63,25 +64,32 @@ export const siteConfig: SiteConfig = {
     checkbox: "/checkbox",
     collapsible: "/collapsible",
     code: "/code",
-    contextMenu : "/contextMenu",
+    contextMenu: "/contextMenu",
     dialog: "/dialog",
-    dropDown : "/dropDown",
-    hoverCard : "/hoverCard",
-    input : "/input",
-    label : "/label",
-    menuBar : "/menuBar",
-    popover : "/popover",
-    progress : "/progress",
-    radioGroup : "/radioGroup",
-    scrollArea : "/scrollArea",
-    select : "/select",
+    dropDown: "/dropDown",
+    hoverCard: "/hoverCard",
+    input: "/input",
+    label: "/label",
+    menuBar: "/menuBar",
+    popover: "/popover",
+    progress: "/progress",
+    radioGroup: "/radioGroup",
+    scrollArea: "/scrollArea",
+    select: "/select",
     separator: "/separator",
     slider: "/slider",
     tabs: "/tabs",
     textarea: "/textarea",
     carousel: "/carousel",
     promotion: "/contentBlocks/promotion",
-    ctaSectionTwoColumn : "/contentBlocks/ctaSectionTwoColumn",
-    ctaSectionThreeColumn : "/contentBlocks/ctaSectionThreeColumn"
+    ctaSectionTwoColumn: "/contentBlocks/ctaSectionTwoColumn",
+    ctaSectionThreeColumn: "/contentBlocks/ctaSectionThreeColumn"
   },
+  logo: {
+    description: "Next.js",
+    image: "/static/playground_assets/logotype-dark.svg",
+    width: 100,
+    height: 100,
+    title: "Next.js"    
+  }
 }

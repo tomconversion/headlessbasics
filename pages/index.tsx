@@ -6,7 +6,7 @@ import Home from '@/components/ui/landify/views/home'
 
 export default function IndexPage() {
   return (
-    <Layout>
+    <Layout className={"w-full flex flex-col items-center"}>
       <Head>
         <title>Next.js</title>
         <meta
@@ -16,7 +16,7 @@ export default function IndexPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Home />
+      <Home className={"w-full min-h-screen flex flex-col items-center overflow-hidden"} />
     </Layout>
   )
 }

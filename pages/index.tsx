@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Layout } from "@/components/layout"
 
 import Home from '@/components/ui/landify/views/home'
-import { getDyanmicCmsDataViaCmsSelector } from '@/lib/services/graphqlDataService'
+import { buildPageData, getDyanmicCmsDataViaCmsSelector } from '@/lib/services/graphqlDataService'
 import { siteConfig } from "../config/site"
 import { DynamicCmsDataLocations } from '@/lib/cms/constants'
 
@@ -25,14 +25,8 @@ export default function IndexPage({data}) {
 }
 
 export async function getStaticProps({ params }) {
-
-  const slugValue = params && params.slug ? params.slug : [];
-
-
-  const navItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants['navigation'])) || []
-  const seoItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants['seo'])) || []
-  // const seoItems = (await getAltHomepageNavigation()) || []
+  const result = await buildPageData(params);  
   return {
-    props: { data:{ navItems, seoItems } },
+    props: result,
   }
 }

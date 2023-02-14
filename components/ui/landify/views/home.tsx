@@ -130,7 +130,7 @@ const Home = (props) => {
           <div className="home-container11">
             <div className="home-container12">
               <TestimonialsCard
-                src="/static/playground_assets/logo-1.svg"
+                // src="/static/playground_assets/logo-1.svg"
                 text="I used Landify and created a landing page for my startup within a week. The Landify UI Kit is simple and highly intuitive, so anyone can use it."
                 text1="Jane Cooper"
                 text2="CEO, Airbnb"
@@ -196,7 +196,7 @@ const Home = (props) => {
           <img
             alt="image"
             src="/static/playground_assets/iphonex-1200w.png"
-            image_src="/static/playground_assets/iphonex-1200w.png"
+            // image_src="/static/playground_assets/iphonex-1200w.png"
             className="home-image09"
           />
         </div>
@@ -232,7 +232,7 @@ const Home = (props) => {
         <img
           alt="image"
           src="https://images.unsplash.com/photo-1535157412991-2ef801c1748b?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          image_src="/static/playground_assets/iphonex-1200w.png"
+          // image_src="/static/playground_assets/iphonex-1200w.png"
           className="home-image10"
         />
       </div>
@@ -260,13 +260,13 @@ const Home = (props) => {
             <img
               alt="image"
               src="/static/playground_assets/iphonex-1200w.png"
-              image_src="/static/playground_assets/iphonex-1200w.png"
+              // image_src="/static/playground_assets/iphonex-1200w.png"
               className="home-image11"
             />
             <img
               alt="image"
               src="/static/playground_assets/iphonex-1200w.png"
-              image_src="/static/playground_assets/iphonex-1200w.png"
+              // image_src="/static/playground_assets/iphonex-1200w.png"
               className="home-image12"
             />
           </div>

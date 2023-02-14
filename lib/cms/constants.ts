@@ -65,3 +65,28 @@ const CmsVariants = {
   }
 }
 export {CmsVariants};
+
+
+
+const DynamicCmsDataLocations = {
+  variants: {
+    navigation: {
+      snippetLocation: "navigation",
+      snippetName: "navigation",
+      dataFunctiopnMapperName: "mapNavigationData",
+      dataMapperFileEnding: "NavigationDataMapper"
+    }
+  }
+}
+export {DynamicCmsDataLocations};
+
+export type DynamicCmsDataVariant =
+  | "navigation"
+  | "page"
+
+export interface DynamicDataCmsProperties  {
+  snippetLocation: string,
+  snippetName: string,
+  dataFunctiopnMapperName: string,
+  dataMapperFileEnding: string
+}

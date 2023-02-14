@@ -1,6 +1,6 @@
 
 
-export function mapNavigationDataContentful(data) {
+export function mapNavigationData(data) {
     let navItems = data.pageCollection.items;
     navItems.map((x) => {
       // x.slug = x.slug.replace('/', '');

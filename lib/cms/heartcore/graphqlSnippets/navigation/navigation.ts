@@ -1,4 +1,4 @@
-const nav = `
+const navigation = `
   {
     allHomepage1{
       edges{
@@ -18,8 +18,8 @@ const nav = `
   }  
 `;
 
-export {nav};
+export {navigation};
 
 export default function GetNavQuery() {
-  return nav;
+  return navigation;
 }

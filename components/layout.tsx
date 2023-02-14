@@ -3,13 +3,14 @@ import { SiteHeader } from "./site-header"
 
 interface LayoutProps {
   children: React.ReactNode,
-  className?: string
+  className?: string,
+  data: any
 }
 
-export function Layout({ children, className }: LayoutProps) {
+export function Layout({ children, className, data }: LayoutProps) {
   return (
     <div>
-      <div className={className}><SiteHeader /></div>
+      <div className={className}><SiteHeader data={data} /></div>
       <main>{children}</main>
     </div>
   )

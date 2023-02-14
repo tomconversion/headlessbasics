@@ -1,4 +1,4 @@
-export const nav = `
+export const navigation = `
 {
   pageCollection
 	{
@@ -21,5 +21,5 @@ export const nav = `
 `;
 
 export function GetNavQuery() {
-  return nav;
+  return navigation;
 }

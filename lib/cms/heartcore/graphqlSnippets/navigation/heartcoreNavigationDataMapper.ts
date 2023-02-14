@@ -1,6 +1,6 @@
 
 
-export function mapNavigationDataHeartcore(data) {
+export function mapNavigationData(data) {
     let nodes = data.allHomepage1.edges.map((x) => x.node)
     console.log(nodes);
     const mappedNav =  nodes[0].children.items;

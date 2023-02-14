@@ -43,8 +43,8 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "Next.js",
-  description: "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  name: "Headless Basics by Conversion Digital",
+  description: "Get up and running with a basic site quick. Blazingly fast headless.",
   mainNav: [
     {
       title: "Home",

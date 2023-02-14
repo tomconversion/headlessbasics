@@ -1,4 +1,4 @@
-export const nav = `
+export const navigation = `
 {
   homepage_All{
     items{
@@ -28,5 +28,5 @@ export const nav = `
 `;
 
 export function GetNavQuery() {
-  return nav;
+  return navigation;
 }

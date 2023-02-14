@@ -72,9 +72,23 @@ const DynamicCmsDataLocations = {
   variants: {
     navigation: {
       snippetLocation: "navigation",
-      snippetName: "navigation",
+      snippetFileName: "navigation",
+      snippetExport: "navigation",
+      queryIsFunction: false,
+      queryHasVariables: false,
+      variableFunction: "variables",
       dataFunctiopnMapperName: "mapNavigationData",
       dataMapperFileEnding: "NavigationDataMapper"
+    },
+    seo: {
+      snippetLocation: "seo",
+      snippetFileName: "seo",
+      snippetExport: "seo",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctiopnMapperName: "mapSeoData",
+      dataMapperFileEnding: "SeoDataMapper"
     }
   }
 }
@@ -86,7 +100,11 @@ export type DynamicCmsDataVariant =
 
 export interface DynamicDataCmsProperties  {
   snippetLocation: string,
-  snippetName: string,
+  snippetFileName: string,
+  snippetExport: string,
+  variableFunction: string,
   dataFunctiopnMapperName: string,
-  dataMapperFileEnding: string
+  dataMapperFileEnding: string,
+  queryIsFunction: boolean,
+  queryHasVariables: boolean,
 }

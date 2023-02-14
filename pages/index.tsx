@@ -24,10 +24,15 @@ export default function IndexPage({data}) {
   )
 }
 
-export async function getStaticProps({ }) {
+export async function getStaticProps({ params }) {
+
+  const slugValue = params && params.slug ? params.slug : [];
+
+
   const navItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants['navigation'])) || []
+  const seoItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants['seo'])) || []
   // const seoItems = (await getAltHomepageNavigation()) || []
   return {
-    props: { data:{ navItems } },
+    props: { data:{ navItems, seoItems } },
   }
 }

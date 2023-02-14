@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
 
 // render a tailwind navigation menu
-const GlobalTailwindNavigationMenu = ({ menu }) => {
+const GlobalTailwindNavigationMenu = ({ menu, navClasses }) => {
 
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
-        <span className="font-semibold text-xl tracking-tight">Conversion Digital</span>
-      </div>
+    <nav className={navClasses}>
+
       <div className="block lg:hidden">
         <button
           className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
           onClick={() => setOpen(!isOpen)}
         >
-          <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
+          {BurgerMenu()}
         </button>
       </div>
       <div
@@ -28,22 +22,22 @@ const GlobalTailwindNavigationMenu = ({ menu }) => {
         }`}
       >
         <div className="text-sm lg:flex-grow">
-          <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+          <a href="#responsive-header" className="home-text transition duration-300 mr-8">
             Docs
           </a>
-          <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+          <a href="#responsive-header" className="home-text transition duration-300 mr-8">
             Examples
           </a>
-          <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+          <a href="#responsive-header" className="home-text transition duration-300 mr-8">
             Blog
           </a>
-          <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+          <a href="#responsive-header" className="home-text transition duration-300 mr-8">
             Contact Us
           </a>
         </div>
-        <div>
+        {/* <div>
           <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Download</a>
-        </div>
+        </div> */}
       </div>
     </nav>
   )
@@ -52,3 +46,20 @@ const GlobalTailwindNavigationMenu = ({ menu }) => {
 export {
   GlobalTailwindNavigationMenu
 }
+
+const BurgerMenu = () => {
+  return (<div data-role="BurgerMenu" className="home-burger-menu">
+  <svg viewBox="0 0 1024 1024" className="home-menu1">
+    <path d="M810.667 725.333h-597.333c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333h597.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"></path>
+    <path d="M810.667 426.667h-597.333c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333h597.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"></path>
+    <path d="M810.667 128h-597.333c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333h597.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"></path>
+  </svg>
+</div>);
+}
+
+
+// Small burger menu icon
+{/* <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<title>Menu</title>
+<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+</svg> */}

@@ -1,4 +1,5 @@
 import { siteConfig } from "../config/site"
+import { GlobalTailwindNavigationMenu } from "./ui/global-navigation"
 import StoreBanner from "./ui/landify/components/store-banner"
 import Logo from "./ui/media/logo"
 
@@ -7,6 +8,9 @@ export function SiteHeader() {
     <><div data-role="Header" className="w-full flex flex-col items-center">
     <header className="w-[100%] flex items-center justify-between py-8 px-4 z-50 max-w-screen-lg mx-auto">
       <Logo image={siteConfig.logo} className="w-100 object-cover" />      
+      
+      <GlobalTailwindNavigationMenu menu={undefined} navClasses={"flex flex-row items-start"} />
+      
       <div className="flex flex-row items-start">
         <span className="home-text">About</span>
         <span className="home-text01">Products</span>
@@ -14,10 +18,9 @@ export function SiteHeader() {
         <span className="home-text03">Blog</span>
         <span className="home-text04">Jobs</span>
         <span className="home-text05">More</span>
-        <svg viewBox="0 0 1024 1024" className="home-icon">
-          <path d="M316 366l196 196 196-196 60 60-256 256-256-256z"></path>
-        </svg>
       </div>
+
+
       <div className="home-container01">
         <StoreBanner></StoreBanner>
       </div>

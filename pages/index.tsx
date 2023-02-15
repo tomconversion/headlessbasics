@@ -3,9 +3,9 @@ import Head from 'next/head'
 import { Layout } from "@/components/layout"
 
 import Home from '@/components/ui/landify/views/home'
-import { buildPageData, getDyanmicCmsDataViaCmsSelector } from '@/lib/services/graphqlDataService'
+import { buildPageData } from '@/lib/services/graphqlDataService'
 import { siteConfig } from "../config/site"
-import { DynamicCmsDataLocations } from '@/lib/cms/constants'
+
 
 export default function IndexPage({data}) {
   return (
@@ -24,8 +24,12 @@ export default function IndexPage({data}) {
   )
 }
 
-export async function getStaticProps({ params }) {
-  const result = await buildPageData(params);  
+export async function getStaticProps() {
+  // const req = preview ? previewData.req : null;
+  // const slug = req ? req.url.substring(1) : null;
+  //const { params } = context;
+  //console.log("getStaticProps params = ", params);
+  const result = await buildPageData("home", {slug: "/"});  
   return {
     props: result,
   }

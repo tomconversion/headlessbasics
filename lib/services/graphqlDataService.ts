@@ -1,14 +1,25 @@
+import { useRouter } from "next/router";
 import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
-import { DynamicCmsDataLocations, DynamicDataCmsProperties } from "../cms/constants"
+import { CmsVariant, CmsVariants, DynamicCmsDataLocations, DynamicDataCmsProperties, PageIdentifier, PageVariant } from "../cms/constants"
 import { mapNavigationData } from "../cms/heartcore/graphqlSnippets/navigation/navigation";
 
-export async function buildPageData(params) {
+export async function buildPageData(pageVariant: PageVariant, params?: any) {
 
-  const slugValue = params && params.slug ? params.slug : [];
+  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
+  let slugValue;
+  if(params !== undefined && params !== null) {
+    slugValue = params && params.slug ? params.slug : [];
+  }else {
+    const router = useRouter();
+    slugValue = router.query.slug;
+  }
+  
+  const matchedPageType = CmsVariants.variants[cmsVariant].pageTypes[pageVariant];
+  const pageIdentifier:PageIdentifier = { slug: slugValue, pageVariant: pageVariant, pageVariantMatchToCmsType: matchedPageType };
 
-  const navItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants.navigation)) || [];
-  const seoItems = {};
-  //const seoItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants.seo, slugValue)) || []
+  const navItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants.navigation, pageIdentifier)) || [];
+  //const seoItems = {};
+  const seoItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants.seo, pageIdentifier)) || []
   const result = {data:{ navItems, seoItems } };
   
   return result;
@@ -28,7 +39,7 @@ export async function fetchAPI(query, { variables, preview } = { variables: {}, 
 
   if (json.errors) {
     console.error(json.errors)
-    throw new Error('Failed to fetch API')
+    throw new Error('fetchAPI in graphqlDataService - Failed to fetch API')
   }
 
   if(json.data !== undefined && json.data !== null) {
@@ -39,7 +50,7 @@ export async function fetchAPI(query, { variables, preview } = { variables: {}, 
 }
 
 
-export async function getDyanmicCmsDataViaCmsSelector(lookupDetails: DynamicDataCmsProperties, id?: string) {
+export async function getDyanmicCmsDataViaCmsSelector(lookupDetails: DynamicDataCmsProperties, pageIdentifier:PageIdentifier) {
 
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT;
   const queryHasVariables = lookupDetails.queryHasVariables;
@@ -56,10 +67,11 @@ export async function getDyanmicCmsDataViaCmsSelector(lookupDetails: DynamicData
     const query = require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[queryExport];
 
     if(queryHasVariables){
-      queryResult = query(id);
+      queryResult = query(pageIdentifier);
     }else {
       queryResult = query;
     }
+    console.log("query --", queryResult);
   }
   catch(err) {
     console.log("query mnodule import error", err);
@@ -67,14 +79,16 @@ export async function getDyanmicCmsDataViaCmsSelector(lookupDetails: DynamicData
 
   let variables = { variables: {}, preview: false };
   if(queryHasVariables){
-    const variableFunc = require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`[lookupDetails.variableFunction]);
-    variables ={ variables: variableFunc({ id: id }), preview: false }
+    const variableFunc = require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[lookupDetails.variableFunction];
+    variables ={ variables: variableFunc(pageIdentifier), preview: false }
+
+    console.log("variables --", variables);
   }
   
   // Process the query call
   const data = await fetchAPIGatewayWrapper(queryResult, variables);
   
-  //console.log("data", data);
+  console.log("data -- ", data);
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper = require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[dataFunctionMapperName];

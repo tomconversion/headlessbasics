@@ -20,12 +20,34 @@ export interface CmsProperties  {
   cmsUrl?: string,
   projectAlias?: string,
   projectId?: string,
+  pageTypes: {
+    home: string,
+    dynamic: string,
+    landing: string
+  }
+}
+
+export interface PageTypes  {
+  home: string,
+  dynamic: string,
+  landing: string,
+}
+
+export interface PageIdentifier  {
+  slug: string,
+  pageVariant: PageVariant,
+  pageVariantMatchToCmsType: string
 }
 
 export type CmsVariant =
   | "heartcore"
   | "contentful"
   | "kontent"
+
+export type PageVariant =
+| "home"
+| "dynamic"
+| "landing"
 
 const CmsVariants = {
   variants: {
@@ -37,7 +59,12 @@ const CmsVariants = {
       deliveryApiKey: process.env.UMBRACO_API_KEY,
       contentApiKey: '',
       previewApiKey: '',
-      projectAlias: process.env.UMBRACO_PROJECT_ALIAS
+      projectAlias: process.env.UMBRACO_PROJECT_ALIAS,
+      pageTypes: {
+        home: 'homepage1',
+        dynamic: 'staticPage1',
+        landing: 'staticPage',
+      }
     },
     kontent: {
       cmsName: "Kentico Kontent",
@@ -48,7 +75,12 @@ const CmsVariants = {
       contentApiKey: '',
       previewApiKey: process.env.KONTENT_PREVIEW_API_KEY,
       projectAlias: '',
-      projectId: process.env.KONTENT_PROJECT_ID
+      projectId: process.env.KONTENT_PROJECT_ID,
+      pageTypes: {
+        home: 'homepage1',
+        dynamic: 'staticPage1',
+        landing: 'staticPage',
+      }
     },
     contentful: {
       cmsName: "Contentful",
@@ -61,6 +93,11 @@ const CmsVariants = {
       projectAlias: 'contentful-CD',
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       environmentId: process.env.CONTENTFUL_ENVIRONMENT,
+      pageTypes: {
+        home: 'homepage1',
+        dynamic: 'staticPage1',
+        landing: 'staticPage',
+      }
     }
   }
 }

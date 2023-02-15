@@ -9,11 +9,13 @@
 //   }
 // }`;
 
-export function seo(pageType : string)
+import { PageIdentifier } from "@/lib/cms/constants";
+
+export function seo(pageIdentifier:PageIdentifier)
 {
   return `
   query PageBySlug($slug: String!) {
-    ${pageType}(url: $slug) {
+    ${pageIdentifier.pageVariantMatchToCmsType}(url: $slug) {
       slug:url
       sEODescription
       sEOTitle
@@ -23,9 +25,11 @@ export function seo(pageType : string)
   }`
 };
 
-export function variables({ slug }: { slug; })
+export function variables(pageIdentifier:PageIdentifier)
 {
-  return {slug}
+  const result = {'slug': pageIdentifier.slug};
+  console.log("SEO VARIABLE --", result);
+  return result;
 };
 
 export default function GetSeoQuery() {

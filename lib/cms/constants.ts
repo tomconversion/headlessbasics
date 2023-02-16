@@ -8,11 +8,11 @@
 export const HOME_OG_IMAGE_URL =
   'https://og-image.vercel.app/Next.js%20Blog%20Example%20with%20**Umbraco%20Heartcore**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg&images=https://media.umbraco.io/demo-headless/8d8a349dde73ca6/u_heartcore_heart_lockup_tagline_dark.svg'
 
-export interface CmsSettings  {
+export interface CmsSettings {
   variant?: CmsProperties
 }
 
-export interface CmsProperties  {
+export interface CmsProperties {
   cmsName?: string,
   deliveryApiDomain?: string,
   deliveryApiUrl?: string,
@@ -22,22 +22,23 @@ export interface CmsProperties  {
   projectId?: string,
   slugPrefix?: string,
   pageTypes: {
-    home: string,
-    dynamic: string,
-    landing: string
+    home: PageIdentifier,
+    dynamic: PageIdentifier,
+    landing: PageIdentifier
   }
 }
 
-export interface PageTypes  {
+export interface PageTypes {
   home: string,
   dynamic: string,
   landing: string,
 }
 
-export interface PageIdentifier  {
-  slug: string,
+export interface PageIdentifier {
+  backEndSlug: string,
+  frontEndSlug: string,
   pageVariant: PageVariant,
-  pageVariantMatchToCmsType: string
+  cmsType: string
 }
 
 export type CmsVariant =
@@ -46,9 +47,9 @@ export type CmsVariant =
   | "kontent"
 
 export type PageVariant =
-| "home"
-| "dynamic"
-| "landing"
+  | "home"
+  | "dynamic"
+  | "landing"
 
 const CmsVariants = {
   variants: {
@@ -63,9 +64,24 @@ const CmsVariants = {
       projectAlias: process.env.UMBRACO_PROJECT_ALIAS,
       slugPrefx: "/homepage",
       pageTypes: {
-        home: 'homepage',
-        dynamic: 'staticPage1',
-        landing: 'staticPage',
+        home: {
+          frontEndSlug: '/',
+          backEndSlug: '/homepage',
+          pageVariant: "Home",
+          cmsType: "homepage"
+        },
+        dynamic: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "dynamic",
+          cmsType: "staticPage1"
+        },
+        landing: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "landing",
+          cmsType: "staticPage"
+        }
       }
     },
     kontent: {
@@ -78,11 +94,26 @@ const CmsVariants = {
       previewApiKey: process.env.KONTENT_PREVIEW_API_KEY,
       projectAlias: '',
       projectId: process.env.KONTENT_PROJECT_ID,
-      slugPrefx: "",
+      slugPrefx: "homepage",
       pageTypes: {
-        home: 'homepage',
-        dynamic: 'staticPage1',
-        landing: 'staticPage',
+        home: {
+          frontEndSlug: '/',
+          backEndSlug: 'homepage',
+          pageVariant: "Home",
+          cmsType: "homepage"
+        },
+        dynamic: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "dynamic",
+          cmsType: "staticPage1"
+        },
+        landing: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "landing",
+          cmsType: "staticPage"
+        }
       }
     },
     contentful: {
@@ -98,14 +129,30 @@ const CmsVariants = {
       environmentId: process.env.CONTENTFUL_ENVIRONMENT,
       slugPrefx: "",
       pageTypes: {
-        home: 'pageCollection',
-        dynamic: 'dynamicPage',
-        landing: 'landing',
+        home: {
+          frontEndSlug: '/',
+          backEndSlug: '/',
+          pageVariant: "Home",
+          cmsType: "pageCollection"
+        },
+        dynamic: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "dynamic",
+          cmsType: "dynamicPage"
+        },
+        landing: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "landing",
+          cmsType: "landing"
+        }
       }
     }
   }
+
 }
-export {CmsVariants};
+export { CmsVariants };
 
 
 
@@ -131,13 +178,13 @@ const DynamicCmsDataLocations = {
     }
   }
 }
-export {DynamicCmsDataLocations};
+export { DynamicCmsDataLocations };
 
 export type DynamicCmsDataVariant =
   | "navigation"
   | "page"
 
-export interface DynamicDataCmsProperties  {
+export interface DynamicDataCmsProperties {
   snippetLocation: string,
   snippetFileName: string,
   snippetExport: string,

@@ -4,17 +4,14 @@ export function seo(pageIdentifier:PageIdentifier)
 {
   return `
   query GetPageBySlug($slug: String!) {
-    ${pageIdentifier.cmsType}(where: {slug: $slug}, limit: 1) {
-      items {
-        seoTitle
-        seoDescription
-        navigationTitle
-        showInNavigation
-        slug
-      }
+    homepage(codename: $slug) {
+      title
+      _seo{
+          description
+          title          
+      }      
     }
-  }
-  
+  } 
   `
 };
 
@@ -30,15 +27,9 @@ export default function GetSeoQuery() {
 }
 
 export function mapSeoData(data) {
-  const result = data.pageCollection.items;
-  let seoTitle = "";
-  let seoDescription = "";
-  if(result.length > 0)
-  {
-    
-    seoTitle = result[0].seoTitle;
-    seoDescription = result[0].seoDescription;
-  }
-  console.log("result" ,result)
+  const result = data.homepage;
+  console.log("mapSeoData --", data);
+  let seoTitle = result._seo.title;
+  let seoDescription = result._seo.description;
   return {seoTitle: seoTitle, seoDescription: seoDescription};
 }

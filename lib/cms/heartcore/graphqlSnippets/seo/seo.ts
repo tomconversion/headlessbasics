@@ -1,21 +1,10 @@
-// const seo = `
-// query PageBySlug($slug: String!) {
-//   staticPage(url: $slug) {
-//     slug:url
-//     sEODescription
-//     sEOTitle
-//     name
-//     id
-//   }
-// }`;
-
 import { PageIdentifier } from "@/lib/cms/constants";
 
 export function seo(pageIdentifier:PageIdentifier)
 {
   return `
   query PageBySlug($slug: String!) {
-    ${pageIdentifier.pageVariantMatchToCmsType}(url: $slug) {
+    ${pageIdentifier.cmsType}(url: $slug) {
       slug:url
       sEODescription
       sEOTitle
@@ -27,7 +16,7 @@ export function seo(pageIdentifier:PageIdentifier)
 
 export function variables(pageIdentifier:PageIdentifier)
 {
-  const result = {'slug': pageIdentifier.slug};
+  const result = {'slug': pageIdentifier.backEndSlug};
   console.log("SEO VARIABLE --", result);
   return result;
 };

@@ -1,17 +1,18 @@
 import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
 import { CmsVariant, CmsVariants, DynamicCmsDataLocations, DynamicDataCmsProperties, PageIdentifier, PageVariant } from "../cms/constants"
-import { mapNavigationData } from "../cms/heartcore/graphqlSnippets/navigation/navigation";
 
 export async function buildPageData(pageVariant: PageVariant, params?: any) {
 
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
-  let slugValue = CmsVariants.variants[cmsVariant].slugPrefx;
-  if(params !== undefined && params !== null) {
-    slugValue += params && params.slug ? params.slug : [];
-  }
+  const cmsVariantSelected = CmsVariants.variants[cmsVariant];
+  const pageIdentifier = cmsVariantSelected.pageTypes[pageVariant] as PageIdentifier;
+  // let slugValue = CmsVariants.variants[cmsVariant].slugPrefx;
+  // if(params !== undefined && params !== null) {
+  //   slugValue += params && params.slug ? params.slug : [];
+  // }
   
-  const matchedPageType = CmsVariants.variants[cmsVariant].pageTypes[pageVariant];
-  const pageIdentifier:PageIdentifier = { slug: slugValue, pageVariant: pageVariant, pageVariantMatchToCmsType: matchedPageType };
+  
+  //const pageIdentifier:PageIdentifier = { slug: slugValue, pageVariant: pageVariant };
 
   const navItems = (await getDyanmicCmsDataViaCmsSelector(DynamicCmsDataLocations.variants.navigation, pageIdentifier)) || [];
   //const seoItems = {};

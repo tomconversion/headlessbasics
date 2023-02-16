@@ -20,6 +20,7 @@ export interface CmsProperties  {
   cmsUrl?: string,
   projectAlias?: string,
   projectId?: string,
+  slugPrefix?: string,
   pageTypes: {
     home: string,
     dynamic: string,
@@ -60,8 +61,9 @@ const CmsVariants = {
       contentApiKey: '',
       previewApiKey: '',
       projectAlias: process.env.UMBRACO_PROJECT_ALIAS,
+      slugPrefx: "/homepage",
       pageTypes: {
-        home: 'homepage1',
+        home: 'homepage',
         dynamic: 'staticPage1',
         landing: 'staticPage',
       }
@@ -76,8 +78,9 @@ const CmsVariants = {
       previewApiKey: process.env.KONTENT_PREVIEW_API_KEY,
       projectAlias: '',
       projectId: process.env.KONTENT_PROJECT_ID,
+      slugPrefx: "",
       pageTypes: {
-        home: 'homepage1',
+        home: 'homepage',
         dynamic: 'staticPage1',
         landing: 'staticPage',
       }
@@ -93,10 +96,11 @@ const CmsVariants = {
       projectAlias: 'contentful-CD',
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       environmentId: process.env.CONTENTFUL_ENVIRONMENT,
+      slugPrefx: "",
       pageTypes: {
-        home: 'homepage1',
-        dynamic: 'staticPage1',
-        landing: 'staticPage',
+        home: 'homepage',
+        dynamic: 'dynamicPage',
+        landing: 'landing',
       }
     }
   }

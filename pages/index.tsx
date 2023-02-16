@@ -11,10 +11,10 @@ export default function IndexPage({data}) {
   return (
     <Layout className={"w-full flex flex-col items-center"} data={data}>
       <Head>
-        <title>${siteConfig.name} | </title>
+        <title>{`${siteConfig.name} | ${data?.seoItems?.sEOTitle}`}</title>
         <meta
           name="description"
-          content={`A Next.js basic website for delivering headless websites from multiple Headless CMSs.`}
+          content={`${siteConfig.name} | ${data?.seoItems?.sEODescription}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -29,7 +29,7 @@ export async function getStaticProps() {
   // const slug = req ? req.url.substring(1) : null;
   //const { params } = context;
   //console.log("getStaticProps params = ", params);
-  const result = await buildPageData("home", {slug: "/"});  
+  const result = await buildPageData("home", {slug: ""});  
   return {
     props: result,
   }

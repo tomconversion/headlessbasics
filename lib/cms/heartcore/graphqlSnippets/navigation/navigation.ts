@@ -1,6 +1,6 @@
 const navigation = `
   {
-    allHomepage1{
+    allHomepage{
       edges{
         node {
           name
@@ -25,7 +25,7 @@ export default function GetNavQuery() {
 }
 
 export function mapNavigationData(data : any) {
-  let nodes = data.allHomepage1.edges.map((x) => x.node);
+  let nodes = data.allHomepage.edges.map((x) => x.node);
   const mappedNav =  nodes[0].children.items;
   mappedNav.map((x) => {
     x.name = x.name.replace('/', '');

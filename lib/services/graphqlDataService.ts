@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
 import { CmsVariant, CmsVariants, DynamicCmsDataLocations, DynamicDataCmsProperties, PageIdentifier, PageVariant } from "../cms/constants"
 import { mapNavigationData } from "../cms/heartcore/graphqlSnippets/navigation/navigation";
@@ -6,12 +5,9 @@ import { mapNavigationData } from "../cms/heartcore/graphqlSnippets/navigation/n
 export async function buildPageData(pageVariant: PageVariant, params?: any) {
 
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
-  let slugValue;
+  let slugValue = CmsVariants.variants[cmsVariant].slugPrefx;
   if(params !== undefined && params !== null) {
-    slugValue = params && params.slug ? params.slug : [];
-  }else {
-    const router = useRouter();
-    slugValue = router.query.slug;
+    slugValue += params && params.slug ? params.slug : [];
   }
   
   const matchedPageType = CmsVariants.variants[cmsVariant].pageTypes[pageVariant];

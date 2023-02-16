@@ -37,5 +37,6 @@ export default function GetSeoQuery() {
 }
 
 export function mapSeoData(data) {
-  return data.homepage;
+  const result = data.homepage;
+  return {seoTitle: data.homepage.sEOTitle, seoDescription: data.homepage.sEODescription};
 }

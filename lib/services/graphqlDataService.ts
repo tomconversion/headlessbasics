@@ -89,7 +89,9 @@ export async function getDyanmicCmsDataViaCmsSelector(lookupDetails: DynamicData
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper = require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[dataFunctionMapperName];
 
+  console.log("before calling dataMapper");
   const result = dataMapper(data);
+  console.log("after calling dataMapper");
 
   return await result;
 }

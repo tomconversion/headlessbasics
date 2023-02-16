@@ -98,7 +98,7 @@ const CmsVariants = {
       environmentId: process.env.CONTENTFUL_ENVIRONMENT,
       slugPrefx: "",
       pageTypes: {
-        home: 'homepage',
+        home: 'pageCollection',
         dynamic: 'dynamicPage',
         landing: 'landing',
       }

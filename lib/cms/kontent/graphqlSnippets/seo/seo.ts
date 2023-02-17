@@ -28,7 +28,6 @@ export default function GetSeoQuery() {
 
 export function mapSeoData(data) {
   const result = data.homepage;
-  console.log("mapSeoData --", data);
   let seoTitle = result._seo.title;
   let seoDescription = result._seo.description;
   return {seoTitle: seoTitle, seoDescription: seoDescription};

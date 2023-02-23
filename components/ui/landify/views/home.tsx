@@ -6,7 +6,8 @@ import FeatureCard from '../components/feature-card'
 import TestimonialsCard from '../components/testimonials-card'
 import StatsCard from '../components/stats-card'
 import LinkIconButton from '../components/link-icon-button'
-// import './home.css'
+
+import Image from 'next/image';
 
 const Home = (props) => {
   return (
@@ -23,28 +24,28 @@ const Home = (props) => {
             </h1>
             <PrimaryButton button="Get Started"></PrimaryButton>
           </div>
-          <img
+          <Image
             alt="image"
             src="/static/playground_assets/iphonex-1200w.png"
             className="home-image02"
           />
         </div>
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/turquoise-circle.svg"
           className="home-turquoise-cirble"
         />
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/purple-circle.svg"
           className="home-purple-circle"
         />
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/left.svg"
           className="home-left"
         />
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/right.svg"
           className="home-right"
@@ -52,27 +53,27 @@ const Home = (props) => {
       </div>
       <div className="home-clients">
         <div className="home-divider"></div>
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/logo-1.svg"
           className="home-image03"
         />
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/logo-4.svg"
           className="home-image04"
         />
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/logo-3.svg"
           className="home-image05"
         />
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/logo-5.svg"
           className="home-image06"
         />
-        <img
+        <Image
           alt="image"
           src="/static/playground_assets/logo-6.svg"
           className="home-image07"
@@ -114,7 +115,7 @@ const Home = (props) => {
       <div className="home-testimonials">
         <div className="home-container08">
           <div className="home-container09">
-            <img
+            <Image
               alt="image"
               src="/static/playground_assets/quote-mark.svg"
               className="home-image08"
@@ -193,7 +194,7 @@ const Home = (props) => {
       </div>
       <div className="home-feature1">
         <div className="home-container18">
-          <img
+          <Image
             alt="image"
             src="/static/playground_assets/iphonex-1200w.png"
             // image_src="/static/playground_assets/iphonex-1200w.png"
@@ -229,7 +230,7 @@ const Home = (props) => {
             </span>
           </span>
         </div>
-        <img
+        <Image
           alt="image"
           src="https://images.unsplash.com/photo-1535157412991-2ef801c1748b?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
           // image_src="/static/playground_assets/iphonex-1200w.png"
@@ -257,13 +258,13 @@ const Home = (props) => {
             <StoreBanner></StoreBanner>
           </div>
           <div className="home-container23">
-            <img
+            <Image
               alt="image"
               src="/static/playground_assets/iphonex-1200w.png"
               // image_src="/static/playground_assets/iphonex-1200w.png"
               className="home-image11"
             />
-            <img
+            <Image
               alt="image"
               src="/static/playground_assets/iphonex-1200w.png"
               // image_src="/static/playground_assets/iphonex-1200w.png"
@@ -274,7 +275,7 @@ const Home = (props) => {
       </div>
       <div className="home-footer">
         <footer className="home-container24">
-          <img
+          <Image
             alt="image"
             src="/static/playground_assets/logotype-light.svg"
             className="home-image13"

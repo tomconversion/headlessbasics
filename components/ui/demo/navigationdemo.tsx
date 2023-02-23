@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { cn } from '@/lib/util/utils';
 import React from 'react';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport } from '../navigation-menu';
 
@@ -94,7 +94,7 @@ const ListItem = ({ children, className, title, ...props }: { children: React.Re
     <li>
       <NavigationMenuLink asChild>
         <a
-          className={classNames('ListItemLink', className)}
+          className={cn('ListItemLink', className)}
           {...props}
         >
           <div className="ListItemHeading">{title}</div>

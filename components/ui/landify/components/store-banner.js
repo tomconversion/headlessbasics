@@ -10,11 +10,15 @@ const StoreBanner = (props) => {
       <img
         alt={props.image_alt1}
         src={props.image_src1}
+        width={135}
+        height={40}
         className="store-banner-image"
       />
       <img
         alt={props.image_alt}
         src={props.image_src}
+        width={135}
+        height={40}
         className="store-banner-image1"
       />
     </div>

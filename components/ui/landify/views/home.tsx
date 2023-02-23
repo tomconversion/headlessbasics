@@ -28,26 +28,37 @@ const Home = (props) => {
             alt="image" loading='lazy'
             src="/static/playground_assets/iphonex-1200w.png"
             className="home-image02"
+            
+            width={320}
+            height={589}
           />
         </div>
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/turquoise-circle.svg"
+          width={170}
+          height={170}
           className="home-turquoise-cirble"
         />
         <Image
-          alt="image" loading='lazy'
+          alt="image" loading='eager'
           src="/static/playground_assets/purple-circle.svg"
+          width={400}
+          height={418}
           className="home-purple-circle"
         />
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/left.svg"
+          width={420}
+          height={201}
           className="home-left"
         />
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/right.svg"
+          width={612}
+          height={211}
           className="home-right"
         />
       </div>
@@ -56,26 +67,36 @@ const Home = (props) => {
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/logo-1.svg"
+          width={100}
+          height={28}
           className="home-image03"
         />
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/logo-4.svg"
+          width={100}
+          height={28}
           className="home-image04"
         />
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/logo-3.svg"
+          width={100}
+          height={28}
           className="home-image05"
         />
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/logo-5.svg"
+          width={100}
+          height={28}
           className="home-image06"
         />
         <Image
           alt="image" loading='lazy'
           src="/static/playground_assets/logo-6.svg"
+          width={100}
+          height={28}
           className="home-image07"
         />
         <div className="home-divider1"></div>
@@ -118,6 +139,7 @@ const Home = (props) => {
             <Image
               alt="image" loading='lazy'
               src="/static/playground_assets/quote-mark.svg"
+              width={15} height={13}
               className="home-image08"
             />
             <h1 className="home-text19 Headline2">

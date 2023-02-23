@@ -7,9 +7,11 @@ import PropTypes from 'prop-types'
 const StatsCard = (props) => {
   return (
     <div className="stats-card-container">
-      <img
+      <Image
         alt={props.image_alt}
         src={props.image_src}
+        width={32}
+        height={32}
         className="stats-card-image"
       />
       <div className="stats-card-container1">

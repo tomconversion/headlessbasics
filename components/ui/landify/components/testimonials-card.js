@@ -10,12 +10,14 @@ const TestimonialsCard = (props) => {
       <img
         alt={props.image_alt}
         src={props.image_src}
+        width={15} height={15}
         className="testimonials-card-image"
       />
       <div className="testimonials-card-container1">
         <img
           alt={props.image_alt1}
           src={props.image_src1}
+          width={15} height={15}
           className="testimonials-card-image1"
         />
         <div className="testimonials-card-container2">

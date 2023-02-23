@@ -39,7 +39,7 @@ const RenderControls = ({ controls }: { controls: ControlProps[] }) => (
         case 'my-quote':
           return <blockquote key={index}>{control.value}</blockquote>;
         case 'my-image':
-          return <Image key={index} src={control.value.url} alt={control.value.altText} />;
+          return <Image loading='lazy' key={index} src={control.value.url} alt={control.value.altText} />;
         case 'my-rte':
           return <div key={index} dangerouslySetInnerHTML={{ __html: control.value }} />;
         default:

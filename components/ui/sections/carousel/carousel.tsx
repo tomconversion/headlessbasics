@@ -21,7 +21,7 @@ const Carousel: FC<Props> = ({ items }) => {
     <Slider {...settings}>
       {items.map((item, index) => (
         <div key={index}>
-          <Image src={item.src} alt={item.alt} width={1980} height={600} />
+          <Image src={item.src} alt={item.alt} width={1980} height={600} loading='lazy' />
         </div>
       ))}
     </Slider>

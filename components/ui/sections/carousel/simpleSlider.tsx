@@ -32,6 +32,7 @@ const SimpleSlider: React.FC<CarouselProps> = ({ images }) => {
             width={1980}
             height={600}
             layout="responsive"
+            loading='lazy'
           />
           </div>
         ))}

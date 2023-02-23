@@ -1,20 +1,21 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
+import Image from 'next/image'
 
 // import './testimonials-card.css'
 
 const TestimonialsCard = (props) => {
   return (
     <div className="testimonials-card-container">
-      <img
+      <Image
         alt={props.image_alt}
         src={props.image_src}
         width={15} height={15}
         className="testimonials-card-image"
       />
       <div className="testimonials-card-container1">
-        <img
+        <Image
           alt={props.image_alt1}
           src={props.image_src1}
           width={15} height={15}

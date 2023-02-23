@@ -1,20 +1,21 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
+import Image from 'next/image'
 
 // import './store-banner.css'
 
 const StoreBanner = (props) => {
   return (
     <div className="store-banner-store-banner">
-      <img
+      <Image
         alt={props.image_alt1}
         src={props.image_src1}
         width={135}
         height={40}
         className="store-banner-image"
       />
-      <img
+      <Image
         alt={props.image_alt}
         src={props.image_src}
         width={135}

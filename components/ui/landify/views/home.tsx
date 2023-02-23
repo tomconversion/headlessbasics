@@ -27,8 +27,7 @@ const Home = (props) => {
           <Image
             alt="image" loading='lazy'
             src="/static/playground_assets/iphonex-1200w.png"
-            className="home-image02"
-            
+            className="home-image02"            
             width={320}
             height={589}
           />
@@ -219,7 +218,9 @@ const Home = (props) => {
           <Image
             alt="image"
             loading='lazy'
-            src="/static/playground_assets/iphonex-1200w.png"
+            src="/static/playground_assets/iphonex-1200w.png"          
+            width={320}
+            height={589}
             // image_src="/static/playground_assets/iphonex-1200w.png"
             className="home-image09"
           />
@@ -256,7 +257,6 @@ const Home = (props) => {
         <Image
           alt="image" loading='lazy'
           src="https://images.unsplash.com/photo-1535157412991-2ef801c1748b?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          // image_src="/static/playground_assets/iphonex-1200w.png"
           className="home-image10"
         />
       </div>
@@ -283,14 +283,16 @@ const Home = (props) => {
           <div className="home-container23">
             <Image
               alt="image" loading='lazy'
-              src="/static/playground_assets/iphonex-1200w.png"
-              // image_src="/static/playground_assets/iphonex-1200w.png"
+              src="/static/playground_assets/iphonex-1200w.png"          
+              width={320}
+              height={589}
               className="home-image11"
             />
             <Image
               alt="image" loading='lazy'
-              src="/static/playground_assets/iphonex-1200w.png"
-              // image_src="/static/playground_assets/iphonex-1200w.png"
+              src="/static/playground_assets/iphonex-1200w.png"          
+              width={320}
+              height={589}
               className="home-image12"
             />
           </div>

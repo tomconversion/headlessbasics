@@ -257,6 +257,8 @@ const Home = (props) => {
         <Image
           alt="image" loading='lazy'
           src="https://images.unsplash.com/photo-1535157412991-2ef801c1748b?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
+          width={1000}
+          height={1000}
           className="home-image10"
         />
       </div>
@@ -304,6 +306,8 @@ const Home = (props) => {
             alt="image" loading='lazy'
             src="/static/playground_assets/logotype-light.svg"
             className="home-image13"
+            width={100}
+            height={200}
           />
           <div className="home-container25">
             <span className="home-text40">About</span>

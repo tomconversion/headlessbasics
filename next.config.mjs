@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['media.umbraco.io'],
+    domains: ['picsum.photos','media.umbraco.io', 'images.unsplash.com'],
   },
   experimental: {
     fontLoaders: [
@@ -11,12 +11,7 @@ const nextConfig = {
         options: { subsets: ["latin"] },
       },
     ],
-  },
-  images: {
-    domains: [
-      'picsum.photos',
-    ],
-  },
+  }
 }
 
 export default nextConfig

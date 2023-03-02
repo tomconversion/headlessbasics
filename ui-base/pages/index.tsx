@@ -1,5 +1,5 @@
 import { buildPageData } from '@/ui-base/lib/services/graphqlDataService'
-import { IndexPage as Homepage } from '../landify/IndexPage'
+import { IndexPage as Homepage } from '../../landify/IndexPage'
 
 export default function IndexPage({data}) {
     return <Homepage data={data}/>;

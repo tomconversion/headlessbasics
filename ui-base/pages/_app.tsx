@@ -2,8 +2,7 @@ import type { AppProps } from "next/app"
 import { Inter as FontSans } from "@next/font/google"
 import { ThemeProvider } from "next-themes"
 
-import "@/ui-base/styles/globals.css"
-import "@/landify/style.css"
+import "@/styles/globals.css"
 
 const fontSans = FontSans({
   subsets: ["latin"],

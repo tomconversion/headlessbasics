@@ -1,8 +1,0 @@
-@tailwind base;
-
-@tailwind components;
-@import "./components.css";
-
-@tailwind utilities;
-@import "./code.css";
-@import "../node_modules/prismjs/themes/prism-okaidia.min.css";

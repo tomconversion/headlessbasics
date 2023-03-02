@@ -6,6 +6,6 @@ export default function IndexPage({data}) {
 }
 
 IndexPage.getInitialProps = async (ctx) => {
-  const data = await buildPageData("home", {slug: "/"});  
+  const data = await buildPageData("home", {slug: ""});  
   return { data };
 }

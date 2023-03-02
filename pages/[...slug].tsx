@@ -11,6 +11,8 @@ DynamicPage.getInitialProps = async ({ query: { slug } }) => {
 //   const { slug } = router.query;
   const firstSlug = slug[0];
 
+  console.log("firstSlug", firstSlug)
+
   const pageType = await getPageTypeBySlug(firstSlug);
   const data = await buildPageData(pageType, {slug: firstSlug}); 
   

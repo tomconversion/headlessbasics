@@ -65,7 +65,7 @@ const CmsVariants = {
       slugPrefx: "/homepage",
       pageTypes: {
         home: {
-          frontEndSlug: '/',
+          frontEndSlug: '',
           backEndSlug: '',
           pageVariant: "Home",
           cmsType: "homepage"

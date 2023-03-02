@@ -16,7 +16,7 @@ export async function buildPageData(pageVariant: PageVariant, params?: any) {
   ] as PageIdentifier
   // let slugValue = CmsVariants.variants[cmsVariant].slugPrefx;
   if(typeof params !== "undefined" && typeof params.slug !== "undefined") {
-    pageIdentifier.backEndSlug = params && params.slug ? params.slug : [];
+    pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 
   //const pageIdentifier:PageIdentifier = { slug: slugValue, pageVariant: pageVariant };

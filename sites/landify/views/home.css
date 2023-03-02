@@ -403,7 +403,12 @@
   bottom: auto;
   height: 1px;
   position: absolute;
-  background: linear-gradient(90deg, rgba(192, 204, 218, 0.1) 0%, rgba(192, 204, 218, 0.6) 50.38%, rgba(192, 204, 218, 0.1) 100%);;
+  background: linear-gradient(
+    90deg,
+    rgba(192, 204, 218, 0.1) 0%,
+    rgba(192, 204, 218, 0.6) 50.38%,
+    rgba(192, 204, 218, 0.1) 100%
+  );
 }
 .home-image03 {
   width: 100px;
@@ -433,7 +438,12 @@
   bottom: 0px;
   height: 1px;
   position: absolute;
-  background: linear-gradient(90deg, rgba(192, 204, 218, 0.1) 0%, rgba(192, 204, 218, 0.6) 50.38%, rgba(192, 204, 218, 0.1) 100%);;
+  background: linear-gradient(
+    90deg,
+    rgba(192, 204, 218, 0.1) 0%,
+    rgba(192, 204, 218, 0.6) 50.38%,
+    rgba(192, 204, 218, 0.1) 100%
+  );
 }
 .home-features {
   flex: 0 0 auto;
@@ -906,7 +916,7 @@
 .home-icon21:hover {
   fill: var(--dl-color-orange-default);
 }
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .home-container01 {
     display: none;
   }
@@ -956,7 +966,7 @@
     display: none;
   }
 }
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .home-menu {
     display: none;
   }
@@ -1023,7 +1033,7 @@
     margin-bottom: var(--dl-space-space-unit);
   }
 }
-@media(max-width: 479px) {
+@media (max-width: 479px) {
   .home-container01 {
     display: none;
   }

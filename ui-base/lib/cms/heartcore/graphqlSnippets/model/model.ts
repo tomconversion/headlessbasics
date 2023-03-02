@@ -24,5 +24,6 @@ export default function GetModelQuery() {
 }
 
 export function mapModelData(data, pageIdentifier:PageIdentifier) {
-  return data.content.contentTypeAlias;
+  console.log("mapModelData", data);
+  return data?.content?.contentTypeAlias;
 }

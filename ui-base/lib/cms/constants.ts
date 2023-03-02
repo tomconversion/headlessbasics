@@ -80,7 +80,7 @@ const CmsVariants = {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "landing",
-          cmsType: "staticPage"
+          cmsType: "landing"
         }
       }
     },

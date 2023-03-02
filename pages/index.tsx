@@ -15,5 +15,5 @@ export async function getServerSideProps(context) {
 
   console.log("getServerSideProps", data);
 
-  return { props: { data: data } }
+  return { props: { data: data } };
 }

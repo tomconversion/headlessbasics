@@ -3,8 +3,7 @@ import { IndexPage as Homepage } from '../sites/landify/IndexPage'
 import { useRouter } from 'next/router';
 import { replaceChar } from '@/ui-base/lib/util/utils';
 
-export default function DynamicPage({data}) {
-  
+export default function DynamicPage({data}) {  
     return <Homepage data={data}/>;
 }
 
@@ -13,7 +12,9 @@ export async function getServerSideProps(context) {
   let firstSlug = slug[0];  
   firstSlug = replaceChar(firstSlug, '/', '');
 
-  const pageType = await getPageTypeBySlug(firstSlug);
+  if(firstSlug === 'favicon.ico') return { props: {  } }
+  // console.log("getServerSideProps > firstSlug", firstSlug);
+  const pageType = await getPageTypeBySlug(firstSlug); 
   const data = await buildPageData(pageType, {slug: firstSlug}); 
 
   return { props: { data: data } }

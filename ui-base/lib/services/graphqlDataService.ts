@@ -9,6 +9,7 @@ import {
 } from "../cms/constants"
 
 export async function buildPageData(pageVariant: PageVariant, params?: any) {
+
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
   const pageIdentifier = cmsVariantSelected.pageTypes[
@@ -45,7 +46,7 @@ export async function buildPageData(pageVariant: PageVariant, params?: any) {
     )) || [];
   }    
 
-  const result = { data: { navItems, seoItems, heroItems } }
+  const result = { data: { navItems, seoItems, heroItems, pageVariant } }
 
   return result
 }
@@ -152,7 +153,6 @@ export async function getPageTypeBySlug(slug: string){
     DynamicCmsDataLocations.variants.model,
     undefined, 
     slug
-  )) || []
-  // console.log("getPageTypeBySlug", pageType);
+  )) || undefined
   return pageType;
 }

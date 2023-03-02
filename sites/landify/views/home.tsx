@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Home = (props: Props) => {
-  const heroData = props.heroData[0]
+  const heroData = props?.heroData?.length > 0 ? props.heroData[0] : false;
 
   return (
     <div className={props.className}>

@@ -18,6 +18,7 @@ export function IndexPage({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <h1 id="oneTwo">{data?.data?.pageVariant}</h1>
       <Home className={"w-full min-h-screen flex flex-col items-center overflow-hidden"} heroData={data?.data?.heroItems} />
     </Layout>
   )

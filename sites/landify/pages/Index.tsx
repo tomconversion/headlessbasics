@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-import { Layout } from "../../ui-base/components/layout"
+import { Layout } from "../../../ui-base/components/layout"
 
-import { siteConfig } from "./config/site"
-import Home from './views/home'
+import { siteConfig } from "../config/site"
+import Home from '../views/home'
 
 
 export function IndexPage({data}) {

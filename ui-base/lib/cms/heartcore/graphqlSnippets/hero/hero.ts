@@ -63,7 +63,7 @@ export default function GetHeroQuery() {
   return hero
 }
 
-export function mapHeroData(data: any): HeroData[] {
+export function mapHeroData(data: any, pageIdentifier:PageIdentifier): HeroData[] {
   const heroes: HeroData[] = []
 
   // Check if the response data is valid and contains the expected structure

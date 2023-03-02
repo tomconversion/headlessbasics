@@ -15,28 +15,39 @@ export async function buildPageData(pageVariant: PageVariant, params?: any) {
     pageVariant
   ] as PageIdentifier
   // let slugValue = CmsVariants.variants[cmsVariant].slugPrefx;
-  // if(params !== undefined && params !== null) {
-  //   slugValue += params && params.slug ? params.slug : [];
-  // }
+  if(typeof params !== "undefined" && typeof params.slug !== "undefined") {
+    pageIdentifier.backEndSlug = params && params.slug ? params.slug : [];
+  }
 
   //const pageIdentifier:PageIdentifier = { slug: slugValue, pageVariant: pageVariant };
+
+  console.log("pageIdentifier", pageIdentifier);
 
   const navItems =
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.navigation,
-      pageIdentifier
-    )) || []
-  //const seoItems = {};
+      pageIdentifier,
+      undefined // Slug is undefined, as we are doing the lookup based on page type
+    )) || [];
+  
+  console.log("navitems", navItems);
   const seoItems =
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.seo,
-      pageIdentifier
-    )) || []
+      pageIdentifier, 
+      undefined // Slug is undefined, as we are doing the lookup based on page type
+    )) || [];
+
+  console.log("seoItems", seoItems);
   const heroItems =
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.hero,
-      pageIdentifier
-    )) || []
+      pageIdentifier,
+      undefined // Slug is undefined, as we are doing the lookup based on page type
+    )) || [];
+
+    console.log("heroItems", heroItems);
+
   const result = { data: { navItems, seoItems, heroItems } }
 
   return result
@@ -72,7 +83,8 @@ export async function fetchAPI(
 
 export async function getDyanmicCmsDataViaCmsSelector(
   lookupDetails: DynamicDataCmsProperties,
-  pageIdentifier: PageIdentifier
+  pageIdentifier?: PageIdentifier,
+  slug?: string
 ) {
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
   const queryHasVariables = lookupDetails.queryHasVariables
@@ -91,8 +103,10 @@ export async function getDyanmicCmsDataViaCmsSelector(
         queryExport
       ]
 
-    if (queryHasVariables) {
+    if (queryHasVariables && typeof pageIdentifier !== 'undefined') {
       queryResult = query(pageIdentifier)
+    } else if (queryHasVariables && typeof slug !== 'undefined') {
+      queryResult = query(slug)
     } else {
       queryResult = query
     }
@@ -107,8 +121,15 @@ export async function getDyanmicCmsDataViaCmsSelector(
       require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
         lookupDetails.variableFunction
       ]
-    variables = { variables: variableFunc(pageIdentifier), preview: false }
 
+      console.log("inside variable sender pageIdentifier", pageIdentifier);
+
+    if(typeof pageIdentifier !== 'undefined'){
+      variables = { variables: variableFunc(pageIdentifier), preview: false }
+    } else if(typeof slug !== 'undefined'){
+      variables = { variables: variableFunc(slug), preview: false }
+    }
+    
     console.log("variables --", variables)
   }
 
@@ -123,7 +144,17 @@ export async function getDyanmicCmsDataViaCmsSelector(
       dataFunctionMapperName
     ]
 
-  const result = dataMapper(data)
+  const result = dataMapper(data, pageIdentifier)
 
   return await result
+}
+
+export async function getPageTypeBySlug(slug: string){
+  const pageType =
+  (await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants.model,
+    undefined, slug
+  )) || []
+
+  return pageType;
 }

@@ -66,15 +66,15 @@ const CmsVariants = {
       pageTypes: {
         home: {
           frontEndSlug: '/',
-          backEndSlug: '/homepage',
+          backEndSlug: '',
           pageVariant: "Home",
           cmsType: "homepage"
         },
-        dynamic: {
+        dynamicPage: {
           frontEndSlug: null,
           backEndSlug: null,
-          pageVariant: "dynamic",
-          cmsType: "staticPage1"
+          pageVariant: "dynamicPage",
+          cmsType: "dynamicPage"
         },
         landing: {
           frontEndSlug: null,
@@ -175,6 +175,15 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapSeoData",
+    },
+    model: {
+      snippetLocation: "model",
+      snippetFileName: "model",
+      snippetExport: "model",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapModelData",
     },
     hero: {
       snippetLocation: "hero",

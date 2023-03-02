@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 // render a tailwind navigation menu
@@ -28,9 +29,9 @@ const GlobalTailwindNavigationMenu = ({ navItems, navClasses }) => {
 
           {navItems.map((item: any) => {
             return (
-              <a key={item.id} href="#responsive-header" className="home-text transition duration-300 mr-8 block mt-4 lg:inline-block lg:mt-0">
+              <Link key={item.id} href={item.url} className="home-text transition duration-300 mr-8 block mt-4 lg:inline-block lg:mt-0">
                 {item.name}
-              </a>
+              </Link>
             )
           }
           )}

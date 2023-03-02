@@ -11,7 +11,7 @@ var data = {};
 export default function IndexPage() {
 
   const siteConfig = GetSiteConfig();
-  // console.log("siteConfig", siteConfig);
+
   const sections = [
     {
       title: "Menus, Navigation, Buttons, Helpers",

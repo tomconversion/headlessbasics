@@ -1,4 +1,5 @@
-import { PageIdentifier } from "@/lib/cms/constants"
+import { PageIdentifier } from "../../../constants"
+
 
 export interface HeroData {
   name: string

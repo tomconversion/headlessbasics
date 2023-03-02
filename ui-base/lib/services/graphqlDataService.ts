@@ -115,7 +115,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
   // Process the query call
   const data = await fetchAPIGatewayWrapper(queryResult, variables)
 
-  console.log("data -- ", data)
+  console.log("data -- ", JSON.stringify(data, null, 2))
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper =

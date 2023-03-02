@@ -1,4 +1,4 @@
-import { PageIdentifier } from "@/lib/cms/constants"
+import { PageIdentifier } from "@/ui-base/lib/cms/constants"
 
 export interface HeroData {
   name: string
@@ -13,24 +13,33 @@ export interface HeroData {
   } | null
 }
 
-export function hero() {
-  return `query GetHeroCollectionBySlug($slug: String!) {
-    heroComponentCollection(where: { slug: $slug }, limit: 1) {
+export function hero(pageIdentifier: PageIdentifier) {
+  return `
+  query GetPageBySlug($slug: String!) {
+    ${pageIdentifier.cmsType}(where: { slug: $slug }, limit: 1) {
       items {
-        slug
-        heroDescription
-        heroImage {
-          url
-        }
-        buttonLink {
-          name
-          target
-          type
-          url
+        componentsCollection {
+          items {
+            ... on HeroComponent {
+              slug
+              heroImage {
+                url
+                title
+              }
+              heroDescription
+              buttonLink {
+                name
+                target
+                type
+                url
+              }
+            }
+          }
         }
       }
     }
-  }`
+  }
+  `
 }
 
 export function variables(pageIdentifier: PageIdentifier) {
@@ -44,17 +53,17 @@ export default function GetHeroQuery() {
 }
 
 export function mapHeroData(data: any): HeroData[] {
-  const heroes: HeroData[] = []
-  if (data.heroComponentCollection.items.length > 0) {
-    data.heroComponentCollection.items.forEach((hero: any) => {
-      heroes.push({
-        name: hero?.slug,
-        imageUrl: hero?.heroImage.url,
-        description: hero?.heroDescription,
-        buttonLink: hero?.buttonLink,
-      })
-    })
-  }
-
-  return heroes
+  return (
+    data?.pageCollection?.items?.map((page: any) => {
+      const heroComponent = page?.componentsCollection?.items?.find(
+        (item: any) => item.slug === "/"
+      )
+      return {
+        name: "Hero Section",
+        imageUrl: heroComponent?.heroImage?.url ?? "",
+        description: heroComponent?.heroDescription ?? "",
+        buttonLink: heroComponent?.buttonLink ?? null,
+      }
+    }) ?? []
+  )
 }

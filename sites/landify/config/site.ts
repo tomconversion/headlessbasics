@@ -1,4 +1,4 @@
-import { BaseSiteConfig } from "../../ui-base/config/site"
+import { BaseSiteConfig } from "../../../ui-base/config/site"
 
 export const siteConfig: BaseSiteConfig = {
   siteTemplate: "landify",                                // This matched the folder within the /sites folder

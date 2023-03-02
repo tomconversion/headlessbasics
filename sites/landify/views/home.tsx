@@ -1,98 +1,126 @@
-import React from 'react'
+import { buttonVariants } from "@/ui-base/components/ui/button"
+import Hero from "@/ui-base/components/ui/hero/Hero"
+import { HeroData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/hero/hero"
+import Image from "next/image"
+import Link from "next/link"
 
-import StoreBanner from '../components/store-banner'
-import PrimaryButton from '../components/primary-button'
-import FeatureCard from '../components/feature-card'
-import TestimonialsCard from '../components/testimonials-card'
-import StatsCard from '../components/stats-card'
-import LinkIconButton from '../components/link-icon-button'
 
-import Image from 'next/image';
+import FeatureCard from "../components/feature-card"
+import LinkIconButton from "../components/link-icon-button"
+import StatsCard from "../components/stats-card"
+import StoreBanner from "../components/store-banner"
+import TestimonialsCard from "../components/testimonials-card"
 
-const Home = (props) => {
+interface Props {
+  className?: string
+  heroData?: HeroData[]
+}
+
+const Home = (props: Props) => {
+  const heroData = props.heroData[0]
+
   return (
     <div className={props.className}>
-      
-      <div className="home-main">
-        <div className="home-blur-background"></div>
-        <div className="home-hero">
-          <div className="home-container07">
-            <h1 className="home-text12 Headline1">
-              <span>Organize projects.</span>
-              <br></br>
-              <span>Get more done.</span>
-            </h1>
-            <PrimaryButton button="Get Started"></PrimaryButton>
-          </div>
+      {heroData && (
+        <Hero className="relative">
+          <Hero.Overlay className="h-[70vh] bg-gray-100 blur-[60px]" />
+          <Hero.Content className="z-50 flex w-full max-w-screen-lg shrink-0 grow-0 basis-auto flex-col justify-between p-8 lg:h-[80vh] lg:flex-row">
+            <div className="mb-8 flex h-auto w-auto shrink-0 grow-0 basis-auto flex-col items-center lg:mb-0 lg:items-start">
+              <h1
+                dangerouslySetInnerHTML={{ __html: heroData?.description }}
+                className="mb-8 text-center text-5xl font-extrabold !leading-normal md:text-7xl lg:text-left"
+              />
+
+              <Link
+                href={heroData?.buttonLink.url}
+                className={buttonVariants({
+                  color: "primary",
+                  size: "lg",
+                })}
+              >
+                {heroData?.buttonLink.name}
+              </Link>
+            </div>
+            <Image
+              className="bg-transparent"
+              alt="image"
+              loading="lazy"
+              src={heroData?.imageUrl}
+              width={320}
+              height={589}
+            />
+          </Hero.Content>
           <Image
-            alt="image" loading='lazy'
-            src="/landify/static/playground_assets/iphonex-1200w.png"
-            className="home-image02"            
-            width={320}
-            height={589}
+            alt="image"
+            loading="lazy"
+            src="/landify/static/playground_assets/turquoise-circle.svg"
+            width={170}
+            height={170}
+            className="absolute right-[430px] top-[439px] left-auto bottom-auto w-40 object-cover opacity-60 blur-[60px]"
           />
-        </div>
-        <Image
-          alt="image" loading='lazy'
-          src="/landify/static/playground_assets/turquoise-circle.svg"
-          width={170}
-          height={170}
-          className="home-turquoise-cirble"
-        />
-        <Image
-          alt="image" loading='eager'
-          src="/landify/static/playground_assets/purple-circle.svg"
-          width={400}
-          height={418}
-          className="home-purple-circle"
-        />
-        <Image
-          alt="image" loading='lazy'
-          src="/landify/static/playground_assets/left.svg"
-          width={420}
-          height={201}
-          className="home-left"
-        />
-        <Image
-          alt="image" loading='lazy'
-          src="/landify/static/playground_assets/right.svg"
-          width={612}
-          height={211}
-          className="home-right"
-        />
-      </div>
+          <Image
+            alt="image"
+            loading="eager"
+            src="/landify/static/playground_assets/purple-circle.svg"
+            width={400}
+            height={418}
+            className="absolute left-auto bottom-auto top-[-100px] right-[-26px] w-[400px] object-cover opacity-40 blur-[60px]"
+          />
+          <Image
+            alt="image"
+            loading="lazy"
+            src="/landify/static/playground_assets/left.svg"
+            width={420}
+            height={201}
+            className="absolute left-0 right-auto bottom-auto top-[653px] w-[420px] object-cover"
+          />
+          <Image
+            alt="image"
+            loading="lazy"
+            src="/landify/static/playground_assets/right.svg"
+            width={612}
+            height={211}
+            className="absolute left-auto right-0 bottom-auto top-[441px] w-[612px] object-cover"
+          />
+        </Hero>
+      )}
       <div className="home-clients">
         <div className="home-divider"></div>
         <Image
-          alt="image" loading='lazy'
+          alt="image"
+          loading="lazy"
           src="/landify/static/playground_assets/logo-1.svg"
           width={100}
           height={28}
           className="home-image03"
         />
         <Image
-          alt="image" loading='lazy'
+          alt="image"
+          loading="lazy"
           src="/landify/static/playground_assets/logo-4.svg"
           width={100}
           height={28}
           className="home-image04"
         />
         <Image
-          alt="image" loading='lazy'
+          alt="image"
+          loading="lazy"
           src="/landify/static/playground_assets/logo-3.svg"
           width={100}
           height={28}
           className="home-image05"
         />
         <Image
-          alt="image" loading='lazy'
+          alt="image"
+          loading="lazy"
           src="/landify/static/playground_assets/logo-5.svg"
           width={100}
           height={28}
           className="home-image06"
         />
         <Image
-          alt="image" loading='lazy'
+          alt="image"
+          loading="lazy"
           src="/landify/static/playground_assets/logo-6.svg"
           width={100}
           height={28}
@@ -136,9 +164,11 @@ const Home = (props) => {
         <div className="home-container08">
           <div className="home-container09">
             <Image
-              alt="image" loading='lazy'
+              alt="image"
+              loading="lazy"
               src="/landify/static/playground_assets/quote-mark.svg"
-              width={15} height={13}
+              width={15}
+              height={13}
               className="home-image08"
             />
             <h1 className="home-text19 Headline2">
@@ -152,7 +182,7 @@ const Home = (props) => {
           <div className="home-container11">
             <div className="home-container12">
               <TestimonialsCard
-                // src="/static/playground_assets/logo-1.svg"
+                // src="/landify/static/playground_assets/logo-1.svg"
                 text="I used Landify and created a landing page for my startup within a week. The Landify UI Kit is simple and highly intuitive, so anyone can use it."
                 text1="Jane Cooper"
                 text2="CEO, Airbnb"
@@ -177,7 +207,7 @@ const Home = (props) => {
               Our 18 years of
               <span
                 dangerouslySetInnerHTML={{
-                  __html: ' ',
+                  __html: " ",
                 }}
               />
             </span>
@@ -217,11 +247,11 @@ const Home = (props) => {
         <div className="home-container18">
           <Image
             alt="image"
-            loading='lazy'
-            src="/landify/static/playground_assets/iphonex-1200w.png"          
+            loading="lazy"
+            src="/landify/static/playground_assets/iphonex-1200w.png"
             width={320}
             height={589}
-            // image_src="/static/playground_assets/iphonex-1200w.png"
+            // image_src="/landify/static/playground_assets/iphonex-1200w.png"
             className="home-image09"
           />
         </div>
@@ -255,10 +285,11 @@ const Home = (props) => {
           </span>
         </div>
         <Image
-          alt="image" loading='lazy'
-          src="https://images.unsplash.com/photo-1535157412991-2ef801c1748b?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
+          alt="image"
+          loading="lazy"
           width={1000}
-          height={1000}
+          height={400}
+          src="https://images.unsplash.com/photo-1535157412991-2ef801c1748b?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
           className="home-image10"
         />
       </div>
@@ -284,15 +315,17 @@ const Home = (props) => {
           </div>
           <div className="home-container23">
             <Image
-              alt="image" loading='lazy'
-              src="/landify/static/playground_assets/iphonex-1200w.png"          
+              alt="image"
+              loading="lazy"
+              src="/landify/static/playground_assets/iphonex-1200w.png"
               width={320}
               height={589}
               className="home-image11"
             />
             <Image
-              alt="image" loading='lazy'
-              src="/landify/static/playground_assets/iphonex-1200w.png"          
+              alt="image"
+              loading="lazy"
+              src="/landify/static/playground_assets/iphonex-1200w.png"
               width={320}
               height={589}
               className="home-image12"
@@ -303,11 +336,12 @@ const Home = (props) => {
       <div className="home-footer">
         <footer className="home-container24">
           <Image
-            alt="image" loading='lazy'
+            alt="image"
+            loading="lazy"
+            width={320}
+            height={589}
             src="/landify/static/playground_assets/logotype-light.svg"
             className="home-image13"
-            width={100}
-            height={200}
           />
           <div className="home-container25">
             <span className="home-text40">About</span>

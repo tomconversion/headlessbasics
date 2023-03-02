@@ -1,5 +1,5 @@
 import { GlobalTailwindNavigationMenu } from "./ui/global-navigation"
-import StoreBanner from "../../landify/components/store-banner"
+import StoreBanner from "../../sites/landify/components/store-banner"
 import Logo from "./ui/media/logo"
 
 export function SiteHeader({data, siteConfig}) {

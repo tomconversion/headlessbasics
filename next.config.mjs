@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['picsum.photos','media.umbraco.io', 'images.unsplash.com', 'daisyui.com']
+    domains: ['picsum.photos','media.umbraco.io', 'images.unsplash.com', 'daisyui.com', 'images.ctfassets.net']
   },
   experimental: {
     fontLoaders: [

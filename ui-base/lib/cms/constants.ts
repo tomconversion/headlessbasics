@@ -165,7 +165,7 @@ const DynamicCmsDataLocations = {
       queryIsFunction: false,
       queryHasVariables: false,
       variableFunction: "variables",
-      dataFunctionMapperName: "mapNavigationData"
+      dataFunctionMapperName: "mapNavigationData",
     },
     seo: {
       snippetLocation: "seo",
@@ -174,23 +174,30 @@ const DynamicCmsDataLocations = {
       queryIsFunction: true,
       queryHasVariables: true,
       variableFunction: "variables",
-      dataFunctionMapperName: "mapSeoData"
-    }
-  }
+      dataFunctionMapperName: "mapSeoData",
+    },
+    hero: {
+      snippetLocation: "hero",
+      snippetFileName: "hero",
+      snippetExport: "hero",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapHeroData",
+    },
+  },
 }
-export { DynamicCmsDataLocations };
+export { DynamicCmsDataLocations }
 
-export type DynamicCmsDataVariant =
-  | "navigation"
-  | "page"
+export type DynamicCmsDataVariant = "navigation" | "page"
 
 export interface DynamicDataCmsProperties {
-  snippetLocation: string,
-  snippetFileName: string,
-  snippetExport: string,
-  variableFunction: string,
-  dataFunctionMapperName: string,
+  snippetLocation: string
+  snippetFileName: string
+  snippetExport: string
+  variableFunction: string
+  dataFunctionMapperName: string
   // dataMapperFileEnding: string,
-  queryIsFunction: boolean,
-  queryHasVariables: boolean,
+  queryIsFunction: boolean
+  queryHasVariables: boolean
 }

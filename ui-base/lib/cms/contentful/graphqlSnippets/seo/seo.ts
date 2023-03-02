@@ -21,7 +21,6 @@ export function seo(pageIdentifier:PageIdentifier)
 export function variables(pageIdentifier:PageIdentifier)
 {
   const result = {'slug': pageIdentifier.backEndSlug};
-  console.log("SEO VARIABLE --", result);
   return result;
 };
 
@@ -39,6 +38,5 @@ export function mapSeoData(data) {
     seoTitle = result[0].seoTitle;
     seoDescription = result[0].seoDescription;
   }
-  console.log("result" ,result)
   return {seoTitle: seoTitle, seoDescription: seoDescription};
 }

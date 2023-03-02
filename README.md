@@ -30,7 +30,7 @@ import * as React from "react"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/ui-base/components/ui/button"
 import "@/styles/globals.css"
 import { twMerge } from "tailwind-merge"
 
@@ -57,7 +57,7 @@ import { siteConfig } from "@/config/site"
 // config
 import { cn } from "../../lib/utils"
 // lib
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/ui-base/components/ui/button"
 
 // components
 ```

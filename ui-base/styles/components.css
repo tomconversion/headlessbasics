@@ -15,6 +15,7 @@
 @import "../components/ui/sections/carousel/slick-theme.min.css";
 @import "../components/ui/sections/carousel/carousel.module.css";
 
+@import "../../node_modules/prismjs/themes/prism-okaidia.min.css";
 @import "./demo.css";
 
 

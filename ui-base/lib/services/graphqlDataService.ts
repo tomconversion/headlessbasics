@@ -68,7 +68,6 @@ export async function getDyanmicCmsDataViaCmsSelector(lookupDetails: DynamicData
     }else {
       queryResult = query;
     }
-    console.log("query --", queryResult);
   }
   catch(err) {
     console.log("query mnodule import error", err);
@@ -79,14 +78,11 @@ export async function getDyanmicCmsDataViaCmsSelector(lookupDetails: DynamicData
     const variableFunc = require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[lookupDetails.variableFunction];
     variables ={ variables: variableFunc(pageIdentifier), preview: false }
 
-    console.log("variables --", variables);
   }
   
   // Process the query call
   const data = await fetchAPIGatewayWrapper(queryResult, variables);
   
-  console.log("data -- ", data);
-
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper = require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[dataFunctionMapperName];
 

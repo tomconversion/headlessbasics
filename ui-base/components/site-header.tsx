@@ -3,6 +3,11 @@ import StoreBanner from "../../landify/components/store-banner"
 import Logo from "./ui/media/logo"
 
 export function SiteHeader({data, siteConfig}) {
+
+  if(!data?.data){
+    return (<></>);
+  }
+
   return (
     <><div data-role="Header" className="w-full flex flex-col items-center">
     <header className="w-[100%] flex items-center justify-between py-8 px-4 z-50 max-w-screen-lg mx-auto">

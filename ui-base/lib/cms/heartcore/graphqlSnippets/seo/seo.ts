@@ -17,7 +17,6 @@ export function seo(pageIdentifier:PageIdentifier)
 export function variables(pageIdentifier:PageIdentifier)
 {
   const result = {'slug': pageIdentifier.backEndSlug};
-  console.log("SEO VARIABLE --", result);
   return result;
 };
 

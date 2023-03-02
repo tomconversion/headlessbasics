@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { CaretDownIcon } from '@radix-ui/react-icons';
-import { cn } from '@/ui-base/lib/util/utils';
+import { cn } from "@/ui-base/lib/util/utils";
 
 const NavigationMenuDemo = () => {
   return (

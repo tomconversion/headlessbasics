@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 // render a tailwind navigation menu
 const GlobalTailwindNavigationMenu = ({ navItems, navClasses }) => {
 
-
+  if(typeof navItems === 'undefined'){
+    return (<></>);
+  }
 
   const [isOpen, setOpen] = useState(false);
 

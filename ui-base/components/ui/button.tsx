@@ -18,12 +18,12 @@ const buttonVariantsStyle = cva(
           "bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100",
         subtle:
           "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100",
-        ghost:
-          "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent",
+        // ghost:
+        //   "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent",
         link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
       },
       size: {
-        default: "h-10 py-2 px-4",
+        default: "h-8 py-2 px-4",
         sm: "h-9 px-2 rounded-md",
         lg: "h-11 px-8 rounded-md",
       },
@@ -36,6 +36,8 @@ const buttonVariantsStyle = cva(
         success: "bg-success text-successText hover:bg-success/75",
         warning: "bg-warning text-warningText hover:bg-warning/75",
         error: "bg-error text-errorText hover:bg-error/75",
+        ghost:
+          "bg-transparent text-slate-900 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-800",
       },
     },
     compoundVariants: [
@@ -101,7 +103,9 @@ const buttonVariants = (
   return cn(buttonVariantsStyle(objs))
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariantsStyle> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariantsStyle> {
   color?: ColorOptions
   icon?: string
 }

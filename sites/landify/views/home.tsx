@@ -1,10 +1,9 @@
-import { buttonVariants } from "@/ui-base/components/ui/button"
-import Hero from "@/ui-base/components/ui/hero/Hero"
-import { HeroData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/hero/hero"
 import Image from "next/image"
 import Link from "next/link"
 
-
+import { buttonVariants } from "@/ui-base/components/ui/button"
+import Hero from "@/ui-base/components/ui/hero/Hero"
+import { HeroData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/hero/hero"
 import FeatureCard from "../components/feature-card"
 import LinkIconButton from "../components/link-icon-button"
 import StatsCard from "../components/stats-card"

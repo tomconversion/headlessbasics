@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from "next/head"
 
 import { Layout } from "../../../ui-base/components/layout"
 
@@ -6,9 +6,13 @@ import { siteConfig } from "../config/site"
 import Home from '../views/home'
 
 
-export function IndexPage({data}) {
+export function IndexPage({ data }) {
   return (
-    <Layout className={"w-full flex flex-col items-center"} data={data} siteConfig={siteConfig}>
+    <Layout
+      className={"flex w-full flex-col items-center"}
+      data={data}
+      siteConfig={siteConfig}
+    >
       <Head>
         <title>{`${siteConfig.name} | ${data?.seoItems?.seoTitle}`}</title>
         <meta
@@ -18,9 +22,12 @@ export function IndexPage({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 id="oneTwo">{data?.data?.pageVariant}</h1>
-      <Home className={"w-full min-h-screen flex flex-col items-center overflow-hidden"} heroData={data?.data?.heroItems} />
+      <Home
+        className={
+          "flex min-h-screen w-full flex-col items-center overflow-hidden"
+        }
+        heroData={data?.data?.heroItems}
+      />
     </Layout>
   )
 }
-

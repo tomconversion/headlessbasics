@@ -7,37 +7,21 @@ import {
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
+import { collectAllPageData } from "./pageLayoutDataCollector"
 
 export async function buildPageData(pageVariant: PageVariant, params?: any) {
+
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
   const pageIdentifier = cmsVariantSelected.pageTypes[
     pageVariant
   ] as PageIdentifier
-  // let slugValue = CmsVariants.variants[cmsVariant].slugPrefx;
-  // if(params !== undefined && params !== null) {
-  //   slugValue += params && params.slug ? params.slug : [];
-  // }
 
-  //const pageIdentifier:PageIdentifier = { slug: slugValue, pageVariant: pageVariant };
+  if(typeof params !== "undefined" && typeof params.slug !== "undefined") {
+    pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
+  }
 
-  const navItems =
-    (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.navigation,
-      pageIdentifier
-    )) || []
-  //const seoItems = {};
-  const seoItems =
-    (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.seo,
-      pageIdentifier
-    )) || []
-  const heroItems =
-    (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.hero,
-      pageIdentifier
-    )) || []
-  const result = { data: { navItems, seoItems, heroItems } }
+  const result = { data: await collectAllPageData(pageIdentifier, pageVariant) }
 
   return result
 }
@@ -72,10 +56,11 @@ export async function fetchAPI(
 
 export async function getDyanmicCmsDataViaCmsSelector(
   lookupDetails: DynamicDataCmsProperties,
-  pageIdentifier: PageIdentifier
+  pageIdentifier?: PageIdentifier,
+  slug?: string
 ) {
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
-  const queryHasVariables = lookupDetails.queryHasVariables
+  const queryHasVariables = lookupDetails.queryHasVariables;
   const queryExport = lookupDetails.snippetExport
   const snippitLocation = lookupDetails.snippetLocation
   const snippetFileName = lookupDetails.snippetFileName
@@ -91,12 +76,14 @@ export async function getDyanmicCmsDataViaCmsSelector(
         queryExport
       ]
 
-    if (queryHasVariables) {
+    if (queryHasVariables && typeof pageIdentifier !== 'undefined') {
       queryResult = query(pageIdentifier)
+    } else if (queryHasVariables && typeof slug !== 'undefined') {
+      queryResult = query(slug)
     } else {
       queryResult = query
     }
-    console.log("query --", queryResult)
+    // console.log("query --", queryResult)
   } catch (err) {
     console.log("query mnodule import error", err)
   }
@@ -107,15 +94,22 @@ export async function getDyanmicCmsDataViaCmsSelector(
       require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
         lookupDetails.variableFunction
       ]
-    variables = { variables: variableFunc(pageIdentifier), preview: false }
 
-    console.log("variables --", variables)
+      // console.log("inside variable sender pageIdentifier", pageIdentifier);
+
+    if(typeof pageIdentifier !== 'undefined'){
+      variables = { variables: variableFunc(pageIdentifier), preview: false }
+    } else if(typeof slug !== 'undefined'){
+      variables = { variables: variableFunc(slug), preview: false }
+    }
+    
+    // console.log("variables --", variables)
   }
 
   // Process the query call
   const data = await fetchAPIGatewayWrapper(queryResult, variables)
 
-  console.log("data -- ", data)
+  // console.log("data -- ", data)
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper =
@@ -123,7 +117,17 @@ export async function getDyanmicCmsDataViaCmsSelector(
       dataFunctionMapperName
     ]
 
-  const result = dataMapper(data)
+  const result = dataMapper(data, pageIdentifier)
 
   return await result
+}
+
+export async function getPageTypeBySlug(slug: string){
+  const pageType =
+  (await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants.model,
+    undefined, 
+    slug
+  )) || undefined
+  return pageType;
 }

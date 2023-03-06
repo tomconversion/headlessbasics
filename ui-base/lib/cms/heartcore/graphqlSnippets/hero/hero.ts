@@ -1,4 +1,4 @@
-import { PageIdentifier } from "../../../constants"
+import { CmsVariants, PageIdentifier } from "../../../constants"
 
 
 export interface HeroData {
@@ -54,7 +54,7 @@ export function hero() {
 }
 
 export function variables(pageIdentifier: PageIdentifier) {
-  const result = { slug: pageIdentifier.backEndSlug }
+  const result = { slug: CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug }
   // console.log("HERO VARIABLE --", result)
   return result
 }
@@ -63,7 +63,7 @@ export default function GetHeroQuery() {
   return hero
 }
 
-export function mapHeroData(data: any): HeroData[] {
+export function mapHeroData(data: any, pageIdentifier:PageIdentifier): HeroData[] {
   const heroes: HeroData[] = []
 
   // Check if the response data is valid and contains the expected structure

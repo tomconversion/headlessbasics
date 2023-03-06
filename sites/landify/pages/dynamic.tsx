@@ -1,12 +1,10 @@
 import Head from 'next/head'
 
-import { Layout } from "../../ui-base/components/layout"
-
-import { siteConfig } from "./config/site"
-import Home from './views/home'
+import { Layout } from "../../../ui-base/components/layout"
+import { siteConfig } from "../config/site"
 
 
-export function IndexPage({data}) {
+export function Dynamic({data}) {
   return (
     <Layout className={"w-full flex flex-col items-center"} data={data} siteConfig={siteConfig}>
       <Head>
@@ -18,7 +16,10 @@ export function IndexPage({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Home className={"w-full min-h-screen flex flex-col items-center overflow-hidden"} heroData={data?.data?.heroItems} />
+      <h1 id="oneTwo">{data?.data?.pageVariant}</h1>
+      
+       Dynamic Page Template
+
     </Layout>
   )
 }

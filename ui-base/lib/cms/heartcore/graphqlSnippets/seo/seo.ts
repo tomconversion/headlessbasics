@@ -1,4 +1,4 @@
-import { PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
 
 export function seo(pageIdentifier:PageIdentifier)
 {
@@ -16,7 +16,7 @@ export function seo(pageIdentifier:PageIdentifier)
 
 export function variables(pageIdentifier:PageIdentifier)
 {
-  const result = {'slug': pageIdentifier.backEndSlug};
+  const result = {'slug': CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug};
   return result;
 };
 
@@ -24,7 +24,7 @@ export default function GetSeoQuery() {
   return seo;
 }
 
-export function mapSeoData(data) {
-  const result = data.homepage;
-  return {seoTitle: data.homepage.sEOTitle, seoDescription: data.homepage.sEODescription};
+export function mapSeoData(data, pageIdentifier:PageIdentifier) {
+  const result = data[pageIdentifier.cmsType];
+  return {seoTitle: result.sEOTitle, seoDescription: result.sEODescription};
 }

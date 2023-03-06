@@ -8,7 +8,6 @@ export default function IndexPage({ data }) {
 export async function getStaticProps({ params }) {
 
   const data = await buildPageData("home", {slug: ""});  
-  console.log("getStaticProps data", data)
   return {
     props: {
       data

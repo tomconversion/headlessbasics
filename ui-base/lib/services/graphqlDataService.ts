@@ -85,7 +85,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
     }
     // console.log("query --", queryResult)
   } catch (err) {
-    console.log("query mnodule import error", err)
+    console.log("query module import error", err)
   }
 
   let variables = { variables: {}, preview: false }
@@ -129,12 +129,6 @@ export async function getPageTypeBySlug(slug: string){
     undefined, 
     slug
   )) || undefined;
-
-  // the pageType is undefined, search for a super Alias.
-  // A super alias takes priority over the URL for a page
-  if(typeof(pageType) === 'undefined'){
-
-  }
 
   return pageType;
 }

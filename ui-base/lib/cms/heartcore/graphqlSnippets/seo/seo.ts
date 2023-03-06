@@ -17,7 +17,7 @@ export function seo(pageIdentifier:PageIdentifier)
 export function variables(pageIdentifier:PageIdentifier)
 {
   let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
-  umbracoSlug = umbracoSlug.replaceAll("//", "/");
+  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
   const result = {'slug': umbracoSlug};
   return result;
 };

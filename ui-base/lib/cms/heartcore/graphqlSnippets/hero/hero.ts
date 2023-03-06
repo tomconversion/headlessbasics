@@ -55,7 +55,7 @@ export function hero() {
 
 export function variables(pageIdentifier: PageIdentifier) {
   let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
-  umbracoSlug = umbracoSlug.replaceAll("//", "/");
+  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
   const result = {'slug': umbracoSlug};
   return result;
 }
@@ -79,11 +79,11 @@ export function mapHeroData(data: any, pageIdentifier:PageIdentifier): HeroData[
             // Extract relevant data from the hero component
             let imageUrl = childNode?.heroImage?.url;
             if(childNode?.heroImage && childNode.heroImage.length && childNode.heroImage.length){
-
+              imageUrl = childNode.heroImage[0].url;
             }
             const hero: HeroData = {
               name: childNode.name,
-              imageUrl: childNode.heroImage.url,
+              imageUrl: imageUrl,
               description: childNode.heroDescription,
               buttonLink: null,
             }

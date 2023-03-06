@@ -16,7 +16,7 @@ export function model(slug:string)
 export function variables(slug:string)
 {
   let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + slug;
-  umbracoSlug = umbracoSlug.replaceAll("//", "/");
+  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
   const result = {'slug': umbracoSlug};
   return result;
 };

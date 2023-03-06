@@ -20,5 +20,9 @@ export const isNumeric = (n: any): n is number =>
     const replacedString = str.replace(new RegExp(strToReplace, 'g'), replacementStr);
     return replacedString;
   }
+
+  export function reverseArray<T>(arr: T[]): T[] {
+    return arr.reverse();
+  }
   
   

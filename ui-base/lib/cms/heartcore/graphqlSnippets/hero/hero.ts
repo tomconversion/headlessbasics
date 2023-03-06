@@ -77,6 +77,10 @@ export function mapHeroData(data: any, pageIdentifier:PageIdentifier): HeroData[
           const childNode = childEdge.node
           if (childNode.__typename === "HeroComponent" && childNode.heroImage) {
             // Extract relevant data from the hero component
+            let imageUrl = childNode?.heroImage?.url;
+            if(childNode?.heroImage && childNode.heroImage.length && childNode.heroImage.length){
+
+            }
             const hero: HeroData = {
               name: childNode.name,
               imageUrl: childNode.heroImage.url,

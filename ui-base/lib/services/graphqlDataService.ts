@@ -21,7 +21,7 @@ export async function buildPageData(pageVariant: PageVariant, params?: any) {
     pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 
-  const result = { data: await collectAllPageData(pageIdentifier, pageVariant) }
+  const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug) }
 
   return result
 }

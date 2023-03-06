@@ -48,7 +48,6 @@ export async function getStaticPaths() {
   data.map((page) => {
     if(page.superAlias && page.superAlias != '')
     {
-      // page.superAlias = SUPER_ALIAS + page.superAlias;
       let parts = page.superAlias.split('/');   
       parts = parts.filter((x) => x != '');
       paths.push({

@@ -1,3 +1,4 @@
+import Breadcrumbs from '@/ui-base/components/ui/breadcrumbs/Breadcrumbs';
 import { COMPONENT_DYNAMIC_CONTENT } from '@/ui-base/lib/cms/constants';
 import { renderDynamicContent } from '@/ui-base/lib/services/dynamicContentRendererService';
 import Head from 'next/head'
@@ -28,6 +29,9 @@ export function DynamicPage({data}) {
       </Head>
       <div className="container mx-auto">     
         <h1 id="oneTwo">Page Template: {data?.data?.pageVariant}</h1>
+        <div className='w-full'>
+          <Breadcrumbs data={data?.data?.breadcrumbItems} />
+        </div>
         {/* {JSON.stringify(dynamicCmsData)} */}       
         {dynamicPageContent}
       </div>

@@ -203,6 +203,15 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSeoData",
     },
+    breadcrumb: {
+      snippetLocation: "breadcrumb",
+      snippetFileName: "breadcrumb",
+      snippetExport: "breadcrumb",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapBreadcrumbData",
+    },
     model: {
       snippetLocation: "model",
       snippetFileName: "model",

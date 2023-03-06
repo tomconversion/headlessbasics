@@ -22,7 +22,7 @@ import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService";
      2) Global Data          - This is commmon to all pages. Includes Naviation, Footer
 */
 
-export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {
+export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVariant: PageVariant, slug: string) {
   
   // Global Data - Nav items are Global Data required by each page
   const navItems =
@@ -40,6 +40,14 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       undefined // Slug is undefined, as we are doing the lookup based on page type
     )) || [];
 
+    // Individual Page Data
+    const breadcrumbItems =
+    (await getDyanmicCmsDataViaCmsSelector(
+      DynamicCmsDataLocations.variants.breadcrumb,
+      undefined, 
+      slug // Slug is undefined, as we are doing the lookup based on page type
+    )) || [];   
+
   let pageComponentData:any = {};
 
   if(pageIdentifier.isFixedLayout){
@@ -48,7 +56,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
     pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier);
   }
 
-  return { navItems, seoItems, pageComponentData, pageVariant };
+  return { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {

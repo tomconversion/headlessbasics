@@ -128,7 +128,14 @@ export async function getPageTypeBySlug(slug: string){
     DynamicCmsDataLocations.variants.model,
     undefined, 
     slug
-  )) || undefined
+  )) || undefined;
+
+  // the pageType is undefined, search for a super Alias.
+  // A super alias takes priority over the URL for a page
+  if(typeof(pageType) === 'undefined'){
+
+  }
+
   return pageType;
 }
 

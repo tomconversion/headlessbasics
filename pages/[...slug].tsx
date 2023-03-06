@@ -1,21 +1,33 @@
 import { DynamicPage as DynamicPageOnSite } from '@/sites/landify/pages/dynamicPage';
+import { SUPER_ALIAS } from '@/ui-base/lib/cms/constants';
 import { buildPageData, collectSitemapNavigationStructure, getPageTypeBySlug } from '@/ui-base/lib/services/graphqlDataService'
 
 export default function DynamicPage({data}) {  
-    return <DynamicPageOnSite data={data}/>;
+  return <DynamicPageOnSite data={data}/>;
 }
 
 export async function getStaticProps({ params }) {
+  
+  let slugCleanedUp = params.slug.join('/');
+  if(slugCleanedUp === 'favicon.ico') return { props: {  } }
+  let selectedSlug = slugCleanedUp;
 
-  const slugCleanedUp = params.slug.join('/');
-  const pageType = await getPageTypeBySlug(params.url); 
-  console.log("slugCleanedUp", slugCleanedUp, params.url);
-  const data = await buildPageData(pageType, {slug: params.url}); 
+  const sitemapStructure = await collectSitemapNavigationStructure();
+  const match = sitemapStructure.find(
+    (page) => page.superAlias === "/" + slugCleanedUp
+  );
 
+  if(typeof(match) !== 'undefined'){ // We have a super alias match
+    selectedSlug = match.url;
+  }
+
+  const pageType = await getPageTypeBySlug(selectedSlug);
+  const data = await buildPageData(pageType, {slug: selectedSlug}); 
+  //const data = {};
   return {
     props: {
       data,
-      slug: params.slug
+      slug: selectedSlug
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
@@ -36,36 +48,23 @@ export async function getStaticPaths() {
   data.map((page) => {
     if(page.superAlias && page.superAlias != '')
     {
+      // page.superAlias = SUPER_ALIAS + page.superAlias;
       let parts = page.superAlias.split('/');   
       parts = parts.filter((x) => x != '');
       paths.push({
-        params: {slug: parts, url: page.url },
+        params: {slug: parts },
       });
     }else {
       let parts = page.url.split('/');    
       parts = parts.filter((x) => x != '');
       paths.push({
-         params: {slug: parts, url: page.url },
+         params: {slug: parts },
       });
     }
   });  
   
-  // (
-    
-    
-  //   return {
-  //   params: {slug: page.url.split('/') },
-  // }))
-
   // We'll pre-render only these paths at build time.
   // { fallback: 'blocking' } will server-render pages
   // on-demand if the path doesn't exist.
   return { paths, fallback: 'blocking' }
 }
-
-// export async function getStaticPaths() {
-//   return {
-//     paths: [{ params: { slug: ['warranty'] } }, { params: { slug: ['/contact-us'] } }],
-//     fallback: false, // can also be true or 'blocking'
-//   }
-// }

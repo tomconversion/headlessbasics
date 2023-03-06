@@ -50,7 +50,6 @@ export function hero() {
 
 export function variables(pageIdentifier: PageIdentifier) {
   const result = { slug: pageIdentifier.backEndSlug }
-  // console.log("HERO VARIABLE --", result)
   return result
 }
 

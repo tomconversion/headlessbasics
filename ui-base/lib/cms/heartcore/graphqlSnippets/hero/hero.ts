@@ -54,9 +54,10 @@ export function hero() {
 }
 
 export function variables(pageIdentifier: PageIdentifier) {
-  const result = { slug: CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug }
-  // console.log("HERO VARIABLE --", result)
-  return result
+  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
+  umbracoSlug = umbracoSlug.replaceAll("//", "/");
+  const result = {'slug': umbracoSlug};
+  return result;
 }
 
 export default function GetHeroQuery() {

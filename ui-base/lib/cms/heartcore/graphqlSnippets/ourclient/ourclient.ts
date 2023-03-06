@@ -23,6 +23,7 @@ export function ourclient() {
                 node {
                   name
                   ... on OurClients {
+                    __typename
                     clientLogo {
                       media {
                         name
@@ -56,33 +57,33 @@ export default function GetourClientQuery() {
   return ourclient
 }
 
-export function mapOurClientData(data): OurClientData {
+export function mapOurClientData(data): OurClientData[] {
+  const result = []
   const sectionNode = data?.homepage?.children?.edges?.[0]?.node
 
   if (!sectionNode || sectionNode.__typename !== "DataFolder") {
     throw new Error("Invalid data format: Our clients section not found.")
   }
 
-  const sectionName = sectionNode?.children?.edges?.[0]?.node?.name
-  if (!sectionName) {
-    throw new Error("Invalid data format: Our clients section name not found.")
+  const sections = sectionNode?.children?.edges
+
+  for (const section of sections) {
+    if (section.node.__typename === "OurClients") {
+      const clients = section.node.clientLogo?.map((client) => {
+        return {
+          name: client.media.name,
+          logoUrl: client.media.url,
+        }
+      })
+
+      if (clients.length > 0) {
+        result.push({
+          name: section.node.name,
+          clients: clients,
+        })
+      }
+    }
   }
 
-  const clients = sectionNode?.children?.edges?.[0]?.node?.clientLogo?.map(
-    ({ media }) => ({
-      name: media?.name,
-      logoUrl: media?.url,
-    })
-  )
-
-  if (!clients?.length) {
-    throw new Error(
-      "Invalid data format: No clients found in the our clients section."
-    )
-  }
-
-  return {
-    name: sectionName,
-    clients,
-  }
+  return result
 }

@@ -28,7 +28,7 @@ export function IndexPage({ data }) {
           "flex min-h-screen w-full flex-col items-center overflow-hidden"
         }
         heroData={data?.data?.pageComponentData[COMPONENT_HERO]}
-        ourClientsData={data?.data?.pageComponentData[COMPONENT_OUR_CLIENT]}
+        clientsData={data?.data?.pageComponentData[COMPONENT_OUR_CLIENT]}
       />
     </Layout>
   )

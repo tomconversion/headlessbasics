@@ -14,12 +14,13 @@ import TestimonialsCard from "../components/testimonials-card"
 interface Props {
   className?: string
   heroData?: HeroData[]
-  ourClientsData?: OurClientData
+  clientsData?: OurClientData[]
 }
 
 const Home = (props: Props) => {
   const heroData = props?.heroData?.length > 0 ? props.heroData[0] : false;
-  const ourClientsData = props?.ourClientsData;
+  const ourClientsData: OurClientData = props?.clientsData[0];
+
 
   return (
     <div className={props.className}>
@@ -88,7 +89,7 @@ const Home = (props: Props) => {
       ) : null}
       {
         ourClientsData ? (
-          <div className="relative flex w-full max-w-screen-lg flex-wrap items-center justify-center p-8 md:justify-between">
+          <div className="relative flex w-full max-w-[1110px] flex-wrap items-center justify-center p-8 md:justify-between">
             <div className="absolute top-0 h-[1px] w-full bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100"></div>
             {
               ourClientsData?.clients?.map((client, index) => (

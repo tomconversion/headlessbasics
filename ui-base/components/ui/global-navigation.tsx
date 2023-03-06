@@ -8,6 +8,8 @@ const GlobalTailwindNavigationMenu = ({ navItems, navClasses }) => {
     return (<></>);
   }
 
+  navItems = navItems.filter((x) => typeof(x.showInNavigation) !== 'undefined' && x.showInNavigation === true);
+
   const [isOpen, setOpen] = useState(false);
 
   return (

@@ -7,6 +7,7 @@ import {
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
+import { collectAllPageData } from "./pageLayoutDataCollector"
 
 export async function buildPageData(pageVariant: PageVariant, params?: any) {
 
@@ -20,33 +21,7 @@ export async function buildPageData(pageVariant: PageVariant, params?: any) {
     pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 
-  //const pageIdentifier:PageIdentifier = { slug: slugValue, pageVariant: pageVariant };
-
-  const navItems =
-    (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.navigation,
-      pageIdentifier,
-      undefined // Slug is undefined, as we are doing the lookup based on page type
-    )) || [];
-  
-
-  const seoItems =
-    (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.seo,
-      pageIdentifier, 
-      undefined // Slug is undefined, as we are doing the lookup based on page type
-    )) || [];
-
-  let heroItems = {};
-  if(pageVariant == "home"){
-    heroItems = (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.hero,
-      pageIdentifier,
-      undefined // Slug is undefined, as we are doing the lookup based on page type
-    )) || [];
-  }    
-
-  const result = { data: { navItems, seoItems, heroItems, pageVariant } }
+  const result = { data: await collectAllPageData(pageIdentifier, pageVariant) }
 
   return result
 }
@@ -85,7 +60,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
   slug?: string
 ) {
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
-  const queryHasVariables = lookupDetails.queryHasVariables
+  const queryHasVariables = lookupDetails.queryHasVariables;
   const queryExport = lookupDetails.snippetExport
   const snippitLocation = lookupDetails.snippetLocation
   const snippetFileName = lookupDetails.snippetFileName

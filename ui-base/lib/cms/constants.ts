@@ -38,7 +38,9 @@ export interface PageIdentifier {
   backEndSlug: string,
   frontEndSlug: string,
   pageVariant: PageVariant,
-  cmsType: string
+  cmsType: string,
+  isFixedLayout: boolean,
+  components: Components
 }
 
 export type CmsVariant =
@@ -50,6 +52,8 @@ export type PageVariant =
   | "home"
   | "dynamic"
   | "landing"
+
+
 
 const CmsVariants = {
   variants: {
@@ -68,19 +72,25 @@ const CmsVariants = {
           frontEndSlug: '',
           backEndSlug: '',
           pageVariant: "Home",
-          cmsType: "homepage"
+          cmsType: "homepage",
+          isFixedLayout: true,
+          components: [
+            "Hero"
+          ]
         },
         dynamicPage: {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "dynamicPage",
-          cmsType: "dynamicPage"
+          cmsType: "dynamicPage",
+          isFixedLayout: false
         },
         landing: {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "landing",
-          cmsType: "landing"
+          cmsType: "landing",
+          isFixedLayout: true
         }
       }
     },
@@ -100,19 +110,22 @@ const CmsVariants = {
           frontEndSlug: '/',
           backEndSlug: 'homepage',
           pageVariant: "Home",
-          cmsType: "homepage"
+          cmsType: "homepage",
+          isFixedLayout: true
         },
         dynamic: {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "dynamic",
-          cmsType: "staticPage1"
+          cmsType: "staticPage1",
+          isFixedLayout: false
         },
         landing: {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "landing",
-          cmsType: "staticPage"
+          cmsType: "staticPage",
+          isFixedLayout: true
         }
       }
     },
@@ -133,19 +146,22 @@ const CmsVariants = {
           frontEndSlug: '/',
           backEndSlug: '/',
           pageVariant: "Home",
-          cmsType: "pageCollection"
+          cmsType: "pageCollection",
+          isFixedLayout: true
         },
         dynamic: {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "dynamic",
-          cmsType: "dynamicPage"
+          cmsType: "dynamicPage",
+          isFixedLayout: false
         },
         landing: {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "landing",
-          cmsType: "landing"
+          cmsType: "landing",
+          isFixedLayout: true
         }
       }
     }
@@ -210,3 +226,33 @@ export interface DynamicDataCmsProperties {
   queryIsFunction: boolean
   queryHasVariables: boolean
 }
+
+export const COMPONENT_HERO: Component = "hero";
+
+export const FixedLayouts:Components = {
+  layouts: [
+    {
+      identifier: "home",
+      components: [COMPONENT_HERO, 
+      // "ThreeColumnCTA"
+    ],      
+    }, 
+    // {
+    //   identifier: "landing",
+    //   components: [],      
+    // }
+  ]
+};
+
+export interface Components {
+  layouts: {
+    identifier: PageVariant,
+    components: Component[] 
+  }[]
+}
+
+export type Component =
+  | "hero"
+  // | "ThreeColumnCTA"
+
+

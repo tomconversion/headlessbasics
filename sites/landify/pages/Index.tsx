@@ -1,3 +1,4 @@
+import { COMPONENT_HERO } from "@/ui-base/lib/cms/constants"
 import Head from "next/head"
 
 import { Layout } from "../../../ui-base/components/layout"
@@ -26,7 +27,7 @@ export function IndexPage({ data }) {
         className={
           "flex min-h-screen w-full flex-col items-center overflow-hidden"
         }
-        heroData={data?.data?.heroItems}
+        heroData={data?.data?.pageComponentData[COMPONENT_HERO]}
       />
     </Layout>
   )

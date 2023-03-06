@@ -13,12 +13,14 @@ export async function collectAllRoutes() {
     {
       let parts = page.superAlias.split('/');   
       parts = parts.filter((x) => x != '');
+      console.log("collectAllRoutes super alias", parts);
       paths.push({
         params: {slug: parts },
       });
     }else {
       let parts = page.url.split('/');    
       parts = parts.filter((x) => x != '');
+      console.log("collectAllRoutes parts", parts);
       paths.push({
          params: {slug: parts },
       });

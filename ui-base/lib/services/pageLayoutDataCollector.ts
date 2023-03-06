@@ -90,8 +90,6 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
     );
   }
 
-  console.log("collectFixedLayoutPageComponentData pageComponentData", pageComponentData);
-  
   return pageComponentData;
 }
 
@@ -104,8 +102,6 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
     undefined
   );
 
-  console.log("collectDynamicLayoutPageComponentData pageComponentData", pageComponentData);
-  
   return pageComponentData;
 }
 

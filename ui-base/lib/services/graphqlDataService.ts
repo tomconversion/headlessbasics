@@ -131,3 +131,18 @@ export async function getPageTypeBySlug(slug: string){
   )) || undefined
   return pageType;
 }
+
+export async function collectSitemapNavigationStructure() {
+
+  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariantSelected = CmsVariants.variants[cmsVariant]
+
+  const navItems =
+  (await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants.sitemap,
+    undefined,
+    undefined // Slug is undefined, as we are doing the lookup based on page type
+  )) || [];
+
+  return navItems
+}

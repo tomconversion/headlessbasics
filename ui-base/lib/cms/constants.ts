@@ -183,6 +183,15 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapNavigationData",
     },
+    sitemap: {
+      snippetLocation: "sitemap",
+      snippetFileName: "sitemap",
+      snippetExport: "sitemap",
+      queryIsFunction: false,
+      queryHasVariables: false,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapSitemapData",
+    },
     seo: {
       snippetLocation: "seo",
       snippetFileName: "seo",

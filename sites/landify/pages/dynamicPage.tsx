@@ -26,11 +26,11 @@ export function DynamicPage({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 id="oneTwo">{data?.data?.pageVariant}</h1>
-       {JSON.stringify(dynamicCmsData)}
-       Dynamic Page Template
-       {dynamicPageContent}
-
+      <div className="container mx-auto">     
+        <h1 id="oneTwo">Page Template: {data?.data?.pageVariant}</h1>
+        {/* {JSON.stringify(dynamicCmsData)} */}       
+        {dynamicPageContent}
+      </div>
     </Layout>
   )
 }

@@ -51,15 +51,15 @@ const RenderControls = ({ controls }: { controls: ControlProps[] }) => (
 
 const RenderArea = ({ area }: { area: AreaProps }) => {
   return (
-    <div className={`w-full`}>
+    // <div className={`w-full`}>
       <RenderControls controls={area.controls} />
-    </div>
+    // </div>
   );
 };
 
 const RenderRow = ({ row }: { row: RowProps }) => {
-  const width = `columns-${row.areas.length}`;
-  return (<div className={`RenderRow flex flex-wrap ${width}`}>
+  // const width = `columns-${row.areas.length}`;
+  return (<div className={`grid grid-flow-col auto-cols-auto`}>
     {row.areas.map((area, index) => (
       <RenderArea key={index} area={area} />
     ))}

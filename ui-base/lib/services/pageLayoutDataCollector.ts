@@ -1,5 +1,6 @@
 import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
 import {
+  COMPONENT_DYNAMIC_CONTENT,
   DynamicCmsDataLocations,
   FixedLayouts,
   PageIdentifier,
@@ -40,7 +41,12 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
     )) || [];
 
   let pageComponentData:any = {};
-  pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier);
+
+  if(pageIdentifier.isFixedLayout){
+    pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier);
+  } else{
+    pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier);
+  }
 
   return { navItems, seoItems, pageComponentData, pageVariant };
 }
@@ -84,8 +90,21 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
     );
   }
 
-  
   console.log("collectFixedLayoutPageComponentData pageComponentData", pageComponentData);
+  
+  return pageComponentData;
+}
+
+export async function collectDynamicLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier) {
+  const pageComponentData: Record<string, unknown> = {};
+  
+  pageComponentData[COMPONENT_DYNAMIC_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants[COMPONENT_DYNAMIC_CONTENT],
+    pageIdentifier,
+    undefined
+  );
+
+  console.log("collectDynamicLayoutPageComponentData pageComponentData", pageComponentData);
   
   return pageComponentData;
 }

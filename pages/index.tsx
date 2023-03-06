@@ -11,6 +11,7 @@ export default function IndexPage({ data }) {
 // }
 
 export async function getServerSideProps(context) {
-  const data = await buildPageData("home", {slug: ""});  
+  const data = await buildPageData("home", { slug: "" });
+
   return { props: { data: data } };
 }

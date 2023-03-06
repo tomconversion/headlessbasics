@@ -1,9 +1,9 @@
-import { Dynamic } from '@/sites/landify/pages/dynamic';
+import { DynamicPage as DynamicPageOnSite } from '@/sites/landify/pages/dynamicPage';
 import { buildPageData, getPageTypeBySlug } from '@/ui-base/lib/services/graphqlDataService'
 import { replaceChar } from '@/ui-base/lib/util/utils';
 
 export default function DynamicPage({data}) {  
-    return <Dynamic data={data}/>;
+    return <DynamicPageOnSite data={data}/>;
 }
 
 export async function getServerSideProps(context) {

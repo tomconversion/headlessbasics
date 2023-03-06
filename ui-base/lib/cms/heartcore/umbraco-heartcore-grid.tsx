@@ -39,7 +39,7 @@ const RenderControls = ({ controls }: { controls: ControlProps[] }) => (
         case 'my-quote':
           return <blockquote key={index}>{control.value}</blockquote>;
         case 'my-image':
-          return <Image loading='lazy' key={index} src={control.value.url} alt={control.value.altText} />;
+          return <Image loading='lazy' width={100} height={200} key={index} src={control.value.url} alt={control.value.altText} />;
         case 'my-rte':
           return <div key={index} dangerouslySetInnerHTML={{ __html: control.value }} />;
         default:
@@ -51,15 +51,15 @@ const RenderControls = ({ controls }: { controls: ControlProps[] }) => (
 
 const RenderArea = ({ area }: { area: AreaProps }) => {
   return (
-    <div className={`w-full`}>
+    // <div className={`w-full`}>
       <RenderControls controls={area.controls} />
-    </div>
+    // </div>
   );
 };
 
 const RenderRow = ({ row }: { row: RowProps }) => {
-  const width = `columns-${row.areas.length}`;
-  return (<div className={`RenderRow flex flex-wrap ${width}`}>
+  // const width = `columns-${row.areas.length}`;
+  return (<div className={`grid grid-flow-col auto-cols-auto`}>
     {row.areas.map((area, index) => (
       <RenderArea key={index} area={area} />
     ))}
@@ -75,7 +75,7 @@ const RenderSection = ({ section }: { section: SectionProps }) => (
   </>
 );
 
-const Flex: React.FC<FlexProps> = ({ name, sections }) => (
+const UmbracoFlexGrid: React.FC<FlexProps> = ({ name, sections }) => (
   <>
     {sections.map((section, index) => (
       <RenderSection key={index} section={section} />
@@ -83,4 +83,4 @@ const Flex: React.FC<FlexProps> = ({ name, sections }) => (
   </>
 );
 
-export default Flex;
+export default UmbracoFlexGrid;

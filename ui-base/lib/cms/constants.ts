@@ -210,6 +210,15 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapHeroData",
     },
+    dynamicContent: {
+      snippetLocation: "dynamicContent",
+      snippetFileName: "dynamicContent",
+      snippetExport: "dynamicContent",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapDynamicContentData",
+    }
   },
 }
 export { DynamicCmsDataLocations }
@@ -228,6 +237,7 @@ export interface DynamicDataCmsProperties {
 }
 
 export const COMPONENT_HERO: Component = "hero";
+export const COMPONENT_DYNAMIC_CONTENT: Component = "dynamicContent";
 
 export const FixedLayouts:Components = {
   layouts: [
@@ -252,6 +262,7 @@ export interface Components {
 }
 
 export type Component =
+  | "dynamicContent"
   | "hero"
   // | "ThreeColumnCTA"
 

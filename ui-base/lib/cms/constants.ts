@@ -61,7 +61,7 @@ const CmsVariants = {
   variants: {
     heartcore: {
       cmsName: "Umbraco Heartcore",
-      deliveryApiDomain: "https://graphql.umbraco.io",
+      deliveryApiDomain: process.env.UMBRACO_GRAPHQL_ENDPOINT,
       deliveryApiUrl: "w-1/3",
       cmsUrl: "https://umbraco.com/heartcore",
       deliveryApiKey: process.env.UMBRACO_API_KEY,
@@ -98,7 +98,7 @@ const CmsVariants = {
     },
     kontent: {
       cmsName: "Kentico Kontent",
-      deliveryApiDomain: "https://graphql.kontent.ai",
+      deliveryApiDomain: process.env.KONTENT_GRAPHQL_ENDPOINT,
       deliveryApiUrl: "w-1/3",
       cmsUrl: "https://umbraco.com/heartcore",
       deliveryApiKey: process.env.UMBRACO_API_KEY,
@@ -133,8 +133,8 @@ const CmsVariants = {
     },
     contentful: {
       cmsName: "Contentful",
-      deliveryApiDomain: "https://graphql.contentful.com",
-      deliveryApiUrl: "/content/v1/spaces/",
+      deliveryApiDomain: process.env.CONTENTFUL_GRAPHQL_ENDPOINT,
+      deliveryApiUrl: process.env.CONTENTFUL_DELIVERY_API_URL,
       cmsUrl: "https://app.contentful.com/spaces/3j9y7hnidlox",
       deliveryApiKey: process.env.CONTENTFUL_DELIVERY_API_KEY,
       contentApiKey: '',
@@ -238,6 +238,15 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapDynamicContentData",
+    },
+    redirects: {
+      snippetLocation: "redirects",
+      snippetFileName: "redirects",
+      snippetExport: "redirects",
+      queryIsFunction: false,
+      queryHasVariables: false,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapRedirectsData",
     }
   },
 }

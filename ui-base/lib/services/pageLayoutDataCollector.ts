@@ -1,4 +1,3 @@
-import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
 import {
   COMPONENT_DYNAMIC_CONTENT,
   DynamicCmsDataLocations,
@@ -90,7 +89,7 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
     const lowerCaseMatchName = component.toLowerCase();
-    console.log("collectFixedLayoutPageComponentData > component", lowerCaseMatchName);
+    // console.log("collectFixedLayoutPageComponentData > component", lowerCaseMatchName);
     pageComponentData[lowerCaseMatchName] = await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants[lowerCaseMatchName],
       pageIdentifier,

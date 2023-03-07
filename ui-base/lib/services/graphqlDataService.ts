@@ -26,34 +26,6 @@ export async function buildPageData(pageVariant: PageVariant, params?: any) {
   return result
 }
 
-export async function fetchAPI(
-  query,
-  { variables, preview } = { variables: {}, preview: false },
-  endpoint: string,
-  headers: any = {}
-) {
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  })
-  const json = await res.json()
-
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error("fetchAPI in graphqlDataService - Failed to fetch API")
-  }
-
-  if (json.data !== undefined && json.data !== null) {
-    return json.data
-  } else {
-    return json
-  }
-}
-
 export async function getDyanmicCmsDataViaCmsSelector(
   lookupDetails: DynamicDataCmsProperties,
   pageIdentifier?: PageIdentifier,

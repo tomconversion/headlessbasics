@@ -13,17 +13,21 @@ export async function collectAllRoutes() {
     {
       let parts = page.superAlias.split('/');   
       parts = parts.filter((x) => x != '');
-      console.log("collectAllRoutes super alias", parts);
+      // console.log("collectAllRoutes super alias", parts);
       paths.push({
         params: {slug: parts },
       });
     }else {
       let parts = page.url.split('/');    
       parts = parts.filter((x) => x != '');
-      console.log("collectAllRoutes parts", parts);
-      paths.push({
-         params: {slug: parts },
-      });
+      // console.log("collectAllRoutes parts", parts);
+      if(parts.length > 0){
+        if(parts[0] !== 'global-settings'){   
+          paths.push({
+            params: {slug: parts },
+          });
+        }
+      }
     }
   });  
   

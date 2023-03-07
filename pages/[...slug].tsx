@@ -1,5 +1,4 @@
 import { DynamicPage as DynamicPageOnSite } from '@/sites/landify/pages/dynamicPage';
-import { SUPER_ALIAS } from '@/ui-base/lib/cms/constants';
 import { buildPageData, collectSitemapNavigationStructure, getPageTypeBySlug } from '@/ui-base/lib/services/graphqlDataService'
 import { collectDynamicPageData } from '@/ui-base/lib/services/pageDataProvider';
 import { collectAllRoutes } from '@/ui-base/lib/services/routeProviderService';

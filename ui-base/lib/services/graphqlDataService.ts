@@ -42,7 +42,7 @@ export async function fetchAPI(
   const json = await res.json()
 
   if (json.errors) {
-    console.error(json.errors)
+    console.error(json.errors,query)
     throw new Error("fetchAPI in graphqlDataService - Failed to fetch API")
   }
 

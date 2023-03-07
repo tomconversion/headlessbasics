@@ -19,7 +19,7 @@ interface Props {
 
 const Home = (props: Props) => {
   const heroData = props?.heroData?.length > 0 ? props.heroData[0] : false;
-  const ourClientsData: OurClientData = props?.clientsData[0];
+  const ourClientsData = props?.clientsData?.length > 0 ? props.clientsData[0] : false;
 
 
   return (

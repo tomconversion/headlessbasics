@@ -1,5 +1,6 @@
 import {
-  COMPONENT_DYNAMIC_CONTENT,
+  SUBCOMPONENT_CONTENT,
+  COMPONENT_GRID_CONTENT,
   DynamicCmsDataLocations,
   FixedLayouts,
   PageIdentifier,
@@ -23,6 +24,8 @@ import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService";
 
 export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVariant: PageVariant, slug: string) {
   
+  console.log(`${slug}  > collectAllPageData > pageIdentifier > ${JSON.stringify(pageIdentifier)} pageVariant ${pageVariant} `);
+
   // Global Data - Nav items are Global Data required by each page
   const navItems =
     (await getDyanmicCmsDataViaCmsSelector(
@@ -31,6 +34,8 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       undefined // Slug is undefined, as we are doing the lookup based on page type
     )) || [];
   
+    console.log(`${slug}  > collectAllPageData > navItems > ${navItems}`);
+
   // Individual Page Data
   const seoItems =
     (await getDyanmicCmsDataViaCmsSelector(
@@ -39,23 +44,27 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       undefined // Slug is undefined, as we are doing the lookup based on page type
     )) || [];
 
+    console.log(`${slug}  > collectAllPageData > seoItems > ${seoItems}`);
+
     // Individual Page Data
-    const breadcrumbItems =
-    (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.breadcrumb,
-      undefined, 
-      slug // Slug is undefined, as we are doing the lookup based on page type
-    )) || [];   
+    // const breadcrumbItems =
+    // (await getDyanmicCmsDataViaCmsSelector(
+    //   DynamicCmsDataLocations.variants.breadcrumb,
+    //   undefined, 
+    //   slug // Slug is undefined, as we are doing the lookup based on page type
+    // )) || [];   
 
   let pageComponentData:any = {};
 
   if(pageIdentifier.isFixedLayout){
-    pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier);
+    pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier, slug);
   } else{
-    pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier);
+    pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier, slug);
   }
 
-  return { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
+  console.log(`${slug} > collectAllPageData > completed lookup`);
+
+  return { navItems, seoItems, pageComponentData, pageVariant };
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {
@@ -74,9 +83,9 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 //   return pageComponentData;
 // }
 
-export async function collectFixedLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier) {
+export async function collectFixedLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier, slug) {
   const pageComponentData: Record<string, unknown> = {};
-  
+  console.log(`${slug}  > collectFixedLayoutPageComponentData`);
   // get the fixed layout for the current page variant
   const layout = FixedLayouts.layouts.find((layout) => layout.identifier === pageVariant);
   
@@ -96,18 +105,30 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
       undefined
     );
   }
-
+  console.log("collectFixedLayoutPageComponentData", pageVariant);
   return pageComponentData;
 }
 
-export async function collectDynamicLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier) {
+export async function collectDynamicLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier, slug) {
   const pageComponentData: Record<string, unknown> = {};
   
-  pageComponentData[COMPONENT_DYNAMIC_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants[COMPONENT_DYNAMIC_CONTENT],
-    pageIdentifier,
-    undefined
+  console.log(`${slug}  > collectDynamicLayoutPageComponentData`);
+
+  pageComponentData[SUBCOMPONENT_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants[SUBCOMPONENT_CONTENT],
+    undefined,
+    slug
   );
+
+  console.log(`${slug}  > collectDynamicLayoutPageComponentData > pageComponentData[SUBCOMPONENT_CONTENT] > ${JSON.stringify(pageComponentData[SUBCOMPONENT_CONTENT])}`);
+
+  pageComponentData[COMPONENT_GRID_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants[COMPONENT_GRID_CONTENT],
+    undefined,
+    slug
+  );
+
+  console.log(`${slug}  > collectDynamicLayoutPageComponentData >   pageComponentData[COMPONENT_GRID_CONTENT] > ${JSON.stringify(pageComponentData[COMPONENT_GRID_CONTENT])}`);
 
   return pageComponentData;
 }

@@ -155,7 +155,7 @@ const CmsVariants = {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "dynamic",
-          cmsType: "dynamicPage",
+          cmsType: "pageCollection",
           isFixedLayout: false
         },
         landing: {
@@ -230,14 +230,23 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapHeroData",
     },
-    dynamicContent: {
-      snippetLocation: "dynamicContent",
-      snippetFileName: "dynamicContent",
-      snippetExport: "dynamicContent",
+    subComponentContent: {
+      snippetLocation: "subComponentContent",
+      snippetFileName: "subComponentContent",
+      snippetExport: "subComponentContent",
       queryIsFunction: true,
       queryHasVariables: true,
       variableFunction: "variables",
-      dataFunctionMapperName: "mapDynamicContentData",
+      dataFunctionMapperName: "mapSubComponentContentData",
+    },
+    gridContent: {
+      snippetLocation: "gridContent",
+      snippetFileName: "gridContent",
+      snippetExport: "gridContent",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapGridContentData",
     },
     redirects: {
       snippetLocation: "redirects",
@@ -266,13 +275,14 @@ export interface DynamicDataCmsProperties {
 }
 
 export const COMPONENT_HERO: Component = "hero";
-export const COMPONENT_DYNAMIC_CONTENT: Component = "dynamicContent";
+export const SUBCOMPONENT_CONTENT: Component = "subComponentContent";
+export const COMPONENT_GRID_CONTENT: Component = "gridContent";
 
 export const FixedLayouts:Components = {
   layouts: [
     {
       identifier: "home",
-      components: [COMPONENT_HERO, 
+      components: [ 
       // "ThreeColumnCTA"
     ],      
     }, 
@@ -291,7 +301,8 @@ export interface Components {
 }
 
 export type Component =
-  | "dynamicContent"
+  | "subComponentContent"
+  | "gridContent"
   | "hero"
   // | "ThreeColumnCTA"
 

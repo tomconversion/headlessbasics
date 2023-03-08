@@ -4,6 +4,8 @@ export async function collectAllRoutes() {
       
   const data = await collectSitemapNavigationStructure();  
 
+  console.log("collectAllRoutes data", JSON.stringify(data));
+
   // Get the paths we want to pre-render based on posts
 
   let paths = [];
@@ -18,14 +20,20 @@ export async function collectAllRoutes() {
         params: {slug: parts },
       });
     }else {
-      let parts = page.url.split('/');    
-      parts = parts.filter((x) => x != '');
-      // console.log("collectAllRoutes parts", parts);
-      if(parts.length > 0){
-        if(parts[0] !== 'global-settings'){   
-          paths.push({
-            params: {slug: parts },
-          });
+
+      console.log("collectAllRoutes page", JSON.stringify(page));
+      console.log("collectAllRoutes page.url", JSON.stringify(page.url));
+
+      if(page.url){
+        let parts = page.url.split('/');    
+        parts = parts.filter((x) => x != '');
+        // console.log("collectAllRoutes parts", parts);
+        if(parts.length > 0){
+          if(parts[0] !== 'global-settings'){   
+            paths.push({
+              params: {slug: parts },
+            });
+          }
         }
       }
     }

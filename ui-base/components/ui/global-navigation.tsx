@@ -8,7 +8,7 @@ const GlobalTailwindNavigationMenu = ({ navItems, navClasses }) => {
     return (<></>);
   }
 
-  navItems = navItems.filter((x) => typeof(x.showInNavigation) !== 'undefined' && x.showInNavigation === true);
+  navItems = navItems.filter((x) => typeof(x.url) !== 'undefined' && typeof(x.showInNavigation) !== 'undefined' && x.showInNavigation === true);
 
   const [isOpen, setOpen] = useState(false);
 
@@ -28,7 +28,7 @@ const GlobalTailwindNavigationMenu = ({ navItems, navClasses }) => {
           }`}
       >
         <div className="text-sm lg:flex-grow">
-
+          
           {navItems.map((item: any) => {
             return (
               <Link key={item.id} href={item.url} className="home-text transition duration-300 mr-8 block mt-4 lg:inline-block lg:mt-0">

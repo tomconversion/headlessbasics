@@ -30,5 +30,6 @@ export function mapNavigationData(data) {
     x.name = x.navigationTitle;
     x.id = x.sys.id;
   });
+  navItems = navItems.filter((x) => typeof(x.url) !== 'undefined' && x.url !== null && x.url !== '');
   return navItems;
 }

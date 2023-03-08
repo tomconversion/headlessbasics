@@ -172,16 +172,7 @@ function getQuery(){
                     __typename
                     ... on Page{
                         slug
-                        parent{
-                            ... on Page{
-                                slug  
-                                parent{
-                                    ... on Page{
-                                        slug                               
-                                    }
-                                }                             
-                            }
-                        }                                  
+                        urlPath                                  
                     }
                 }
             }
@@ -219,23 +210,8 @@ function collectContentfulRedirectMap(redirects) {
   const redirectMap = [];
   redirects.redirectCollection.items.forEach((redirect) => {
     if (redirect?.source && redirect?.destination?.slug) {
-      let destination = redirect?.destination?.slug;
+      let destination = redirect?.destination?.urlPath;
       
-      // check if destination slug starts with '/'
-      if (destination.charAt(0) !== '/') {
-        let parentSlug = redirect?.destination?.parent;
-        let currentParent = redirect?.destination?.parent;
-
-        // add the final parent slug to the front of destination slug
-        destination = `${parentSlug.slug}/${destination}`;
-
-        // loop through parent levels until we find one that starts with '/'
-        while (currentParent?.parent && currentParent?.parent?.slug.charAt(0) !== '/') {
-          currentParent = currentParent?.parent;
-          destination = `${currentParent.slug}/${destination}`;   
-        }
-      }
-
       console.log("next.config.mjs redirecting > ", redirect.source, " to > ", destination, " isPermanent > ", redirect.isPermanent);
       redirectMap.push({
         source: redirect.source,

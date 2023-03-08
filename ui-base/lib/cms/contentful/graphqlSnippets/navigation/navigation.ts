@@ -4,15 +4,18 @@ export const navigation = `
 	{
     items
       {
-    navigationTitle
-    slug
-    showInNavigation
-    isHomepage
-    sys{
-        id
+        navigationTitle
+        ... on Page{
+          slug
+          urlPath                               
+        }
+        showInNavigation
+        isHomepage
+        sys{
+            id
+                }
             }
         }
-    }
 }
 `;
 
@@ -23,7 +26,7 @@ export function GetNavQuery() {
 export function mapNavigationData(data) {
   let navItems = data.pageCollection.items;
   navItems.map((x) => {
-    x.url = x.slug;
+    x.url = x.urlPath;
     x.name = x.navigationTitle;
     x.id = x.sys.id;
   });

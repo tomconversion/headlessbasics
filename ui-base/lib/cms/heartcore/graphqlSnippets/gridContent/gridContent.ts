@@ -1,7 +1,13 @@
+
+// DynamicContent:  In Umbraco this is essentially the Umbraco Grid.
+// It allows user to create a page with a grid of components.
+// The can pick the columns and rows and then add components to the grid.
+
+
 import { CmsVariants, PageIdentifier } from "../../../constants"
 
-export function dynamicContent() {
-  return `query DynamicContentBySlug($slug: String!) {
+export function gridContent() {
+  return `query GridContentBySlug($slug: String!) {
     dynamicPage(url: $slug) {
       slug:url
       name
@@ -18,11 +24,11 @@ export function variables(pageIdentifier: PageIdentifier) {
   return result;
 }
 
-export default function GetDynamicContentQuery() {
-  return dynamicContent
+export default function GetGridContentQuery() {
+  return gridContent
 }
 
-export function mapDynamicContentData(data: any, pageIdentifier:PageIdentifier) {
+export function mapGridContentData(data: any, pageIdentifier:PageIdentifier) {
   let dynamicContent = {};
   if (data?.dynamicPage?.contentBody) {
     dynamicContent = data?.dynamicPage?.contentBody;

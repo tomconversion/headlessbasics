@@ -12,8 +12,9 @@ export async function collectDynamicPageData(params, slugCleanedUp) {
     if(typeof(match) !== 'undefined'){ // We have a super alias match
       selectedSlug = match.url;
     }
-  
+    
     const pageType = await getPageTypeBySlug(selectedSlug);
+    console.log("collectDynamicPageData > pageType > ", pageType);
     const pageData = await buildPageData(pageType, {slug: selectedSlug}); 
 
     return { pageData, selectedSlug};

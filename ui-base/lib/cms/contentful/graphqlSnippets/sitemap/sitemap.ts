@@ -1,6 +1,4 @@
 import { PageIdentifier } from "../../../constants";
-import { urlBuilder } from "../../tools/urlTools";
-
 const sitemap = `
 {
   pageCollection{
@@ -12,23 +10,9 @@ const sitemap = `
               publishedAt
           }
           ... on Page{
-                  slug
-                  parent{
-                      ... on Page{
-                          slug  
-                          parent{
-                              ... on Page{
-                                  slug   
-                                  parent{
-                                      ... on Page{
-                                          slug                               
-                                      }
-                                  }                             
-                              }
-                          }                             
-                      }
-                  }                                  
-              }
+            slug
+            urlPath                               
+          }
       }
   }
 }  
@@ -43,7 +27,8 @@ export default function GetSitemapQuery() {
 export function mapSitemapData(data : any, pageIdentifier:PageIdentifier) {
   let nodes = data.pageCollection.items;  
   nodes.map((x) => {
-    x.url = urlBuilder(x);
+    x.url = x.urlPath;
+    x.slug = x.urlPath;
     x.updateDate = x.sys.publishedAt;
   });
   nodes = nodes.filter((x) => (!(x.seoTitle.indexOf("_") > -1)));

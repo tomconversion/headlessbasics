@@ -1,5 +1,5 @@
 import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
-import { reverseArray } from "@/ui-base/lib/util/utils";
+import { mapBreadcrumbStructure } from "../../../contentful/tools/urlTools";
 
 export function breadcrumb()
 {
@@ -79,40 +79,43 @@ export default function GetBreadcrumbQuery() {
 
 export function mapBreadcrumbData(data, pageIdentifier:PageIdentifier) {
     
-  let nodes = [];
+  return mapBreadcrumbStructure(data.content);
 
-  function addNode(content) {
-    nodes.push(cleanupSingleLevel(content));
-    if (content.parent) {
-      addNode(content.parent);
-    }
-  }
 
-  addNode(data.content);
+  // let nodes = [];
 
-  const breadcrumb = {
-    heading: "Breadcrumb : Default",
-    links: []
-  };
+  // function addNode(content) {
+  //   nodes.push(cleanupSingleLevel(content));
+  //   if (content.parent) {
+  //     addNode(content.parent);
+  //   }
+  // }
+
+  // addNode(data.content);
+
+  // const breadcrumb = {
+  //   heading: "Breadcrumb : Default",
+  //   links: []
+  // };
   
-  for(var i=nodes.length-1; i>-1; i--){
-    let current = nodes[i];
-    let link = current.slug.replace('/homepage', '');
-    if(current.superAlias){
-      link = current.superAlias;
-    }
-    breadcrumb.links.push({
-      href: link,
-      text: current.name
-    });
-  }
+  // for(var i=nodes.length-1; i>-1; i--){
+  //   let current = nodes[i];
+  //   let link = current.slug.replace('/homepage', '');
+  //   if(current.superAlias){
+  //     link = current.superAlias;
+  //   }
+  //   breadcrumb.links.push({
+  //     href: link,
+  //     text: current.name
+  //   });
+  // }
 
-  return breadcrumb;
+  // return breadcrumb;
 }
 
-export function cleanupSingleLevel(data) {
-  data.name = data.name.replace('/', '');
-  data.slug = data.url;
-  data.url = data.url.replace('/homepage', '');  
-  return data;
-}
+// export function cleanupSingleLevel(data) {
+//   data.name = data.name.replace('/', '');
+//   data.slug = data.url;
+//   data.url = data.url.replace('/homepage', '');  
+//   return data;
+// }

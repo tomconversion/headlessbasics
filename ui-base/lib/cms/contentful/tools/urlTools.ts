@@ -30,3 +30,58 @@ export function urlBuilder(topMostHolder:any){
   // }
   return "/na";
 }
+
+
+export function mapBreadcrumbStructure(data) {
+    
+  let nodes = [];
+
+  addNode(data);
+
+  const breadcrumb = {
+    heading: "Breadcrumb : Default",
+    links: []
+  };
+
+  
+  function addNode(content) {
+    nodes.push(cleanupSingleLevel(content));
+    if (content.parent) {
+      addNode(content.parent);
+    }
+  }
+    
+  for(var i=nodes.length-1; i>-1; i--){
+    let current = nodes[i];
+    let link = current.slug.replace('/homepage', '');
+    if(current.urlPath)
+      link = current.urlPath;  
+    if(current.superAlias){
+      link = current.superAlias;
+    }
+    breadcrumb.links.push({
+      href: link,
+      text: current.name
+    });
+  }
+
+  return breadcrumb;
+}
+
+export function cleanupSingleLevel(data) {  
+  
+  if(data.name){
+    data.name = data.name.replace('/', '');
+  }else if(data.navigationTitle){
+    data.name = data.navigationTitle;
+  }
+
+  if(data.urlPath){
+    data.slug = data.urlPath;
+  }else if(data.url){
+    data.slug = data.url;
+    data.url = data.url.replace('/homepage', '');  
+  }
+
+  return data;
+}

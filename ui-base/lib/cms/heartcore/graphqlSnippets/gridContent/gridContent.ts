@@ -17,8 +17,9 @@ export function gridContent() {
   }`
 }
 
-export function variables(pageIdentifier: PageIdentifier) {
-  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
+export function variables(slug: string) {
+  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + slug;
+  console.log("Umbraco gridContent query variables", umbracoSlug);
   umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
   const result = {'slug': umbracoSlug};
   return result;
@@ -29,6 +30,7 @@ export default function GetGridContentQuery() {
 }
 
 export function mapGridContentData(data: any, pageIdentifier:PageIdentifier) {
+  console.log("Umbraco mapGridContentData", data);
   let dynamicContent = {};
   if (data?.dynamicPage?.contentBody) {
     dynamicContent = data?.dynamicPage?.contentBody;

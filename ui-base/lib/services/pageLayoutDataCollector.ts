@@ -46,13 +46,14 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 
     console.log(`${slug}  > collectAllPageData > seoItems > ${seoItems}`);
 
-    // Individual Page Data
-    // const breadcrumbItems =
-    // (await getDyanmicCmsDataViaCmsSelector(
-    //   DynamicCmsDataLocations.variants.breadcrumb,
-    //   undefined, 
-    //   slug // Slug is undefined, as we are doing the lookup based on page type
-    // )) || [];   
+    const breadcrumbItems =
+    (await getDyanmicCmsDataViaCmsSelector(
+      DynamicCmsDataLocations.variants.breadcrumb,
+      undefined, 
+      slug // Slug is undefined, as we are doing the lookup based on page type
+    )) || [];   
+
+    console.log(`${slug}  > collectAllPageData > breadcrumbItems > ${JSON.stringify(breadcrumbItems)}`);
 
   let pageComponentData:any = {};
 
@@ -64,7 +65,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 
   console.log(`${slug} > collectAllPageData > completed lookup`);
 
-  return { navItems, seoItems, pageComponentData, pageVariant };
+  return { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {

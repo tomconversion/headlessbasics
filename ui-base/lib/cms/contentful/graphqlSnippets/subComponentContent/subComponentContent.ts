@@ -20,7 +20,6 @@ export function subComponentContent() {
 
 export function variables(urlPath:string)
 {
-  console.log("variables", `/${urlPath}`);
   const result = {'urlPath': `/${urlPath}`};
   return result;
 };

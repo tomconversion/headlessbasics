@@ -4,7 +4,7 @@ import { collectSitemapNavigationStructure } from "@/ui-base/lib/services/graphq
 
 function generateSiteMap(data) {
 
-    data = data.filter((x) =>typeof(x.showInSitemap) !== 'undefined' && x.showInSitemap === true);
+    data = data.filter((x) => typeof(x.showInSitemap) !== 'undefined' && x.showInSitemap === true && typeof(x.url) !== 'undefined' && x.url != null);
 
     return `<?xml version="1.0" encoding="UTF-8"?>
      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

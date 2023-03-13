@@ -37,7 +37,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
   slug?: string
 ) {
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
-  const queryHasVariables = lookupDetails.queryHasVariables;
+  const queryHasVariables = lookupDetails.queryHasVariables
   const queryExport = lookupDetails.snippetExport
   const snippitLocation = lookupDetails.snippetLocation
   const snippetFileName = lookupDetails.snippetFileName
@@ -53,9 +53,9 @@ export async function getDyanmicCmsDataViaCmsSelector(
         queryExport
       ]
 
-    if (queryHasVariables && typeof pageIdentifier !== 'undefined') {
+    if (queryHasVariables && typeof pageIdentifier !== "undefined") {
       queryResult = query(pageIdentifier)
-    } else if (queryHasVariables && typeof slug !== 'undefined') {
+    } else if (queryHasVariables && typeof slug !== "undefined") {
       queryResult = query(slug)
     } else {
       queryResult = query
@@ -72,21 +72,21 @@ export async function getDyanmicCmsDataViaCmsSelector(
         lookupDetails.variableFunction
       ]
 
-      // console.log("inside variable sender pageIdentifier", pageIdentifier);
+    // console.log("inside variable sender pageIdentifier", pageIdentifier);
 
-    if(typeof pageIdentifier !== 'undefined'){
+    if (typeof pageIdentifier !== "undefined") {
       variables = { variables: variableFunc(pageIdentifier), preview: false }
-    } else if(typeof slug !== 'undefined'){
+    } else if (typeof slug !== "undefined") {
       variables = { variables: variableFunc(slug), preview: false }
     }
-    
+
     // console.log("variables --", variables)
   }
 
   // Process the query call
   const data = await fetchAPIGatewayWrapper(queryResult, variables)
 
-  // console.log("data -- ", data)
+  // console.log("data ---> ", JSON.stringify(data, null, 2))
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper =
@@ -99,7 +99,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
   return await result
 }
 
-export async function getPageTypeBySlug(slug: string){
+export async function getPageTypeBySlug(slug: string) {
   const pageType =
   (await getDyanmicCmsDataViaCmsSelector(
     DynamicCmsDataLocations.variants.model,

@@ -6,7 +6,7 @@ import {
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
-import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService";
+import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService"
 
 /*
     The purpose of this function is to gather the required data from the GraphQL layer for a particular page.
@@ -40,7 +40,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
   const seoItems =
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.seo,
-      pageIdentifier, 
+      pageIdentifier,
       undefined // Slug is undefined, as we are doing the lookup based on page type
     )) || [];
 
@@ -69,7 +69,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {
-  
+
 //   const pageComponentData:any = {};
 
 //   pageComponentData.heroItems = {};
@@ -79,7 +79,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 //       pageIdentifier,
 //       undefined // Slug is undefined, as we are doing the lookup based on page type
 //     )) || [];
-//   }    
+//   }
 
 //   return pageComponentData;
 // }
@@ -88,14 +88,18 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
   const pageComponentData: Record<string, unknown> = {};
   console.log(`${slug}  > collectFixedLayoutPageComponentData`);
   // get the fixed layout for the current page variant
-  const layout = FixedLayouts.layouts.find((layout) => layout.identifier === pageVariant);
-  
+  const layout = FixedLayouts.layouts.find(
+    (layout) => layout.identifier === pageVariant
+  )
+
   // if no matching layout found, return empty pageComponentData
   if (!layout) {
-    console.log("collectFixedLayoutPageComponentData no matching layout", pageVariant);
-    return pageComponentData;
+    console.log(
+      "collectFixedLayoutPageComponentData no matching layout",
+      pageVariant
+    )
+    return pageComponentData
   }
-    
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
     const lowerCaseMatchName = component.toLowerCase();
@@ -133,4 +137,3 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
 
   return pageComponentData;
 }
-

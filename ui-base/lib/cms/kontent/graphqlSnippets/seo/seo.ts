@@ -1,7 +1,6 @@
-import { PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { PageIdentifier } from "@/ui-base/lib/cms/constants"
 
-export function seo(pageIdentifier:PageIdentifier)
-{
+export function seo(pageIdentifier: PageIdentifier) {
   return `
   query GetSeo($urlPath: String!) {
       navigationItem_All(where: { _seo : { urlPath : {eq : $urlPath }} }, limit: 1){
@@ -31,7 +30,7 @@ export function variables(pageIdentifier:PageIdentifier)
 };
 
 export default function GetSeoQuery() {
-  return seo;
+  return seo
 }
 
 export function mapSeoData(data) {

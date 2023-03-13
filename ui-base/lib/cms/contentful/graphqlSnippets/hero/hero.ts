@@ -1,6 +1,5 @@
 import { PageIdentifier } from "../../../constants"
 
-
 export interface HeroData {
   name: string
   imageUrl: string
@@ -22,7 +21,7 @@ export function hero(pageIdentifier: PageIdentifier) {
         componentsCollection {
           items {
             ... on HeroComponent {
-              slug
+              __typename
               heroImage {
                 url
                 title
@@ -44,7 +43,9 @@ export function hero(pageIdentifier: PageIdentifier) {
 }
 
 export function variables(pageIdentifier: PageIdentifier) {
-  const result = { slug: pageIdentifier.backEndSlug }
+  // const result = { slug: pageIdentifier.backEndSlug }
+  const result = { slug: "/" }
+  // console.log("HERO VARIABLE --", result)
   return result
 }
 
@@ -56,7 +57,7 @@ export function mapHeroData(data: any): HeroData[] {
   return (
     data?.pageCollection?.items?.map((page: any) => {
       const heroComponent = page?.componentsCollection?.items?.find(
-        (item: any) => item.slug === "/"
+        (item: any) => item.__typename === "HeroComponent"
       )
       return {
         name: "Hero Section",

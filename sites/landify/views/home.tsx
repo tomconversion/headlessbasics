@@ -4,6 +4,7 @@ import Link from "next/link"
 import { buttonVariants } from "@/ui-base/components/ui/button"
 import Hero from "@/ui-base/components/ui/hero/Hero"
 import { HeroData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/hero/hero"
+import { OurClientData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/ourclient/ourclient"
 import FeatureCard from "../components/feature-card"
 import LinkIconButton from "../components/link-icon-button"
 import StatsCard from "../components/stats-card"
@@ -13,14 +14,17 @@ import TestimonialsCard from "../components/testimonials-card"
 interface Props {
   className?: string
   heroData?: HeroData[]
+  clientsData?: OurClientData[]
 }
 
 const Home = (props: Props) => {
   const heroData = props?.heroData?.length > 0 ? props.heroData[0] : false;
+  const ourClientsData = props?.clientsData?.length > 0 ? props.clientsData[0] : false;
+
 
   return (
     <div className={props.className}>
-      {heroData && (
+      {heroData ? (
         <Hero className="relative">
           <Hero.Overlay className="h-[70vh] bg-gray-100 blur-[60px]" />
           <Hero.Content className="z-50 flex w-full max-w-screen-lg shrink-0 grow-0 basis-auto flex-col justify-between p-8 lg:h-[80vh] lg:flex-row">
@@ -82,51 +86,28 @@ const Home = (props: Props) => {
             className="absolute left-auto right-0 bottom-auto top-[441px] w-[612px] object-cover"
           />
         </Hero>
-      )}
-      <div className="home-clients">
-        <div className="home-divider"></div>
-        <Image
-          alt="image"
-          loading="lazy"
-          src="/landify/static/playground_assets/logo-1.svg"
-          width={100}
-          height={28}
-          className="home-image03"
-        />
-        <Image
-          alt="image"
-          loading="lazy"
-          src="/landify/static/playground_assets/logo-4.svg"
-          width={100}
-          height={28}
-          className="home-image04"
-        />
-        <Image
-          alt="image"
-          loading="lazy"
-          src="/landify/static/playground_assets/logo-3.svg"
-          width={100}
-          height={28}
-          className="home-image05"
-        />
-        <Image
-          alt="image"
-          loading="lazy"
-          src="/landify/static/playground_assets/logo-5.svg"
-          width={100}
-          height={28}
-          className="home-image06"
-        />
-        <Image
-          alt="image"
-          loading="lazy"
-          src="/landify/static/playground_assets/logo-6.svg"
-          width={100}
-          height={28}
-          className="home-image07"
-        />
-        <div className="home-divider1"></div>
-      </div>
+      ) : null}
+      {
+        ourClientsData ? (
+          <div className="relative flex w-full max-w-[1110px] flex-wrap items-center justify-center p-8 md:justify-between">
+            <div className="absolute top-0 h-[1px] w-full bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100"></div>
+            {
+              ourClientsData?.clients?.map((client, index) => (
+                <Image
+                  key={index}
+                  alt={client.name}
+                  loading="lazy"
+                  src={client.logoUrl}
+                  width={100}
+                  height={28}
+                  className="m-4 w-[100px] object-cover md:m-0"
+                />
+              ))
+            }
+            <div className="absolute bottom-0 top-auto h-[1px] w-full bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100"></div>
+          </div>
+        ) : null
+      }
       <div className="home-features">
         <h2 className="Headline2 home-text16">Tailor-made features</h2>
         <span className="home-text17">
@@ -168,7 +149,7 @@ const Home = (props: Props) => {
               src="/landify/static/playground_assets/quote-mark.svg"
               width={15}
               height={13}
-              className="home-image08"
+              className="m-4 w-[100px] object-cover md:m-0"
             />
             <h1 className="home-text19 Headline2">
               Real Stories from Real Customers
@@ -251,7 +232,7 @@ const Home = (props: Props) => {
             width={320}
             height={589}
             // image_src="/landify/static/playground_assets/iphonex-1200w.png"
-            className="home-image09"
+            className="m-4 w-[100px] object-cover md:m-0"
           />
         </div>
         <div className="home-container19">

@@ -17,14 +17,14 @@ export const navigation = `
             }
         }
 }
-`;
+`
 
 export function GetNavQuery() {
-  return navigation;
+  return navigation
 }
 
 export function mapNavigationData(data) {
-  let navItems = data.pageCollection.items;
+  let navItems = data.pageCollection.items
   navItems.map((x) => {
     x.url = x.urlPath;
     x.name = x.navigationTitle;

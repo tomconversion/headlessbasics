@@ -1,4 +1,3 @@
-import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
 import {
   COMPONENT_DYNAMIC_CONTENT,
   DynamicCmsDataLocations,
@@ -6,7 +5,7 @@ import {
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
-import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService";
+import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService"
 
 /*
     The purpose of this function is to gather the required data from the GraphQL layer for a particular page.
@@ -22,37 +21,45 @@ import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService";
      2) Global Data          - This is commmon to all pages. Includes Naviation, Footer
 */
 
-export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {
-  
+export async function collectAllPageData(
+  pageIdentifier: PageIdentifier,
+  pageVariant: PageVariant
+) {
   // Global Data - Nav items are Global Data required by each page
   const navItems =
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.navigation,
       pageIdentifier,
       undefined // Slug is undefined, as we are doing the lookup based on page type
-    )) || [];
-  
+    )) || []
+
   // Individual Page Data
   const seoItems =
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.seo,
-      pageIdentifier, 
+      pageIdentifier,
       undefined // Slug is undefined, as we are doing the lookup based on page type
-    )) || [];
+    )) || []
 
-  let pageComponentData:any = {};
+  let pageComponentData: any = {}
 
-  if(pageIdentifier.isFixedLayout){
-    pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier);
-  } else{
-    pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier);
+  if (pageIdentifier.isFixedLayout) {
+    pageComponentData = await collectFixedLayoutPageComponentData(
+      pageVariant,
+      pageIdentifier
+    )
+  } else {
+    pageComponentData = await collectDynamicLayoutPageComponentData(
+      pageVariant,
+      pageIdentifier
+    )
   }
 
-  return { navItems, seoItems, pageComponentData, pageVariant };
+  return { navItems, seoItems, pageComponentData, pageVariant }
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {
-  
+
 //   const pageComponentData:any = {};
 
 //   pageComponentData.heroItems = {};
@@ -62,50 +69,70 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 //       pageIdentifier,
 //       undefined // Slug is undefined, as we are doing the lookup based on page type
 //     )) || [];
-//   }    
+//   }
 
 //   return pageComponentData;
 // }
 
-export async function collectFixedLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier) {
-  const pageComponentData: Record<string, unknown> = {};
-  
+export async function collectFixedLayoutPageComponentData(
+  pageVariant: PageVariant,
+  pageIdentifier: PageIdentifier
+) {
+  const pageComponentData: Record<string, unknown> = {}
+
   // get the fixed layout for the current page variant
-  const layout = FixedLayouts.layouts.find((layout) => layout.identifier === pageVariant);
-  
+  const layout = FixedLayouts.layouts.find(
+    (layout) => layout.identifier === pageVariant
+  )
+
   // if no matching layout found, return empty pageComponentData
   if (!layout) {
-    console.log("collectFixedLayoutPageComponentData no matching layout", pageVariant);
-    return pageComponentData;
+    console.log(
+      "collectFixedLayoutPageComponentData no matching layout",
+      pageVariant
+    )
+    return pageComponentData
   }
-    
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
-    const lowerCaseMatchName = component.toLowerCase();
-    console.log("collectFixedLayoutPageComponentData > component", lowerCaseMatchName);
-    pageComponentData[lowerCaseMatchName] = await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants[lowerCaseMatchName],
-      pageIdentifier,
-      undefined
-    );
+    const lowerCaseMatchName = component.toLowerCase()
+    console.log(
+      "collectFixedLayoutPageComponentData > component",
+      lowerCaseMatchName
+    )
+    pageComponentData[lowerCaseMatchName] =
+      await getDyanmicCmsDataViaCmsSelector(
+        DynamicCmsDataLocations.variants[lowerCaseMatchName],
+        pageIdentifier,
+        undefined
+      )
   }
 
-  console.log("collectFixedLayoutPageComponentData pageComponentData", pageComponentData);
-  
-  return pageComponentData;
+  console.log(
+    "collectFixedLayoutPageComponentData pageComponentData",
+    JSON.stringify(pageComponentData, null, 2)
+  )
+
+  return pageComponentData
 }
 
-export async function collectDynamicLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier) {
-  const pageComponentData: Record<string, unknown> = {};
-  
-  pageComponentData[COMPONENT_DYNAMIC_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants[COMPONENT_DYNAMIC_CONTENT],
-    pageIdentifier,
-    undefined
-  );
+export async function collectDynamicLayoutPageComponentData(
+  pageVariant: PageVariant,
+  pageIdentifier: PageIdentifier
+) {
+  const pageComponentData: Record<string, unknown> = {}
 
-  console.log("collectDynamicLayoutPageComponentData pageComponentData", pageComponentData);
-  
-  return pageComponentData;
+  pageComponentData[COMPONENT_DYNAMIC_CONTENT] =
+    await getDyanmicCmsDataViaCmsSelector(
+      DynamicCmsDataLocations.variants[COMPONENT_DYNAMIC_CONTENT],
+      pageIdentifier,
+      undefined
+    )
+
+  console.log(
+    "collectDynamicLayoutPageComponentData pageComponentData",
+    pageComponentData
+  )
+
+  return pageComponentData
 }
-

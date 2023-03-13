@@ -22,6 +22,7 @@ export function hero() {
            totalCount
            items{
                ... on HeroSection {
+                __typename
                 title
                 content
                 image{
@@ -49,7 +50,8 @@ export function hero() {
 }
 
 export function variables(pageIdentifier: PageIdentifier) {
-  const result = { slug: pageIdentifier.backEndSlug }
+  // const result = { slug: pageIdentifier.backEndSlug }
+  const result = { slug: "homepage" }
   // console.log("HERO VARIABLE --", result)
   return result
 }
@@ -59,26 +61,28 @@ export default function GetHeroQuery() {
 }
 
 export function mapHeroData(data: any): HeroData[] {
-  const items = data.homepage.bodyItems.items
+  const items = data?.homepage?.bodyItems?.items
   const heroData: HeroData[] = []
 
-  items.forEach((item: any) => {
-    const heroItem: HeroData = {
-      name: item.title,
-      imageUrl: item.image.items[0].url,
-      description: item.content,
-      buttonLink:
-        item.actions.items.length > 0
-          ? {
-              name: item.actions.items[0].label,
-              target: null,
-              type: "",
-              udi: "",
-              url: `/${item.actions.items[0].navigationItem.slug}`,
-            }
-          : null,
+  items?.forEach((item: any) => {
+    if (item.__typename === "HeroSection") {
+      const heroItem: HeroData = {
+        name: item.title,
+        imageUrl: item.image.items[0].url,
+        description: item.content,
+        buttonLink:
+          item.actions.items.length > 0
+            ? {
+                name: item.actions.items[0].label,
+                target: null,
+                type: "",
+                udi: "",
+                url: `/${item.actions.items[0].navigationItem.slug}`,
+              }
+            : null,
+      }
+      heroData.push(heroItem)
     }
-    heroData.push(heroItem)
   })
 
   return heroData

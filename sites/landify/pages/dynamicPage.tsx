@@ -6,17 +6,17 @@ import { Layout } from "../../../ui-base/components/layout"
 import { siteConfig } from "../config/site"
 
 
-export function DynamicPage({data}) {
+export function DynamicPage({ data }) {
 
   let dynamicPageContent = (<></>);
   let dynamicCmsData = {};
-  if(data?.data?.pageComponentData && data?.data?.pageComponentData.hasOwnProperty(COMPONENT_DYNAMIC_CONTENT) && data?.data?.pageComponentData[COMPONENT_DYNAMIC_CONTENT]){
+  if (data?.data?.pageComponentData && data?.data?.pageComponentData.hasOwnProperty(COMPONENT_DYNAMIC_CONTENT) && data?.data?.pageComponentData[COMPONENT_DYNAMIC_CONTENT]) {
     dynamicCmsData = data?.data?.pageComponentData[COMPONENT_DYNAMIC_CONTENT];
     dynamicPageContent = (<>{renderDynamicContent(data?.data?.pageVariant, dynamicCmsData)}</>);
   }
 
   return (
-    <Layout className={"w-full flex flex-col items-center"} data={data} siteConfig={siteConfig}>
+    <Layout className={"flex w-full flex-col items-center"} data={data} siteConfig={siteConfig}>
       <Head>
         <title>{`${siteConfig.name} | ${data?.seoItems?.seoTitle}`}</title>
         <meta
@@ -26,9 +26,9 @@ export function DynamicPage({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container mx-auto">     
+      <div className="container mx-auto">
         <h1 id="oneTwo">Page Template: {data?.data?.pageVariant}</h1>
-        {/* {JSON.stringify(dynamicCmsData)} */}       
+        {/* {JSON.stringify(dynamicCmsData)} */}
         {dynamicPageContent}
       </div>
     </Layout>

@@ -1,7 +1,6 @@
-import { PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { PageIdentifier } from "@/ui-base/lib/cms/constants"
 
-export function seo(pageIdentifier:PageIdentifier)
-{
+export function seo(pageIdentifier: PageIdentifier) {
   return `
   query GetPageBySlug($slug: String!) {
     homepage(codename: $slug) {
@@ -13,21 +12,23 @@ export function seo(pageIdentifier:PageIdentifier)
     }
   } 
   `
-};
+}
 
-export function variables(pageIdentifier:PageIdentifier)
-{
-  const result = {'slug': pageIdentifier.backEndSlug};
-  return result;
-};
+export function variables(pageIdentifier: PageIdentifier) {
+  // const result = {'slug': pageIdentifier.backEndSlug};
+  const result = { slug: "homepage" }
+  // console.log("SEO VARIABLE --", result);
+  
+  return result
+}
 
 export default function GetSeoQuery() {
-  return seo;
+  return seo
 }
 
 export function mapSeoData(data) {
-  const result = data.homepage;
-  let seoTitle = result._seo.title;
-  let seoDescription = result._seo.description;
-  return {seoTitle: seoTitle, seoDescription: seoDescription};
+  const result = data.homepage
+  let seoTitle = result?._seo.title
+  let seoDescription = result?._seo.description
+  return { seoTitle: seoTitle, seoDescription: seoDescription }
 }

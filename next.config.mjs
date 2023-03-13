@@ -35,7 +35,7 @@ async function collectRedirectMap(){
   if(cmsVariant === 'contentful') {
     redirectMap = collectContentfulRedirectMap(redirects);
   }else if(cmsVariant === 'kontent') {
-
+    redirectMap = collectKontentRedirectMap(redirects);
   }else if(cmsVariant === 'heartcore') {
     redirectMap = collectUmbracoRedirectMap(redirects);
   }
@@ -136,30 +136,33 @@ function getQuery(){
   if(cmsVariant === 'kontent') {
     query = `
     {
-      allRedirect{
-          edges{
-              node{
-                  source
-                  destination {
-                      url
-                      level
-                      name
-                      ... on Homepage {
-                        superAlias
+      redirect_All{
+          items{
+              destination {
+                  items{
+                      __typename
+                      ... on NavigationItem{
+                          _seo{
+                                urlPath
+                            }
                       }
-                      ... on DynamicPage {
-                        superAlias
-                      }
-                      ... on Landing {
-                        superAlias
+                      _system_{
+                          id
                       }
                   }
-                  name
-                  isPermanent
+              }
+              source
+              settings{
+                  items{
+                      _system_{
+                          codename
+                          name
+                      }
+                  }
               }
           }
-      }    
-    } 
+      }
+    }
     `;
   } else if(cmsVariant === 'contentful') {
     query = `
@@ -217,6 +220,25 @@ function collectContentfulRedirectMap(redirects) {
         source: redirect.source,
         destination: destination,
         permanent: redirect.isPermanent,
+      });
+    }
+  });
+  return redirectMap;
+}
+
+function collectKontentRedirectMap(redirects) {
+  const redirectMap = [];
+  redirects.redirect_All.items.forEach((redirect) => {
+    if (redirect?.source && redirect?.destination?.items?.length > 0) {
+      let destination = redirect?.destination?.items[0]._seo.urlPath;
+      
+      const isPermanent = redirect?.settings?.items?.find(x => x._system_.codename === "is_permanent") !== undefined;
+
+      console.log("next.config.mjs redirecting > ", redirect.source, " to > ", destination, " isPermanent > ", isPermanent);
+      redirectMap.push({
+        source: redirect.source,
+        destination: destination,
+        permanent: isPermanent,
       });
     }
   });

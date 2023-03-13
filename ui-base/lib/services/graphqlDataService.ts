@@ -9,7 +9,7 @@ import {
 } from "../cms/constants"
 import { collectAllPageData } from "./pageLayoutDataCollector"
 
-export async function buildPageData(pageVariant: PageVariant, params?: any) {
+export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, params?: any) {
 
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
   const cmsVariantSelected = CmsVariants.variants[cmsVariant];
@@ -21,7 +21,8 @@ export async function buildPageData(pageVariant: PageVariant, params?: any) {
   ] as PageIdentifier
   console.log( "buildPageData > pageIdentifier > ", pageIdentifier);
 
-  if(typeof params !== "undefined" && typeof params.slug !== "undefined") {
+  // We set the back end slug here for all dynamic pages.
+  if(isDynamic && typeof params !== "undefined" && typeof params.slug !== "undefined") {
     pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 

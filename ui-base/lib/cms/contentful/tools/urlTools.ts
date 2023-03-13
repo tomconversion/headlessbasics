@@ -74,6 +74,8 @@ export function cleanupSingleLevel(data) {
     data.name = data.name.replace('/', '');
   }else if(data.navigationTitle){
     data.name = data.navigationTitle;
+  }else if(data.labal){
+    data.name = data.labal;
   }
 
   if(data.urlPath){
@@ -81,6 +83,9 @@ export function cleanupSingleLevel(data) {
   }else if(data.url){
     data.slug = data.url;
     data.url = data.url.replace('/homepage', '');  
+  }else if(data._seo?.urlPath){
+    data.slug = data._seo.urlPath;
+    data.url = data._seo.urlPath;  
   }
 
   return data;

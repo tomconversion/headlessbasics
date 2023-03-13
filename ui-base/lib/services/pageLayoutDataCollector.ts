@@ -50,22 +50,22 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.breadcrumb,
       undefined, 
-      slug // Slug is undefined, as we are doing the lookup based on page type
+      slug
     )) || [];   
 
     console.log(`${slug}  > collectAllPageData > breadcrumbItems > ${JSON.stringify(breadcrumbItems)}`);
 
-  let pageComponentData:any = {};
+    let pageComponentData:any = {};
 
-  if(pageIdentifier.isFixedLayout){
-    pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier, slug);
-  } else{
-    pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier, slug);
-  }
+    if(pageIdentifier.isFixedLayout){
+      pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier, slug);
+    } else{
+      pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier, slug);
+    }
 
-  console.log(`${slug} > collectAllPageData > completed lookup`);
+    console.log(`${slug} > collectAllPageData > completed lookup`);
 
-  return { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
+    return { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {

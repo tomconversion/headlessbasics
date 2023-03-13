@@ -15,7 +15,7 @@ export async function collectDynamicPageData(params, slugCleanedUp) {
     
     const pageType = await getPageTypeBySlug(selectedSlug);
     console.log("collectDynamicPageData > pageType > ", pageType);
-    const pageData = await buildPageData(pageType, {slug: selectedSlug}); 
+    const pageData = await buildPageData(pageType, true, {slug: selectedSlug}); 
 
     return { pageData, selectedSlug};
 }

@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { buttonVariants } from "@/ui-base/components/ui/button"
 import Hero from "@/ui-base/components/ui/hero/Hero"
+import { OurClients } from "@/ui-base/components/ui/sections/our-clients/OurClients"
 import { HeroData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/hero/hero"
 import { OurClientData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/ourclient/ourclient"
 import FeatureCard from "../components/feature-card"
@@ -18,9 +19,9 @@ interface Props {
 }
 
 const Home = (props: Props) => {
-  const heroData = props?.heroData?.length > 0 ? props.heroData[0] : false;
-  const ourClientsData = props?.clientsData?.length > 0 ? props.clientsData[0] : false;
-
+  const heroData = props?.heroData?.length > 0 ? props.heroData[0] : false
+  const ourClientsData =
+    props?.clientsData?.length > 0 ? props.clientsData[0] : false
 
   return (
     <div className={props.className}>
@@ -87,27 +88,7 @@ const Home = (props: Props) => {
           />
         </Hero>
       ) : null}
-      {
-        ourClientsData ? (
-          <div className="relative flex w-full max-w-[1110px] flex-wrap items-center justify-center p-8 md:justify-between">
-            <div className="absolute top-0 h-[1px] w-full bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100"></div>
-            {
-              ourClientsData?.clients?.map((client, index) => (
-                <Image
-                  key={index}
-                  alt={client.name}
-                  loading="lazy"
-                  src={client.logoUrl}
-                  width={100}
-                  height={28}
-                  className="m-4 w-[100px] object-cover md:m-0"
-                />
-              ))
-            }
-            <div className="absolute bottom-0 top-auto h-[1px] w-full bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100"></div>
-          </div>
-        ) : null
-      }
+      {ourClientsData ? <OurClients clients={ourClientsData.clients} /> : null}
       <div className="home-features">
         <h2 className="Headline2 home-text16">Tailor-made features</h2>
         <span className="home-text17">

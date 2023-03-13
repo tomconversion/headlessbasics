@@ -1,4 +1,4 @@
-export function dynamicContent(data) {
+export function gridContent(data) {
   return (
     <></>
   );

@@ -7,21 +7,34 @@
 import { CmsVariants, PageIdentifier } from "../../../constants"
 
 export function gridContent() {
-  return `query GridContentBySlug($slug: String!) {
-    dynamicPage(url: $slug) {
-      slug:url
-      name
-      id
-      contentBody
-    }
-  }`
+  return `
+  query GetGridContent($urlPath: String!) {
+      navigationItem_All(where: { _seo : { urlPath : {eq : $urlPath }} }, limit: 1){
+          items{
+              _system_{
+                  id
+                  type{
+                      _system_{
+                          codename
+                          name
+                      }
+                  }
+              }
+              label
+              _seo{
+                  urlPath
+              }            
+          }
+      }
+  }
+  
+  `
 }
 
-export function variables(slug: string) {
-  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + slug;
-  console.log("Umbraco gridContent query variables", umbracoSlug);
-  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
-  const result = {'slug': umbracoSlug};
+export function variables(urlPath: string) {
+  let correctedPath = urlPath.endsWith('/') ? urlPath : urlPath + '/';
+  const result = {'urlPath': `/${correctedPath}`};
+  console.log("model variables", result);
   return result;
 }
 

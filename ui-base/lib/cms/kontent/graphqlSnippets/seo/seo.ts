@@ -4,20 +4,20 @@ export function seo(pageIdentifier:PageIdentifier)
 {
   return `
   query GetSeo($urlPath: String!) {
-    navigationItem_All(where: { _seo : { urlPath : {eq : $urlPath }} }, limit: 1){
-        items{
-            _system_{
-                id
-            }
-            label
-            _seo{
-                urlPath
-                title
-                description
-            }            
-        }
-    }
-}
+      navigationItem_All(where: { _seo : { urlPath : {eq : $urlPath }} }, limit: 1){
+          items{
+              _system_{
+                  id
+              }
+              label
+              _seo{
+                  urlPath
+                  title
+                  description
+              }            
+          }
+      }
+  }
   `
 };
 

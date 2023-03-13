@@ -1,5 +1,5 @@
 import { CmsVariants, PageIdentifier } from "../../constants"
-export function dynamicContent(data) {
+export function subComponentContent(data) {
   return (
     <></>
   );

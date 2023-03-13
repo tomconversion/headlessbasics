@@ -256,6 +256,11 @@ export default function IndexPage() {
           title: "Carousel",
           href: siteConfig.links.carousel,
         },
+
+        {
+          title: "Media Logos",
+          href: siteConfig.links.mediaLogos,
+        },
       ],
     },
     {

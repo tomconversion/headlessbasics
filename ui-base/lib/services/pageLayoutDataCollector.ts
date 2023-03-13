@@ -110,7 +110,7 @@ export async function collectFixedLayoutPageComponentData(
 
   console.log(
     "collectFixedLayoutPageComponentData pageComponentData",
-    pageComponentData
+    JSON.stringify(pageComponentData, null, 2)
   )
 
   return pageComponentData

@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { buttonVariants } from "@/ui-base/components/ui/button"
 import Hero from "@/ui-base/components/ui/hero/Hero"
-import { OurClients } from "@/ui-base/components/ui/sections/our-clients/OurClients"
+import MediaLogos from "@/ui-base/components/ui/sections/media-logos/MediaLogos"
 import { HeroData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/hero/hero"
 import { OurClientData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/ourclient/ourclient"
 import FeatureCard from "../components/feature-card"
@@ -88,7 +88,7 @@ const Home = (props: Props) => {
           />
         </Hero>
       ) : null}
-      {ourClientsData ? <OurClients clients={ourClientsData.clients} /> : null}
+      {ourClientsData ? <MediaLogos clients={ourClientsData.clients} className="max-w-screen-lg" /> : null}
       <div className="home-features">
         <h2 className="Headline2 home-text16">Tailor-made features</h2>
         <span className="home-text17">

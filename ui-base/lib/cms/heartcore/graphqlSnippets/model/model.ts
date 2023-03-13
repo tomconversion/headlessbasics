@@ -1,4 +1,5 @@
 import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { replaceString } from "@/ui-base/lib/util/utils";
 
 export function model(slug:string)
 {
@@ -14,7 +15,8 @@ export function model(slug:string)
 
 export function variables(slug:string)
 {
-  const umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + slug;
+  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + slug;
+  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
   const result = {'slug': umbracoSlug};
   return result;
 };
@@ -24,6 +26,5 @@ export default function GetModelQuery() {
 }
 
 export function mapModelData(data, pageIdentifier:PageIdentifier) {
-  console.log("mapModelData", data);
   return data?.content?.contentTypeAlias;
 }

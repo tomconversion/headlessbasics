@@ -9,48 +9,26 @@ import {
 } from "../cms/constants"
 import { collectAllPageData } from "./pageLayoutDataCollector"
 
-export async function buildPageData(pageVariant: PageVariant, params?: any) {
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
-  const cmsVariantSelected = CmsVariants.variants[cmsVariant]
+export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, params?: any) {
+
+  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
+  const cmsVariantSelected = CmsVariants.variants[cmsVariant];
+  console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
+  console.log( "buildPageData > pageVariant > ", pageVariant);
+  console.log( "buildPageData > params > ", params);
   const pageIdentifier = cmsVariantSelected.pageTypes[
     pageVariant
   ] as PageIdentifier
+  console.log( "buildPageData > pageIdentifier > ", pageIdentifier);
 
-  if (typeof params !== "undefined" && typeof params.slug !== "undefined") {
-    pageIdentifier.backEndSlug = params && params.slug ? params.slug : ""
+  // We set the back end slug here for all dynamic pages.
+  if(isDynamic && typeof params !== "undefined" && typeof params.slug !== "undefined") {
+    pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 
-  const result = { data: await collectAllPageData(pageIdentifier, pageVariant) }
+  const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug) }
 
   return result
-}
-
-export async function fetchAPI(
-  query,
-  { variables, preview } = { variables: {}, preview: false },
-  endpoint: string,
-  headers: any = {}
-) {
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  })
-  const json = await res.json()
-
-  if (json.errors) {
-    console.error(json.errors,query)
-    throw new Error("fetchAPI in graphqlDataService - Failed to fetch API")
-  }
-
-  if (json.data !== undefined && json.data !== null) {
-    return json.data
-  } else {
-    return json
-  }
 }
 
 export async function getDyanmicCmsDataViaCmsSelector(
@@ -84,7 +62,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
     }
     // console.log("query --", queryResult)
   } catch (err) {
-    console.log("query mnodule import error", err)
+    console.log("query module import error", err)
   }
 
   let variables = { variables: {}, preview: false }
@@ -123,10 +101,26 @@ export async function getDyanmicCmsDataViaCmsSelector(
 
 export async function getPageTypeBySlug(slug: string) {
   const pageType =
-    (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.model,
-      undefined,
-      slug
-    )) || undefined
-  return pageType
+  (await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants.model,
+    undefined, 
+    slug
+  )) || undefined;
+
+  return pageType;
+}
+
+export async function collectSitemapNavigationStructure() {
+
+  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariantSelected = CmsVariants.variants[cmsVariant]
+
+  const navItems =
+  (await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants.sitemap,
+    undefined,
+    undefined // Slug is undefined, as we are doing the lookup based on page type
+  )) || [];
+
+  return navItems
 }

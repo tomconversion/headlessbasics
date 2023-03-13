@@ -1,5 +1,6 @@
 import {
-  COMPONENT_DYNAMIC_CONTENT,
+  SUBCOMPONENT_CONTENT,
+  COMPONENT_GRID_CONTENT,
   DynamicCmsDataLocations,
   FixedLayouts,
   PageIdentifier,
@@ -21,17 +22,19 @@ import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService"
      2) Global Data          - This is commmon to all pages. Includes Naviation, Footer
 */
 
-export async function collectAllPageData(
-  pageIdentifier: PageIdentifier,
-  pageVariant: PageVariant
-) {
+export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVariant: PageVariant, slug: string) {
+  
+  console.log(`${slug}  > collectAllPageData > pageIdentifier > ${JSON.stringify(pageIdentifier)} pageVariant ${pageVariant} `);
+
   // Global Data - Nav items are Global Data required by each page
   const navItems =
     (await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants.navigation,
       pageIdentifier,
       undefined // Slug is undefined, as we are doing the lookup based on page type
-    )) || []
+    )) || [];
+  
+    console.log(`${slug}  > collectAllPageData > navItems > ${navItems}`);
 
   // Individual Page Data
   const seoItems =
@@ -39,23 +42,30 @@ export async function collectAllPageData(
       DynamicCmsDataLocations.variants.seo,
       pageIdentifier,
       undefined // Slug is undefined, as we are doing the lookup based on page type
-    )) || []
+    )) || [];
 
-  let pageComponentData: any = {}
+    console.log(`${slug}  > collectAllPageData > seoItems > ${seoItems}`);
 
-  if (pageIdentifier.isFixedLayout) {
-    pageComponentData = await collectFixedLayoutPageComponentData(
-      pageVariant,
-      pageIdentifier
-    )
-  } else {
-    pageComponentData = await collectDynamicLayoutPageComponentData(
-      pageVariant,
-      pageIdentifier
-    )
-  }
+    const breadcrumbItems =
+    (await getDyanmicCmsDataViaCmsSelector(
+      DynamicCmsDataLocations.variants.breadcrumb,
+      undefined, 
+      slug
+    )) || [];   
 
-  return { navItems, seoItems, pageComponentData, pageVariant }
+    console.log(`${slug}  > collectAllPageData > breadcrumbItems > ${JSON.stringify(breadcrumbItems)}`);
+
+    let pageComponentData:any = {};
+
+    if(pageIdentifier.isFixedLayout){
+      pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier, slug);
+    } else{
+      pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier, slug);
+    }
+
+    console.log(`${slug} > collectAllPageData > completed lookup`);
+
+    return { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {
@@ -74,12 +84,9 @@ export async function collectAllPageData(
 //   return pageComponentData;
 // }
 
-export async function collectFixedLayoutPageComponentData(
-  pageVariant: PageVariant,
-  pageIdentifier: PageIdentifier
-) {
-  const pageComponentData: Record<string, unknown> = {}
-
+export async function collectFixedLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier, slug) {
+  const pageComponentData: Record<string, unknown> = {};
+  console.log(`${slug}  > collectFixedLayoutPageComponentData`);
   // get the fixed layout for the current page variant
   const layout = FixedLayouts.layouts.find(
     (layout) => layout.identifier === pageVariant
@@ -95,44 +102,38 @@ export async function collectFixedLayoutPageComponentData(
   }
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
-    const lowerCaseMatchName = component.toLowerCase()
-    console.log(
-      "collectFixedLayoutPageComponentData > component",
-      lowerCaseMatchName
-    )
-    pageComponentData[lowerCaseMatchName] =
-      await getDyanmicCmsDataViaCmsSelector(
-        DynamicCmsDataLocations.variants[lowerCaseMatchName],
-        pageIdentifier,
-        undefined
-      )
-  }
-
-  console.log(
-    "collectFixedLayoutPageComponentData pageComponentData",
-    JSON.stringify(pageComponentData, null, 2)
-  )
-
-  return pageComponentData
-}
-
-export async function collectDynamicLayoutPageComponentData(
-  pageVariant: PageVariant,
-  pageIdentifier: PageIdentifier
-) {
-  const pageComponentData: Record<string, unknown> = {}
-
-  pageComponentData[COMPONENT_DYNAMIC_CONTENT] =
-    await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants[COMPONENT_DYNAMIC_CONTENT],
+    const lowerCaseMatchName = component.toLowerCase();
+    // console.log("collectFixedLayoutPageComponentData > component", lowerCaseMatchName);
+    pageComponentData[lowerCaseMatchName] = await getDyanmicCmsDataViaCmsSelector(
+      DynamicCmsDataLocations.variants[lowerCaseMatchName],
       pageIdentifier,
       undefined
-    )
+    );
+  }
+  console.log("collectFixedLayoutPageComponentData", pageVariant);
+  return pageComponentData;
+}
 
-  console.log(
-    "collectDynamicLayoutPageComponentData pageComponentData",
-    pageComponentData
-  )
+export async function collectDynamicLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier, slug) {
+  const pageComponentData: Record<string, unknown> = {};
+  
+  console.log(`${slug}  > collectDynamicLayoutPageComponentData`);
 
-  return pageComponentData
+  pageComponentData[SUBCOMPONENT_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants[SUBCOMPONENT_CONTENT],
+    undefined,
+    slug
+  );
+
+  console.log(`${slug}  > collectDynamicLayoutPageComponentData > pageComponentData[SUBCOMPONENT_CONTENT] > ${JSON.stringify(pageComponentData[SUBCOMPONENT_CONTENT])}`);
+
+  pageComponentData[COMPONENT_GRID_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants[COMPONENT_GRID_CONTENT],
+    undefined,
+    slug
+  );
+
+  console.log(`${slug}  > collectDynamicLayoutPageComponentData >   pageComponentData[COMPONENT_GRID_CONTENT] > ${JSON.stringify(pageComponentData[COMPONENT_GRID_CONTENT])}`);
+
+  return pageComponentData;
 }

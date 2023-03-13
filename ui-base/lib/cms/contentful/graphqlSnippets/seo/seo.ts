@@ -10,11 +10,10 @@ export function seo(pageIdentifier:PageIdentifier)
         seoDescription
         navigationTitle
         showInNavigation
-        slug
+        urlPath
       }
     }
-  }
-  
+  }  
   `
 };
 

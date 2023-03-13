@@ -7,6 +7,8 @@
 export const HOME_OG_IMAGE_URL =
   "https://og-image.vercel.app/Next.js%20Blog%20Example%20with%20**Umbraco%20Heartcore**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg&images=https://media.umbraco.io/demo-headless/8d8a349dde73ca6/u_heartcore_heart_lockup_tagline_dark.svg"
 
+export const SUPER_ALIAS = "SUPER-ALIAS::";
+
 export interface CmsSettings {
   variant?: CmsProperties
 }
@@ -50,7 +52,7 @@ const CmsVariants = {
   variants: {
     heartcore: {
       cmsName: "Umbraco Heartcore",
-      deliveryApiDomain: "https://graphql.umbraco.io",
+      deliveryApiDomain: process.env.UMBRACO_GRAPHQL_ENDPOINT,
       deliveryApiUrl: "w-1/3",
       cmsUrl: "https://umbraco.com/heartcore",
       deliveryApiKey: process.env.UMBRACO_API_KEY,
@@ -85,7 +87,7 @@ const CmsVariants = {
     },
     kontent: {
       cmsName: "Kentico Kontent",
-      deliveryApiDomain: "https://graphql.kontent.ai",
+      deliveryApiDomain: process.env.KONTENT_GRAPHQL_ENDPOINT,
       deliveryApiUrl: "w-1/3",
       cmsUrl: "https://umbraco.com/heartcore",
       deliveryApiKey: process.env.UMBRACO_API_KEY,
@@ -106,8 +108,8 @@ const CmsVariants = {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "dynamic",
-          cmsType: "staticPage1",
-          isFixedLayout: false,
+          cmsType: "navigation_item",
+          isFixedLayout: false
         },
         landing: {
           frontEndSlug: null,
@@ -120,8 +122,8 @@ const CmsVariants = {
     },
     contentful: {
       cmsName: "Contentful",
-      deliveryApiDomain: "https://graphql.contentful.com",
-      deliveryApiUrl: "/content/v1/spaces/",
+      deliveryApiDomain: process.env.CONTENTFUL_GRAPHQL_ENDPOINT,
+      deliveryApiUrl: process.env.CONTENTFUL_DELIVERY_API_URL,
       cmsUrl: "https://app.contentful.com/spaces/3j9y7hnidlox",
       deliveryApiKey: process.env.CONTENTFUL_DELIVERY_API_KEY,
       contentApiKey: "",
@@ -142,8 +144,8 @@ const CmsVariants = {
           frontEndSlug: null,
           backEndSlug: null,
           pageVariant: "dynamic",
-          cmsType: "dynamicPage",
-          isFixedLayout: false,
+          cmsType: "pageCollection",
+          isFixedLayout: false
         },
         landing: {
           frontEndSlug: null,
@@ -169,6 +171,15 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapNavigationData",
     },
+    sitemap: {
+      snippetLocation: "sitemap",
+      snippetFileName: "sitemap",
+      snippetExport: "sitemap",
+      queryIsFunction: false,
+      queryHasVariables: false,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapSitemapData",
+    },
     seo: {
       snippetLocation: "seo",
       snippetFileName: "seo",
@@ -177,6 +188,15 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapSeoData",
+    },
+    breadcrumb: {
+      snippetLocation: "breadcrumb",
+      snippetFileName: "breadcrumb",
+      snippetExport: "breadcrumb",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapBreadcrumbData",
     },
     model: {
       snippetLocation: "model",
@@ -196,15 +216,33 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapHeroData",
     },
-    dynamicContent: {
-      snippetLocation: "dynamicContent",
-      snippetFileName: "dynamicContent",
-      snippetExport: "dynamicContent",
+    subComponentContent: {
+      snippetLocation: "subComponentContent",
+      snippetFileName: "subComponentContent",
+      snippetExport: "subComponentContent",
       queryIsFunction: true,
       queryHasVariables: true,
       variableFunction: "variables",
-      dataFunctionMapperName: "mapDynamicContentData",
+      dataFunctionMapperName: "mapSubComponentContentData",
     },
+    gridContent: {
+      snippetLocation: "gridContent",
+      snippetFileName: "gridContent",
+      snippetExport: "gridContent",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapGridContentData",
+    },
+    redirects: {
+      snippetLocation: "redirects",
+      snippetFileName: "redirects",
+      snippetExport: "redirects",
+      queryIsFunction: false,
+      queryHasVariables: false,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapRedirectsData",
+    },    
     ourclient: {
       snippetLocation: "ourclient",
       snippetFileName: "ourclient",
@@ -213,7 +251,7 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapOurClientData",
-    },
+    }
   },
 }
 export { DynamicCmsDataLocations }
@@ -233,18 +271,18 @@ export interface DynamicDataCmsProperties {
 
 export const COMPONENT_HERO: Component = "hero"
 export const COMPONENT_OUR_CLIENT: Component = "ourclient"
-export const COMPONENT_DYNAMIC_CONTENT: Component = "dynamicContent"
+export const COMPONENT_GRID_CONTENT: Component = "gridContent"
+export const SUBCOMPONENT_CONTENT: Component = "subComponentContent"
 
 export const FixedLayouts: Components = {
   layouts: [
     {
       identifier: "home",
-      components: [
+      components: [ 
         COMPONENT_HERO,
         COMPONENT_OUR_CLIENT,
-        // "ThreeColumnCTA"
-      ],
-    },
+    ],      
+    }, 
     // {
     //   identifier: "landing",
     //   components: [],
@@ -259,5 +297,5 @@ export interface Components {
   }[]
 }
 
-export type Component = "dynamicContent" | "hero" | "ourclient"
+export type Component = "subComponentContent" | "hero" | "ourclient" | "gridContent"
 // | "ThreeColumnCTA"

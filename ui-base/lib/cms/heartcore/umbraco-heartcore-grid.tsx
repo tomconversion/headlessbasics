@@ -77,7 +77,7 @@ const RenderSection = ({ section }: { section: SectionProps }) => (
 
 const UmbracoFlexGrid: React.FC<FlexProps> = ({ name, sections }) => (
   <>
-    {sections.map((section, index) => (
+    {typeof(sections) !== 'undefined' && sections.map((section, index) => (
       <RenderSection key={index} section={section} />
     ))}
   </>

@@ -4,19 +4,18 @@ export const navigation = `
 	{
     items
       {
-    navigationTitle
-    slug
-    showInNavigation
-    isHomepage
-    subPagesCollection{
-      items{
-        sys{
-          id
+        navigationTitle
+        ... on Page{
+          slug
+          urlPath                               
         }
-      }
-    }
-  }
-  }
+        showInNavigation
+        isHomepage
+        sys{
+            id
+                }
+            }
+        }
 }
 `
 
@@ -27,10 +26,10 @@ export function GetNavQuery() {
 export function mapNavigationData(data) {
   let navItems = data.pageCollection.items
   navItems.map((x) => {
-    // x.slug = x.slug.replace('/', '');
-    x.url = x.slug
-    x.name = x.navigationTitle
-    // x.id = x._system_.id;
-  })
-  return navItems
+    x.url = x.urlPath;
+    x.name = x.navigationTitle;
+    x.id = x.sys.id;
+  });
+  navItems = navItems.filter((x) => typeof(x.url) !== 'undefined' && x.url !== null && x.url !== '');
+  return navItems;
 }

@@ -110,14 +110,20 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
       undefined
     );
   }
-  console.log("collectFixedLayoutPageComponentData", pageVariant);
-  return pageComponentData;
+
+  console.log(
+    "collectFixedLayoutPageComponentData pageComponentData",
+    JSON.stringify(pageComponentData, null, 2)
+  )
+
+  return pageComponentData
 }
 
 export async function collectDynamicLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier, slug) {
   const pageComponentData: Record<string, unknown> = {};
   
-  console.log(`${slug}  > collectDynamicLayoutPageComponentData`);
+  console.log(`${slug}  > collectDynamicLayoutPageComponentData`,
+    JSON.stringify(pageComponentData, null, 2));
 
   pageComponentData[SUBCOMPONENT_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
     DynamicCmsDataLocations.variants[SUBCOMPONENT_CONTENT],

@@ -4,7 +4,14 @@ import Logo from "./ui/media/logo"
 
 export function SiteHeader({data, siteConfig}) {
 
-  if(!data?.data){
+  let navItems = [];
+  if(data?.data?.navItems){
+    navItems = data.data.navItems;
+  }else if(data?.navItems){
+    navItems = data.navItems;
+  }
+
+  if(navItems.length === 0){
     return (<></>);
   }
 
@@ -13,7 +20,7 @@ export function SiteHeader({data, siteConfig}) {
     <header className="w-[100%] flex items-center justify-between py-8 px-4 z-50 max-w-screen-lg mx-auto">
       <Logo image={siteConfig.logo} className="w-100 object-cover" />      
       
-      <GlobalTailwindNavigationMenu navClasses={"flex flex-row items-start"} navItems={data.data.navItems} />
+      <GlobalTailwindNavigationMenu navClasses={"flex flex-row items-start"} navItems={navItems} />
       
       <div className="home-container01">
         <StoreBanner></StoreBanner>

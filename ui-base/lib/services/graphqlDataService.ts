@@ -9,49 +9,26 @@ import {
 } from "../cms/constants"
 import { collectAllPageData } from "./pageLayoutDataCollector"
 
-export async function buildPageData(pageVariant: PageVariant, params?: any) {
+export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, params?: any) {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
-  const cmsVariantSelected = CmsVariants.variants[cmsVariant]
+  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
+  const cmsVariantSelected = CmsVariants.variants[cmsVariant];
+  console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
+  console.log( "buildPageData > pageVariant > ", pageVariant);
+  console.log( "buildPageData > params > ", params);
   const pageIdentifier = cmsVariantSelected.pageTypes[
     pageVariant
   ] as PageIdentifier
+  console.log( "buildPageData > pageIdentifier > ", pageIdentifier);
 
-  if(typeof params !== "undefined" && typeof params.slug !== "undefined") {
+  // We set the back end slug here for all dynamic pages.
+  if(isDynamic && typeof params !== "undefined" && typeof params.slug !== "undefined") {
     pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 
-  const result = { data: await collectAllPageData(pageIdentifier, pageVariant) }
+  const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug) }
 
   return result
-}
-
-export async function fetchAPI(
-  query,
-  { variables, preview } = { variables: {}, preview: false },
-  endpoint: string,
-  headers: any = {}
-) {
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  })
-  const json = await res.json()
-
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error("fetchAPI in graphqlDataService - Failed to fetch API")
-  }
-
-  if (json.data !== undefined && json.data !== null) {
-    return json.data
-  } else {
-    return json
-  }
 }
 
 export async function getDyanmicCmsDataViaCmsSelector(
@@ -60,7 +37,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
   slug?: string
 ) {
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
-  const queryHasVariables = lookupDetails.queryHasVariables;
+  const queryHasVariables = lookupDetails.queryHasVariables
   const queryExport = lookupDetails.snippetExport
   const snippitLocation = lookupDetails.snippetLocation
   const snippetFileName = lookupDetails.snippetFileName
@@ -76,16 +53,16 @@ export async function getDyanmicCmsDataViaCmsSelector(
         queryExport
       ]
 
-    if (queryHasVariables && typeof pageIdentifier !== 'undefined') {
+    if (queryHasVariables && typeof pageIdentifier !== "undefined") {
       queryResult = query(pageIdentifier)
-    } else if (queryHasVariables && typeof slug !== 'undefined') {
+    } else if (queryHasVariables && typeof slug !== "undefined") {
       queryResult = query(slug)
     } else {
       queryResult = query
     }
     // console.log("query --", queryResult)
   } catch (err) {
-    console.log("query mnodule import error", err)
+    console.log("query module import error", err)
   }
 
   let variables = { variables: {}, preview: false }
@@ -95,21 +72,21 @@ export async function getDyanmicCmsDataViaCmsSelector(
         lookupDetails.variableFunction
       ]
 
-      // console.log("inside variable sender pageIdentifier", pageIdentifier);
+    // console.log("inside variable sender pageIdentifier", pageIdentifier);
 
-    if(typeof pageIdentifier !== 'undefined'){
+    if (typeof pageIdentifier !== "undefined") {
       variables = { variables: variableFunc(pageIdentifier), preview: false }
-    } else if(typeof slug !== 'undefined'){
+    } else if (typeof slug !== "undefined") {
       variables = { variables: variableFunc(slug), preview: false }
     }
-    
+
     // console.log("variables --", variables)
   }
 
   // Process the query call
   const data = await fetchAPIGatewayWrapper(queryResult, variables)
 
-  // console.log("data -- ", data)
+  // console.log("data ---> ", JSON.stringify(data, null, 2))
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper =
@@ -122,13 +99,14 @@ export async function getDyanmicCmsDataViaCmsSelector(
   return await result
 }
 
-export async function getPageTypeBySlug(slug: string){
+export async function getPageTypeBySlug(slug: string) {
   const pageType =
   (await getDyanmicCmsDataViaCmsSelector(
     DynamicCmsDataLocations.variants.model,
     undefined, 
     slug
-  )) || undefined
+  )) || undefined;
+
   return pageType;
 }
 

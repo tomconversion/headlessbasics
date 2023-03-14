@@ -58,6 +58,7 @@ export const siteConfig: BaseSiteConfig = {
     table: "/components/table",
     mask: "/components/mask",
     hero: "/components/hero",
+    mediaLogos: "/components/mediaLogos",
   },
   logo: {
     description: "Next.js",

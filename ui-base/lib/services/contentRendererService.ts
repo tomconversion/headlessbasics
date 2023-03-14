@@ -7,7 +7,7 @@ import {
   PageVariant,
 } from "../cms/constants"
 
-export function renderDynamicContent(pageVariant: PageVariant, data:any) {
+export function renderSubComponentContent(pageVariant: PageVariant, data:any) {
 
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
@@ -16,7 +16,24 @@ export function renderDynamicContent(pageVariant: PageVariant, data:any) {
   ] as PageIdentifier
 
   const result = render(
-    DynamicCmsDataLocations.variants.dynamicContent,
+    DynamicCmsDataLocations.variants.subComponentContent,
+    pageIdentifier,
+    data
+  );
+
+  return result
+}
+
+export function renderGridComponentContent(pageVariant: PageVariant, data:any) {
+
+  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariantSelected = CmsVariants.variants[cmsVariant]
+  const pageIdentifier = cmsVariantSelected.pageTypes[
+    pageVariant
+  ] as PageIdentifier
+
+  const result = render(
+    DynamicCmsDataLocations.variants.gridContent,
     pageIdentifier,
     data
   );
@@ -42,7 +59,7 @@ export function render(
 
   try {
     const query =
-      require(`../cms/${variant}/dynamicContent/${snippitLocation}/${snippetFileName}`)[
+      require(`../cms/${variant}/content/${snippetFileName}`)[
         queryExport
       ]
 
@@ -50,7 +67,8 @@ export function render(
       queryResult = query(_data)
     }
   } catch (err) {
-    console.log("query mnodule import error", err)
+    console.log("function render", _data, `../cms/${variant}/content/${snippetFileName}`);
+    console.log("query module import error", err);
   }
 
   return queryResult;

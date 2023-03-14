@@ -54,9 +54,10 @@ export function hero() {
 }
 
 export function variables(pageIdentifier: PageIdentifier) {
-  const result = { slug: CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug }
-  // console.log("HERO VARIABLE --", result)
-  return result
+  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
+  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
+  const result = {'slug': umbracoSlug};
+  return result;
 }
 
 export default function GetHeroQuery() {
@@ -76,9 +77,13 @@ export function mapHeroData(data: any, pageIdentifier:PageIdentifier): HeroData[
           const childNode = childEdge.node
           if (childNode.__typename === "HeroComponent" && childNode.heroImage) {
             // Extract relevant data from the hero component
+            let imageUrl = childNode?.heroImage?.url;
+            if(childNode?.heroImage && childNode.heroImage.length && childNode.heroImage.length){
+              imageUrl = childNode.heroImage[0].url;
+            }
             const hero: HeroData = {
               name: childNode.name,
-              imageUrl: childNode.heroImage.url,
+              imageUrl: imageUrl,
               description: childNode.heroDescription,
               buttonLink: null,
             }

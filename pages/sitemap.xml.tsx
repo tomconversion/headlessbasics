@@ -3,14 +3,14 @@
 import { collectSitemapNavigationStructure } from "@/ui-base/lib/services/graphqlDataService";
 
 function generateSiteMap(data) {
+
+    data = data.filter((x) => typeof(x.showInSitemap) !== 'undefined' && x.showInSitemap === true && typeof(x.url) !== 'undefined' && x.url != null);
+
     return `<?xml version="1.0" encoding="UTF-8"?>
      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-       <!--We manually set the two URLs we know already-->
        ${data
-         .map(({ id, slug, updateDate, url }) => {
-  
-          const date = new Date(updateDate);
-  
+         .map(({ id, slug, updateDate, url }) => {  
+          const date = new Date(updateDate);  
            return `
          <url>
              <loc>${`${process.env.MAIN_DOMAIN}${url}`}</loc>

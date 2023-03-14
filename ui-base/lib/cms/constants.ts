@@ -227,6 +227,15 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapDynamicContentData",
+    },
+    robotsTxt: {
+      snippetLocation: "robotsTxt",
+      snippetFileName: "robotsTxt",
+      snippetExport: "robotsTxt",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapRobotsTxtData",
     }
   },
 }

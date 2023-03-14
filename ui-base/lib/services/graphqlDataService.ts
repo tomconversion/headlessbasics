@@ -146,3 +146,18 @@ export async function collectSitemapNavigationStructure() {
 
   return navItems
 }
+
+export async function collectRobotsTxtData() {
+
+  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariantSelected = CmsVariants.variants[cmsVariant]
+
+  const navItems =
+  (await getDyanmicCmsDataViaCmsSelector(
+    DynamicCmsDataLocations.variants.robotsTxt,
+    undefined,
+    "robots.txt"
+  )) || [];
+
+  return navItems
+}

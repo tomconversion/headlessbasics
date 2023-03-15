@@ -6,11 +6,10 @@ import { CmsVariants, PageIdentifier } from "../../../constants"
 
 export function subComponentContent() {
   return `query ComponentCintentBySlug($slug: String!) {
-    dynamicPage(url: $slug) {
+    subComponentsPage(url: $slug) {
       slug:url
       name
       id
-      contentBody
     }
   }`
 }
@@ -28,8 +27,8 @@ export default function GetSubComponentContentQuery() {
 
 export function mapSubComponentContentData(data: any, pageIdentifier:PageIdentifier) {
   let dynamicContent = {};
-  if (data?.dynamicPage?.contentBody) {
-    dynamicContent = data?.dynamicPage?.contentBody;
-  }
+  // if (data?.subComponentsPage?.contentBody) {
+  //   dynamicContent = data?.subComponentsPage?.contentBody;
+  // }
   return dynamicContent;
 }

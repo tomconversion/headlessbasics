@@ -13,15 +13,18 @@ const navigation = `
               id
               level
               url
-              ... on Homepage{
+              ... on Homepage {
+                superAlias
                 showInNavigation
               }
-              ... on DynamicPage{
-               showInNavigation
-             }
-             ... on Landing{
-               showInNavigation
-             }
+              ... on SubComponentsPage {
+                superAlias
+                showInNavigation
+              }
+              ... on GridContentPage {
+                superAlias
+                showInNavigation
+              }
             }
           }
         }

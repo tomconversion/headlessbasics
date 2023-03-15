@@ -126,14 +126,14 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
   );
 
   console.log(`${slug}  > collectDynamicLayoutPageComponentData > pageComponentData[SUBCOMPONENT_CONTENT] > ${JSON.stringify(pageComponentData[SUBCOMPONENT_CONTENT])}`);
-
-  pageComponentData[COMPONENT_GRID_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants[COMPONENT_GRID_CONTENT],
-    undefined,
-    slug
-  );
-
-  console.log(`${slug}  > collectDynamicLayoutPageComponentData >   pageComponentData[COMPONENT_GRID_CONTENT] > ${JSON.stringify(pageComponentData[COMPONENT_GRID_CONTENT])}`);
-
+  
+  if(pageVariant == "gridContentPage"){
+    pageComponentData[COMPONENT_GRID_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
+      DynamicCmsDataLocations.variants[COMPONENT_GRID_CONTENT],
+      undefined,
+      slug
+    );
+    console.log(`${slug}  > collectDynamicLayoutPageComponentData >   pageComponentData[COMPONENT_GRID_CONTENT] > ${JSON.stringify(pageComponentData[COMPONENT_GRID_CONTENT])}`);
+  }
   return pageComponentData;
 }

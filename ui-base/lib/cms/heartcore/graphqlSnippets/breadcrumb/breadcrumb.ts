@@ -4,18 +4,44 @@ import { mapBreadcrumbStructure } from "../../../contentful/tools/urlTools";
 export function breadcrumb()
 {
   return `  
-      query ParentPageTypeBySlug($slug: String!) {
-        content(url: $slug) {
+  query ParentPageTypeBySlug($slug: String!) {
+    content(url: $slug) {
+      url
+      contentTypeAlias
+      name
+      ... on Homepage {
+        superAlias
+      }
+      ... on SubComponentsPage {
+        superAlias
+      }
+      ... on GridContentPage {
+        superAlias
+      }
+      parent {
+        url
+        contentTypeAlias
+        name
+        ... on Homepage {
+          superAlias
+        }
+        ... on SubComponentsPage {
+          superAlias
+        }
+        ... on GridContentPage {
+          superAlias
+        }
+        parent {
           url
           contentTypeAlias
           name
           ... on Homepage {
             superAlias
           }
-          ... on DynamicPage {
+          ... on SubComponentsPage {
             superAlias
           }
-          ... on Landing {
+          ... on GridContentPage {
             superAlias
           }
           parent {
@@ -25,43 +51,18 @@ export function breadcrumb()
             ... on Homepage {
               superAlias
             }
-            ... on DynamicPage {
+            ... on SubComponentsPage {
               superAlias
             }
-            ... on Landing {
+            ... on GridContentPage {
               superAlias
-            }
-            parent {
-              url
-              contentTypeAlias
-              name
-              ... on Homepage {
-                superAlias
-              }
-              ... on DynamicPage {
-                superAlias
-              }
-              ... on Landing {
-                superAlias
-              }
-              parent {
-                url
-                contentTypeAlias
-                name
-                ... on Homepage {
-                  superAlias
-                }
-                ... on DynamicPage {
-                  superAlias
-                }
-                ... on Landing {
-                  superAlias
-                }
-              }
             }
           }
         }
-      }  
+      }
+    }
+  }
+   
   `
 };
 

@@ -225,6 +225,7 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSubComponentContentData",
     },
+
     gridContent: {
       snippetLocation: "gridContent",
       snippetFileName: "gridContent",
@@ -296,6 +297,10 @@ export const FixedLayouts: Components = {
         // "ThreeColumnCTA"
       ],
     },
+    // {
+    //   identifier: "landing",
+    //   components: [],
+    // }
   ],
 }
 // {

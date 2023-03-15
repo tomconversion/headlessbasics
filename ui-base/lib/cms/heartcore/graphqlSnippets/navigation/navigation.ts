@@ -13,6 +13,15 @@ const navigation = `
               id
               level
               url
+              ... on Homepage{
+                showInNavigation
+              }
+              ... on DynamicPage{
+               showInNavigation
+             }
+             ... on Landing{
+               showInNavigation
+             }
             }
           }
         }

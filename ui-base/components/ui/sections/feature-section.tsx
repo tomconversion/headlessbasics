@@ -1,5 +1,7 @@
 import Image from "next/image"
 
+import { parseText } from "@/ui-base/lib/util/utils"
+
 interface FeatureCardProps {
   imageSrc: string
   title: string
@@ -17,6 +19,8 @@ export interface FeaturesProps {
 }
 
 const FeatureSection = ({ data }: FeaturesProps) => {
+  console.log("data", data)
+
   return (
     <section className="py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4">
@@ -24,16 +28,11 @@ const FeatureSection = ({ data }: FeaturesProps) => {
           {data.headline}
         </h2>
         <p className="mx-auto mb-12 max-w-xl text-center sm:mb-16 sm:text-lg">
-          {data.description}
+          {parseText(data.description).text}
         </p>
         <div className="grid grid-cols-1 justify-items-center gap-8 sm:grid-cols-2 md:grid-cols-3">
           {data.cards.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              imageSrc={feature.imageSrc}
-              title={feature.title}
-              description={feature.description}
-            />
+            <FeatureCard key={index} {...feature} />
           ))}
         </div>
       </div>
@@ -43,16 +42,16 @@ const FeatureSection = ({ data }: FeaturesProps) => {
 
 const FeatureCard = (props: FeatureCardProps) => {
   return (
-    <div className="feature-card-container">
+    <div className="relative m-2 flex max-w-sm flex-col items-center">
       <Image
+        className="object-contain"
         alt={props.title}
         src={props.imageSrc}
-        className="feature-card-image"
-        width={props?.width ?? 100}
-        height={props?.height ?? 100}
+        width={props?.width ?? 32}
+        height={props?.height ?? 32}
       />
-      <h5 className="feature-card-text Headline5">{props.title}</h5>
-      <span className="feature-card-text1">{props.description}</span>
+      <h5 className="my-4 text-2xl font-semibold">{props.title}</h5>
+      <span className="text-center">{parseText(props.description).text}</span>
     </div>
   )
 }

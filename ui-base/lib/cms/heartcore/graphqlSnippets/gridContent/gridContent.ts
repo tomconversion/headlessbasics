@@ -8,7 +8,7 @@ import { CmsVariants, PageIdentifier } from "../../../constants"
 
 export function gridContent() {
   return `query GridContentBySlug($slug: String!) {
-    dynamicPage(url: $slug) {
+    gridContentPage(url: $slug) {
       slug:url
       name
       id
@@ -32,8 +32,8 @@ export default function GetGridContentQuery() {
 export function mapGridContentData(data: any, pageIdentifier:PageIdentifier) {
   console.log("Umbraco mapGridContentData", data);
   let dynamicContent = {};
-  if (data?.dynamicPage?.contentBody) {
-    dynamicContent = data?.dynamicPage?.contentBody;
+  if (data?.gridContentPage?.contentBody) {
+    dynamicContent = data?.gridContentPage?.contentBody;
   }
   return dynamicContent;
 }

@@ -45,14 +45,6 @@ export default function GetSubComponentContentQuery() {
   return subComponentContent
 }
 
-// export function mapSubComponentContentData(data: any, pageIdentifier:PageIdentifier) {
-//   let dynamicContent = {};
-//   if (data?.navigationItem_All?.contentBody) {
-//     dynamicContent = data?.dynamicPage?.contentBody;
-//   }
-//   return dynamicContent;
-// }
-
 export function mapSubComponentContentData(data, pageIdentifier:PageIdentifier) {
   console.log("mapSubComponentContentData Kontent", data);
   if(data?.navigationItem_All?.items[0]?.content){

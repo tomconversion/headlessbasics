@@ -17,16 +17,16 @@ const sitemap = `
                 showInNavigation
                 superAlias
               }
-              ... on DynamicPage{
+              ... on SubComponentsPage{
                showInSitemap
                showInNavigation
                superAlias
              }
-             ... on Landing{
-               showInSitemap
-               showInNavigation
-               superAlias
-             }
+             ... on GridContentPage{
+              showInSitemap
+              showInNavigation
+              superAlias
+            }
           }
       }
    }

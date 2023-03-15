@@ -116,10 +116,10 @@ function getQuery(){
                     ... on Homepage {
                       superAlias
                     }
-                    ... on DynamicPage {
+                    ... on SubComponentsPage {
                       superAlias
                     }
-                    ... on Landing {
+                    ... on GridContentPage {
                       superAlias
                     }
                 }

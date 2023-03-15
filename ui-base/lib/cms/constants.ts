@@ -46,7 +46,7 @@ export interface PageIdentifier {
 
 export type CmsVariant = "heartcore" | "contentful" | "kontent"
 
-export type PageVariant = "home" | "dynamic" | "landing"
+export type PageVariant = "home" | "gridContentPage" | "dynamic" | "subComponentsPage"
 
 const CmsVariants = {
   variants: {
@@ -69,20 +69,20 @@ const CmsVariants = {
           isFixedLayout: true,
           components: ["Hero", "OurClients"],
         },
-        dynamicPage: {
+        gridContentPage: {
           frontEndSlug: null,
           backEndSlug: null,
-          pageVariant: "dynamicPage",
-          cmsType: "dynamicPage",
+          pageVariant: "gridContentPage",
+          cmsType: "gridContentPage",
           isFixedLayout: false,
         },
-        landing: {
+        subComponentsPage: {
           frontEndSlug: null,
           backEndSlug: null,
-          pageVariant: "landing",
-          cmsType: "landing",
-          isFixedLayout: true,
-        },
+          pageVariant: "subComponentsPage",
+          cmsType: "subComponentsPage",
+          isFixedLayout: false,
+        }
       },
     },
     kontent: {
@@ -110,13 +110,6 @@ const CmsVariants = {
           pageVariant: "dynamic",
           cmsType: "navigation_item",
           isFixedLayout: false
-        },
-        landing: {
-          frontEndSlug: null,
-          backEndSlug: null,
-          pageVariant: "landing",
-          cmsType: "staticPage",
-          isFixedLayout: true,
         },
       },
     },
@@ -146,13 +139,6 @@ const CmsVariants = {
           pageVariant: "dynamic",
           cmsType: "pageCollection",
           isFixedLayout: false
-        },
-        landing: {
-          frontEndSlug: null,
-          backEndSlug: null,
-          pageVariant: "landing",
-          cmsType: "landing",
-          isFixedLayout: true,
         },
       },
     },

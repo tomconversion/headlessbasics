@@ -3,10 +3,12 @@ import Link from "next/link"
 
 import { buttonVariants } from "@/ui-base/components/ui/button"
 import Hero from "@/ui-base/components/ui/hero/Hero"
+import FeatureSection, {
+  FeaturesProps,
+} from "@/ui-base/components/ui/sections/feature-section"
 import MediaLogos from "@/ui-base/components/ui/sections/media-logos/MediaLogos"
 import { HeroData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/hero/hero"
 import { OurClientData } from "@/ui-base/lib/cms/heartcore/graphqlSnippets/ourclient/ourclient"
-import FeatureCard from "../components/feature-card"
 import LinkIconButton from "../components/link-icon-button"
 import StatsCard from "../components/stats-card"
 import StoreBanner from "../components/store-banner"
@@ -16,6 +18,7 @@ interface Props {
   className?: string
   heroData?: HeroData[]
   clientsData?: OurClientData[]
+  featuresData?: FeaturesProps
 }
 
 const Home = (props: Props) => {
@@ -88,39 +91,13 @@ const Home = (props: Props) => {
           />
         </Hero>
       ) : null}
-      {ourClientsData ? <MediaLogos clients={ourClientsData.clients} className="max-w-screen-lg" /> : null}
-      <div className="home-features">
-        <h2 className="Headline2 home-text16">Tailor-made features</h2>
-        <span className="home-text17">
-          <span className="home-text18">
-            Lorem ipsum is common placeholder text used to demonstrate the
-            graphic elements of a document or visual presentation.
-          </span>
-        </span>
-        <div className="home-features1">
-          <FeatureCard card_title="Robust workflow"></FeatureCard>
-          <FeatureCard
-            image_src="/landify/static/playground_assets/02.svg"
-            card_title="Flexibility"
-          ></FeatureCard>
-          <FeatureCard
-            image_src="/landify/static/playground_assets/03.svg"
-            card_title="User friendly"
-          ></FeatureCard>
-          <FeatureCard
-            image_src="/landify/static/playground_assets/04.svg"
-            card_title="Multiple layouts"
-          ></FeatureCard>
-          <FeatureCard
-            image_src="/landify/static/playground_assets/05.svg"
-            card_title="Better compoents"
-          ></FeatureCard>
-          <FeatureCard
-            image_src="/landify/static/playground_assets/06.svg"
-            card_title="Well organized"
-          ></FeatureCard>
-        </div>
-      </div>
+      {ourClientsData ? (
+        <MediaLogos
+          clients={ourClientsData.clients}
+          className="max-w-screen-lg"
+        />
+      ) : null}
+      <FeatureSection {...props.featuresData} />
       <div className="home-testimonials">
         <div className="home-container08">
           <div className="home-container09">

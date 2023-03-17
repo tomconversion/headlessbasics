@@ -59,6 +59,7 @@ export const siteConfig: BaseSiteConfig = {
     mask: "/components/mask",
     hero: "/components/hero",
     mediaLogos: "/components/mediaLogos",
+    featureSection: "/components/contentBlocks/featureSection",
   },
   logo: {
     description: "Next.js",

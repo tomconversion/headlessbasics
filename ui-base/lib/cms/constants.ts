@@ -7,7 +7,7 @@
 export const HOME_OG_IMAGE_URL =
   "https://og-image.vercel.app/Next.js%20Blog%20Example%20with%20**Umbraco%20Heartcore**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg&images=https://media.umbraco.io/demo-headless/8d8a349dde73ca6/u_heartcore_heart_lockup_tagline_dark.svg"
 
-export const SUPER_ALIAS = "SUPER-ALIAS::";
+export const SUPER_ALIAS = "SUPER-ALIAS::"
 
 export interface CmsSettings {
   variant?: CmsProperties
@@ -46,7 +46,11 @@ export interface PageIdentifier {
 
 export type CmsVariant = "heartcore" | "contentful" | "kontent"
 
-export type PageVariant = "home" | "gridContentPage" | "dynamic" | "subComponentsPage"
+export type PageVariant =
+  | "home"
+  | "gridContentPage"
+  | "dynamic"
+  | "subComponentsPage"
 
 const CmsVariants = {
   variants: {
@@ -82,7 +86,7 @@ const CmsVariants = {
           pageVariant: "subComponentsPage",
           cmsType: "subComponentsPage",
           isFixedLayout: false,
-        }
+        },
       },
     },
     kontent: {
@@ -111,6 +115,13 @@ const CmsVariants = {
           cmsType: "navigation_item",
           isFixedLayout: false
         },
+        landing: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "landing",
+          cmsType: "staticPage",
+          isFixedLayout: true,
+        },
       },
     },
     contentful: {
@@ -138,7 +149,7 @@ const CmsVariants = {
           backEndSlug: null,
           pageVariant: "dynamic",
           cmsType: "pageCollection",
-          isFixedLayout: false
+          isFixedLayout: false,
         },
       },
     },
@@ -211,6 +222,7 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSubComponentContentData",
     },
+
     gridContent: {
       snippetLocation: "gridContent",
       snippetFileName: "gridContent",
@@ -228,7 +240,7 @@ const DynamicCmsDataLocations = {
       queryHasVariables: false,
       variableFunction: "variables",
       dataFunctionMapperName: "mapRedirectsData",
-    },    
+    },
     ourclient: {
       snippetLocation: "ourclient",
       snippetFileName: "ourclient",
@@ -238,6 +250,15 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapOurClientData",
     },
+    features: {
+      snippetLocation: "features",
+      snippetFileName: "features",
+      snippetExport: "features",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapFeaturesData",
+    },
     robotsTxt: {
       snippetLocation: "robotsTxt",
       snippetFileName: "robotsTxt",
@@ -246,7 +267,7 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapRobotsTxtData",
-    }
+    },
   },
 }
 export { DynamicCmsDataLocations }
@@ -266,6 +287,8 @@ export interface DynamicDataCmsProperties {
 
 export const COMPONENT_HERO: Component = "hero"
 export const COMPONENT_OUR_CLIENT: Component = "ourclient"
+export const COMPONENT_DYNAMIC_CONTENT: Component = "dynamicContent"
+export const COMPONENT_FEATURES: Component = "features"
 export const COMPONENT_GRID_CONTENT: Component = "gridContent"
 export const SUBCOMPONENT_CONTENT: Component = "subComponentContent"
 
@@ -273,17 +296,23 @@ export const FixedLayouts: Components = {
   layouts: [
     {
       identifier: "home",
-      components: [ 
+      components: [
         COMPONENT_HERO,
         COMPONENT_OUR_CLIENT,
-    ],      
-    }, 
+        COMPONENT_FEATURES,
+        // "ThreeColumnCTA"
+      ],
+    },
     // {
     //   identifier: "landing",
     //   components: [],
     // }
   ],
 }
+// {
+//   identifier: "landing",
+//   components: [],
+// }
 
 export interface Components {
   layouts: {
@@ -292,5 +321,12 @@ export interface Components {
   }[]
 }
 
-export type Component = "subComponentContent" | "hero" | "ourclient" | "gridContent"
+// export type Component = "dynamicContent" | "hero" | "ourclient" |
+export type Component =
+  | "dynamicContent"
+  | "subComponentContent"
+  | "hero"
+  | "ourclient"
+  | "gridContent"
+  | "features"
 // | "ThreeColumnCTA"

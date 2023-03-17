@@ -1,16 +1,16 @@
 import Head from "next/head"
 import Link from "next/link"
 import { BackpackIcon, StarFilledIcon } from "@radix-ui/react-icons"
+import { Label } from "@radix-ui/react-label"
 
 import { Layout } from "@/ui-base/components/layout"
-import { GetSiteConfig } from "@/ui-base/config/site"
-import { Label } from "@radix-ui/react-label"
 import { buttonVariants } from "@/ui-base/components/ui/button"
-var data = {};
+import { GetSiteConfig } from "@/ui-base/config/site"
+
+var data = {}
 
 export default function IndexPage() {
-
-  const siteConfig = GetSiteConfig();
+  const siteConfig = GetSiteConfig()
 
   const sections = [
     {
@@ -75,7 +75,7 @@ export default function IndexPage() {
           title: "Hero",
           href: siteConfig.links.hero,
           icon: <StarFilledIcon />,
-        }
+        },
       ],
     },
     {
@@ -277,6 +277,10 @@ export default function IndexPage() {
         {
           title: "Three Column Section",
           href: siteConfig.links.ctaSectionThreeColumn,
+        },
+        {
+          title: "Feature Section",
+          href: siteConfig.links.featureSection,
         },
       ],
     },

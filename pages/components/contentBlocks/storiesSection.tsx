@@ -17,33 +17,35 @@ const data = {}
 const exampleJson: StoriesSectionProps = {
   title: "Real Stories from Real Customers",
   description: "Get inspired by these stories.",
-  card1: {
-    image_src: "/landify/static/playground_assets/logo-4.svg",
-    image_alt: "HubSpot",
-    image_src1: "/landify/static/playground_assets/quote-mark.svg",
-    image_alt1: "quote",
-    text: "To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.",
-    text1: "Floyd Miles",
-    text2: "Vice President, GoPro",
-  },
-  card2: {
-    image_src: "/landify/static/playground_assets/logo-1.svg",
-    image_alt: "Airbnb",
-    image_src1: "/landify/static/playground_assets/quote-mark.svg",
-    image_alt1: "quote",
-    text: "I used Landify and created a landing page for my startup within a week. The Landify UI Kit is simple and highly intuitive, so anyone can use it.",
-    text1: "Jane Cooper",
-    text2: "CEO, Airbnb",
-  },
-  card3: {
-    image_src: "/landify/static/playground_assets/logo-2.svg",
-    image_alt: "FedEx",
-    image_src1: "/landify/static/playground_assets/quote-mark.svg",
-    image_alt1: "quote",
-    text: "Landify saved our time in designing my company page.",
-    text1: "Kristin Watson",
-    text2: "Co-Founder, FedEx",
-  },
+  cards: [
+    {
+      image_src: "/landify/static/playground_assets/logo-4.svg",
+      image_alt: "HubSpot",
+      image_src1: "/landify/static/playground_assets/quote-mark.svg",
+      image_alt1: "quote",
+      text: "To quickly start my startup landing page design, I was looking for a landing page UI Kit. Landify is one of the best landing page UI kit I have come across. It’s so flexible, well organised and easily editable.",
+      text1: "Floyd Miles",
+      text2: "Vice President, GoPro",
+    },
+    {
+      image_src: "/landify/static/playground_assets/logo-1.svg",
+      image_alt: "Airbnb",
+      image_src1: "/landify/static/playground_assets/quote-mark.svg",
+      image_alt1: "quote",
+      text: "I used Landify and created a landing page for my startup within a week. The Landify UI Kit is simple and highly intuitive, so anyone can use it.",
+      text1: "Jane Cooper",
+      text2: "CEO, Airbnb",
+    },
+    {
+      image_src: "/landify/static/playground_assets/logo-2.svg",
+      image_alt: "FedEx",
+      image_src1: "/landify/static/playground_assets/quote-mark.svg",
+      image_alt1: "quote",
+      text: "Landify saved our time in designing my company page.",
+      text1: "Kristin Watson",
+      text2: "Co-Founder, FedEx",
+    },
+  ],
 }
 
 export default function IndexPage() {

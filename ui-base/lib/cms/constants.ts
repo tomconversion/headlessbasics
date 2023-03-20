@@ -113,7 +113,7 @@ const CmsVariants = {
           backEndSlug: null,
           pageVariant: "dynamic",
           cmsType: "navigation_item",
-          isFixedLayout: false
+          isFixedLayout: false,
         },
         landing: {
           frontEndSlug: null,
@@ -268,6 +268,15 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapRobotsTxtData",
     },
+    stories: {
+      snippetLocation: "stories",
+      snippetFileName: "stories",
+      snippetExport: "stories",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapStoriesData",
+    },
   },
 }
 export { DynamicCmsDataLocations }
@@ -291,6 +300,7 @@ export const COMPONENT_DYNAMIC_CONTENT: Component = "dynamicContent"
 export const COMPONENT_FEATURES: Component = "features"
 export const COMPONENT_GRID_CONTENT: Component = "gridContent"
 export const SUBCOMPONENT_CONTENT: Component = "subComponentContent"
+export const COMPONENT_STORIES: Component = "stories"
 
 export const FixedLayouts: Components = {
   layouts: [
@@ -300,6 +310,7 @@ export const FixedLayouts: Components = {
         COMPONENT_HERO,
         COMPONENT_OUR_CLIENT,
         COMPONENT_FEATURES,
+        COMPONENT_STORIES,
         // "ThreeColumnCTA"
       ],
     },
@@ -329,4 +340,5 @@ export type Component =
   | "ourclient"
   | "gridContent"
   | "features"
+  | "stories"
 // | "ThreeColumnCTA"

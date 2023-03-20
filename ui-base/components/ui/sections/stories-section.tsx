@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-interface TestimonialsCardProps {
+export interface StoriesCardProps {
   image_src?: string
   image_alt?: string
   image_src1?: string
@@ -13,9 +13,7 @@ interface TestimonialsCardProps {
 export interface StoriesSectionProps {
   title: string
   description: string
-  card1: TestimonialsCardProps
-  card2: TestimonialsCardProps
-  card3: TestimonialsCardProps
+  cards: StoriesCardProps[]
 }
 
 export default function StoriesSection(props: StoriesSectionProps) {
@@ -36,15 +34,21 @@ export default function StoriesSection(props: StoriesSectionProps) {
           </h1>
           <span>{props.description}</span>
           <div className="home-container10 mt-8 flex w-[350px] flex-col items-center justify-center self-end">
-            <TestimonialsCard {...props.card1} />
+            {props?.cards?.length > 0 ? (
+              <StoriesCard {...props.cards[0]} />
+            ) : null}
           </div>
         </div>
         <div className="ml-0 flex shrink-0 grow-0 basis-auto flex-col items-center lg:ml-8 lg:items-start">
           <div className="flex w-[350px] flex-col items-start">
-            <TestimonialsCard {...props.card2} />
+            {props?.cards?.length > 1 ? (
+              <StoriesCard {...props.cards[1]} />
+            ) : null}
           </div>
           <div className="mt-8 flex w-[350px] flex-col items-start lg:w-[300px]">
-            <TestimonialsCard {...props.card3} />
+            {props?.cards?.length > 2 ? (
+              <StoriesCard {...props.cards[2]} />
+            ) : null}
           </div>
         </div>
       </div>
@@ -52,7 +56,7 @@ export default function StoriesSection(props: StoriesSectionProps) {
   )
 }
 
-const TestimonialsCard = (props: TestimonialsCardProps) => {
+const StoriesCard = (props: StoriesCardProps) => {
   return (
     <div className="flex w-full shrink-0 grow-0 basis-auto flex-col items-start rounded-lg bg-white p-8 shadow-[0px_10px_20px_0px_rgba(41,41,42,0.07)]">
       <Image

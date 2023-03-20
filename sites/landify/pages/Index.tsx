@@ -4,6 +4,7 @@ import {
   COMPONENT_FEATURES,
   COMPONENT_HERO,
   COMPONENT_OUR_CLIENT,
+  COMPONENT_STORIES,
 } from "@/ui-base/lib/cms/constants"
 import { Layout } from "../../../ui-base/components/layout"
 import { siteConfig } from "../config/site"
@@ -32,6 +33,7 @@ export function IndexPage({ data }) {
         heroData={data?.data?.pageComponentData[COMPONENT_HERO]}
         clientsData={data?.data?.pageComponentData[COMPONENT_OUR_CLIENT]}
         featuresData={data?.data?.pageComponentData[COMPONENT_FEATURES]}
+        storiesData={data?.data?.pageComponentData[COMPONENT_STORIES]}
       />
     </Layout>
   )

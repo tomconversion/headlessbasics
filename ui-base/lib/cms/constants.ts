@@ -239,15 +239,6 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapModelData",
     },
-    hero: {
-      snippetLocation: "hero",
-      snippetFileName: "hero",
-      snippetExport: "hero",
-      queryIsFunction: true,
-      queryHasVariables: true,
-      variableFunction: "variables",
-      dataFunctionMapperName: "mapHeroData",
-    },
     subComponentContent: {
       snippetLocation: "subComponentContent",
       snippetFileName: "subComponentContent",
@@ -257,7 +248,6 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSubComponentContentData",
     },
-
     gridContent: {
       snippetLocation: "gridContent",
       snippetFileName: "gridContent",
@@ -275,24 +265,6 @@ const DynamicCmsDataLocations = {
       queryHasVariables: false,
       variableFunction: "variables",
       dataFunctionMapperName: "mapRedirectsData",
-    },
-    ourclient: {
-      snippetLocation: "ourclient",
-      snippetFileName: "ourclient",
-      snippetExport: "ourclient",
-      queryIsFunction: true,
-      queryHasVariables: true,
-      variableFunction: "variables",
-      dataFunctionMapperName: "mapOurClientData",
-    },
-    features: {
-      snippetLocation: "features",
-      snippetFileName: "features",
-      snippetExport: "features",
-      queryIsFunction: true,
-      queryHasVariables: true,
-      variableFunction: "variables",
-      dataFunctionMapperName: "mapFeaturesData",
     },
     robotsTxt: {
       snippetLocation: "robotsTxt",
@@ -320,48 +292,18 @@ export interface DynamicDataCmsProperties {
   queryHasVariables: boolean
 }
 
-export const COMPONENT_HERO: Component = "hero"
-export const COMPONENT_OUR_CLIENT: Component = "ourclient"
-export const COMPONENT_DYNAMIC_CONTENT: Component = "dynamicContent"
-export const COMPONENT_FEATURES: Component = "features"
-export const COMPONENT_GRID_CONTENT: Component = "gridContent"
-export const SUBCOMPONENT_CONTENT: Component = "subComponentContent"
-
-export const FixedLayouts: Components = {
-  layouts: [
-    {
-      identifier: "home",
-      components: [
-        COMPONENT_HERO,
-        COMPONENT_OUR_CLIENT,
-        COMPONENT_FEATURES,
-        // "ThreeColumnCTA"
-      ],
-    },
-    // {
-    //   identifier: "landing",
-    //   components: [],
-    // }
-  ],
-}
-// {
-//   identifier: "landing",
-//   components: [],
-// }
+export const COMPONENT_DYNAMIC_CONTENT: FlexibleComponents = "dynamicContent"
+export const COMPONENT_GRID_CONTENT: FlexibleComponents = "gridContent"
+export const SUBCOMPONENT_CONTENT: FlexibleComponents = "subComponentContent"
 
 export interface Components {
   layouts: {
     identifier: PageVariant
-    components: Component[]
+    components: FlexibleComponents[]
   }[]
 }
 
-// export type Component = "dynamicContent" | "hero" | "ourclient" |
-export type Component =
+export type FlexibleComponents =
   | "dynamicContent"
   | "subComponentContent"
-  | "hero"
-  | "ourclient"
   | "gridContent"
-  | "features"
-// | "ThreeColumnCTA"

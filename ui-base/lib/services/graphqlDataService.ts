@@ -9,6 +9,7 @@ import {
   PageVariant,
 } from "../cms/constants"
 import { collectAllPageData } from "./pageLayoutDataCollector"
+import { GetSite } from "./siteContextService";
 
 export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, site:LanguageSite, params?: any) {
 
@@ -37,7 +38,8 @@ export async function getDyanmicCmsDataViaCmsSelector(
   lookupDetails: DynamicDataCmsProperties,
   pageIdentifier?: PageIdentifier,
   slug?: string,
-  languageSite?: LanguageSite
+  languageSite?: LanguageSite,
+  isSiteComponent: boolean = false
 ) {
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
   const queryHasVariables = lookupDetails.queryHasVariables
@@ -51,10 +53,16 @@ export async function getDyanmicCmsDataViaCmsSelector(
   let queryResult = undefined
 
   try {
-    const query =
-      require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
+    let query =
+      require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
         queryExport
-      ]
+    ];
+    if(isSiteComponent){
+        query =
+        require(`@/sites/${GetSite().name}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+          queryExport
+      ];
+    }
 
     if (queryHasVariables && typeof pageIdentifier !== "undefined") {
       queryResult = query(pageIdentifier, languageSite)
@@ -70,10 +78,16 @@ export async function getDyanmicCmsDataViaCmsSelector(
 
   let variables = { variables: {}, preview: false }
   if (queryHasVariables) {
-    const variableFunc =
-      require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
+    let variableFunc =
+      require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
         lookupDetails.variableFunction
       ]
+    if(isSiteComponent){
+      variableFunc =
+      require(`@/sites/${GetSite().name}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+        lookupDetails.variableFunction
+      ];
+    }  
 
     // console.log("inside variable sender pageIdentifier", pageIdentifier);
 
@@ -93,9 +107,15 @@ export async function getDyanmicCmsDataViaCmsSelector(
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper =
-    require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
+    require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
       dataFunctionMapperName
-    ]
+  ];
+  if(isSiteComponent){
+    dataMapper =
+    require(`@/sites/${GetSite().name}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+      dataFunctionMapperName
+  ];
+  } 
 
   const result = dataMapper(data, pageIdentifier, languageSite)
 

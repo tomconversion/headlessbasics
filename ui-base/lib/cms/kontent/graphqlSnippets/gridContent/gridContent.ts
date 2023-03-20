@@ -4,7 +4,7 @@
 // The can pick the columns and rows and then add components to the grid.
 
 
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
 
 export function gridContent() {
   return `
@@ -42,7 +42,7 @@ export default function GetGridContentQuery() {
   return gridContent
 }
 
-export function mapGridContentData(data: any, pageIdentifier:PageIdentifier) {
+export function mapGridContentData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   console.log("Umbraco mapGridContentData", data);
   let dynamicContent = {};
   if (data?.dynamicPage?.contentBody) {

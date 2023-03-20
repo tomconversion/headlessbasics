@@ -1,4 +1,4 @@
-import { PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
 
 export interface HeroData {
   name: string
@@ -60,7 +60,7 @@ export default function GetHeroQuery() {
   return hero
 }
 
-export function mapHeroData(data: any): HeroData[] {
+export function mapHeroData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite): HeroData[] {
   const items = data?.homepage?.bodyItems?.items
   const heroData: HeroData[] = []
 

@@ -1,3 +1,5 @@
+import { LanguageSite, PageIdentifier } from "../../../constants";
+
 export const navigation = `
 {
   pageCollection
@@ -23,7 +25,7 @@ export function GetNavQuery() {
   return navigation
 }
 
-export function mapNavigationData(data) {
+export function mapNavigationData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   let navItems = data.pageCollection.items
   navItems.map((x) => {
     x.url = x.urlPath;

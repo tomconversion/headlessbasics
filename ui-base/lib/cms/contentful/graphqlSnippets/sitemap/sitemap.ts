@@ -1,4 +1,4 @@
-import { PageIdentifier } from "../../../constants";
+import { LanguageSite, PageIdentifier } from "../../../constants";
 const sitemap = `
 {
   pageCollection{
@@ -24,7 +24,7 @@ export default function GetSitemapQuery() {
   return sitemap;
 }
 
-export function mapSitemapData(data : any, pageIdentifier:PageIdentifier) {
+export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   let nodes = data.pageCollection.items;  
   nodes.map((x) => {
     x.url = x.urlPath;

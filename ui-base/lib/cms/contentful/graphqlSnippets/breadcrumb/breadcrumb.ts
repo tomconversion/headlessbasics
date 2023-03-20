@@ -1,4 +1,4 @@
-import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 import { reverseArray } from "@/ui-base/lib/util/utils";
 import { mapBreadcrumbStructure } from "../../tools/urlTools";
 
@@ -47,7 +47,7 @@ export default function GetBreadcrumbQuery() {
   return breadcrumb;
 }
 
-export function mapBreadcrumbData(data, pageIdentifier:PageIdentifier) {
+export function mapBreadcrumbData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
     
   return mapBreadcrumbStructure(data.pageCollection.items[0]);
 

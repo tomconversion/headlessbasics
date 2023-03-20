@@ -1,4 +1,4 @@
-import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 
 export function breadcrumb()
 {
@@ -32,7 +32,7 @@ export function breadcrumb()
   `
 };
 
-export function variables(urlPath: string) {
+export function variables(urlPath: string, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   let correctedPath = urlPath.endsWith('/') ? urlPath : urlPath + '/';
   const result = {'urlPath': `/${correctedPath}`};
   console.log("model variables", result);
@@ -45,7 +45,7 @@ export default function GetBreadcrumbQuery() {
   return breadcrumb;
 }
 
-export function mapBreadcrumbData(data, pageIdentifier:PageIdentifier) {
+export function mapBreadcrumbData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   console.log("mapBreadcrumbData: " + JSON.stringify(data));
   if(data.navigationItem_All.items.length == 0){ 
     return [];

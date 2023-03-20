@@ -1,4 +1,4 @@
-import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 
 export function model(urlPath:string)
 {
@@ -15,7 +15,7 @@ export function model(urlPath:string)
 }`
 };
 
-export function variables(urlPath:string)
+export function variables(urlPath:string, pageIdentifier:PageIdentifier, languageSite:LanguageSite)
 {
   console.log("variables", `/${urlPath}`);
   const result = {'urlPath': `/${urlPath}`};
@@ -26,7 +26,7 @@ export default function GetModelQuery() {
   return model;
 }
 
-export function mapModelData(data, pageIdentifier:PageIdentifier) {
+export function mapModelData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   console.log("mapModelData", data);
   const typeNameIniitial = data?.pageCollection?.items[0].__typename;
   if(typeNameIniitial == 'Page'){

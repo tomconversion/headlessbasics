@@ -2,7 +2,7 @@
 // subComponentContent: 
 
 
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
 
 export function subComponentContent() {
   return `
@@ -28,6 +28,6 @@ export default function GetSubComponentContentQuery() {
   return subComponentContent
 }
 
-export function mapSubComponentContentData(data: any, pageIdentifier:PageIdentifier) {
+export function mapSubComponentContentData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
  return data?.pageCollection?.items[0];
 }

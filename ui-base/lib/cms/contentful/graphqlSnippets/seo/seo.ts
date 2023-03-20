@@ -1,4 +1,4 @@
-import { PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 
 export function seo(pageIdentifier:PageIdentifier)
 {
@@ -17,7 +17,7 @@ export function seo(pageIdentifier:PageIdentifier)
   `
 };
 
-export function variables(pageIdentifier:PageIdentifier)
+export function variables(pageIdentifier:PageIdentifier, languageSite:LanguageSite)
 {
   const result = {'slug': pageIdentifier.backEndSlug};
   return result;
@@ -27,7 +27,7 @@ export default function GetSeoQuery() {
   return seo;
 }
 
-export function mapSeoData(data) {
+export function mapSeoData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   const result = data.pageCollection.items;
   let seoTitle = "";
   let seoDescription = "";

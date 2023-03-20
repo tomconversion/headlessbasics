@@ -2,7 +2,7 @@
 // subComponentContent: 
 
 
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
 
 export function subComponentContent() {
   return `
@@ -45,7 +45,7 @@ export default function GetSubComponentContentQuery() {
   return subComponentContent
 }
 
-export function mapSubComponentContentData(data, pageIdentifier:PageIdentifier) {
+export function mapSubComponentContentData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   console.log("mapSubComponentContentData Kontent", data);
   if(data?.navigationItem_All?.items[0]?.content){
     return data?.navigationItem_All?.items[0]?.content;

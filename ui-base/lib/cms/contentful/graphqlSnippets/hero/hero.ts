@@ -1,4 +1,4 @@
-import { PageIdentifier } from "../../../constants"
+import { LanguageSite, PageIdentifier } from "../../../constants"
 
 export interface HeroData {
   name: string
@@ -53,7 +53,7 @@ export default function GetHeroQuery() {
   return hero
 }
 
-export function mapHeroData(data: any): HeroData[] {
+export function mapHeroData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite): HeroData[] {
   return (
     data?.pageCollection?.items?.map((page: any) => {
       const heroComponent = page?.componentsCollection?.items?.find(

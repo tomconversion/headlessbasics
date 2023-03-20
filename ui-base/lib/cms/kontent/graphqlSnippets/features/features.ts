@@ -1,5 +1,5 @@
 import { FeaturesProps } from "@/ui-base/components/ui/sections/feature-section"
-import { PageIdentifier } from "../../../constants"
+import { LanguageSite, PageIdentifier } from "../../../constants"
 
 export function features(pageIdentifier: PageIdentifier) {
   return `
@@ -39,7 +39,7 @@ export function features(pageIdentifier: PageIdentifier) {
   `
 }
 
-export function variables(pageIdentifier: PageIdentifier) {
+export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite) {
   // const result = { slug: pageIdentifier.backEndSlug }
   const result = { slug: "homepage" }
   // console.log("Feature VARIABLE --", result)
@@ -50,7 +50,7 @@ export default function GetFeatureQuery() {
   return features
 }
 
-export function mapFeaturesData(data: any): FeaturesProps {
+export function mapFeaturesData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite): FeaturesProps {
   console.log("data", JSON.stringify(data, null, 2))
   const section = data.homepage.bodyItems.items.find(
     (item: any) => item.__typename === "FeaturesSection"

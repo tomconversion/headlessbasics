@@ -1,4 +1,4 @@
-import { PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
 
 export function seo(pageIdentifier: PageIdentifier) {
   return `
@@ -20,7 +20,7 @@ export function seo(pageIdentifier: PageIdentifier) {
   `
 };
 
-export function variables(pageIdentifier:PageIdentifier)
+export function variables(pageIdentifier:PageIdentifier, languageSite:LanguageSite)
 {
   console.log("pageIdentifier.backEndSlug: " + pageIdentifier.backEndSlug + "")
   let correctedPath = pageIdentifier.backEndSlug.endsWith('/') ? pageIdentifier.backEndSlug : pageIdentifier.backEndSlug + '/';

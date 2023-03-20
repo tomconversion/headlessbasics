@@ -2,7 +2,7 @@
 // Brid Content
 
 
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
 
 export function gridContent() {
   return `
@@ -18,7 +18,7 @@ export function gridContent() {
   }`
 }
 
-export function variables(urlPath:string)
+export function variables(urlPath:string, pageIdentifier:PageIdentifier, languageSite:LanguageSite)
 {
   console.log("variables", `/${urlPath}`);
   const result = {'urlPath': `/${urlPath}`};
@@ -29,6 +29,6 @@ export default function GetGridContentQuery() {
   return gridContent
 }
 
-export function mapGridContentData(data: any, pageIdentifier:PageIdentifier) {
+export function mapGridContentData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   return data?.pageCollection?.items[0];
 }

@@ -1,4 +1,4 @@
-import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 
 export function model(urlPath:string)
 {
@@ -36,7 +36,7 @@ export default function GetModelQuery() {
   return model;
 }
 
-export function mapModelData(data, pageIdentifier:PageIdentifier) {
+export function mapModelData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   console.log("mapModelData Kontent", data);
   const typeNameIniitial = data?.navigationItem_All?.items[0]._system_?.type?._system_?.codename;
   if(typeNameIniitial == 'navigation_item'){

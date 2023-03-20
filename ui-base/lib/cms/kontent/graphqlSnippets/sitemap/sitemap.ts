@@ -1,4 +1,4 @@
-import { PageIdentifier } from "../../../constants";
+import { LanguageSite, PageIdentifier } from "../../../constants";
 const sitemap = `
 {
   navigationItem_All{
@@ -30,7 +30,7 @@ export default function GetSitemapQuery() {
   return sitemap;
 }
 
-export function mapSitemapData(data : any, pageIdentifier:PageIdentifier) {
+export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   let nodes = data.navigationItem_All.items;  
   nodes.map((x) => {
     x.url = x._seo.urlPath;

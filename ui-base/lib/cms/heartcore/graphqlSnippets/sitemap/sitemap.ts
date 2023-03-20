@@ -53,8 +53,7 @@ export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, langua
   nodes.map((x) => {
     x.name = x.name.replace('/', '');
     x.slug = x.url;
-    x.url = x.url.replace('/us-homepage', '');
-    x.url = x.url.replace('/au-homepage', '/au');
+    x.url = x.url.replace(languageSite.homepageSlugPrefix, '');
   });
   nodes = nodes.filter((x) => (!(x.name.indexOf("_") > -1)));
   return nodes;

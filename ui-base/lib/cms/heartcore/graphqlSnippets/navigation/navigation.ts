@@ -48,7 +48,7 @@ export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageS
   }  
 };
 
-export function mapNavigationData(data : any, pageIdentifier:PageIdentifier) {
+export function mapNavigationData(data : any, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   
   let mappedNav = [];
 
@@ -56,8 +56,7 @@ export function mapNavigationData(data : any, pageIdentifier:PageIdentifier) {
     mappedNav = data.homepage.children.items.map((x) => {    
       x.name = x.name.replace('/', '');
       x.slug = x.name;
-      x.url = x.url.replace('/us-homepage', '');
-      x.url = x.url.replace('/au-homepage', '/au');
+      x.url = x.url.replace(languageSite.homepageSlugPrefix, '');
       return x;
     });
   }

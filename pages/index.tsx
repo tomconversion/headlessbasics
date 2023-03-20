@@ -1,6 +1,6 @@
 import { GetLanguageSiteByCode, GetMainSiteLanguage } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
 import { buildPageData } from '@/ui-base/lib/services/graphqlDataService'
-import { IndexPage as Homepage } from '../sites/landify/pages/Index'
+import { IndexPage as Homepage } from '../sites/multisite/pages/Index'
 
 export default function IndexPage({ data }) {
   return <Homepage data={data} />

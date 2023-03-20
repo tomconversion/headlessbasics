@@ -77,10 +77,10 @@ export default function GetBreadcrumbQuery() {
 
 export function mapBreadcrumbData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
     
-  return mapBreadcrumbStructure(data.content);
+  return mapBreadcrumbStructure(data.content, pageIdentifier, languageSite);
 }
 
-export function mapBreadcrumbStructure(data) {
+export function mapBreadcrumbStructure(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
     
   let nodes = [];
 
@@ -93,7 +93,7 @@ export function mapBreadcrumbStructure(data) {
 
   
   function addNode(content) {
-    nodes.push(cleanupSingleLevel(content));
+    nodes.push(cleanupSingleLevel(content, languageSite));
     if (content.parent) {
       addNode(content.parent);
     }
@@ -102,7 +102,7 @@ export function mapBreadcrumbStructure(data) {
   for(var i=nodes.length-1; i>-1; i--){
     let current = nodes[i];
     let link = current.slug.replace('/us-homepage', '');
-    link = current.slug.replace('/au-homepage', '/au');
+    link = current.slug.replace(languageSite.homepageSlugPrefix, '');
     if(current.urlPath)
       link = current.urlPath;  
     if(current.superAlias){
@@ -117,7 +117,7 @@ export function mapBreadcrumbStructure(data) {
   return breadcrumb;
 }
 
-export function cleanupSingleLevel(data) {  
+export function cleanupSingleLevel(data, languageSite:LanguageSite) {  
   
   if(data.name){
     data.name = data.name.replace('/', '');
@@ -132,7 +132,7 @@ export function cleanupSingleLevel(data) {
   }else if(data.url){
     data.slug = data.url;
     data.url = data.url.replace('/us-homepage', '');  
-    data.url = data.url.replace('/au-homepage', '/au');  
+    data.url = data.url.replace(languageSite.homepageSlugPrefix, '');
   }else if(data._seo?.urlPath){
     data.slug = data._seo.urlPath;
     data.url = data._seo.urlPath;  

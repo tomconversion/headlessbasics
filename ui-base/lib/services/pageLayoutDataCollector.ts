@@ -124,12 +124,14 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
   
   console.log(`${slug}  > collectDynamicLayoutPageComponentData`);
 
-  pageComponentData[SUBCOMPONENT_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants[SUBCOMPONENT_CONTENT],
-    undefined,
-    slug,
-    languageSite
-  );
+  if(pageVariant == "subComponentsPage"){
+    pageComponentData[SUBCOMPONENT_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
+      DynamicCmsDataLocations.variants[SUBCOMPONENT_CONTENT],
+      undefined,
+      slug,
+      languageSite
+    );
+  }
 
   console.log(`${slug}  > collectDynamicLayoutPageComponentData > pageComponentData[SUBCOMPONENT_CONTENT] > ${JSON.stringify(pageComponentData[SUBCOMPONENT_CONTENT])}`);
   

@@ -22,14 +22,14 @@ export function GetLanguageSiteByCode(code:CountryCode):LanguageSite{
     const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
     const match = CmsVariants.variants[cmsVariant].languageSites.filter((x) => x.countryCode === code);
     if(match.length > 0){
-        return match[0];
+        return match[0] as LanguageSite;
     }
     return undefined;
 }
 
 export function GetMainSiteLanguage():CountryCode{
     const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
-    return CmsVariants.variants[cmsVariant].mainSiteLanguage;
+    return CmsVariants.variants[cmsVariant].mainSiteLanguage as CountryCode;
 }
 
 export function GetHomepageVariant():PageIdentifier{

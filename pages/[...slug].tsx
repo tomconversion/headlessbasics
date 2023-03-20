@@ -1,4 +1,4 @@
-import { DynamicPage as DynamicPageOnSite } from '@/sites/landify/pages/dynamicPage';
+import { DynamicPage as DynamicPageOnSite } from '@/sites/multisite/pages/dynamicPage';
 import { GetLanguageSiteByCode, GetMainSiteLanguage } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
 import { buildPageData, collectSitemapNavigationStructure, getPageTypeBySlug } from '@/ui-base/lib/services/graphqlDataService'
 import { collectDynamicPageData } from '@/ui-base/lib/services/pageDataProvider';
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
   // on-demand if the path doesn't exist.
   const paths = await collectAllRoutes(GetLanguageSiteByCode(GetMainSiteLanguage()));
 
-  console.log("getStaticPaths US paths", paths.length)
+  console.log(`getStaticPaths ${GetMainSiteLanguage()} paths`, paths.length)
 
   return { paths, fallback: 'blocking' }
 }

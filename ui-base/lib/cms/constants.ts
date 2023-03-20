@@ -21,7 +21,6 @@ export interface CmsProperties {
   cmsUrl?: string
   projectAlias?: string
   projectId?: string
-  slugPrefix?: string
   pageTypes: {
     home: PageIdentifier
     dynamic: PageIdentifier
@@ -69,7 +68,7 @@ const CmsVariants = {
       contentApiKey: "",
       previewApiKey: "",
       projectAlias: process.env.UMBRACO_PROJECT_ALIAS,
-      mainSiteLanguage: "us",
+      mainSiteLanguage: "au",
       languageSites: [
         {
           countryCode: "us",
@@ -77,7 +76,7 @@ const CmsVariants = {
         },
         {
           countryCode: "au",
-          homepageSlugPrefix: "/au-homepage",
+          homepageSlugPrefix: "/homepage",
         },
       ],
       pageTypes: {
@@ -115,7 +114,17 @@ const CmsVariants = {
       previewApiKey: process.env.KONTENT_PREVIEW_API_KEY,
       projectAlias: "",
       projectId: process.env.KONTENT_PROJECT_ID,
-      slugPrefx: "homepage",
+      mainSiteLanguage: "au",
+      languageSites: [
+        {
+          countryCode: "us",
+          homepageSlugPrefix: "/us-homepage",
+        },
+        {
+          countryCode: "au",
+          homepageSlugPrefix: "",
+        },
+      ],
       pageTypes: {
         home: {
           frontEndSlug: "/",
@@ -151,7 +160,17 @@ const CmsVariants = {
       projectAlias: "contentful-CD",
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       environmentId: process.env.CONTENTFUL_ENVIRONMENT,
-      slugPrefx: "",
+      mainSiteLanguage: "au",
+      languageSites: [
+        {
+          countryCode: "us",
+          homepageSlugPrefix: "/us-homepage",
+        },
+        {
+          countryCode: "au",
+          homepageSlugPrefix: "",
+        },
+      ],
       pageTypes: {
         home: {
           frontEndSlug: "/",

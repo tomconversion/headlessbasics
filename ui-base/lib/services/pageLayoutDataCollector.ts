@@ -69,7 +69,11 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 
     console.log(`${slug} > collectAllPageData > completed lookup`);
 
-    return { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
+    const finalPageData = { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
+
+    console.log(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(finalPageData)}`);
+
+    return finalPageData;
 }
 
 // export async function collectFixedLayoutPageComponentData(pageIdentifier: PageIdentifier, pageVariant: PageVariant) {
@@ -104,10 +108,12 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
     )
     return pageComponentData
   }
+
+  console.log(`${slug}  > collectFixedLayoutPageComponentData > About to iterate over layout.components > ${layout.components}`);
+
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
     const lowerCaseMatchName = component.toLowerCase();
-    // console.log("collectFixedLayoutPageComponentData > component", lowerCaseMatchName);
     pageComponentData[lowerCaseMatchName] = await getDyanmicCmsDataViaCmsSelector(
       DynamicCmsDataLocations.variants[lowerCaseMatchName],
       pageIdentifier,

@@ -128,7 +128,7 @@ const CmsVariants = {
       pageTypes: {
         home: {
           frontEndSlug: "/",
-          backEndSlug: "homepage",
+          backEndSlug: "/",
           pageVariant: "Home",
           cmsType: "homepage",
           isFixedLayout: true,

@@ -30,7 +30,7 @@ export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean,
 
   const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug, site) }
 
-  return result
+  return result;
 }
 
 export async function getDyanmicCmsDataViaCmsSelector(

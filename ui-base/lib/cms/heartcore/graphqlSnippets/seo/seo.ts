@@ -1,4 +1,5 @@
-import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools";
 
 export function seo(pageIdentifier:PageIdentifier)
 {
@@ -14,12 +15,9 @@ export function seo(pageIdentifier:PageIdentifier)
   }`
 };
 
-export function variables(pageIdentifier:PageIdentifier)
+export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite)
 {
-  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
-  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
-  const result = {'slug': umbracoSlug};
-  return result;
+  return {'slug': GetMultiSiteSlugByIdentifier(pageIdentifier, languageSite)};
 };
 
 export default function GetSeoQuery() {

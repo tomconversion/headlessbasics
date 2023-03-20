@@ -1,4 +1,5 @@
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
+import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools"
 
 
 export interface HeroData {
@@ -53,12 +54,10 @@ export function hero() {
   }`
 }
 
-export function variables(pageIdentifier: PageIdentifier) {
-  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
-  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
-  const result = {'slug': umbracoSlug};
-  return result;
-}
+export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite)
+{
+  return {'slug': GetMultiSiteSlugByIdentifier(pageIdentifier, languageSite)};
+};
 
 export default function GetHeroQuery() {
   return hero

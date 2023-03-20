@@ -7,7 +7,7 @@ wrapperClass?: string
 }> = ({data, wrapperClass= "w-1/3 p-4 text-center"}): JSX.Element => {
     return (
         <div className={wrapperClass}>
-            <Image alt="" src={data.image} className="h-40 mx-auto mb-4" loading='lazy' />
+            <Image alt="" src={data.image} height={data.height} width={data.width} className="h-40 mx-auto mb-4" loading='lazy' />
             <h3 className="text-xl font-bold mb-2">{data.title}</h3>
             <p className="text-gray-700 leading-tight  text-justify">{data.description}</p>
             {data.buttonText && <button className="w-full bg-blue-500 text-white mt-2 py-2 rounded">{data.buttonText}</button>}
@@ -20,7 +20,9 @@ export interface PromotionInputProps {
       title: string;
       description: string;
       buttonText?: string;
-      buttonLink?: string;   
+      buttonLink?: string;  
+      width: number;
+      height: number;  
   }
 
 export interface PromotionsTableProps {

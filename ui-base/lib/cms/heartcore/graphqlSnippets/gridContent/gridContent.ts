@@ -4,7 +4,8 @@
 // The can pick the columns and rows and then add components to the grid.
 
 
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
+import { GetMultiSiteSlug } from "../../tools/urlTools";
 
 export function gridContent() {
   return `query GridContentBySlug($slug: String!) {
@@ -17,13 +18,10 @@ export function gridContent() {
   }`
 }
 
-export function variables(slug: string) {
-  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + slug;
-  console.log("Umbraco gridContent query variables", umbracoSlug);
-  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
-  const result = {'slug': umbracoSlug};
-  return result;
-}
+export function variables(slug:string, languageSite:LanguageSite)
+{
+  return {'slug': GetMultiSiteSlug(slug, languageSite)};
+};
 
 export default function GetGridContentQuery() {
   return gridContent

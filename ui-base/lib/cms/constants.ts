@@ -25,9 +25,16 @@ export interface CmsProperties {
   pageTypes: {
     home: PageIdentifier
     dynamic: PageIdentifier
-    landing: PageIdentifier
-  }
+  },
+  mainSiteLanguage: CountryCode
+  languageSites: LanguageSite[]
 }
+
+export interface LanguageSite {
+  countryCode: CountryCode,
+  homepageSlugPrefix: string
+}
+
 
 export interface PageTypes {
   home: string
@@ -42,15 +49,14 @@ export interface PageIdentifier {
   cmsType: string
   isFixedLayout: boolean
   components: Components
+  slugPrefix?: string
 }
 
 export type CmsVariant = "heartcore" | "contentful" | "kontent"
 
-export type PageVariant =
-  | "home"
-  | "gridContentPage"
-  | "dynamic"
-  | "subComponentsPage"
+export type CountryCode = "us" | "au"
+
+export type PageVariant = "home" | "gridContentPage" | "subComponentsPage"
 
 const CmsVariants = {
   variants: {
@@ -63,7 +69,17 @@ const CmsVariants = {
       contentApiKey: "",
       previewApiKey: "",
       projectAlias: process.env.UMBRACO_PROJECT_ALIAS,
-      slugPrefx: "/homepage",
+      mainSiteLanguage: "us",
+      languageSites: [
+        {
+          countryCode: "us",
+          homepageSlugPrefix: "/us-homepage",
+        },
+        {
+          countryCode: "au",
+          homepageSlugPrefix: "/au-homepage",
+        },
+      ],
       pageTypes: {
         home: {
           frontEndSlug: "",
@@ -163,8 +179,8 @@ const DynamicCmsDataLocations = {
       snippetLocation: "navigation",
       snippetFileName: "navigation",
       snippetExport: "navigation",
-      queryIsFunction: false,
-      queryHasVariables: false,
+      queryIsFunction: true,
+      queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapNavigationData",
     },

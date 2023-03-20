@@ -1,5 +1,6 @@
-import { CmsVariants, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 import { replaceString } from "@/ui-base/lib/util/utils";
+import { GetMultiSiteSlug } from "../../tools/urlTools";
 
 export function model(slug:string)
 {
@@ -13,12 +14,9 @@ export function model(slug:string)
 }`
 };
 
-export function variables(slug:string)
+export function variables(slug:string, languageSite:LanguageSite)
 {
-  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + slug;
-  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
-  const result = {'slug': umbracoSlug};
-  return result;
+  return {'slug': GetMultiSiteSlug(slug, languageSite)};
 };
 
 export default function GetModelQuery() {

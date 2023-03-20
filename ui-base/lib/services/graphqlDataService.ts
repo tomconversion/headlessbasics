@@ -4,18 +4,20 @@ import {
   CmsVariants,
   DynamicCmsDataLocations,
   DynamicDataCmsProperties,
+  LanguageSite,
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
 import { collectAllPageData } from "./pageLayoutDataCollector"
 
-export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, params?: any) {
+export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, site:LanguageSite, params?: any) {
 
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
   const cmsVariantSelected = CmsVariants.variants[cmsVariant];
-  console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
+  // console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
   console.log( "buildPageData > pageVariant > ", pageVariant);
   console.log( "buildPageData > params > ", params);
+  console.log( "buildPageData > isDynamic > ", isDynamic);
   const pageIdentifier = cmsVariantSelected.pageTypes[
     pageVariant
   ] as PageIdentifier
@@ -26,7 +28,7 @@ export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean,
     pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 
-  const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug) }
+  const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug, site) }
 
   return result
 }
@@ -34,7 +36,8 @@ export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean,
 export async function getDyanmicCmsDataViaCmsSelector(
   lookupDetails: DynamicDataCmsProperties,
   pageIdentifier?: PageIdentifier,
-  slug?: string
+  slug?: string,
+  languageSite?: LanguageSite
 ) {
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
   const queryHasVariables = lookupDetails.queryHasVariables
@@ -54,9 +57,9 @@ export async function getDyanmicCmsDataViaCmsSelector(
       ]
 
     if (queryHasVariables && typeof pageIdentifier !== "undefined") {
-      queryResult = query(pageIdentifier)
+      queryResult = query(pageIdentifier, languageSite)
     } else if (queryHasVariables && typeof slug !== "undefined") {
-      queryResult = query(slug)
+      queryResult = query(slug, languageSite)
     } else {
       queryResult = query
     }
@@ -75,9 +78,9 @@ export async function getDyanmicCmsDataViaCmsSelector(
     // console.log("inside variable sender pageIdentifier", pageIdentifier);
 
     if (typeof pageIdentifier !== "undefined") {
-      variables = { variables: variableFunc(pageIdentifier), preview: false }
+      variables = { variables: variableFunc(pageIdentifier, languageSite), preview: false }
     } else if (typeof slug !== "undefined") {
-      variables = { variables: variableFunc(slug), preview: false }
+      variables = { variables: variableFunc(slug, languageSite), preview: false }
     }
 
     // console.log("variables --", variables)
@@ -94,23 +97,24 @@ export async function getDyanmicCmsDataViaCmsSelector(
       dataFunctionMapperName
     ]
 
-  const result = dataMapper(data, pageIdentifier)
+  const result = dataMapper(data, pageIdentifier, languageSite)
 
   return await result
 }
 
-export async function getPageTypeBySlug(slug: string) {
+export async function getPageTypeBySlug(slug: string, languageSite:LanguageSite) {
   const pageType =
   (await getDyanmicCmsDataViaCmsSelector(
     DynamicCmsDataLocations.variants.model,
     undefined, 
-    slug
+    slug,
+    languageSite
   )) || undefined;
-
+  console.log("graphqlDataService > getPageTypeBySlug > pageType > ", pageType);
   return pageType;
 }
 
-export async function collectSitemapNavigationStructure() {
+export async function collectSitemapNavigationStructure(languageSite:LanguageSite) {
 
   const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
@@ -120,6 +124,8 @@ export async function collectSitemapNavigationStructure() {
     DynamicCmsDataLocations.variants.sitemap,
     undefined,
     undefined // Slug is undefined, as we are doing the lookup based on page type
+    ,
+    languageSite
   )) || [];
 
   return navItems
@@ -134,7 +140,8 @@ export async function collectRobotsTxtData() {
   (await getDyanmicCmsDataViaCmsSelector(
     DynamicCmsDataLocations.variants.robotsTxt,
     undefined,
-    "robots.txt"
+    "robots.txt",
+    undefined
   )) || [];
 
   return navItems

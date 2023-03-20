@@ -2,7 +2,8 @@
 // subComponentContent: 
 
 
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
+import { GetMultiSiteSlug } from "../../tools/urlTools";
 
 export function subComponentContent() {
   return `query ComponentCintentBySlug($slug: String!) {
@@ -14,12 +15,10 @@ export function subComponentContent() {
   }`
 }
 
-export function variables(pageIdentifier: PageIdentifier) {
-  let umbracoSlug = CmsVariants.variants.heartcore.slugPrefx + "/" + pageIdentifier.backEndSlug;
-  umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
-  const result = {'slug': umbracoSlug};
-  return result;
-}
+export function variables(slug:string, languageSite:LanguageSite)
+{
+  return {'slug': GetMultiSiteSlug(slug, languageSite)};
+};
 
 export default function GetSubComponentContentQuery() {
   return subComponentContent

@@ -1,6 +1,6 @@
-import { GetLanguageSiteByCode, GetMainSiteLanguage } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
+import { GetLanguageSiteByCode } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
 import { buildPageData } from '@/ui-base/lib/services/graphqlDataService'
-import { IndexPage as Homepage } from '../sites/landify/pages/Index'
+import { IndexPage as Homepage } from '../../sites/ata-multisite/pages/Index'
 
 export default function IndexPage({ data }) {
   return <Homepage data={data} />
@@ -8,8 +8,9 @@ export default function IndexPage({ data }) {
 
 export async function getStaticProps({ params }) {
 
+  console.log("getStaticProps", params);
 
-  const data = await buildPageData("home", false, GetLanguageSiteByCode(GetMainSiteLanguage()), {slug: ""}); 
+  const data = await buildPageData("home", false, GetLanguageSiteByCode("au"), {slug: ""}); 
   
   return {
     props: {

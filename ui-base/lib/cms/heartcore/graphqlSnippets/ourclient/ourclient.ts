@@ -1,4 +1,5 @@
-import { CmsVariants, PageIdentifier } from "../../../constants"
+import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
+import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools"
 
 export interface OurClientData {
   name: string
@@ -42,16 +43,10 @@ export function ourclient() {
   `
 }
 
-export function variables(pageIdentifier: PageIdentifier) {
-  const result = {
-    slug:
-      CmsVariants.variants.heartcore.slugPrefx +
-      "/" +
-      pageIdentifier.backEndSlug,
-  }
-  // console.log("ourclient VARIABLE --", result)
-  return result
-}
+export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite)
+{
+  return {'slug': GetMultiSiteSlugByIdentifier(pageIdentifier, languageSite)};
+};
 
 export default function GetourClientQuery() {
   return ourclient

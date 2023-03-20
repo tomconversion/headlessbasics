@@ -10,7 +10,7 @@ interface Props {
 
 const Homepage = dynamic<Props>(
   () => {
-    const name = `../sites/${GetSite().name}/pages/Index`
+    const name = `../sites/${GetSite().name}/pages/IndexPage`
     return import(name).then((mod) => mod.IndexPage);
   },
   { ssr: true }

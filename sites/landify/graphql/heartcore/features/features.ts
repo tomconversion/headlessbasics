@@ -1,6 +1,6 @@
 import { FeaturesProps } from "@/ui-base/components/ui/sections/feature-section"
-import { LanguageSite, PageIdentifier } from "../../../constants"
-import { variablesNavigationBase } from "../../../_base/graphqlSnippets/navigation/navigation";
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { variablesNavigationBase } from "@/ui-base/lib/cms/_base/graphqlSnippets/navigation/navigation";
 
 export function features(pageIdentifier: PageIdentifier) {
   return `query HomepageComponentsBySlug($slug: String!) {

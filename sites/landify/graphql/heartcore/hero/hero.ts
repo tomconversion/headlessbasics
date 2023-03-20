@@ -1,7 +1,6 @@
-import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
-import { variablesNavigationBase } from "../../../_base/graphqlSnippets/navigation/navigation"
-import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools"
-
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/graphqlSnippets/common/multiSite"
+import { variablesNavigationBase } from "@/ui-base/lib/cms/_base/graphqlSnippets/navigation/navigation"
 
 export interface HeroData {
   name: string

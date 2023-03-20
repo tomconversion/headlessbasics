@@ -5,6 +5,7 @@ import { SiteConstantsInterface } from "@/ui-base/lib/cms/SiteConstantsInterface
 const LandifySiteComponentDataLocations = 
   [
     {
+      identifier: "hero",
       snippetLocation: "hero",
       snippetFileName: "hero",
       snippetExport: "hero",
@@ -14,6 +15,7 @@ const LandifySiteComponentDataLocations =
       dataFunctionMapperName: "mapHeroData",
     },
     {
+      identifier: "ourclient",
       snippetLocation: "ourclient",
       snippetFileName: "ourclient",
       snippetExport: "ourclient",
@@ -23,6 +25,7 @@ const LandifySiteComponentDataLocations =
       dataFunctionMapperName: "mapOurClientData",
     },
     {
+      identifier: "features",
       snippetLocation: "features",
       snippetFileName: "features",
       snippetExport: "features",

@@ -1,5 +1,7 @@
 import { FeaturesProps } from "@/ui-base/components/ui/sections/feature-section"
-import { PageIdentifier } from "../../../constants"
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/graphqlSnippets/common/multiSite"
+
 
 export function features(pageIdentifier: PageIdentifier) {
   return `query GetPageBySlug($slug: String!) {

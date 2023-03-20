@@ -4,6 +4,7 @@ import {
   CmsVariants,
   DynamicCmsDataLocations,
   DynamicDataCmsProperties,
+  GetDataLocation,
   LanguageSite,
   PageIdentifier,
   PageVariant,
@@ -41,6 +42,9 @@ export async function getDyanmicCmsDataViaCmsSelector(
   languageSite?: LanguageSite,
   isSiteComponent: boolean = false
 ) {
+
+  console.log("getDyanmicCmsDataViaCmsSelector > lookupDetails", lookupDetails)
+
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
   const queryHasVariables = lookupDetails.queryHasVariables
   const queryExport = lookupDetails.snippetExport
@@ -50,16 +54,19 @@ export async function getDyanmicCmsDataViaCmsSelector(
   // The following code lookup up a folder and snippet name to get the query
   // example: lib/cms/contentful/graphqlSnippets/navigation/navigation.ts
 
-  let queryResult = undefined
+  let queryResult = undefined;
+  let siteName = GetSite().name;
 
   try {
-    let query =
-      require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
-        queryExport
-    ];
+    let query;
     if(isSiteComponent){
-        query =
-        require(`@/sites/${GetSite().name}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+      query =
+        require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+          queryExport
+      ];
+    }else {
+      query =
+        require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
           queryExport
       ];
     }
@@ -78,16 +85,18 @@ export async function getDyanmicCmsDataViaCmsSelector(
 
   let variables = { variables: {}, preview: false }
   if (queryHasVariables) {
-    let variableFunc =
+    let variableFunc;
+    if(isSiteComponent){
+      variableFunc =
+      require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+        lookupDetails.variableFunction
+      ];
+    } else{ 
+      variableFunc =
       require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
         lookupDetails.variableFunction
       ]
-    if(isSiteComponent){
-      variableFunc =
-      require(`@/sites/${GetSite().name}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
-        lookupDetails.variableFunction
-      ];
-    }  
+    } 
 
     // console.log("inside variable sender pageIdentifier", pageIdentifier);
 
@@ -106,16 +115,18 @@ export async function getDyanmicCmsDataViaCmsSelector(
   // console.log("data ---> ", JSON.stringify(data, null, 2))
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
-  let dataMapper =
-    require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
-      dataFunctionMapperName
-  ];
+  let dataMapper;
   if(isSiteComponent){
     dataMapper =
-    require(`@/sites/${GetSite().name}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+    require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
       dataFunctionMapperName
   ];
-  } 
+  }else{
+    dataMapper =
+      require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
+        dataFunctionMapperName
+    ];
+  }
 
   const result = dataMapper(data, pageIdentifier, languageSite)
 
@@ -125,7 +136,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
 export async function getPageTypeBySlug(slug: string, languageSite:LanguageSite) {
   const pageType =
   (await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants.model,
+    GetDataLocation("model"),
     undefined, 
     slug,
     languageSite
@@ -141,7 +152,7 @@ export async function collectSitemapNavigationStructure(languageSite:LanguageSit
 
   const navItems =
   (await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants.sitemap,
+    GetDataLocation("sitemap"),
     undefined,
     undefined // Slug is undefined, as we are doing the lookup based on page type
     ,
@@ -158,7 +169,7 @@ export async function collectRobotsTxtData() {
 
   const navItems =
   (await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants.robotsTxt,
+    GetDataLocation("robotsTxt"),
     undefined,
     "robots.txt",
     undefined

@@ -1,13 +1,13 @@
 import {
   SUBCOMPONENT_CONTENT,
   COMPONENT_GRID_CONTENT,
-  DynamicCmsDataLocations,
-  FixedLayouts,
   PageIdentifier,
   PageVariant,
   LanguageSite,
+  GetDataLocation,
 } from "../cms/constants"
 import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService"
+import { GetSite } from "./siteContextService";
 
 /*
     The purpose of this function is to gather the required data from the GraphQL layer for a particular page.
@@ -30,7 +30,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
   // Global Data - Nav items are Global Data required by each page
   const navItems =
     (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.navigation,
+      GetDataLocation("navigation"),
       pageIdentifier,
       undefined, // Slug is undefined, as we are doing the lookup based on page type
       languageSite
@@ -41,7 +41,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
   // Individual Page Data
   const seoItems =
     (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.seo,
+      GetDataLocation("seo"),
       pageIdentifier,
       undefined, // Slug is undefined, as we are doing the lookup based on page type
       languageSite
@@ -51,7 +51,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 
     const breadcrumbItems =
     (await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants.breadcrumb,
+      GetDataLocation("breadcrumb"),
       undefined, 
       slug,
       languageSite
@@ -96,7 +96,7 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
   const pageComponentData: Record<string, unknown> = {};
   console.log(`${slug}  > collectFixedLayoutPageComponentData`);
   // get the fixed layout for the current page variant
-  const layout = FixedLayouts.layouts.find(
+  const layout = GetSite().components.layouts.find(
     (layout) => layout.identifier === pageVariant
   )
 
@@ -114,11 +114,17 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
     const lowerCaseMatchName = component.toLowerCase();
+    const componentLocation = GetSite().componentLocations.find(
+      (componentLocation) => componentLocation.identifier === lowerCaseMatchName
+    )
+    console.log(`${slug}  > collectFixedLayoutPageComponentData > componentLocation > ${componentLocation}`);
+    
     pageComponentData[lowerCaseMatchName] = await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants[lowerCaseMatchName],
+      componentLocation,
       pageIdentifier,
       undefined,
-      languageSite
+      languageSite,
+      true
     );
   }
   console.log("collectFixedLayoutPageComponentData", pageVariant);
@@ -132,7 +138,7 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
 
   if(pageVariant == "subComponentsPage"){
     pageComponentData[SUBCOMPONENT_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants[SUBCOMPONENT_CONTENT],
+      GetDataLocation(SUBCOMPONENT_CONTENT),
       undefined,
       slug,
       languageSite
@@ -143,7 +149,7 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
   
   if(pageVariant == "gridContentPage"){
     pageComponentData[COMPONENT_GRID_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
-      DynamicCmsDataLocations.variants[COMPONENT_GRID_CONTENT],
+      GetDataLocation(COMPONENT_GRID_CONTENT),
       undefined,
       slug,
       languageSite

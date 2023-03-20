@@ -1,12 +1,9 @@
 import Head from "next/head"
 
-import {
-  COMPONENT_FEATURES,
-  COMPONENT_HERO,
-  COMPONENT_OUR_CLIENT,
-} from "@/ui-base/lib/cms/constants"
+
 import { Layout } from "../../../ui-base/components/layout"
 import { siteConfig } from "../config/site"
+import { COMPONENT_FEATURES, COMPONENT_HERO, COMPONENT_OUR_CLIENT } from "../LandifySiteConstants"
 import Home from "../views/home"
 
 export function IndexPage({ data }) {

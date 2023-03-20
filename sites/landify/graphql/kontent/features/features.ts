@@ -1,6 +1,7 @@
 import { FeaturesProps } from "@/ui-base/components/ui/sections/feature-section"
-import { LanguageSite, PageIdentifier } from "../../../constants"
-import { variablesMultiSiteByIdentifier } from "../../../_base/graphqlSnippets/common/multiSite";
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/graphqlSnippets/common/multiSite"
+
 
 export function features(pageIdentifier: PageIdentifier) {
   return `

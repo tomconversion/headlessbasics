@@ -1,6 +1,6 @@
-import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
-import { variablesMultiSiteByIdentifier } from "../../../_base/graphqlSnippets/common/multiSite"
-import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools"
+import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/graphqlSnippets/common/multiSite"
+
 
 export interface OurClientData {
   name: string

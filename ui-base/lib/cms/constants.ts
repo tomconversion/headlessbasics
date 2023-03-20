@@ -192,9 +192,9 @@ const CmsVariants = {
 }
 export { CmsVariants }
 
-const DynamicCmsDataLocations = {
-  variants: {
-    navigation: {
+const DynamicCmsDataLocations:DynamicDataCmsProperties[] = [
+  {
+      identifier: "navigation",
       snippetLocation: "navigation",
       snippetFileName: "navigation",
       snippetExport: "navigation",
@@ -203,7 +203,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapNavigationData",
     },
-    sitemap: {
+    {
+      identifier: "sitemap",
       snippetLocation: "sitemap",
       snippetFileName: "sitemap",
       snippetExport: "sitemap",
@@ -212,7 +213,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSitemapData",
     },
-    seo: {
+    {
+      identifier: "seo",
       snippetLocation: "seo",
       snippetFileName: "seo",
       snippetExport: "seo",
@@ -221,7 +223,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSeoData",
     },
-    breadcrumb: {
+    {
+      identifier: "breadcrumb",
       snippetLocation: "breadcrumb",
       snippetFileName: "breadcrumb",
       snippetExport: "breadcrumb",
@@ -230,7 +233,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapBreadcrumbData",
     },
-    model: {
+    {
+      identifier: "model",
       snippetLocation: "model",
       snippetFileName: "model",
       snippetExport: "model",
@@ -239,7 +243,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapModelData",
     },
-    subComponentContent: {
+    {
+      identifier: "subComponentContent",
       snippetLocation: "subComponentContent",
       snippetFileName: "subComponentContent",
       snippetExport: "subComponentContent",
@@ -248,7 +253,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSubComponentContentData",
     },
-    gridContent: {
+    {
+      identifier: "gridContent",
       snippetLocation: "gridContent",
       snippetFileName: "gridContent",
       snippetExport: "gridContent",
@@ -257,7 +263,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapGridContentData",
     },
-    redirects: {
+    {
+      identifier: "redirects",
       snippetLocation: "redirects",
       snippetFileName: "redirects",
       snippetExport: "redirects",
@@ -266,7 +273,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapRedirectsData",
     },
-    robotsTxt: {
+    {
+      identifier: "robotsTxt",
       snippetLocation: "robotsTxt",
       snippetFileName: "robotsTxt",
       snippetExport: "robotsTxt",
@@ -274,14 +282,22 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapRobotsTxtData",
-    },
-  },
-}
+    }
+    ];
+
 export { DynamicCmsDataLocations }
+
+export function GetDataLocation(lowerCaseMatchName){
+  const componentLocation = DynamicCmsDataLocations.find(
+    (componentLocation) => componentLocation.identifier === lowerCaseMatchName
+  )
+  return componentLocation;
+}
 
 export type DynamicCmsDataVariant = "navigation" | "page"
 
 export interface DynamicDataCmsProperties {
+  identifier: string
   snippetLocation: string
   snippetFileName: string
   snippetExport: string

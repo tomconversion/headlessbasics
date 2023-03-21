@@ -116,7 +116,7 @@ const CmsVariants = {
           backEndSlug: null,
           pageVariant: "dynamic",
           cmsType: "navigation_item",
-          isFixedLayout: false
+          isFixedLayout: false,
         },
         landing: {
           frontEndSlug: null,

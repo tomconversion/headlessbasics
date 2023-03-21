@@ -1,5 +1,6 @@
 import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 import { reverseArray } from "@/ui-base/lib/util/utils";
+import { variablesMultiSiteSlug } from "../../../_base/tools/common/multiSite";
 import { mapBreadcrumbStructure } from "../../tools/urlTools";
 
 export function breadcrumb()
@@ -37,10 +38,14 @@ export function breadcrumb()
   `
 };
 
-export function variables(urlPath:string)
-{
-  const result = {'urlPath': `/${urlPath}`};
-  return result;
+// export function variables(urlPath:string)
+// {
+//   const result = {'urlPath': `/${urlPath}`};
+//   return result;
+// };
+
+export function variables(urlPath: string, languageSite: LanguageSite) {
+  return variablesMultiSiteSlug(urlPath, languageSite);
 };
 
 export default function GetBreadcrumbQuery() {

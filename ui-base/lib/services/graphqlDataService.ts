@@ -42,8 +42,6 @@ export async function getDyanmicCmsDataViaCmsSelector(
   isSiteComponent: boolean = false
 ) {
 
-  console.log("getDyanmicCmsDataViaCmsSelector > lookupDetails", lookupDetails)
-
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
   const queryHasVariables = lookupDetails.queryHasVariables
   const queryExport = lookupDetails.snippetExport

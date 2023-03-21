@@ -34,6 +34,16 @@ const LandifySiteComponentDataLocations =
       variableFunction: "variables",
       dataFunctionMapperName: "mapFeaturesData",
     },
+    {
+      identifier: "stories",
+      snippetLocation: "stories",
+      snippetFileName: "stories",
+      snippetExport: "stories",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapStoriesData",
+    }
   ];
 
 export { LandifySiteComponentDataLocations }
@@ -41,6 +51,7 @@ export { LandifySiteComponentDataLocations }
 export const COMPONENT_HERO: string = "hero"
 export const COMPONENT_OUR_CLIENT: string = "ourclient"
 export const COMPONENT_FEATURES: string = "features"
+export const COMPONENT_STORIES: string = "stories"
 
 export const LandifyFixedLayouts: SiteComponents = {
   layouts: [
@@ -49,7 +60,8 @@ export const LandifyFixedLayouts: SiteComponents = {
       components: [
         COMPONENT_HERO,
         COMPONENT_OUR_CLIENT,
-        COMPONENT_FEATURES
+        COMPONENT_FEATURES,
+        COMPONENT_STORIES,
       ],
     },
   ],

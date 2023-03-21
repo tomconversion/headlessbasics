@@ -19,6 +19,7 @@ interface Props {
   heroData?: HeroData[]
   clientsData?: OurClientData[]
   featuresData?: FeaturesProps
+  storiesData?: StoriesSectionProps
 }
 
 const Home = (props: Props) => {
@@ -98,46 +99,7 @@ const Home = (props: Props) => {
         />
       ) : null}
       <FeatureSection {...props.featuresData} />
-      <div className="home-testimonials">
-        <div className="home-container08">
-          <div className="home-container09">
-            <Image
-              alt="image"
-              loading="lazy"
-              src="/landify/static/playground_assets/quote-mark.svg"
-              width={15}
-              height={13}
-              className="m-4 w-[100px] object-cover md:m-0"
-            />
-            <h1 className="home-text19 Headline2">
-              Real Stories from Real Customers
-            </h1>
-            <span>Get inspired by these stories.</span>
-            <div className="home-container10">
-              <TestimonialsCard image_src="/landify/static/playground_assets/logo-4.svg"></TestimonialsCard>
-            </div>
-          </div>
-          <div className="home-container11">
-            <div className="home-container12">
-              <TestimonialsCard
-                // src="/landify/static/playground_assets/logo-1.svg"
-                text="I used Landify and created a landing page for my startup within a week. The Landify UI Kit is simple and highly intuitive, so anyone can use it."
-                text1="Jane Cooper"
-                text2="CEO, Airbnb"
-                image_src="/landify/static/playground_assets/logo-1.svg"
-              ></TestimonialsCard>
-            </div>
-            <div className="home-container13">
-              <TestimonialsCard
-                text="Landify saved our time in designing my company page."
-                text1="Kristin Watson"
-                text2="Co-Founder, FedEx"
-                image_src="/landify/static/playground_assets/logo-2.svg"
-              ></TestimonialsCard>
-            </div>
-          </div>
-        </div>
-      </div>
+      <StoriesSection {...props.storiesData} />
       <div className="home-achievements">
         <div className="home-container14">
           <h2 className="home-text21">

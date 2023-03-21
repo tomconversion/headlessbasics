@@ -60,6 +60,7 @@ export const siteConfig: BaseSiteConfig = {
     hero: "/components/hero",
     mediaLogos: "/components/mediaLogos",
     featureSection: "/components/contentBlocks/featureSection",
+    storiesSection: "/components/contentBlocks/storiesSection",
   },
   logo: {
     description: "Next.js",

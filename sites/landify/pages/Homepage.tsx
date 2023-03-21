@@ -1,10 +1,10 @@
 import Head from "next/head"
 import { Layout } from "../../../ui-base/components/layout"
 import { siteConfig } from "../config/site"
-import { COMPONENT_FEATURES, COMPONENT_HERO, COMPONENT_OUR_CLIENT } from "../LandifySiteConstants"
+import { COMPONENT_FEATURES, COMPONENT_HERO, COMPONENT_OUR_CLIENT, COMPONENT_STORIES } from "../LandifySiteConstants"
 import Home from "../views/home"
 
-export function Homepage<HomepageProps>({ data }) {
+export function IndexPage({ data }) {
   return (
     <Layout
       className={"flex w-full flex-col items-center"}
@@ -27,6 +27,7 @@ export function Homepage<HomepageProps>({ data }) {
         heroData={data?.data?.pageComponentData[COMPONENT_HERO]}
         clientsData={data?.data?.pageComponentData[COMPONENT_OUR_CLIENT]}
         featuresData={data?.data?.pageComponentData[COMPONENT_FEATURES]}
+        storiesData={data?.data?.pageComponentData[COMPONENT_STORIES]}
       />
     </Layout>
   )

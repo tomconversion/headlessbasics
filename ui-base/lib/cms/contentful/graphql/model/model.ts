@@ -17,6 +17,7 @@ export function model(urlPath:string)
 };
 
 export function variables(urlPath: string, languageSite:LanguageSite) {
+  console.log("variables contentful model", urlPath, variablesMultiSiteSlug(urlPath, languageSite));
   return variablesMultiSiteSlug(urlPath, languageSite);
 }
 

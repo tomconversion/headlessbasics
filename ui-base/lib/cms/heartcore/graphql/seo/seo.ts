@@ -4,7 +4,8 @@ import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools";
 
 export function seo(pageIdentifier:PageIdentifier)
 {
-  return `
+  
+  let query= `
   query PageBySlug($slug: String!) {
     ${pageIdentifier.cmsType}(url: $slug) {
       slug:url
@@ -14,18 +15,23 @@ export function seo(pageIdentifier:PageIdentifier)
       id
     }
   }`
+  console.log("heartcore seo", JSON.stringify(query));
+  return query;
 };
 
 export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite)
 {
-  return variablesMultiSiteByIdentifier(pageIdentifier, languageSite);
+  const variables = variablesMultiSiteByIdentifier(pageIdentifier, languageSite);
+  console.log("heartcore seo variables", JSON.stringify(variables));
+  return variables;
 };
 
 export default function GetSeoQuery() {
   return seo;
 }
 
-export function mapSeoData(data, pageIdentifier:PageIdentifier) {
+export function mapSeoData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
+  console.log("heartcore mapSeoData", JSON.stringify(data));
   const result = data[pageIdentifier.cmsType];
   return {seoTitle: result.sEOTitle, seoDescription: result.sEODescription};
 }

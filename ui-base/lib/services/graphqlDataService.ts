@@ -9,21 +9,19 @@ import {
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
-import { GetCMS } from "./cmsContextService";
+import { GetCMS, GetCMSVariant, GetPageIdentifier } from "./cmsContextService";
 import { collectAllPageData } from "./pageLayoutDataCollector"
 import { GetSite } from "./siteContextService";
 
 export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, site:LanguageSite, params?: any) {
 
   const cmsVariant = GetCMS();
-  const cmsVariantSelected = CmsVariants.variants[cmsVariant];
+  const cmsVariantSelected = GetCMSVariant();
   // console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
   console.log( "buildPageData > pageVariant > ", pageVariant);
   console.log( "buildPageData > params > ", params);
   console.log( "buildPageData > isDynamic > ", isDynamic);
-  const pageIdentifier = cmsVariantSelected.pageTypes[
-    pageVariant
-  ] as PageIdentifier
+  const pageIdentifier = GetPageIdentifier(pageVariant);
   console.log( "buildPageData > pageIdentifier > ", pageIdentifier);
 
   // We set the back end slug here for all dynamic pages.

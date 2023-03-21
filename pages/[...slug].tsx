@@ -14,7 +14,18 @@ export async function getStaticProps({ params }) {
   let slugCleanedUp = params.slug.join('/');
   if(slugCleanedUp === 'favicon.ico') return { props: {  } }
   
-  const pageDataResult = await collectDynamicPageData(params, slugCleanedUp, GetLanguageSiteByCode(GetMainSiteLanguage()));
+  let languageSite;
+  
+  if(GetSite().siteSettings.languageSites.findIndex(x => slugCleanedUp.startsWith(x.countryCode)) > -1){
+    languageSite = GetSite().siteSettings.languageSites.find(x => slugCleanedUp.startsWith(x.countryCode));
+    slugCleanedUp = slugCleanedUp.replace(languageSite.homepageSlugPrefix, '/').replace(languageSite.countryCode, '');
+  }else {
+    languageSite = GetLanguageSiteByCode(GetMainSiteLanguage());
+  } 
+
+  console.log('languageSite', languageSite, slugCleanedUp);
+
+  const pageDataResult = await collectDynamicPageData(params, slugCleanedUp, languageSite);
   return {
     props: {
       data: pageDataResult.pageData,

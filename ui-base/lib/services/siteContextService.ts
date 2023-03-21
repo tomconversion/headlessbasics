@@ -1,12 +1,14 @@
-import { LandifyFixedLayouts, LandifySiteComponentDataLocations } from "@/sites/landify/LandifySiteConstants";
-import { MultiSiteConstants, MultiSiteFixedLayouts } from "@/sites/multisite/MultiSiteConstants";
-import { CmsVariant } from "../cms/constants";
+import { ATAFixedLayouts, ATASiteComponentDataLocations, ATASiteSettings } from "@/sites/ata-multisite/ATASiteConstants";
+import { LandifyFixedLayouts, LandifySiteComponentDataLocations, LandifySiteSettings } from "@/sites/landify/LandifySiteConstants";
+import { MultiSiteConstants, MultiSiteFixedLayouts, MultisiteSiteSettings } from "@/sites/multisite/MultiSiteConstants";
 import { SiteConstants } from "../cms/SiteConstants";
 
 export function GetSite(){
     if(process.env.NEXT_PUBLIC_SITE_NAME == "landify"){
-        return new SiteConstants("landify", LandifyFixedLayouts, LandifySiteComponentDataLocations);
+        return new SiteConstants("landify", LandifyFixedLayouts, LandifySiteComponentDataLocations, LandifySiteSettings);
     }else if(process.env.NEXT_PUBLIC_SITE_NAME == "multisite"){
-        return new SiteConstants("multisite", MultiSiteFixedLayouts, MultiSiteConstants);
+        return new SiteConstants("multisite", MultiSiteFixedLayouts, MultiSiteConstants, MultisiteSiteSettings);
+    }else if(process.env.NEXT_PUBLIC_SITE_NAME == "ata-multisite"){
+        return new SiteConstants("ata-multisite", ATAFixedLayouts, ATASiteComponentDataLocations, ATASiteSettings);
     }
 }

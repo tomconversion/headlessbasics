@@ -7,12 +7,12 @@ import FeatureSection, {
   FeaturesProps,
 } from "@/ui-base/components/ui/sections/feature-section"
 import MediaLogos from "@/ui-base/components/ui/sections/media-logos/MediaLogos"
-import { HeroData } from "@/ui-base/lib/cms/heartcore/graphql/hero/hero"
-import { OurClientData } from "@/ui-base/lib/cms/heartcore/graphql/ourclient/ourclient"
 import LinkIconButton from "../components/link-icon-button"
 import StatsCard from "../components/stats-card"
 import StoreBanner from "../components/store-banner"
 import TestimonialsCard from "../components/testimonials-card"
+import { HeroData } from "../graphql/contentful/hero/hero"
+import { OurClientData } from "../graphql/contentful/ourclient/ourclient"
 
 interface Props {
   className?: string

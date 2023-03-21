@@ -24,14 +24,13 @@ export interface CmsProperties {
   pageTypes: {
     home: PageIdentifier
     dynamic: PageIdentifier
-  },
-  mainSiteLanguage: CountryCode
-  languageSites: LanguageSite[]
+  }
 }
 
 export interface LanguageSite {
   countryCode: CountryCode,
-  homepageSlugPrefix: string
+  homepageSlugPrefix: string,
+  shouldLanguageCodeBeAddedToNav: boolean
 }
 
 
@@ -42,12 +41,13 @@ export interface PageTypes {
 }
 
 export interface PageIdentifier {
+  identifier: string
   backEndSlug: string
   frontEndSlug: string
   pageVariant: PageVariant
   cmsType: string
   isFixedLayout: boolean
-  components: Components
+  components?: Components
   slugPrefix?: string
 }
 
@@ -55,7 +55,7 @@ export type CmsVariant = "heartcore" | "contentful" | "kontent"
 
 export type CountryCode = "us" | "au"
 
-export type PageVariant = "home" | "gridContentPage" | "subComponentsPage"
+export type PageVariant = "homepage" |"home" | "gridContentPage" | "subComponentsPage"
 
 const CmsVariants = {
   variants: {
@@ -68,17 +68,6 @@ const CmsVariants = {
       contentApiKey: "",
       previewApiKey: "",
       projectAlias: process.env.UMBRACO_PROJECT_ALIAS,
-      mainSiteLanguage: "au",
-      languageSites: [
-        {
-          countryCode: "us",
-          homepageSlugPrefix: "/us-homepage",
-        },
-        {
-          countryCode: "au",
-          homepageSlugPrefix: "/homepage",
-        },
-      ],
       pageTypes: {
         home: {
           frontEndSlug: "",
@@ -114,17 +103,6 @@ const CmsVariants = {
       previewApiKey: process.env.KONTENT_PREVIEW_API_KEY,
       projectAlias: "",
       projectId: process.env.KONTENT_PROJECT_ID,
-      mainSiteLanguage: "au",
-      languageSites: [
-        {
-          countryCode: "us",
-          homepageSlugPrefix: "/us-homepage",
-        },
-        {
-          countryCode: "au",
-          homepageSlugPrefix: "",
-        },
-      ],
       pageTypes: {
         home: {
           frontEndSlug: "/",
@@ -160,17 +138,6 @@ const CmsVariants = {
       projectAlias: "contentful-CD",
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       environmentId: process.env.CONTENTFUL_ENVIRONMENT,
-      mainSiteLanguage: "au",
-      languageSites: [
-        {
-          countryCode: "us",
-          homepageSlugPrefix: "/us-homepage",
-        },
-        {
-          countryCode: "au",
-          homepageSlugPrefix: "",
-        },
-      ],
       pageTypes: {
         home: {
           frontEndSlug: "/",

@@ -1,5 +1,5 @@
 import { DynamicDataCmsProperties } from "@/ui-base/lib/cms/constants"
-import { SiteComponents } from "@/ui-base/lib/interfaces/SiteComponentsInterface"
+import { SiteComponents, SiteSettings } from "@/ui-base/lib/interfaces/SiteComponentsInterface"
 import { SiteConstantsInterface } from "@/ui-base/lib/interfaces/SiteConstantsInterface"
 
 const LandifySiteComponentDataLocations = 
@@ -53,4 +53,21 @@ export const LandifyFixedLayouts: SiteComponents = {
       ],
     },
   ],
+}
+
+export const LandifySiteSettings: SiteSettings = {
+  mainSiteLanguage: "au",
+  languageSites: [
+    {
+      countryCode: "us",
+      homepageSlugPrefix: "/us-homepage",
+      shouldLanguageCodeBeAddedToNav: false
+    },
+    {
+      countryCode: "au",
+      homepageSlugPrefix: "/homepage",
+      shouldLanguageCodeBeAddedToNav: false
+    },
+  ],
+  extraPageTypes: []
 }

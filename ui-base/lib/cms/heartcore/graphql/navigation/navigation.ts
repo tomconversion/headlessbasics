@@ -52,6 +52,9 @@ export function mapNavigationData(data : any, pageIdentifier:PageIdentifier, lan
       x.name = x.name.replace('/', '');
       x.slug = x.name;
       x.url = x.url.replace(languageSite.homepageSlugPrefix, '');
+      if(languageSite.shouldLanguageCodeBeAddedToNav){
+        x.url = `/${languageSite.countryCode}/${x.url}`;
+      }
       return x;
     });
   }

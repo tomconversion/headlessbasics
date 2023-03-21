@@ -52,6 +52,15 @@ export function mapNavigationData(data : any, pageIdentifier:PageIdentifier, lan
       x.name = x.name.replace('/', '');
       x.slug = x.name;
       x.url = x.url.replace(languageSite.homepageSlugPrefix, '');
+
+      
+      if(languageSite.specialSlugPrefix){
+        const valueToRemove = languageSite.specialSlugPrefix.replace(/\/+/g, '');
+        console.log("languageSite.specialSlugPrefix value", valueToRemove, x.url);
+        x.url = x.url.replace(valueToRemove, '');
+      }
+      
+
       if(languageSite.shouldLanguageCodeBeAddedToNav){
         x.url = `/${languageSite.countryCode}/${x.url}`;
       }

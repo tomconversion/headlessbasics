@@ -1,6 +1,5 @@
 import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
-import { variablesBreadcrumbBase } from "../../../_base/graphqlSnippets/breadcrumb/breadcrumb";
-import { variablesMultiSiteSlug } from "../../../_base/graphqlSnippets/common/multiSite";
+import { variablesMultiSiteSlug } from "../../../_base/tools/common/multiSite";
 import { GetMultiSiteSlug } from "../../tools/urlTools";
 
 export function breadcrumb()

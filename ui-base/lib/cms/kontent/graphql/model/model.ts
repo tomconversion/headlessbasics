@@ -1,5 +1,7 @@
 import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
-import { variablesMultiSiteSlug } from "../../../_base/graphqlSnippets/common/multiSite";
+import { json } from "stream/consumers";
+import { sanitiseForKontent } from "../../../_base/tools/cms/kontent/kontentTools";
+import { variablesMultiSiteSlug } from "../../../_base/tools/common/multiSite";
 
 export function model(urlPath:string)
 {
@@ -27,6 +29,7 @@ export function model(urlPath:string)
 };
 
 export function variables(urlPath: string, languageSite:LanguageSite) {
+  console.log("kontent model variables", JSON.stringify(variablesMultiSiteSlug(urlPath, languageSite)));
   return variablesMultiSiteSlug(urlPath, languageSite);
 }
 

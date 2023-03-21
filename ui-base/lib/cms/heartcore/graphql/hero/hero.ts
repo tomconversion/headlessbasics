@@ -1,5 +1,5 @@
 import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
-import { variablesNavigationBase } from "../../../_base/graphqlSnippets/navigation/navigation"
+import { variablesNavigationBase } from "../../../_base/tools/navigation/navigation"
 import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools"
 
 

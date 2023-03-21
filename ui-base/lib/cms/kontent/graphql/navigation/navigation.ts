@@ -1,6 +1,6 @@
 import { LanguageSite, PageIdentifier } from "../../../constants";
 import { GetHomepageVariant, GetMultiSiteSlugByIdentifier } from "../../../heartcore/tools/urlTools";
-import { variablesNavigationBase } from "../../../_base/graphqlSnippets/navigation/navigation";
+import { variablesNavigationBase } from "../../../_base/tools/navigation/navigation";
 
 export function navigation(pageIdentifier:PageIdentifier)
 {

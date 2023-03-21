@@ -1,5 +1,5 @@
 import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
-import { variablesMultiSiteByIdentifier } from "../../../_base/graphqlSnippets/common/multiSite"
+import { variablesMultiSiteByIdentifier } from "../../../_base/tools/common/multiSite"
 import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools"
 
 export interface OurClientData {

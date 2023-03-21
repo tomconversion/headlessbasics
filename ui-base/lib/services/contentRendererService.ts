@@ -3,20 +3,22 @@ import {
   CmsVariants,
   DynamicCmsDataLocations,
   DynamicDataCmsProperties,
+  GetDataLocation,
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
+import { GetCMS, GetCMSVariant } from "./cmsContextService";
 
 export function renderSubComponentContent(pageVariant: PageVariant, data:any) {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariant = GetCMS();
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
   const pageIdentifier = cmsVariantSelected.pageTypes[
     pageVariant
   ] as PageIdentifier
 
   const result = render(
-    DynamicCmsDataLocations.variants.subComponentContent,
+    GetDataLocation("subComponentContent"),
     pageIdentifier,
     data
   );
@@ -26,14 +28,14 @@ export function renderSubComponentContent(pageVariant: PageVariant, data:any) {
 
 export function renderGridComponentContent(pageVariant: PageVariant, data:any) {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
-  const cmsVariantSelected = CmsVariants.variants[cmsVariant]
+  const cmsVariant = GetCMS();
+  const cmsVariantSelected = GetCMSVariant();
   const pageIdentifier = cmsVariantSelected.pageTypes[
     pageVariant
-  ] as PageIdentifier
+  ] as PageIdentifier;
 
   const result = render(
-    DynamicCmsDataLocations.variants.gridContent,
+    GetDataLocation("gridContent"),
     pageIdentifier,
     data
   );

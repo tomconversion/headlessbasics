@@ -1,4 +1,4 @@
-import { PageVariant } from "./constants";
+import { PageVariant } from "../cms/constants";
 
 export interface SiteComponents {
   layouts: {

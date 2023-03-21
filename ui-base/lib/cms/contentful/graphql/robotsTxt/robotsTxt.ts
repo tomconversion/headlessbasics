@@ -1,4 +1,4 @@
-import { variablesByName } from "../../../_base/graphqlSnippets/common/multiSite";
+import { variablesByName } from "../../../_base/tools/common/multiSite";
 
 export function robotsTxt(name:String)
 {

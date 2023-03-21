@@ -7,7 +7,7 @@ import { Layout } from "../../../ui-base/components/layout"
 import { siteConfig } from "../config/site"
 
 
-export function DynamicPage({ data }) {
+export function AllPages({ data }) {
 
   let subComponentContent = (<></>);
   let subComponentCmsData = {};

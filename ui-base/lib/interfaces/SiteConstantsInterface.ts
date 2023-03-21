@@ -1,5 +1,5 @@
-import { DynamicDataCmsProperties } from "./constants";
-import { SiteComponents } from "./SiteComponents";
+import { DynamicDataCmsProperties } from "../cms/constants";
+import { SiteComponents } from "./SiteComponentsInterface";
 
 
 export interface SiteConstantsInterface {

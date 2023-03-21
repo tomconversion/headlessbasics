@@ -1,6 +1,6 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
-import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/graphqlSnippets/common/multiSite"
-import { variablesNavigationBase } from "@/ui-base/lib/cms/_base/graphqlSnippets/navigation/navigation"
+import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/tools/common/multiSite"
+import { variablesNavigationBase } from "@/ui-base/lib/cms/_base/tools/navigation/navigation"
 
 export interface HeroData {
   name: string

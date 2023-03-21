@@ -1,6 +1,6 @@
 import { DynamicDataCmsProperties } from "./constants"
-import { SiteComponents } from "./SiteComponents";
-import { SiteConstantsInterface } from "./SiteConstantsInterface";
+import { SiteComponents } from "../interfaces/SiteComponentsInterface";
+import { SiteConstantsInterface } from "../interfaces/SiteConstantsInterface";
 
 export class SiteConstants implements SiteConstantsInterface {
     name: string;

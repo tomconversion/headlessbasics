@@ -1,5 +1,5 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
-import { variablesNavigationBase } from "../../../_base/graphqlSnippets/navigation/navigation"
+import { variablesNavigationBase } from "../../../_base/tools/navigation/navigation"
 
 export interface HeroData {
   name: string

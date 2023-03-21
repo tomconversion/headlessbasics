@@ -1,3 +1,4 @@
+import { GetCMSVariant } from "@/ui-base/lib/services/cmsContextService";
 import { LanguageSite, PageIdentifier } from "../../../constants";
 
 const sitemap = `
@@ -53,7 +54,9 @@ export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, langua
   nodes.map((x) => {
     x.name = x.name.replace('/', '');
     x.slug = x.url;
-    x.url = x.url.replace(languageSite.homepageSlugPrefix, '');
+    GetCMSVariant().languageSites.map((y) => {
+      x.url = x.url.replace(y.homepageSlugPrefix, '');
+    });
   });
   nodes = nodes.filter((x) => (!(x.name.indexOf("_") > -1)));
   return nodes;

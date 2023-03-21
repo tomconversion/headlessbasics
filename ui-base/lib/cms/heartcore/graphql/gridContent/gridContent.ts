@@ -5,7 +5,7 @@
 
 
 import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
-import { variablesMultiSiteSlug } from "../../../_base/graphqlSnippets/common/multiSite";
+import { variablesMultiSiteSlug } from "../../../_base/tools/common/multiSite";
 import { GetMultiSiteSlug } from "../../tools/urlTools";
 
 export function gridContent() {

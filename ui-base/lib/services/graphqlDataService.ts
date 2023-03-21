@@ -1,4 +1,4 @@
-import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
+import { fetchAPIGatewayWrapper } from "./cmsDataQueryGateway"
 import {
   CmsVariant,
   CmsVariants,
@@ -9,12 +9,13 @@ import {
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
+import { GetCMS } from "./cmsContextService";
 import { collectAllPageData } from "./pageLayoutDataCollector"
 import { GetSite } from "./siteContextService";
 
 export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, site:LanguageSite, params?: any) {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
+  const cmsVariant = GetCMS();
   const cmsVariantSelected = CmsVariants.variants[cmsVariant];
   // console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
   console.log( "buildPageData > pageVariant > ", pageVariant);
@@ -147,15 +148,14 @@ export async function getPageTypeBySlug(slug: string, languageSite:LanguageSite)
 
 export async function collectSitemapNavigationStructure(languageSite:LanguageSite) {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariant = GetCMS();
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
 
   const navItems =
   (await getDyanmicCmsDataViaCmsSelector(
     GetDataLocation("sitemap"),
     undefined,
-    undefined // Slug is undefined, as we are doing the lookup based on page type
-    ,
+    undefined, // Slug is undefined, as we are doing the lookup based on page type
     languageSite
   )) || [];
 
@@ -164,7 +164,7 @@ export async function collectSitemapNavigationStructure(languageSite:LanguageSit
 
 export async function collectRobotsTxtData() {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariant = GetCMS();
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
 
   const navItems =

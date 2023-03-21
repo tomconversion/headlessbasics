@@ -36,8 +36,13 @@ export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, langua
     x.url = x._seo.urlPath;
     x.slug = x._seo.urlPath;
     x.updateDate = x._system_.lastModified;
+    x.showInSitemap = true;
+    if(x._seo.untitledMultipleChoice.items.length > 0){
+      x.showInSitemap = x._seo.untitledMultipleChoice.items.find((y) => y._system_.codename === "hide_in_sitemap") ? false : true;
+    }
   });
   // nodes = nodes.filter((x) => (!(x.seoTitle.indexOf("_") > -1)));
   // nodes = nodes.filter((x) => (!(x.seoTitle.indexOf("global-settings") > -1)));
+  console.log("graphqlDataService > kontent > mapSitemapData > nodes > ", nodes);
   return nodes;
 }

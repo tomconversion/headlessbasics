@@ -1,5 +1,5 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
-import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/graphqlSnippets/common/multiSite"
+import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/tools/common/multiSite"
 
 
 export interface OurClientData {

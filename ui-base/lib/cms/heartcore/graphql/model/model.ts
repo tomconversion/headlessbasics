@@ -1,5 +1,5 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
-import { variablesMultiSiteSlug } from "../../../_base/graphqlSnippets/common/multiSite";
+import { variablesMultiSiteSlug } from "../../../_base/tools/common/multiSite";
 
 export function model(slug:string)
 {

@@ -1,11 +1,12 @@
-import { DynamicPage as DynamicPageOnSite } from '@/sites/multisite/pages/dynamicPage';
 import { GetLanguageSiteByCode, GetMainSiteLanguage } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
-import { buildPageData, collectSitemapNavigationStructure, getPageTypeBySlug } from '@/ui-base/lib/services/graphqlDataService'
 import { collectDynamicPageData } from '@/ui-base/lib/services/pageDataProvider';
+import { getAllPages } from '@/ui-base/lib/services/pageToSiteContextService';
 import { collectAllRoutes } from '@/ui-base/lib/services/routeProviderService';
+import { GetSite } from '@/ui-base/lib/services/siteContextService';
 
-export default function DynamicPage({data}) {  
-  return <DynamicPageOnSite data={data}/>;
+export default function AllPagesHandler({data}) {  
+  const AllPages = getAllPages(data, GetSite().name);
+  return <AllPages data={data}/>;
 }
 
 export async function getStaticProps({ params }) {

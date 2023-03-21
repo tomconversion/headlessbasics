@@ -1,6 +1,6 @@
 import { DynamicDataCmsProperties } from "@/ui-base/lib/cms/constants"
-import { SiteComponents } from "@/ui-base/lib/cms/SiteComponents"
-import { SiteConstantsInterface } from "@/ui-base/lib/cms/SiteConstantsInterface"
+import { SiteComponents } from "@/ui-base/lib/interfaces/SiteComponentsInterface"
+import { SiteConstantsInterface } from "@/ui-base/lib/interfaces/SiteConstantsInterface"
 
 const LandifySiteComponentDataLocations = 
   [

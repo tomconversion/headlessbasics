@@ -282,6 +282,10 @@ export default function IndexPage() {
           title: "Feature Section",
           href: siteConfig.links.featureSection,
         },
+        {
+          title : "Stories Section",
+          href : siteConfig.links.storiesSection,
+        },
       ],
     },
   ]

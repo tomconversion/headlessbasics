@@ -13,6 +13,7 @@ import StoreBanner from "../components/store-banner"
 import TestimonialsCard from "../components/testimonials-card"
 import { HeroData } from "../graphql/contentful/hero/hero"
 import { OurClientData } from "../graphql/contentful/ourclient/ourclient"
+import StoriesSection, { StoriesSectionProps } from "@/ui-base/components/ui/sections/stories-section"
 
 interface Props {
   className?: string

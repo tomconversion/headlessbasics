@@ -5,19 +5,29 @@ import { CmsVariant, CmsVariants, CountryCode, LanguageSite, PageIdentifier } fr
 export function GetMultiSiteSlugByIdentifier(pageIdentifier:PageIdentifier, languageSite:LanguageSite){
     let prefix = languageSite.homepageSlugPrefix;
     
-    let umbracoSlug = prefix + "/" + pageIdentifier.backEndSlug;
-    umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
+    let slug = prefix + "/" + pageIdentifier.backEndSlug;
+    
+    if(GetCMS() == "heartcore"){
+        slug = `${languageSite.specialSlugPrefix}/${slug}`;
+    }
 
-    return umbracoSlug;
+    slug = slug.replace(/\/+/g, '/');
+
+    return slug;
 }
 
 export function GetMultiSiteSlug(slug:string, languageSite:LanguageSite){
     let prefix = languageSite.homepageSlugPrefix;
     
-    let umbracoSlug = prefix + "/" + slug;
-    umbracoSlug = umbracoSlug.replace(/\/+/g, '/');
+    let slug2 = prefix + "/" + slug;
 
-    return umbracoSlug;
+    if(GetCMS() == "heartcore"){
+        slug2 = `${languageSite.specialSlugPrefix}/${slug}`;
+    }
+
+    slug2 = slug2.replace(/\/+/g, '/');
+
+    return slug2;
 }
 
 export function GetLanguageSiteByCode(code:CountryCode):LanguageSite{

@@ -39,7 +39,9 @@ export function ourclient() {
 }
 
 export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite) {
-  return variablesNavigationBase(pageIdentifier, languageSite);
+  let variables = variablesNavigationBase(pageIdentifier, languageSite);
+  console.log("variables kontent ourclient", variables);
+  return variables;
 }
 
 export default function GetourClientQuery() {
@@ -49,6 +51,8 @@ export default function GetourClientQuery() {
 export function mapOurClientData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite): OurClientData[] {
   const items = data.homepage_All?.items;
   
+  console.log("items kontent mapOurClientData", items)
+
   const ourClients = [];
 
   if(items.length === 0 && items[0].bodyItems?.items.length === 0) return ourClients;

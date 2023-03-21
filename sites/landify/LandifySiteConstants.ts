@@ -77,7 +77,8 @@ export const LandifySiteSettings: SiteSettings = {
     },
     {
       countryCode: "au",
-      homepageSlugPrefix: "/homepage",
+      homepageSlugPrefix: "/",
+      specialSlugPrefix: "/homepage",
       shouldLanguageCodeBeAddedToNav: false
     },
   ],

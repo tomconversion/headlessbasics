@@ -1,4 +1,5 @@
 import { GetCMSVariant } from "@/ui-base/lib/services/cmsContextService";
+import { GetSite } from "@/ui-base/lib/services/siteContextService";
 import { LanguageSite, PageIdentifier } from "../../../constants";
 
 const sitemap = `
@@ -54,7 +55,7 @@ export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, langua
   nodes.map((x) => {
     x.name = x.name.replace('/', '');
     x.slug = x.url;
-    GetCMSVariant().languageSites.map((y) => {
+    GetSite().siteSettings.languageSites.map((y) => {
       x.url = x.url.replace(y.homepageSlugPrefix, '');
     });
   });

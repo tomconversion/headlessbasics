@@ -1,4 +1,5 @@
 import { GetCMS } from "@/ui-base/lib/services/cmsContextService";
+import { GetSite } from "@/ui-base/lib/services/siteContextService";
 import { CmsVariant, CmsVariants, CountryCode, LanguageSite, PageIdentifier } from "../../constants";
 
 export function GetMultiSiteSlugByIdentifier(pageIdentifier:PageIdentifier, languageSite:LanguageSite){
@@ -21,7 +22,7 @@ export function GetMultiSiteSlug(slug:string, languageSite:LanguageSite){
 
 export function GetLanguageSiteByCode(code:CountryCode):LanguageSite{
     const cmsVariant = GetCMS();
-    const match = CmsVariants.variants[cmsVariant].languageSites.filter((x) => x.countryCode === code);
+    const match = GetSite().siteSettings.languageSites.filter((x) => x.countryCode === code);
     if(match.length > 0){
         return match[0] as LanguageSite;
     }
@@ -30,7 +31,7 @@ export function GetLanguageSiteByCode(code:CountryCode):LanguageSite{
 
 export function GetMainSiteLanguage():CountryCode{
     const cmsVariant = GetCMS();
-    return CmsVariants.variants[cmsVariant].mainSiteLanguage as CountryCode;
+    return GetSite().siteSettings.mainSiteLanguage as CountryCode;
 }
 
 export function GetHomepageVariant():PageIdentifier{

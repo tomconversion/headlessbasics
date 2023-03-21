@@ -7,13 +7,13 @@ import FeatureSection, {
   FeaturesProps,
 } from "@/ui-base/components/ui/sections/feature-section"
 import MediaLogos from "@/ui-base/components/ui/sections/media-logos/MediaLogos"
-
 import LinkIconButton from "../components/link-icon-button"
 import StatsCard from "../components/stats-card"
 import StoreBanner from "../components/store-banner"
-import StoriesSection, { StoriesSectionProps } from "@/ui-base/components/ui/sections/stories-section"
-import { OurClientData } from "../graphql/contentful/ourclient/ourclient"
+import TestimonialsCard from "../components/testimonials-card"
 import { HeroData } from "../graphql/contentful/hero/hero"
+import { OurClientData } from "../graphql/contentful/ourclient/ourclient"
+import StoriesSection, { StoriesSectionProps } from "@/ui-base/components/ui/sections/stories-section"
 
 interface Props {
   className?: string

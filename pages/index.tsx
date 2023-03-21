@@ -1,21 +1,21 @@
-import { buildPageData } from '@/ui-base/lib/services/graphqlDataService'
-import { IndexPage as Homepage } from '../sites/landify/pages/Index'
+import { GetLanguageSiteByCode, GetMainSiteLanguage } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
+import { buildPageData } from '@/ui-base/lib/services/graphqlDataService';
+import { GetSite } from '@/ui-base/lib/services/siteContextService';
+import React from 'react';
+import { getDynamicHomepages } from '@/ui-base/lib/services/pageToSiteContextService';
 
 export default function IndexPage({ data }) {
-  return <Homepage data={data} />
+  const DynamicHomepage = getDynamicHomepages(data, GetSite().name);
+
+  return <DynamicHomepage data={data} />;
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ req }) {
+  const data = await buildPageData('home', false, GetLanguageSiteByCode(GetMainSiteLanguage()), { slug: '' });
 
-  const data = await buildPageData("home", false, {slug: ""}); 
-  
   return {
     props: {
-      data
+      data,
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 100, // In seconds
-  }
+  };
 }

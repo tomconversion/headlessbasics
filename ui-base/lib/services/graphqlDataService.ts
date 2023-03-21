@@ -1,21 +1,26 @@
-import { fetchAPIGatewayWrapper } from "../cms/cmsDataQueryGateway"
+import { fetchAPIGatewayWrapper } from "./cmsDataQueryGateway"
 import {
   CmsVariant,
   CmsVariants,
   DynamicCmsDataLocations,
   DynamicDataCmsProperties,
+  GetDataLocation,
+  LanguageSite,
   PageIdentifier,
   PageVariant,
 } from "../cms/constants"
+import { GetCMS } from "./cmsContextService";
 import { collectAllPageData } from "./pageLayoutDataCollector"
+import { GetSite } from "./siteContextService";
 
-export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, params?: any) {
+export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, site:LanguageSite, params?: any) {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
+  const cmsVariant = GetCMS();
   const cmsVariantSelected = CmsVariants.variants[cmsVariant];
-  console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
+  // console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
   console.log( "buildPageData > pageVariant > ", pageVariant);
   console.log( "buildPageData > params > ", params);
+  console.log( "buildPageData > isDynamic > ", isDynamic);
   const pageIdentifier = cmsVariantSelected.pageTypes[
     pageVariant
   ] as PageIdentifier
@@ -26,16 +31,19 @@ export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean,
     pageIdentifier.backEndSlug = params && params.slug ? params.slug : "";
   }
 
-  const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug) }
+  const result = { data: await collectAllPageData(pageIdentifier, pageVariant, params.slug, site) }
 
-  return result
+  return result;
 }
 
 export async function getDyanmicCmsDataViaCmsSelector(
   lookupDetails: DynamicDataCmsProperties,
   pageIdentifier?: PageIdentifier,
-  slug?: string
+  slug?: string,
+  languageSite?: LanguageSite,
+  isSiteComponent: boolean = false
 ) {
+
   const variant = process.env.NEXT_PUBLIC_CMS_VARIANT
   const queryHasVariables = lookupDetails.queryHasVariables
   const queryExport = lookupDetails.snippetExport
@@ -45,18 +53,27 @@ export async function getDyanmicCmsDataViaCmsSelector(
   // The following code lookup up a folder and snippet name to get the query
   // example: lib/cms/contentful/graphqlSnippets/navigation/navigation.ts
 
-  let queryResult = undefined
+  let queryResult = undefined;
+  let siteName = GetSite().name;
 
   try {
-    const query =
-      require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
-        queryExport
-      ]
+    let query;
+    if(isSiteComponent){
+      query =
+        require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+          queryExport
+      ];
+    }else {
+      query =
+        require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
+          queryExport
+      ];
+    }
 
     if (queryHasVariables && typeof pageIdentifier !== "undefined") {
-      queryResult = query(pageIdentifier)
+      queryResult = query(pageIdentifier, languageSite)
     } else if (queryHasVariables && typeof slug !== "undefined") {
-      queryResult = query(slug)
+      queryResult = query(slug, languageSite)
     } else {
       queryResult = query
     }
@@ -67,17 +84,25 @@ export async function getDyanmicCmsDataViaCmsSelector(
 
   let variables = { variables: {}, preview: false }
   if (queryHasVariables) {
-    const variableFunc =
-      require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
+    let variableFunc;
+    if(isSiteComponent){
+      variableFunc =
+      require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+        lookupDetails.variableFunction
+      ];
+    } else{ 
+      variableFunc =
+      require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
         lookupDetails.variableFunction
       ]
+    } 
 
     // console.log("inside variable sender pageIdentifier", pageIdentifier);
 
     if (typeof pageIdentifier !== "undefined") {
-      variables = { variables: variableFunc(pageIdentifier), preview: false }
+      variables = { variables: variableFunc(pageIdentifier, languageSite), preview: false }
     } else if (typeof slug !== "undefined") {
-      variables = { variables: variableFunc(slug), preview: false }
+      variables = { variables: variableFunc(slug, languageSite), preview: false }
     }
 
     // console.log("variables --", variables)
@@ -89,37 +114,47 @@ export async function getDyanmicCmsDataViaCmsSelector(
   // console.log("data ---> ", JSON.stringify(data, null, 2))
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
-  let dataMapper =
-    require(`../cms/${variant}/graphqlSnippets/${snippitLocation}/${snippetFileName}`)[
+  let dataMapper;
+  if(isSiteComponent){
+    dataMapper =
+    require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
       dataFunctionMapperName
-    ]
+  ];
+  }else{
+    dataMapper =
+      require(`../cms/${variant}/graphql/${snippitLocation}/${snippetFileName}`)[
+        dataFunctionMapperName
+    ];
+  }
 
-  const result = dataMapper(data, pageIdentifier)
+  const result = dataMapper(data, pageIdentifier, languageSite)
 
   return await result
 }
 
-export async function getPageTypeBySlug(slug: string) {
+export async function getPageTypeBySlug(slug: string, languageSite:LanguageSite) {
   const pageType =
   (await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants.model,
+    GetDataLocation("model"),
     undefined, 
-    slug
+    slug,
+    languageSite
   )) || undefined;
-
+  console.log("graphqlDataService > getPageTypeBySlug > pageType > ", pageType);
   return pageType;
 }
 
-export async function collectSitemapNavigationStructure() {
+export async function collectSitemapNavigationStructure(languageSite:LanguageSite) {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariant = GetCMS();
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
 
   const navItems =
   (await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants.sitemap,
+    GetDataLocation("sitemap"),
     undefined,
-    undefined // Slug is undefined, as we are doing the lookup based on page type
+    undefined, // Slug is undefined, as we are doing the lookup based on page type
+    languageSite
   )) || [];
 
   return navItems
@@ -127,14 +162,15 @@ export async function collectSitemapNavigationStructure() {
 
 export async function collectRobotsTxtData() {
 
-  const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant
+  const cmsVariant = GetCMS();
   const cmsVariantSelected = CmsVariants.variants[cmsVariant]
 
   const navItems =
   (await getDyanmicCmsDataViaCmsSelector(
-    DynamicCmsDataLocations.variants.robotsTxt,
+    GetDataLocation("robotsTxt"),
     undefined,
-    "robots.txt"
+    "robots.txt",
+    undefined
   )) || [];
 
   return navItems

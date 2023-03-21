@@ -1,10 +1,11 @@
+import { LanguageSite } from "../cms/constants";
 import { buildPageData, collectSitemapNavigationStructure, getPageTypeBySlug } from "./graphqlDataService";
 
-export async function collectDynamicPageData(params, slugCleanedUp) {
+export async function collectDynamicPageData(params, slugCleanedUp, languageSite:LanguageSite) {
       
     let selectedSlug = slugCleanedUp;
 
-    const sitemapStructure = await collectSitemapNavigationStructure();
+    const sitemapStructure = await collectSitemapNavigationStructure(languageSite);
     const match = sitemapStructure.find(
       (page) => page.superAlias === "/" + slugCleanedUp
     );
@@ -13,9 +14,9 @@ export async function collectDynamicPageData(params, slugCleanedUp) {
       selectedSlug = match.url;
     }
     
-    const pageType = await getPageTypeBySlug(selectedSlug);
+    const pageType = await getPageTypeBySlug(selectedSlug, languageSite);
     console.log("collectDynamicPageData > pageType > ", pageType);
-    const pageData = await buildPageData(pageType, true, {slug: selectedSlug}); 
+    const pageData = await buildPageData(pageType, true, languageSite, {slug: selectedSlug}); 
 
     return { pageData, selectedSlug};
 }

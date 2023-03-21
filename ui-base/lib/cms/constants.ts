@@ -21,13 +21,19 @@ export interface CmsProperties {
   cmsUrl?: string
   projectAlias?: string
   projectId?: string
-  slugPrefix?: string
   pageTypes: {
     home: PageIdentifier
     dynamic: PageIdentifier
-    landing: PageIdentifier
-  }
+  },
+  mainSiteLanguage: CountryCode
+  languageSites: LanguageSite[]
 }
+
+export interface LanguageSite {
+  countryCode: CountryCode,
+  homepageSlugPrefix: string
+}
+
 
 export interface PageTypes {
   home: string
@@ -42,15 +48,14 @@ export interface PageIdentifier {
   cmsType: string
   isFixedLayout: boolean
   components: Components
+  slugPrefix?: string
 }
 
 export type CmsVariant = "heartcore" | "contentful" | "kontent"
 
-export type PageVariant =
-  | "home"
-  | "gridContentPage"
-  | "dynamic"
-  | "subComponentsPage"
+export type CountryCode = "us" | "au"
+
+export type PageVariant = "home" | "gridContentPage" | "subComponentsPage"
 
 const CmsVariants = {
   variants: {
@@ -63,7 +68,17 @@ const CmsVariants = {
       contentApiKey: "",
       previewApiKey: "",
       projectAlias: process.env.UMBRACO_PROJECT_ALIAS,
-      slugPrefx: "/homepage",
+      mainSiteLanguage: "au",
+      languageSites: [
+        {
+          countryCode: "us",
+          homepageSlugPrefix: "/us-homepage",
+        },
+        {
+          countryCode: "au",
+          homepageSlugPrefix: "/homepage",
+        },
+      ],
       pageTypes: {
         home: {
           frontEndSlug: "",
@@ -99,11 +114,21 @@ const CmsVariants = {
       previewApiKey: process.env.KONTENT_PREVIEW_API_KEY,
       projectAlias: "",
       projectId: process.env.KONTENT_PROJECT_ID,
-      slugPrefx: "homepage",
+      mainSiteLanguage: "au",
+      languageSites: [
+        {
+          countryCode: "us",
+          homepageSlugPrefix: "/us-homepage",
+        },
+        {
+          countryCode: "au",
+          homepageSlugPrefix: "",
+        },
+      ],
       pageTypes: {
         home: {
           frontEndSlug: "/",
-          backEndSlug: "homepage",
+          backEndSlug: "/",
           pageVariant: "Home",
           cmsType: "homepage",
           isFixedLayout: true,
@@ -135,7 +160,17 @@ const CmsVariants = {
       projectAlias: "contentful-CD",
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       environmentId: process.env.CONTENTFUL_ENVIRONMENT,
-      slugPrefx: "",
+      mainSiteLanguage: "au",
+      languageSites: [
+        {
+          countryCode: "us",
+          homepageSlugPrefix: "/us-homepage",
+        },
+        {
+          countryCode: "au",
+          homepageSlugPrefix: "",
+        },
+      ],
       pageTypes: {
         home: {
           frontEndSlug: "/",
@@ -157,18 +192,19 @@ const CmsVariants = {
 }
 export { CmsVariants }
 
-const DynamicCmsDataLocations = {
-  variants: {
-    navigation: {
+const DynamicCmsDataLocations:DynamicDataCmsProperties[] = [
+  {
+      identifier: "navigation",
       snippetLocation: "navigation",
       snippetFileName: "navigation",
       snippetExport: "navigation",
-      queryIsFunction: false,
-      queryHasVariables: false,
+      queryIsFunction: true,
+      queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapNavigationData",
     },
-    sitemap: {
+    {
+      identifier: "sitemap",
       snippetLocation: "sitemap",
       snippetFileName: "sitemap",
       snippetExport: "sitemap",
@@ -177,7 +213,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSitemapData",
     },
-    seo: {
+    {
+      identifier: "seo",
       snippetLocation: "seo",
       snippetFileName: "seo",
       snippetExport: "seo",
@@ -186,7 +223,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSeoData",
     },
-    breadcrumb: {
+    {
+      identifier: "breadcrumb",
       snippetLocation: "breadcrumb",
       snippetFileName: "breadcrumb",
       snippetExport: "breadcrumb",
@@ -195,7 +233,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapBreadcrumbData",
     },
-    model: {
+    {
+      identifier: "model",
       snippetLocation: "model",
       snippetFileName: "model",
       snippetExport: "model",
@@ -204,16 +243,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapModelData",
     },
-    hero: {
-      snippetLocation: "hero",
-      snippetFileName: "hero",
-      snippetExport: "hero",
-      queryIsFunction: true,
-      queryHasVariables: true,
-      variableFunction: "variables",
-      dataFunctionMapperName: "mapHeroData",
-    },
-    subComponentContent: {
+    {
+      identifier: "subComponentContent",
       snippetLocation: "subComponentContent",
       snippetFileName: "subComponentContent",
       snippetExport: "subComponentContent",
@@ -222,8 +253,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapSubComponentContentData",
     },
-
-    gridContent: {
+    {
+      identifier: "gridContent",
       snippetLocation: "gridContent",
       snippetFileName: "gridContent",
       snippetExport: "gridContent",
@@ -232,7 +263,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapGridContentData",
     },
-    redirects: {
+    {
+      identifier: "redirects",
       snippetLocation: "redirects",
       snippetFileName: "redirects",
       snippetExport: "redirects",
@@ -241,25 +273,8 @@ const DynamicCmsDataLocations = {
       variableFunction: "variables",
       dataFunctionMapperName: "mapRedirectsData",
     },
-    ourclient: {
-      snippetLocation: "ourclient",
-      snippetFileName: "ourclient",
-      snippetExport: "ourclient",
-      queryIsFunction: true,
-      queryHasVariables: true,
-      variableFunction: "variables",
-      dataFunctionMapperName: "mapOurClientData",
-    },
-    features: {
-      snippetLocation: "features",
-      snippetFileName: "features",
-      snippetExport: "features",
-      queryIsFunction: true,
-      queryHasVariables: true,
-      variableFunction: "variables",
-      dataFunctionMapperName: "mapFeaturesData",
-    },
-    robotsTxt: {
+    {
+      identifier: "robotsTxt",
       snippetLocation: "robotsTxt",
       snippetFileName: "robotsTxt",
       snippetExport: "robotsTxt",
@@ -267,23 +282,22 @@ const DynamicCmsDataLocations = {
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapRobotsTxtData",
-    },
-    stories: {
-      snippetLocation: "stories",
-      snippetFileName: "stories",
-      snippetExport: "stories",
-      queryIsFunction: true,
-      queryHasVariables: true,
-      variableFunction: "variables",
-      dataFunctionMapperName: "mapStoriesData",
-    },
-  },
-}
+    }
+    ];
+
 export { DynamicCmsDataLocations }
+
+export function GetDataLocation(lowerCaseMatchName){
+  const componentLocation = DynamicCmsDataLocations.find(
+    (componentLocation) => componentLocation.identifier === lowerCaseMatchName
+  )
+  return componentLocation;
+}
 
 export type DynamicCmsDataVariant = "navigation" | "page"
 
 export interface DynamicDataCmsProperties {
+  identifier: string
   snippetLocation: string
   snippetFileName: string
   snippetExport: string
@@ -294,51 +308,18 @@ export interface DynamicDataCmsProperties {
   queryHasVariables: boolean
 }
 
-export const COMPONENT_HERO: Component = "hero"
-export const COMPONENT_OUR_CLIENT: Component = "ourclient"
-export const COMPONENT_DYNAMIC_CONTENT: Component = "dynamicContent"
-export const COMPONENT_FEATURES: Component = "features"
-export const COMPONENT_GRID_CONTENT: Component = "gridContent"
-export const SUBCOMPONENT_CONTENT: Component = "subComponentContent"
-export const COMPONENT_STORIES: Component = "stories"
-
-export const FixedLayouts: Components = {
-  layouts: [
-    {
-      identifier: "home",
-      components: [
-        COMPONENT_HERO,
-        COMPONENT_OUR_CLIENT,
-        COMPONENT_FEATURES,
-        COMPONENT_STORIES,
-        // "ThreeColumnCTA"
-      ],
-    },
-    // {
-    //   identifier: "landing",
-    //   components: [],
-    // }
-  ],
-}
-// {
-//   identifier: "landing",
-//   components: [],
-// }
+export const COMPONENT_DYNAMIC_CONTENT: FlexibleComponents = "dynamicContent"
+export const COMPONENT_GRID_CONTENT: FlexibleComponents = "gridContent"
+export const SUBCOMPONENT_CONTENT: FlexibleComponents = "subComponentContent"
 
 export interface Components {
   layouts: {
     identifier: PageVariant
-    components: Component[]
+    components: FlexibleComponents[]
   }[]
 }
 
-// export type Component = "dynamicContent" | "hero" | "ourclient" |
-export type Component =
+export type FlexibleComponents =
   | "dynamicContent"
   | "subComponentContent"
-  | "hero"
-  | "ourclient"
   | "gridContent"
-  | "features"
-  | "stories"
-// | "ThreeColumnCTA"

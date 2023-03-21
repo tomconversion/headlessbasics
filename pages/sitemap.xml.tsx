@@ -31,7 +31,7 @@ function SiteMap() {
 }
 
 export async function getServerSideProps({ res }) {
-  const data = await collectSitemapNavigationStructure();  
+  const data = await collectSitemapNavigationStructure(undefined);  
 
   // We generate the XML sitemap with the posts data
   const sitemap = generateSiteMap(data);

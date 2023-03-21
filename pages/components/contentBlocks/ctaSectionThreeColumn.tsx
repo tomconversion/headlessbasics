@@ -17,15 +17,6 @@ const description = "Displays CTA in a three column layout";
 const developerNotes = "This is a CTA or promotion component. It uses Next/Image and has lazy loading turned on.";
 
 const promotion1Description = "B&D know that behind your garage door are the things that matter to you most. The things that make your house a home. ​​Thats why we make the strongest and most secure, garage doors, shielding your home from the outside world. ​ Doors that don’t just close ​– they lock shut.";
-
-const ctaJson = {
-  "title": "Residential doors",
-  "description": "Learn about B&D residential garage doors, from roller and sectional to the bespoke designer door range. Discover how to make your garage door safer with smart openers and accessories.",
-  "image": "https://picsum.photos/id/1018/1900/600",
-  "buttonText": "View Residential Door range",
-  "buttonLink": "/garage-doors/residential/"
-};
-
 const promotions = [
   {
     image: "https://picsum.photos/id/1018/1980/600",
@@ -34,7 +25,9 @@ const promotions = [
       "B&D know that behind your garage door are the things that matter to you most. The things that make your house a home. ​​That’s why we make the strongest and most secure, garage doors, shielding your home from the outside world. ​ Doors that don’t just close ​– they lock shut."
     ,
     buttonText: "View Residential Door range",
-    buttonLink: "/garage-doors/residential/"
+    buttonLink: "/garage-doors/residential/",
+    width: 450,
+    height: 450
   },
   {
     image: "https://picsum.photos/id/1015/1980/600",
@@ -43,7 +36,9 @@ const promotions = [
       "B&D invented the roller door in 1956 and we’ve been innovating it ever since. B&D garage doors and automatic openers are designed and tested here in Australia, using premium, custom-designed components which is why we’re Australia’s original and most trusted garage door brand."
     ,
     buttonText: "View Residential Door range",
-    buttonLink: "/garage-doors/residential/"
+    buttonLink: "/garage-doors/residential/",
+    width: 450,
+    height: 450
   },
   {
     image: "https://picsum.photos/id/1019/1980/600",
@@ -52,7 +47,9 @@ const promotions = [
       "Tough, reliable and secure. Designed and tested to work in unison, B&D doors and openers will keep your home secure for many years to come. In fact we’re so confident, we back our garage doors and openers with a market leading 10-year warranty."
     ,
     buttonText: "View Residential Door range",
-    buttonLink: "/garage-doors/residential/"
+    buttonLink: "/garage-doors/residential/",
+    width: 450,
+    height: 450
   }
 ];
 
@@ -112,7 +109,7 @@ export default function IndexPage() {
       <section className="container items-center gap-6 pt-6 pb-8 md:py-10">
         <div className="w-full divide-y space-y-4">
           <div className='w-full break-after-auto py-4'>Developer Notes: <ExampleCode language='text'>{developerNotes}</ExampleCode></div>
-          <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode language='json'>{JSON.stringify(ctaJson)}</ExampleCode></div>
+          <div className='w-full break-after-auto py-4'>Sample JSON: <ExampleCode language='json'>{JSON.stringify(promotions)}</ExampleCode></div>
         </div>
       </section>
       {renderComponent()}

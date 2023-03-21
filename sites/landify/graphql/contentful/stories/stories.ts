@@ -1,8 +1,5 @@
-import {
-  StoriesCardProps,
-  StoriesSectionProps,
-} from "@/ui-base/components/ui/sections/stories-section"
-import { PageIdentifier } from "../../../constants"
+import { StoriesCardProps, StoriesSectionProps } from "@/ui-base/components/ui/sections/stories-section"
+import { PageIdentifier } from "@/ui-base/lib/cms/constants"
 
 export function stories(pageIdentifier: PageIdentifier) {
   return `query GetPageBySlug($slug: String!) {

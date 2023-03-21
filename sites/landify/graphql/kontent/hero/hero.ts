@@ -72,8 +72,6 @@ export function mapHeroData(data: any, pageIdentifier:PageIdentifier, languageSi
 
   items[0]?.bodyItems?.items?.forEach((item: any) => {
 
-    console.log("kontent hero mapHeroData", item);
-
     if (item.__typename === "HeroSection") {
       const heroItem: HeroData = {
         name: item.title,

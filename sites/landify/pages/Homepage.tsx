@@ -4,7 +4,7 @@ import { siteConfig } from "../config/site"
 import { COMPONENT_FEATURES, COMPONENT_HERO, COMPONENT_OUR_CLIENT, COMPONENT_STORIES } from "../LandifySiteConstants"
 import Home from "../views/home"
 
-export function IndexPage({ data }) {
+export function Homepage({ data }) {
   return (
     <Layout
       className={"flex w-full flex-col items-center"}

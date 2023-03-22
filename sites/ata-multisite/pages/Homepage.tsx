@@ -1,4 +1,6 @@
 import Head from "next/head"
+
+import { NavItemInterface } from "@/ui-base/components/ui/navigation/NavItem"
 import { Layout } from "../../../ui-base/components/layout"
 import { buildMegaMenu } from "../components/MegaMenu"
 import { siteConfig } from "../config/site"
@@ -12,6 +14,7 @@ export function Homepage<HomepageProps>({ data }) {
       siteConfig={siteConfig}
       isMegamenu={true}
       megaMenuMenu={buildMegaMenu(data?.data?.navItems)}
+      // megaMenuMenu={buildMegaMenu(navItems)}
     >
       <Head>
         <title>{`${siteConfig.name} | ${data?.seoItems?.seoTitle}`}</title>

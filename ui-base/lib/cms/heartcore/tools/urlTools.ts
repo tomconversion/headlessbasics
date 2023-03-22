@@ -7,7 +7,7 @@ export function GetMultiSiteSlugByIdentifier(pageIdentifier:PageIdentifier, lang
     
     let slug = prefix + "/" + pageIdentifier.backEndSlug;
     
-    if(GetCMS() == "heartcore"){
+    if(GetCMS() == "heartcore" && typeof(languageSite?.specialSlugPrefix) != "undefined"){
         slug = `${languageSite.specialSlugPrefix}/${slug}`;
     }
 
@@ -21,7 +21,7 @@ export function GetMultiSiteSlug(slug:string, languageSite:LanguageSite){
     
     let slug2 = prefix + "/" + slug;
 
-    if(GetCMS() == "heartcore"){
+    if(GetCMS() == "heartcore" && typeof(languageSite?.specialSlugPrefix) != "undefined"){
         slug2 = `${languageSite.specialSlugPrefix}/${slug}`;
     }
 

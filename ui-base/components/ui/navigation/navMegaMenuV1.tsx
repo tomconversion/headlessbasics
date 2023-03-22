@@ -86,14 +86,22 @@ const NavMegaMenuV1 = ({ navItems, navClasses }) => {
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
+        <li className="w-full min-h-full">          
+          <label tabIndex={0} className="w-full btn btn-ghost btn-circle avatar">
+            <div className="flex">
+              <Link href={'/au'}>
+                <div className="w-100 rounded-full">
+                  <Image alt="International Sites" src="/ata-multisite/images/global/australia-28586_960_720.png"  width={100} height={100} />
+                </div>
+              </Link>
+              <Link href={'/'}>
+                <div className="w-100 rounded-full">
+                  <Image alt="International Sites" src="/ata-multisite/images/global/usa-1960922_960_720.jpg"  width={100} height={100} />
+                </div>
+              </Link>
+            </div>
+          </label>          
         </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
       </ul>
     </div>
   </div>

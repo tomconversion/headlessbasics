@@ -44,8 +44,9 @@ export function AllPages({ data }) {
       </Head>
       <Pages
         className={
-          "flex min-h-screen w-full flex-col items-center overflow-hidden"
+          "container mx-auto"
         }
+        data={data}
       />
     </Layout>
   )

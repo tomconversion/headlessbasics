@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from "next/image";
 import React, { useState } from 'react';
+import { getLogger } from '@/ui-base/lib/services/logging/LogConfig';
+
+const log = getLogger("headless.components.navMegaMenuV1");
 
 // render a tailwind navigation menu
 const NavMegaMenuV1 = ({ navItems, navClasses }) => {

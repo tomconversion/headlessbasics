@@ -1,6 +1,9 @@
 import { GetCMSVariant } from "@/ui-base/lib/services/cmsContextService";
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { GetSite } from "@/ui-base/lib/services/siteContextService";
 import { LanguageSite, PageIdentifier } from "../../../constants";
+
+const log = getLogger("headless.graphql.heartcore.common.multiSite");
 
 const sitemap = `
   {

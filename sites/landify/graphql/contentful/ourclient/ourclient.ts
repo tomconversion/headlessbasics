@@ -1,6 +1,8 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
 import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/tools/common/multiSite"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 
+const log = getLogger("headless.graphql.contentful.ourclient.ourclient");
 
 export interface OurClientData {
   name: string
@@ -38,7 +40,7 @@ export function ourclient(pageIdentifier: PageIdentifier) {
 export function variables(pageIdentifier: PageIdentifier) {
   // const result = { slug: pageIdentifier.backEndSlug }
   const result = { slug: "/" }
-  // log.debug("ourclient VARIABLE --", result)
+  log.debug("ourclient VARIABLE --", result)
   return result
 }
 

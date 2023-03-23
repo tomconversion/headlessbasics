@@ -7,7 +7,10 @@ import {
   GetDataLocation,
 } from "../cms/constants"
 import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService"
+import { getLogger } from "./logging/LogConfig";
 import { GetSite } from "./siteContextService";
+
+const log = getLogger("headless.pageLayoutDataCollector");
 
 /*
     The purpose of this function is to gather the required data from the GraphQL layer for a particular page.

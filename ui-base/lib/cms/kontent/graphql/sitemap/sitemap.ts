@@ -1,4 +1,8 @@
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { LanguageSite, PageIdentifier } from "../../../constants";
+
+const log = getLogger("headless.graphql.heartcore.common.multiSite");
+
 const sitemap = `
 {
   navigationItem_All{

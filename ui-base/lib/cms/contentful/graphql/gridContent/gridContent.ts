@@ -2,7 +2,10 @@
 // Brid Content
 
 
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
+
+const log = getLogger("headless.graphql.heartcore.common.multiSite");
 
 export function gridContent() {
   return `

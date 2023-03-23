@@ -12,6 +12,9 @@ import {
 import { GetCMS, GetCMSVariant, GetPageIdentifier } from "./cmsContextService";
 import { collectAllPageData } from "./pageLayoutDataCollector"
 import { GetSite } from "./siteContextService";
+import { getLogger } from "./logging/LogConfig";
+
+const log = getLogger("headless.graphqlDataService");
 
 export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, site:LanguageSite, params?: any) {
 

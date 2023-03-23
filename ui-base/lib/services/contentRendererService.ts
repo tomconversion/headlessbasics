@@ -8,6 +8,9 @@ import {
   PageVariant,
 } from "../cms/constants"
 import { GetCMS, GetCMSVariant } from "./cmsContextService";
+import { getLogger } from "./logging/LogConfig";
+
+const log = getLogger("headless.contentRendererService");
 
 export function renderSubComponentContent(pageVariant: PageVariant, data:any) {
 

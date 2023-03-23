@@ -1,6 +1,9 @@
 import Image from "next/image"
 
 import { parseText } from "@/ui-base/lib/util/utils"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
+
+const log = getLogger("headless.components.featureSection");
 
 interface FeatureCardProps {
   imageSrc: string

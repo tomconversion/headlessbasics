@@ -1,5 +1,8 @@
 import { CmsVariant, CmsVariants, PageIdentifier } from "../cms/constants";
+import { getLogger } from "./logging/LogConfig";
 import { GetSite } from "./siteContextService";
+
+const log = getLogger("headless.cmsContextService");
 
 export function GetCMS(){
     const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;

@@ -1,6 +1,9 @@
 import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { variablesMultiSiteByIdentifier } from "../../../_base/tools/common/multiSite";
 import { GetMultiSiteSlugByIdentifier } from "../../tools/urlTools";
+
+const log = getLogger("headless.graphql.heartcore.seo.seo");
 
 export function seo(pageIdentifier:PageIdentifier)
 {

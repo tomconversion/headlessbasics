@@ -1,5 +1,5 @@
 import { GetLanguageSiteByCode, GetMainSiteLanguage } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
-import { log } from '@/ui-base/lib/services/logging/LogConfig';
+import { getLogger, log } from '@/ui-base/lib/services/logging/LogConfig';
 import { collectDynamicPageData } from '@/ui-base/lib/services/pageDataProvider';
 import { getAllPages } from '@/ui-base/lib/services/pageToSiteContextService';
 import { collectAllRoutes } from '@/ui-base/lib/services/routeProviderService';
@@ -9,6 +9,8 @@ export default function AllPagesHandler({data}) {
   const AllPages = getAllPages(data, GetSite().name);
   return <AllPages data={data}/>;
 }
+
+const log = getLogger("headless.pages.slug");
 
 export async function getStaticProps({ params }) {
   

@@ -1,5 +1,8 @@
 import { CmsVariants, LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { variablesMultiSiteSlug } from "../../../_base/tools/common/multiSite";
+
+const log = getLogger("headless.graphql.heartcore.common.multiSite");
 
 export function model(urlPath:string)
 {

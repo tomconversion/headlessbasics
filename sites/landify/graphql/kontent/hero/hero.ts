@@ -1,6 +1,8 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
 import { variablesNavigationBase } from "@/ui-base/lib/cms/_base/tools/navigation/navigation"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig"
 
+const log = getLogger("headless.graphql.kontent.hero.hero");
 
 export interface HeroData {
   name: string

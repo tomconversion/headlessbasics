@@ -2,6 +2,8 @@ import { CmsVariant, CmsVariants, LanguageSite, PageIdentifier } from "../../../
 import { variablesNavigationBase } from "../../../_base/tools/navigation/navigation";
 import { GetHomepageVariant, GetMultiSiteSlugByIdentifier } from "../../tools/urlTools";
 
+const log = getLogger("headless.navigation");
+
 export function navigation(pageIdentifier:PageIdentifier)
 {
   return `

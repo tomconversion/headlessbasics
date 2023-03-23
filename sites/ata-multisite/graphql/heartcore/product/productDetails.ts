@@ -1,5 +1,8 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
 import { variablesMultiSiteByIdentifier, variablesMultiSiteSlug } from "@/ui-base/lib/cms/_base/tools/common/multiSite";
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
+
+const log = getLogger("headless.graphql.heartcore.product.productDetails");
 
 export function productDetails(slug:string)
 {

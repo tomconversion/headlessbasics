@@ -47,7 +47,6 @@ export function hero(pageIdentifier: PageIdentifier) {
 export function variables(pageIdentifier: PageIdentifier) {
   // const result = { slug: pageIdentifier.backEndSlug }
   const result = { slug: "/" }
-  // log.debug("HERO VARIABLE --", result)
   return result
 }
 

@@ -10,5 +10,10 @@ export interface SiteComponents {
 export interface SiteSettings {
   mainSiteLanguage: CountryCode
   languageSites: LanguageSite[]
-  extraPageTypes: PageIdentifier[]
+  extraPageTypes: PageIdentifier[],
+  ecommerceSettings?: EcommerceSettings
+}
+
+export interface EcommerceSettings {
+  hasProducts: boolean
 }

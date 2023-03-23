@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from "next/link"
 import { Layout } from "../../../ui-base/components/layout"
 import { buildMegaMenu } from "../components/MegaMenu"
 import { siteConfig } from "../config/site"

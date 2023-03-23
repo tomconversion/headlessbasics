@@ -71,7 +71,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 
     const finalPageData = { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 
-    // console.log(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(finalPageData)}`);
+    console.log(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(finalPageData)}`);
 
     return finalPageData;
 }
@@ -109,16 +109,18 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
     return pageComponentData
   }
 
-  console.log(`${slug}  > collectFixedLayoutPageComponentData > About to iterate over layout.components > ${layout.components}`);
+  console.log(`${slug}  > collectFixedLayoutPageComponentData > About to iterate over layout.components > ${typeof(layout.components)}`);
 
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
     const lowerCaseMatchName = component.toLowerCase();
     const componentLocation = GetSite().componentLocations.find(
-      (componentLocation) => componentLocation.identifier === lowerCaseMatchName
+      (componentLocation) => componentLocation.identifier.toLowerCase() === lowerCaseMatchName
     )
     console.log(`${slug}  > collectFixedLayoutPageComponentData > componentLocation > ${JSON.stringify(componentLocation)}`);
     
+    if(!componentLocation) continue;
+
     pageComponentData[lowerCaseMatchName] = await getDyanmicCmsDataViaCmsSelector(
       componentLocation,
       pageIdentifier,

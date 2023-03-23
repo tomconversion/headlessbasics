@@ -58,7 +58,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
     let query;
     if(isSiteComponent){
       query =
-        require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+        require(`../../../sites/${siteName}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
           queryExport
       ];
     }else {
@@ -85,7 +85,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
     let variableFunc;
     if(isSiteComponent){
       variableFunc =
-      require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+      require(`../../../sites/${siteName}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
         lookupDetails.variableFunction
       ];
     } else{ 
@@ -115,7 +115,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
   let dataMapper;
   if(isSiteComponent){
     dataMapper =
-    require(`../../../sites/landify/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
+    require(`../../../sites/${siteName}/graphql/${variant}/${snippitLocation}/${snippetFileName}`)[
       dataFunctionMapperName
   ];
   }else{

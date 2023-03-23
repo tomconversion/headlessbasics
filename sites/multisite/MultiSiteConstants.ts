@@ -40,5 +40,6 @@ export const MultisiteSiteSettings: SiteSettings = {
       shouldLanguageCodeBeAddedToNav: false
     },
   ],
-  extraPageTypes: []
+  extraPageTypes: [],
+  deepSearchNavigation: true
 }

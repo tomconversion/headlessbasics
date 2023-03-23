@@ -78,5 +78,6 @@ export const ATASiteSettings: SiteSettings = {
       cmsType: "homepage",
       isFixedLayout: true
     }
-  ]
+  ],
+  deepSearchNavigation: true
 }

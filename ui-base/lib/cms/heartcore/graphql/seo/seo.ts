@@ -15,7 +15,6 @@ export function seo(pageIdentifier:PageIdentifier)
       id
     }
   }`
-  console.log("heartcore seo", JSON.stringify(query));
   return query;
 };
 

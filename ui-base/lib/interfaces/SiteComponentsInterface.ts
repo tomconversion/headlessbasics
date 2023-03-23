@@ -11,4 +11,5 @@ export interface SiteSettings {
   mainSiteLanguage: CountryCode
   languageSites: LanguageSite[]
   extraPageTypes: PageIdentifier[]
+  deepSearchNavigation: boolean
 }

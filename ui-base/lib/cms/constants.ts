@@ -161,11 +161,21 @@ const CmsVariants = {
 export { CmsVariants }
 
 const DynamicCmsDataLocations:DynamicDataCmsProperties[] = [
-  {
+    {
       identifier: "navigation",
       snippetLocation: "navigation",
       snippetFileName: "navigation",
       snippetExport: "navigation",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapNavigationData",
+    },    
+    {
+      identifier: "navigationChildren",
+      snippetLocation: "navigationChildren",
+      snippetFileName: "navigationChildren",
+      snippetExport: "navigationChildren",
       queryIsFunction: true,
       queryHasVariables: true,
       variableFunction: "variables",

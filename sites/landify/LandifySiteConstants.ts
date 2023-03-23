@@ -82,5 +82,6 @@ export const LandifySiteSettings: SiteSettings = {
       shouldLanguageCodeBeAddedToNav: false
     },
   ],
-  extraPageTypes: []
+  extraPageTypes: [],
+  deepSearchNavigation: true
 }

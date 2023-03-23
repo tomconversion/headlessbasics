@@ -7,7 +7,10 @@ import {
   GetDataLocation,
 } from "../cms/constants"
 import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService"
+import { getLogger } from "./logging/LogConfig";
 import { GetSite } from "./siteContextService";
+
+const log = getLogger("headless.pageLayoutDataCollector");
 
 /*
     The purpose of this function is to gather the required data from the GraphQL layer for a particular page.
@@ -25,7 +28,7 @@ import { GetSite } from "./siteContextService";
 
 export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVariant: PageVariant, slug: string, languageSite: LanguageSite) {
   
-  console.log(`${slug}  > collectAllPageData > pageIdentifier > ${JSON.stringify(pageIdentifier)} pageVariant ${pageVariant} `);
+  log.debug(`${slug}  > collectAllPageData > pageIdentifier > ${JSON.stringify(pageIdentifier)} pageVariant ${pageVariant} `);
 
   // Global Data - Nav items are Global Data required by each page
   const navItems =
@@ -36,7 +39,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       languageSite
     )) || [];
   
-    console.log(`${slug}  > collectAllPageData > navItems > ${navItems}`);
+    log.debug(`${slug}  > collectAllPageData > navItems > ${navItems}`);
 
   // Individual Page Data
   const seoItems =
@@ -47,7 +50,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       languageSite
     )) || [];
 
-    console.log(`${slug}  > collectAllPageData > seoItems > ${seoItems}`);
+    log.debug(`${slug}  > collectAllPageData > seoItems > ${seoItems}`);
 
     const breadcrumbItems =
     (await getDyanmicCmsDataViaCmsSelector(
@@ -57,7 +60,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       languageSite
     )) || [];   
 
-    console.log(`${slug}  > collectAllPageData > breadcrumbItems > ${JSON.stringify(breadcrumbItems)}`);
+    log.debug(`${slug}  > collectAllPageData > breadcrumbItems > ${JSON.stringify(breadcrumbItems)}`);
 
     let pageComponentData:any = {};
 
@@ -67,11 +70,11 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier, slug, languageSite);
     }
 
-    console.log(`${slug} > collectAllPageData > completed lookup`);
+    log.debug(`${slug} > collectAllPageData > completed lookup`);
 
     const finalPageData = { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 
-    console.log(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(finalPageData)}`);
+    log.debug(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(finalPageData)}`);
 
     return finalPageData;
 }
@@ -94,7 +97,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 
 export async function collectFixedLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier, slug:string, languageSite: LanguageSite) {
   const pageComponentData: Record<string, unknown> = {};
-  console.log(`${slug}  > collectFixedLayoutPageComponentData`);
+  log.debug(`${slug}  > collectFixedLayoutPageComponentData`);
   // get the fixed layout for the current page variant
   const layout = GetSite().components.layouts.find(
     (layout) => layout.identifier === pageVariant
@@ -102,14 +105,14 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
 
   // if no matching layout found, return empty pageComponentData
   if (!layout) {
-    console.log(
+    log.debug(
       "collectFixedLayoutPageComponentData no matching layout",
       pageVariant
     )
     return pageComponentData
   }
 
-  console.log(`${slug}  > collectFixedLayoutPageComponentData > About to iterate over layout.components > ${typeof(layout.components)}`);
+  log.debug(`${slug}  > collectFixedLayoutPageComponentData > About to iterate over layout.components > ${typeof(layout.components)}`);
 
   // iterate over the components in the layout and add corresponding property to pageComponentData
   for (const component of layout.components) {
@@ -117,7 +120,7 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
     const componentLocation = GetSite().componentLocations.find(
       (componentLocation) => componentLocation.identifier.toLowerCase() === lowerCaseMatchName
     )
-    console.log(`${slug}  > collectFixedLayoutPageComponentData > componentLocation > ${JSON.stringify(componentLocation)}`);
+    log.debug(`${slug}  > collectFixedLayoutPageComponentData > componentLocation > ${JSON.stringify(componentLocation)}`);
     
     if(!componentLocation) continue;
 
@@ -129,14 +132,14 @@ export async function collectFixedLayoutPageComponentData(pageVariant: PageVaria
       true
     );
   }
-  console.log("collectFixedLayoutPageComponentData", pageVariant);
+  log.debug("collectFixedLayoutPageComponentData", pageVariant);
   return pageComponentData;
 }
 
 export async function collectDynamicLayoutPageComponentData(pageVariant: PageVariant, pageIdentifier: PageIdentifier, slug, languageSite: LanguageSite) {
   const pageComponentData: Record<string, unknown> = {};
   
-  console.log(`${slug}  > collectDynamicLayoutPageComponentData`);
+  log.debug(`${slug}  > collectDynamicLayoutPageComponentData`);
 
   if(pageVariant == "subComponentsPage"){
     pageComponentData[SUBCOMPONENT_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
@@ -147,7 +150,7 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
     );
   }
 
-  console.log(`${slug}  > collectDynamicLayoutPageComponentData > pageComponentData[SUBCOMPONENT_CONTENT] > ${JSON.stringify(pageComponentData[SUBCOMPONENT_CONTENT])}`);
+  log.debug(`${slug}  > collectDynamicLayoutPageComponentData > pageComponentData[SUBCOMPONENT_CONTENT] > ${JSON.stringify(pageComponentData[SUBCOMPONENT_CONTENT])}`);
   
   if(pageVariant == "gridContentPage"){
     pageComponentData[COMPONENT_GRID_CONTENT] = await getDyanmicCmsDataViaCmsSelector(
@@ -156,7 +159,7 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
       slug,
       languageSite
     );
-    console.log(`${slug}  > collectDynamicLayoutPageComponentData >   pageComponentData[COMPONENT_GRID_CONTENT] > ${JSON.stringify(pageComponentData[COMPONENT_GRID_CONTENT])}`);
+    log.debug(`${slug}  > collectDynamicLayoutPageComponentData >   pageComponentData[COMPONENT_GRID_CONTENT] > ${JSON.stringify(pageComponentData[COMPONENT_GRID_CONTENT])}`);
   }
   return pageComponentData;
 }

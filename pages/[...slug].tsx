@@ -1,4 +1,5 @@
 import { GetLanguageSiteByCode, GetMainSiteLanguage } from '@/ui-base/lib/cms/heartcore/tools/urlTools';
+import { getLogger } from '@/ui-base/lib/services/logging/LogConfig';
 import { collectDynamicPageData } from '@/ui-base/lib/services/pageDataProvider';
 import { getAllPages } from '@/ui-base/lib/services/pageToSiteContextService';
 import { collectAllRoutes } from '@/ui-base/lib/services/routeProviderService';
@@ -8,6 +9,8 @@ export default function AllPagesHandler({data}) {
   const AllPages = getAllPages(data, GetSite().name);
   return <AllPages data={data}/>;
 }
+
+const log = getLogger("headless.pages.slug");
 
 export async function getStaticProps({ params }) {
   
@@ -23,7 +26,7 @@ export async function getStaticProps({ params }) {
     languageSite = GetLanguageSiteByCode(GetMainSiteLanguage());
   } 
 
-  console.log('languageSite', languageSite, slugCleanedUp);
+  log.debug('languageSite', languageSite, slugCleanedUp);
 
   const pageDataResult = await collectDynamicPageData(params, slugCleanedUp, languageSite);
   return {
@@ -46,7 +49,7 @@ export async function getStaticPaths() {
   // on-demand if the path doesn't exist.
   const paths = await collectAllRoutes(GetLanguageSiteByCode(GetMainSiteLanguage()));
 
-  console.log(`getStaticPaths ${GetMainSiteLanguage()} paths`, paths.length)
+  log.debug(`getStaticPaths ${GetMainSiteLanguage()} paths`, paths.length)
 
   return { paths, fallback: 'blocking' }
 }

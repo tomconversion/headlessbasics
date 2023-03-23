@@ -4,6 +4,9 @@ import {
 } from "@/ui-base/components/ui/sections/stories-section"
 import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/tools/common/multiSite"
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig"
+
+const log = getLogger("headless.graphql.heartcore.stories.stories");
 
 export function stories(pageIdentifier: PageIdentifier) {
   return `query HomepageComponentsBySlug($slug: String!) {
@@ -72,7 +75,7 @@ export function mapStoriesData(data: any): StoriesSectionProps {
     (item: any) => item.node.__typename === "StoriesSection"
   )?.node
 
-  // console.log("storiesSection", JSON.stringify(storiesSection, null, 2))
+  log.debug("storiesSection", JSON.stringify(storiesSection, null, 2))
 
 
   const cards: StoriesCardProps[] = storiesSection?.cards?.map(

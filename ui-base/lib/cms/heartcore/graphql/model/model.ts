@@ -1,5 +1,8 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants";
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { variablesMultiSiteSlug } from "../../../_base/tools/common/multiSite";
+
+const log = getLogger("headless.graphql.heartcore.common.multiSite");
 
 export function model(slug:string)
 {
@@ -15,7 +18,7 @@ export function model(slug:string)
 
 export function variables(urlPath: string, languageSite:LanguageSite) {
   let variables = variablesMultiSiteSlug(urlPath, languageSite);
-  console.log("variables heartcore model > ", variables);
+  log.debug("variables heartcore model > ", variables);
   return variables;
 }
 
@@ -24,6 +27,6 @@ export default function GetModelQuery() {
 }
 
 export function mapModelData(data, pageIdentifier:PageIdentifier) {
-  console.log("variables heartcore mapModelData > ", JSON.stringify(data));
+  log.debug("variables heartcore mapModelData > ", JSON.stringify(data));
   return data?.content?.contentTypeAlias;
 }

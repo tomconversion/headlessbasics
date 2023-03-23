@@ -1,9 +1,12 @@
 //pages/sitemap.xml.js
 
 import { collectRobotsTxtData, collectSitemapNavigationStructure } from "@/ui-base/lib/services/graphqlDataService";
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
+
+const log = getLogger("headless.pages.robots.txt");
 
 function generateRobotsTxt(data) {
-  console.log("generateRobotsTxt ", data);
+  log.debug("generateRobotsTxt ", data);
     return `${data}`;
   }
   

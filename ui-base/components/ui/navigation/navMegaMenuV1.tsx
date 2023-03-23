@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from "next/image";
 import React, { useState } from 'react';
+import { getLogger } from '@/ui-base/lib/services/logging/LogConfig';
+
+const log = getLogger("headless.components.navMegaMenuV1");
 
 // render a tailwind navigation menu
 const NavMegaMenuV1 = ({ navItems, navClasses }) => {
@@ -11,7 +14,7 @@ const NavMegaMenuV1 = ({ navItems, navClasses }) => {
 
   navItems = navItems.filter((x) => typeof(x.url) !== 'undefined' && typeof(x.showInNavigation) !== 'undefined' && x.showInNavigation === true);
 
-  console.log("navItems 2: ", JSON.stringify(navItems));
+  log.debug("navItems 2: ", JSON.stringify(navItems));
 
   const [isOpen, setOpen] = useState(false);
 
@@ -27,7 +30,7 @@ const NavMegaMenuV1 = ({ navItems, navClasses }) => {
           
                     
           {navItems.map((item: any) => {
-            console.log("item: ", JSON.stringify(item));
+            log.debug("item: ", JSON.stringify(item));
               return (
                 <li key={item.id}>
                   <Link key={item.id} href={item.url}>
@@ -56,7 +59,7 @@ const NavMegaMenuV1 = ({ navItems, navClasses }) => {
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
           {navItems.map((item: any) => {
-            console.log("item: ", JSON.stringify(item));
+            log.debug("item: ", JSON.stringify(item));
               return (
                 <li key={item.id}>
                   <Link key={item.id} href={item.url}>

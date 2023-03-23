@@ -1,5 +1,8 @@
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { LanguageSite, PageIdentifier } from "../../../constants";
 import { variablesNavigationBase } from "../../../_base/tools/navigation/navigation";
+
+const log = getLogger("headless.graphql.contentful.navigation.navigation");
 
 export function navigation(pageIdentifier: PageIdentifier) {
  return `
@@ -33,7 +36,7 @@ export function GetNavQuery() {
 }
 
 export function mapNavigationData(data, pageIdentifier: PageIdentifier, languageSite: LanguageSite) {
-  console.log("mapNavigationData contentful", JSON.stringify(data));
+  log.debug("mapNavigationData contentful", JSON.stringify(data));
   let navItems = data.pageCollection.items
   navItems.map((x) => {
     x.url = x.urlPath;

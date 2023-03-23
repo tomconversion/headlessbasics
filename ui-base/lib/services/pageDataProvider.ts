@@ -1,5 +1,8 @@
 import { LanguageSite } from "../cms/constants";
 import { buildPageData, collectSitemapNavigationStructure, getPageTypeBySlug } from "./graphqlDataService";
+import { getLogger } from "./logging/LogConfig";
+
+const log = getLogger("headless.pageDataProvider");
 
 export async function collectDynamicPageData(params, slugCleanedUp, languageSite:LanguageSite) {
       
@@ -15,7 +18,7 @@ export async function collectDynamicPageData(params, slugCleanedUp, languageSite
     }
     
     const pageType = await getPageTypeBySlug(selectedSlug, languageSite);
-    console.log("collectDynamicPageData > pageType > ", pageType);
+    log.debug("collectDynamicPageData > pageType > ", pageType);
     const pageData = await buildPageData(pageType, true, languageSite, {slug: selectedSlug}); 
 
     return { pageData, selectedSlug};

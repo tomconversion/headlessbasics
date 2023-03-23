@@ -20,14 +20,14 @@ export const filterNavItem = (navItem: NavItemInterface) => {
 }
 
 // render a tailwind navigation menu
-const NavMegaMenuV1 = ({ navItems }: NavigationProps) => {
+const NavMegaMenuV1 = ({ navItems, className }: NavigationProps) => {
   if (typeof navItems === "undefined") {
     return <></>
   }
 
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
+    <div className={`navbar justify-between bg-base-100 ${className}`}>
+      <div className="navbar-start max-w-max">
         <div className="dropdown">
           <label tabIndex={0} className="btn-ghost btn lg:hidden">
             <svg
@@ -63,7 +63,7 @@ const NavMegaMenuV1 = ({ navItems }: NavigationProps) => {
           ))}
         </ul>
       </div>
-      <div className="navbar-end dropdown">
+      <div className="navbar-end dropdown max-w-max">
         <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
           <div className="w-10 rounded-full">
             <Image

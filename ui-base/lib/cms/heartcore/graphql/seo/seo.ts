@@ -15,14 +15,12 @@ export function seo(pageIdentifier:PageIdentifier)
       id
     }
   }`
-  console.log("heartcore seo", JSON.stringify(query));
   return query;
 };
 
 export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite)
 {
   const variables = variablesMultiSiteByIdentifier(pageIdentifier, languageSite);
-  console.log("heartcore seo variables", JSON.stringify(variables));
   return variables;
 };
 

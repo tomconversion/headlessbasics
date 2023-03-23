@@ -72,7 +72,7 @@ export function mapStoriesData(data: any): StoriesSectionProps {
     (item: any) => item.node.__typename === "StoriesSection"
   )?.node
 
-  // console.log("storiesSection", JSON.stringify(storiesSection, null, 2))
+  // log.debug("storiesSection", JSON.stringify(storiesSection, null, 2))
 
 
   const cards: StoriesCardProps[] = storiesSection?.cards?.map(

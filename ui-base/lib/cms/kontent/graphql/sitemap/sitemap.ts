@@ -43,6 +43,6 @@ export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, langua
   });
   // nodes = nodes.filter((x) => (!(x.seoTitle.indexOf("_") > -1)));
   // nodes = nodes.filter((x) => (!(x.seoTitle.indexOf("global-settings") > -1)));
-  console.log("graphqlDataService > kontent > mapSitemapData > nodes > ", nodes);
+  log.debug("graphqlDataService > kontent > mapSitemapData > nodes > ", nodes);
   return nodes;
 }

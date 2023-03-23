@@ -68,7 +68,7 @@ export function mapHeroData(data: any, pageIdentifier:PageIdentifier, languageSi
 
   if(items.length === 0 && items.bodyItems?.items.length === 0) return heroData;
 
-  console.log("kontent hero items", JSON.stringify(items));
+  log.debug("kontent hero items", JSON.stringify(items));
 
   items[0]?.bodyItems?.items?.forEach((item: any) => {
 

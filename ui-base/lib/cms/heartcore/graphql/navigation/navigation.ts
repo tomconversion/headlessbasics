@@ -56,7 +56,7 @@ export function mapNavigationData(data : any, pageIdentifier:PageIdentifier, lan
       
       if(languageSite.specialSlugPrefix){
         const valueToRemove = languageSite.specialSlugPrefix.replace(/\/+/g, '');
-        console.log("languageSite.specialSlugPrefix value", valueToRemove, x.url);
+        log.debug("languageSite.specialSlugPrefix value", valueToRemove, x.url);
         x.url = x.url.replace(valueToRemove, '');
       }
       

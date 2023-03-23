@@ -19,7 +19,7 @@ export interface FeaturesProps {
 }
 
 const FeatureSection = ({ data }: FeaturesProps) => {
-  console.log("data", data)
+  log.debug("data", data)
 
   return (
     <section className="py-12 sm:py-16 md:py-20">

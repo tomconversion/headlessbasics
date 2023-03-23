@@ -29,7 +29,7 @@ export default function GetSeoQuery() {
 }
 
 export function mapSeoData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
-  console.log("heartcore mapSeoData", JSON.stringify(data));
+  log.debug("heartcore mapSeoData", JSON.stringify(data));
   const result = data[pageIdentifier.cmsType];
   return {seoTitle: result.sEOTitle, seoDescription: result.sEODescription};
 }

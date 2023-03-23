@@ -17,7 +17,7 @@ export function model(urlPath:string)
 };
 
 export function variables(urlPath: string, languageSite:LanguageSite) {
-  console.log("variables contentful model", urlPath, variablesMultiSiteSlug(urlPath, languageSite));
+  log.debug("variables contentful model", urlPath, variablesMultiSiteSlug(urlPath, languageSite));
   return variablesMultiSiteSlug(urlPath, languageSite);
 }
 
@@ -26,7 +26,7 @@ export default function GetModelQuery() {
 }
 
 export function mapModelData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
-  console.log("mapModelData", data);
+  log.debug("mapModelData", data);
   const typeNameIniitial = data?.pageCollection?.items[0].__typename;
   if(typeNameIniitial == 'Page'){
     return CmsVariants.variants.contentful.pageTypes.dynamic.pageVariant;

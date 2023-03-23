@@ -69,8 +69,8 @@ export function render(
       queryResult = query(_data)
     }
   } catch (err) {
-    console.log("function render", _data, `../cms/${variant}/content/${snippetFileName}`);
-    console.log("query module import error", err);
+    log.debug("function render", _data, `../cms/${variant}/content/${snippetFileName}`);
+    log.debug("query module import error", err);
   }
 
   return queryResult;

@@ -3,7 +3,7 @@
 import { collectRobotsTxtData, collectSitemapNavigationStructure } from "@/ui-base/lib/services/graphqlDataService";
 
 function generateRobotsTxt(data) {
-  console.log("generateRobotsTxt ", data);
+  log.debug("generateRobotsTxt ", data);
     return `${data}`;
   }
   

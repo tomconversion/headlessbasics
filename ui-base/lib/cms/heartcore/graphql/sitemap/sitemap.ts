@@ -49,7 +49,7 @@ export function mapSitemapData(data : any, pageIdentifier:PageIdentifier, langua
   {;
     nodes = nodes.filter((x) => x.url.indexOf(languageSite.homepageSlugPrefix) > -1);
   }else {
-    console.log("mapSitemapData > no language set", nodes.length);
+    log.debug("mapSitemapData > no language set", nodes.length);
   }
 
   nodes.map((x) => {

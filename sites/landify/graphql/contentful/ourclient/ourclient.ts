@@ -38,7 +38,7 @@ export function ourclient(pageIdentifier: PageIdentifier) {
 export function variables(pageIdentifier: PageIdentifier) {
   // const result = { slug: pageIdentifier.backEndSlug }
   const result = { slug: "/" }
-  // console.log("ourclient VARIABLE --", result)
+  // log.debug("ourclient VARIABLE --", result)
   return result
 }
 

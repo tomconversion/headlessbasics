@@ -49,7 +49,7 @@ export function GetNavQuery() {
 
 export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite)
 {
-  console.log("kontent navigation variables", JSON.stringify(variablesNavigationBase(pageIdentifier, languageSite)));
+  log.debug("kontent navigation variables", JSON.stringify(variablesNavigationBase(pageIdentifier, languageSite)));
   return variablesNavigationBase(pageIdentifier, languageSite); 
 };
 

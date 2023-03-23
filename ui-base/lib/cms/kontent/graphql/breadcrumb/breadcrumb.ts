@@ -34,7 +34,7 @@ export function breadcrumb()
 };
 
 export function variables(urlPath: string, languageSite:LanguageSite) {
-  console.log("breadcrumb kontent variables: " + JSON.stringify(variablesMultiSiteSlug(urlPath, languageSite)))
+  log.debug("breadcrumb kontent variables: " + JSON.stringify(variablesMultiSiteSlug(urlPath, languageSite)))
   return variablesMultiSiteSlug(urlPath, languageSite);
 }
 
@@ -43,7 +43,7 @@ export default function GetBreadcrumbQuery() {
 }
 
 export function mapBreadcrumbData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
-  console.log("breadcrumb kontent mapBreadcrumbData: " + JSON.stringify(data));
+  log.debug("breadcrumb kontent mapBreadcrumbData: " + JSON.stringify(data));
   if(data.navigationItem_All.items.length == 0){ 
     return [];
   }

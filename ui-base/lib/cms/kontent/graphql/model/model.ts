@@ -29,7 +29,7 @@ export function model(urlPath:string)
 };
 
 export function variables(urlPath: string, languageSite:LanguageSite) {
-  console.log("kontent model variables", JSON.stringify(variablesMultiSiteSlug(urlPath, languageSite)));
+  log.debug("kontent model variables", JSON.stringify(variablesMultiSiteSlug(urlPath, languageSite)));
   return variablesMultiSiteSlug(urlPath, languageSite);
 }
 
@@ -38,7 +38,7 @@ export default function GetModelQuery() {
 }
 
 export function mapModelData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
-  console.log("mapModelData Kontent", data);
+  log.debug("mapModelData Kontent", data);
   const typeNameIniitial = data?.navigationItem_All?.items[0]._system_?.type?._system_?.codename;
   if(typeNameIniitial == 'navigation_item'){
     return CmsVariants.variants.contentful.pageTypes.dynamic.pageVariant;

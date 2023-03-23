@@ -35,7 +35,7 @@ export function productDetails(slug:string)
 
 export function variables(pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
   let variables = variablesMultiSiteByIdentifier(pageIdentifier, languageSite);
-  console.log("variables heartcore model > ", variables);
+  log.debug("variables heartcore model > ", variables);
   return variables;
 }
 
@@ -44,6 +44,6 @@ export default function GetModelQuery() {
 }
 
 export function mapProductData(data, pageIdentifier:PageIdentifier) {
-  console.log("variables heartcore mapProductData > ", JSON.stringify(data));
+  log.debug("variables heartcore mapProductData > ", JSON.stringify(data));
   return data?.productPage;
 }

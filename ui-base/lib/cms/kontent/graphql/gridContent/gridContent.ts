@@ -41,7 +41,7 @@ export default function GetGridContentQuery() {
 }
 
 export function mapGridContentData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
-  console.log("Umbraco mapGridContentData", data);
+  log.debug("Umbraco mapGridContentData", data);
   let dynamicContent = {};
   if (data?.dynamicPage?.contentBody) {
     dynamicContent = data?.dynamicPage?.contentBody;

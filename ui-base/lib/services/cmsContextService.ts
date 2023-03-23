@@ -16,7 +16,7 @@ export function GetPageIdentifier(pageVariant):PageIdentifier{
       ] as PageIdentifier;
 
     if(pageIdentifier === undefined){
-        console.log("GetPageIdentifier > pageIdentifier > ", pageIdentifier, pageVariant);
+        log.debug("GetPageIdentifier > pageIdentifier > ", pageIdentifier, pageVariant);
         let matches = GetSite().siteSettings.extraPageTypes.filter((x) => x.pageVariant === pageVariant);
         if(matches.length > 0){
             return matches[0];

@@ -17,12 +17,12 @@ export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean,
 
   const cmsVariant = GetCMS();
   const cmsVariantSelected = GetCMSVariant();
-  // console.log( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
-  console.log( "buildPageData > pageVariant > ", pageVariant);
-  console.log( "buildPageData > params > ", params);
-  console.log( "buildPageData > isDynamic > ", isDynamic);
+  // log.debug( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);
+  log.debug( "buildPageData > pageVariant > ", pageVariant);
+  log.debug( "buildPageData > params > ", params);
+  log.debug( "buildPageData > isDynamic > ", isDynamic);
   const pageIdentifier = GetPageIdentifier(pageVariant);
-  console.log( "buildPageData > pageIdentifier > ", pageIdentifier);
+  log.debug( "buildPageData > pageIdentifier > ", pageIdentifier);
 
   // We set the back end slug here for all dynamic pages.
   if(isDynamic && typeof params !== "undefined" && typeof params.slug !== "undefined") {
@@ -75,9 +75,9 @@ export async function getDyanmicCmsDataViaCmsSelector(
     } else {
       queryResult = query
     }
-    // console.log("query --", queryResult)
+    // log.debug("query --", queryResult)
   } catch (err) {
-    console.log("query module import error", err)
+    log.debug("query module import error", err)
   }
 
   let variables = { variables: {}, preview: false }
@@ -95,7 +95,7 @@ export async function getDyanmicCmsDataViaCmsSelector(
       ]
     } 
 
-    // console.log("inside variable sender pageIdentifier", pageIdentifier);
+    // log.debug("inside variable sender pageIdentifier", pageIdentifier);
 
     if (typeof pageIdentifier !== "undefined") {
       variables = { variables: variableFunc(pageIdentifier, languageSite), preview: false }
@@ -103,13 +103,13 @@ export async function getDyanmicCmsDataViaCmsSelector(
       variables = { variables: variableFunc(slug, languageSite), preview: false }
     }
 
-    // console.log("variables --", variables)
+    // log.debug("variables --", variables)
   }
 
   // Process the query call
   const data = await fetchAPIGatewayWrapper(queryResult, variables)
 
-  // console.log("data ---> ", JSON.stringify(data, null, 2))
+  // log.debug("data ---> ", JSON.stringify(data, null, 2))
 
   // Lookup the data mapper function dynamically and process the data.  This is equivalent to filtering the data per CMS.
   let dataMapper;
@@ -138,7 +138,7 @@ export async function getPageTypeBySlug(slug: string, languageSite:LanguageSite)
     slug,
     languageSite
   )) || undefined;
-  console.log("graphqlDataService > getPageTypeBySlug > pageType > ", pageType);
+  log.debug("graphqlDataService > getPageTypeBySlug > pageType > ", pageType);
   return pageType;
 }
 

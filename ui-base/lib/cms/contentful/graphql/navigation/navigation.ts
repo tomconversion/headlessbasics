@@ -33,7 +33,7 @@ export function GetNavQuery() {
 }
 
 export function mapNavigationData(data, pageIdentifier: PageIdentifier, languageSite: LanguageSite) {
-  console.log("mapNavigationData contentful", JSON.stringify(data));
+  log.debug("mapNavigationData contentful", JSON.stringify(data));
   let navItems = data.pageCollection.items
   navItems.map((x) => {
     x.url = x.urlPath;

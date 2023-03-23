@@ -6,7 +6,7 @@ import { sanitiseForKontent } from "../cms/kontent/kontentTools";
 
 export function variablesMultiSiteSlug(slug:string, languageSite:LanguageSite)
 {
-  console.log("variablesMultiSiteSlug > ", slug, languageSite);
+  log.debug("variablesMultiSiteSlug > ", slug, languageSite);
   let result = {'slug': GetMultiSiteSlug(slug, languageSite)};
   if(GetCMS() == "kontent"){
     result = sanitiseForKontent(result);

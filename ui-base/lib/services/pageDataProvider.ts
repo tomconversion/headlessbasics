@@ -25,6 +25,5 @@ export function GetPageComponentData(data, field){
   const fieldName = field.toLowerCase();
   if(data?.data?.pageComponentData && data?.data?.pageComponentData.hasOwnProperty(fieldName) && data?.data?.pageComponentData[field]){
       return data?.data?.pageComponentData[field];
-    }
+  }
 }
-    

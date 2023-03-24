@@ -1,6 +1,9 @@
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { CmsVariant, CmsVariants, LanguageSite, PageIdentifier } from "../../../constants";
 import { variablesNavigationBase } from "../../../_base/tools/navigation/navigation";
 import { GetHomepageVariant, GetMultiSiteSlugByIdentifier } from "../../tools/urlTools";
+
+const log = getLogger("headless.navigation");
 
 export function navigation(pageIdentifier:PageIdentifier)
 {

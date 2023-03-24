@@ -1,6 +1,9 @@
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { LanguageSite, PageIdentifier } from "../../../constants";
 import { GetHomepageVariant, GetMultiSiteSlugByIdentifier } from "../../../heartcore/tools/urlTools";
 import { variablesNavigationBase } from "../../../_base/tools/navigation/navigation";
+
+const log = getLogger("headless.graphql.kontent.navigation");
 
 export function navigation(pageIdentifier:PageIdentifier)
 {
@@ -49,7 +52,7 @@ export function GetNavQuery() {
 
 export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite)
 {
-  console.log("kontent navigation variables", JSON.stringify(variablesNavigationBase(pageIdentifier, languageSite)));
+  log.debug("kontent navigation variables", JSON.stringify(variablesNavigationBase(pageIdentifier, languageSite)));
   return variablesNavigationBase(pageIdentifier, languageSite); 
 };
 

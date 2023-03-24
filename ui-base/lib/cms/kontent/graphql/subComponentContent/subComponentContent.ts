@@ -44,7 +44,6 @@ export default function GetSubComponentContentQuery() {
 }
 
 export function mapSubComponentContentData(data, pageIdentifier:PageIdentifier, languageSite:LanguageSite) {
-  console.log("mapSubComponentContentData Kontent", data);
   if(data?.navigationItem_All?.items[0]?.content){
     return data?.navigationItem_All?.items[0]?.content;
   }else {

@@ -2,7 +2,10 @@
 // Brid Content
 
 
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 import { CmsVariants, LanguageSite, PageIdentifier } from "../../../constants"
+
+const log = getLogger("headless.graphql.heartcore.common.multiSite");
 
 export function gridContent() {
   return `
@@ -20,7 +23,7 @@ export function gridContent() {
 
 export function variables(urlPath:string, pageIdentifier:PageIdentifier, languageSite:LanguageSite)
 {
-  console.log("variables", `/${urlPath}`);
+  log.debug("variables", `/${urlPath}`);
   const result = {'urlPath': `/${urlPath}`};
   return result;
 };

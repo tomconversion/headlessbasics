@@ -56,7 +56,7 @@ export type CmsVariant = "heartcore" | "contentful" | "kontent"
 
 export type CountryCode = "us" | "au"
 
-export type PageVariant = "homepage" |"home" | "gridContentPage" | "subComponentsPage"
+export type PageVariant = "homepage" |"home" | "gridContentPage" | "subComponentsPage" | "productPage"
 
 const CmsVariants = {
   variants: {
@@ -92,6 +92,13 @@ const CmsVariants = {
           cmsType: "subComponentsPage",
           isFixedLayout: false,
         },
+        productPage: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "productPage",
+          cmsType: "productPage",
+          isFixedLayout: true,
+        }
       },
     },
     kontent: {
@@ -126,6 +133,13 @@ const CmsVariants = {
           cmsType: "staticPage",
           isFixedLayout: true,
         },
+        productPage: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "productPage",
+          cmsType: "productPage",
+          isFixedLayout: false,
+        }
       },
     },
     contentful: {
@@ -154,6 +168,13 @@ const CmsVariants = {
           cmsType: "pageCollection",
           isFixedLayout: false,
         },
+        productPage: {
+          frontEndSlug: null,
+          backEndSlug: null,
+          pageVariant: "productPage",
+          cmsType: "productPage",
+          isFixedLayout: false,
+        }
       },
     },
   },

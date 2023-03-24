@@ -4,16 +4,16 @@ import { SiteConstantsInterface } from "@/ui-base/lib/interfaces/SiteConstantsIn
 
 const ATASiteComponentDataLocations = 
   [
-    // {
-    //   identifier: "hero",
-    //   snippetLocation: "hero",
-    //   snippetFileName: "hero",
-    //   snippetExport: "hero",
-    //   queryIsFunction: true,
-    //   queryHasVariables: true,
-    //   variableFunction: "variables",
-    //   dataFunctionMapperName: "mapHeroData",
-    // },
+    {
+      identifier: "productDetails",
+      snippetLocation: "product",
+      snippetFileName: "productDetails",
+      snippetExport: "productDetails",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapProductData",
+    },
     // {
     //   identifier: "ourclient",
     //   snippetLocation: "ourclient",
@@ -42,6 +42,8 @@ export const COMPONENT_HERO: string = "hero"
 export const COMPONENT_OUR_CLIENT: string = "ourclient"
 export const COMPONENT_FEATURES: string = "features"
 
+export const COMPONENT_PRODUCT_DETAILS: string = "productDetails"
+
 export const ATAFixedLayouts: SiteComponents = {
   layouts: [
     {
@@ -50,6 +52,12 @@ export const ATAFixedLayouts: SiteComponents = {
         // COMPONENT_HERO,
         // COMPONENT_OUR_CLIENT,
         // COMPONENT_FEATURES
+      ],
+    },
+    {
+      identifier: "productPage",
+      components: [
+        COMPONENT_PRODUCT_DETAILS,
       ],
     },
   ]
@@ -79,5 +87,7 @@ export const ATASiteSettings: SiteSettings = {
       isFixedLayout: true
     }
   ],
-  deepSearchNavigation: true
+  ecommerceSettings: {
+    hasProducts: true
+  }
 }

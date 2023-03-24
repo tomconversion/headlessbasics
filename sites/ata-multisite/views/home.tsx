@@ -1,3 +1,5 @@
+import Image from "next/image"
+import Link from "next/link"
 
 
 interface Props {
@@ -5,10 +7,13 @@ interface Props {
 }
 
 const Home = (props: Props) => {
-
   return (
     <div className={props.className}>
       This is the homepage.
+      <div className="flex flex-col items-center">
+        Example Links:
+        <Link href="/gate-openers/neoslider-500b">Product Neo Slider</Link>
+      </div>
     </div>
   )
 }

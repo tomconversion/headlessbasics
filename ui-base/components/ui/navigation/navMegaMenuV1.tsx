@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig"
 import NavItem, { NavItemInterface } from "./NavItem"
 
 interface NavigationProps {
@@ -18,6 +19,8 @@ export const filterNavItem = (navItem: NavItemInterface) => {
   }
   return false
 }
+
+const log = getLogger("headless.components.navMegaMenuV1")
 
 // render a tailwind navigation menu
 const NavMegaMenuV1 = ({ navItems, className }: NavigationProps) => {
@@ -49,9 +52,12 @@ const NavMegaMenuV1 = ({ navItems, className }: NavigationProps) => {
             tabIndex={0}
             className="dropdown-content menu rounded-box w-52 bg-base-100 p-2 shadow"
           >
-            {navItems.map((navItem: any, index) => (
-              <NavItem {...navItem} key={`${navItem.id}-${index}`} />
-            ))}
+            {navItems.map(
+              (navItem: any, index) => (
+                log.debug("navItem", navItem),
+                (<NavItem {...navItem} key={`${navItem.id}-${index}`} />)
+              )
+            )}
           </ul>
         </div>
         <a className="btn-ghost btn text-xl normal-case">ATA Automation</a>
@@ -78,17 +84,34 @@ const NavMegaMenuV1 = ({ navItems, className }: NavigationProps) => {
           tabIndex={0}
           className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
         >
-          <li>
-            <a className="justify-between">
-              Profile
-              <span className="badge">New</span>
-            </a>
-          </li>
-          <li>
-            <a>Settings</a>
-          </li>
-          <li>
-            <a>Logout</a>
+          <li className="min-h-full w-full">
+            <label
+              tabIndex={0}
+              className="btn-ghost btn-circle avatar btn w-full"
+            >
+              <div className="flex">
+                <Link href={"/au"}>
+                  <div className="w-100 rounded-full">
+                    <Image
+                      alt="International Sites"
+                      src="/ata-multisite/images/global/australia-28586_960_720.png"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                </Link>
+                <Link href={"/"}>
+                  <div className="w-100 rounded-full">
+                    <Image
+                      alt="International Sites"
+                      src="/ata-multisite/images/global/usa-1960922_960_720.jpg"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                </Link>
+              </div>
+            </label>
           </li>
         </ul>
       </div>

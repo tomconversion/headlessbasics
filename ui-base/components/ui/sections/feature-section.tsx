@@ -1,6 +1,9 @@
 import Image from "next/image"
 
 import { parseText } from "@/ui-base/lib/util/utils"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
+
+const log = getLogger("headless.components.featureSection");
 
 interface FeatureCardProps {
   imageSrc: string
@@ -19,7 +22,7 @@ export interface FeaturesProps {
 }
 
 const FeatureSection = ({ data }: FeaturesProps) => {
-  console.log("data", data)
+  log.debug("data", data)
 
   return (
     <section className="py-12 sm:py-16 md:py-20">

@@ -1,6 +1,8 @@
 import { StoriesCardProps, StoriesSectionProps } from "@/ui-base/components/ui/sections/stories-section"
 import { PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 
+const log = getLogger("headless.graphql.kontent.stories.stories");
 
 export function stories(pageIdentifier: PageIdentifier) {
   return `query MyQuery {
@@ -37,7 +39,7 @@ export function stories(pageIdentifier: PageIdentifier) {
 export function variables(pageIdentifier: PageIdentifier) {
   // const result = { slug: pageIdentifier.backEndSlug }
   const result = { slug: "homepage" }
-  // console.log("ourclient VARIABLE --", result)
+  log.debug("VARIABLE --", result)
   return result
 }
 
@@ -48,7 +50,7 @@ export default function GetourClientQuery() {
 
 export function mapStoriesData(data: any): StoriesSectionProps {
   const stories = data.homepage.bodyItems.items
-  // console.log("stories", stories);
+  log.debug("stories", stories);
   
   const storiesSection = stories.find(
     (item: any) => item.__typename === "StoriesSection"

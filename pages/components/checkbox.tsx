@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
 import { Checkbox } from '@/ui-base/components/ui/checkbox';
-import { GetSiteConfig } from '@/ui-base/config/site';
 
 const demoJson = [{}];
 const title = "Checkbox";
@@ -12,7 +11,7 @@ const description = "";
 export default function IndexPage() {
   var data = {};
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

@@ -281,6 +281,16 @@ const DynamicCmsDataLocations:DynamicDataCmsProperties[] = [
       queryHasVariables: true,
       variableFunction: "variables",
       dataFunctionMapperName: "mapRobotsTxtData",
+    },
+    {
+      identifier: "sitesearch",
+      snippetLocation: "sitesearch",
+      snippetFileName: "sitesearch",
+      snippetExport: "sitesearch",
+      queryIsFunction: true,
+      queryHasVariables: true,
+      variableFunction: "variables",
+      dataFunctionMapperName: "mapSiteSearchData",
     }
     ];
 
@@ -310,6 +320,8 @@ export interface DynamicDataCmsProperties {
 export const COMPONENT_DYNAMIC_CONTENT: FlexibleComponents = "dynamicContent"
 export const COMPONENT_GRID_CONTENT: FlexibleComponents = "gridContent"
 export const SUBCOMPONENT_CONTENT: FlexibleComponents = "subComponentContent"
+
+export const COMPONENT_SITE_SEARCH: string = "siteSearch"
 
 export interface Components {
   layouts: {

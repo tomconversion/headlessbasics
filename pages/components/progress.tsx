@@ -1,7 +1,6 @@
 
 import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
-import { GetSiteConfig } from '@/ui-base/config/site';
 import ExampleCode from '@/ui-base/components/ui/code';
 import ProgressDemo from '@/ui-base/components/ui/demo/progressDemo';
 
@@ -12,7 +11,7 @@ const description = "...";
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

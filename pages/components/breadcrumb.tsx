@@ -2,7 +2,6 @@ import Head from "next/head"
 
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
-import { GetSiteConfig } from "@/ui-base/config/site"
 import BreadcrumbDemo from "@/ui-base/components/ui/demo/breadcrumbdemo"
 
 const demoJson = {
@@ -36,7 +35,7 @@ const description = ""
 export default function BreadcrumbPage() {
   var data = {};
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

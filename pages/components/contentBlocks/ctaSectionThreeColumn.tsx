@@ -10,7 +10,6 @@ import ImageWithOverlay from '@/ui-base/components/ui/media/ImageWithOverlay';
 import ButtonDemo from '@/ui-base/components/ui/demo/buttonDemo';
 import SelectDemo from '@/ui-base/components/ui/demo/selectDemo';
 import { Button } from '@/ui-base/components/ui/button';
-import { GetSiteConfig } from '@/ui-base/config/site';
 
 const title = "Three Column Section";
 const description = "Displays CTA in a three column layout";
@@ -88,7 +87,7 @@ const images = [
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

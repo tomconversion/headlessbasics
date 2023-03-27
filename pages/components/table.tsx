@@ -3,7 +3,6 @@ import Head from "next/head"
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
 import TableDemo from "@/ui-base/components/ui/demo/tabledemo"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 const demoJson = [{}]
 const title = "Table"
@@ -11,7 +10,7 @@ const description = "..."
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>{title} UI Component</title>
         <meta

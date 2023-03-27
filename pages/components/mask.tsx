@@ -3,7 +3,6 @@ import Head from "next/head"
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
 import { MaskDemo } from "@/ui-base/components/ui/demo/maskdemo"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 const demoJson = [{}]
 const title = "Mask"
@@ -11,7 +10,7 @@ const description = "..."
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>{title}</title>
         <meta

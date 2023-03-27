@@ -4,7 +4,6 @@ import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
 import CTASectionTwoColumn from "@/ui-base/components/ui/sections/ctaSectionTwoColumn"
 import MediaLogos from "@/ui-base/components/ui/sections/media-logos/MediaLogos"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 const title = "Media Logos"
 const description = "Display clients logo in a grid."
@@ -45,7 +44,7 @@ const exampleJson: {
 
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

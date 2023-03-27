@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
 import { Slider } from '@/ui-base/components/ui/slider';
-import { GetSiteConfig } from '@/ui-base/config/site';
 var data = {};
 // Use the following variable to control the technical template contents
 const demoJson = [{}];
@@ -12,7 +11,7 @@ const description = "The following is a structure component";
 
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

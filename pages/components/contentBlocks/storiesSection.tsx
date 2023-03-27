@@ -6,7 +6,6 @@ import FeatureSection from "@/ui-base/components/ui/sections/feature-section"
 import StoriesSection, {
   StoriesSectionProps,
 } from "@/ui-base/components/ui/sections/stories-section"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 const title = "Feature Section"
 const description = "Display a section with a headline and a list of features."
@@ -50,7 +49,7 @@ const exampleJson: StoriesSectionProps = {
 
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

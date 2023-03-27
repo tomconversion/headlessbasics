@@ -6,6 +6,7 @@ import {
   LanguageSite,
   GetDataLocation,
 } from "../cms/constants"
+import { LoadAllSubComponentData } from "./components/pageComponentDataService";
 import { getDyanmicCmsDataViaCmsSelector } from "./graphqlDataService"
 import { getLogger } from "./logging/LogConfig";
 import { GetSite } from "./siteContextService";
@@ -65,8 +66,10 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
     let pageComponentData:any = {};
 
     if(pageIdentifier.isFixedLayout){
+      log.debug(`${slug}  > collectAllPageData > fetching fixed layout data`);
       pageComponentData = await collectFixedLayoutPageComponentData(pageVariant, pageIdentifier, slug, languageSite);
     } else{
+      log.debug(`${slug}  > collectAllPageData > fetching dynamic layout data`);
       pageComponentData = await collectDynamicLayoutPageComponentData(pageVariant, pageIdentifier, slug, languageSite);
     }
 
@@ -74,7 +77,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
 
     const finalPageData = { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 
-    log.debug(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(finalPageData)}`);
+    log.trace(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(finalPageData)}`);
 
     return finalPageData;
 }
@@ -149,6 +152,8 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
       languageSite
     );
   }
+
+  await LoadAllSubComponentData(pageComponentData, SUBCOMPONENT_CONTENT, slug, languageSite);
 
   log.debug(`${slug}  > collectDynamicLayoutPageComponentData > pageComponentData[SUBCOMPONENT_CONTENT] > ${JSON.stringify(pageComponentData[SUBCOMPONENT_CONTENT])}`);
   

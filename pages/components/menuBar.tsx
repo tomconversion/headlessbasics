@@ -2,7 +2,6 @@
 import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
-import { GetSiteConfig } from '@/ui-base/config/site';
 import MenuBarDemo from '@/ui-base/components/ui/demo/menuBarDemo';
 
 const demoJson = [{}];
@@ -12,7 +11,7 @@ var data = {};
 
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

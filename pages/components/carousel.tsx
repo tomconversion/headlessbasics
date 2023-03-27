@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
 import Carousel from '@/ui-base/components/ui/sections/carousel/carousel';
-import { GetSiteConfig } from '@/ui-base/config/site';
 
 const items = [
   {
@@ -25,7 +24,7 @@ const description = "This is a media display component";
 export default function IndexPage() {
   var data = {};
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

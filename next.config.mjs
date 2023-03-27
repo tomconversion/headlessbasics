@@ -9,6 +9,7 @@ const nextConfig = {
       "daisyui.com",
       "images.ctfassets.net",
       "assets-au-01.kc-usercontent.com",
+      "api.lorem.space",
     ],
   },
   experimental: {

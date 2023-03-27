@@ -10,10 +10,12 @@ export default function AllPagesHandler({data}) {
   return <AllPages data={data}/>;
 }
 
-const log = getLogger("headless.pages.slug");
+
 
 export async function getStaticProps({ params }) {
   
+  const log = getLogger("headless.pages.slug" + params.slug.join('.'  ));
+
   let slugCleanedUp = params.slug.join('/');
   if(slugCleanedUp === 'favicon.ico') return { props: {  } }
   
@@ -43,6 +45,8 @@ export async function getStaticProps({ params }) {
 
 
 export async function getStaticPaths() {
+
+  const log = getLogger("headless.pages.slug");
 
   // We'll pre-render only these paths at build time.
   // { fallback: 'blocking' } will server-render pages

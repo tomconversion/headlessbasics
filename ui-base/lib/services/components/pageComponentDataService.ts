@@ -9,7 +9,7 @@ const log = getLogger("headless.services.components.pageComponentsDataService");
 export async function LoadAllSubComponentData(pageComponentData, SUBCOMPONENT_CONTENT, slug:string, languageSite:LanguageSite) {
     log.debug("LoadAllSubComponentData > ", slug);
     const data = pageComponentData[SUBCOMPONENT_CONTENT];
-    if(data.length > 0){
+    if(data?.length && data.length > 0){
       await Promise.all(data.map(async (item) => {
         if(item.__typename){
           log.debug("LoadAllSubComponentData > ", slug, item.__typename.toLowerCase());

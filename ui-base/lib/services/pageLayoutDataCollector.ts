@@ -40,7 +40,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       languageSite
     )) || [];
   
-    log.debug(`${slug}  > collectAllPageData > navItems > ${navItems}`);
+    log.debug(`${slug}  > collectAllPageData > navItems > ${JSON.stringify(navItems)}`);
 
   // Individual Page Data
   const seoItems =

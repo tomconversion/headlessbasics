@@ -7,11 +7,13 @@ const SectionWrapperTailwind: React.FC<{ children: ReactNode }> = ({
   children,
   }) => {
     return (
-      <section className="p-4 bg-gray-200 flex flex-col items-center">
-        <div className="flex flex-row container p-4 m-12">
+    <section className="w-full py-4 bg-gray-100 flex flex-col items-center">
+      <div className="container mx-auto p-4">
+        <div className="flex flex-row">
           {children}
         </div>
-      </section>
+      </div>
+    </section>
     );
   };
   

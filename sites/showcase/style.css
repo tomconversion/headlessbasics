@@ -1,11 +1,4 @@
-@import "./views/home.css";
-@import "./components/feature-card.css";
-@import "./components/link-icon-button.css";
-@import "./components/primary-button.css";
-@import "./components/secondary-button.css";
-@import "./components/stats-card.css";
-@import "./components/store-banner.css";
-@import "./components/testimonials-card.css";
+
 
 :root {
   --dl-color-gray-300: #d9dbe1ff;
@@ -67,6 +60,11 @@
 .list-item {
   display: list-item;
 }
+
+a {
+  cursor: pointer;
+}
+
 .input {
   color: var(--dl-color-gray-900);
   cursor: auto;

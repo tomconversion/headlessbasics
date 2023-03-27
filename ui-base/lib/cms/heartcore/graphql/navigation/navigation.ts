@@ -51,27 +51,33 @@ export function mapNavigationData(data : any, pageIdentifier:PageIdentifier, lan
   let mappedNav = [];
 
   if(data?.homepage?.children?.items?.length > 0){
-    mappedNav = data.homepage.children.items.map((x) => {    
-      x.name = x.name.replace('/', '');
-      x.slug = x.name;
-      x.url = x.url.replace(languageSite.homepageSlugPrefix, '');
-
-      
-      if(languageSite.specialSlugPrefix){
-        const valueToRemove = languageSite.specialSlugPrefix.replace(/\/+/g, '');
-        log.debug("languageSite.specialSlugPrefix value", valueToRemove, x.url);
-        x.url = x.url.replace(valueToRemove, '');
-      }
-      
-
-      if(languageSite.shouldLanguageCodeBeAddedToNav){
-        x.url = `/${languageSite.countryCode}/${x.url}`;
-      }
-      return x;
+    mappedNav = data.homepage.children.items.map((x) => {          
+      return processNavItem(x, languageSite);
     });
   }
 
   mappedNav = mappedNav.filter((x) => !x.name.startsWith("_"));
 
   return mappedNav;
+}
+
+export function processNavItem(x: any, languageSite: LanguageSite) {
+  
+  x.name = x.name.replace('/', '');
+  x.slug = x.name;
+  x.url = x.url.replace(languageSite.homepageSlugPrefix, '');
+
+  
+  if(languageSite.specialSlugPrefix){
+    const valueToRemove = languageSite.specialSlugPrefix.replace(/\/+/g, '');
+    console.log("languageSite.specialSlugPrefix value", valueToRemove, x.url);
+    x.url = x.url.replace(valueToRemove, '');
+  }
+  
+
+  if(languageSite.shouldLanguageCodeBeAddedToNav){
+    x.url = `/${languageSite.countryCode}/${x.url}`;
+  }
+  console.log("processNavItem", x.url);
+  return x;
 }

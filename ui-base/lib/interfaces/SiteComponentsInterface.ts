@@ -1,10 +1,10 @@
-import { BaseSiteConfig } from "@/ui-base/config/SiteConfigInterface";
+import { BaseSiteConfig } from "@/ui-base/config/site";
 import { CountryCode, LanguageSite, PageIdentifier, PageVariant } from "../cms/constants";
 
 export interface SiteComponents {
   layouts: {
-    identifier: PageVariant;
-    components: string[];
+    identifier: PageVariant
+    components: string[]
   }[]
 }
 

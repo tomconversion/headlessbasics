@@ -21,3 +21,9 @@ export function variablesNavigationBase(pageIdentifier: PageIdentifier, language
   return result;
 };
 
+export function variablesById(id: string)
+{
+  let result = {'id': id};
+  return result;
+};
+

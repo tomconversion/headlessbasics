@@ -27,3 +27,9 @@ export function variablesByName(name:String)
   const result = {'name': name};
   return result;
 };
+
+export function variablesById(id:String)
+{
+  const result = {'id': id};
+  return result;
+};

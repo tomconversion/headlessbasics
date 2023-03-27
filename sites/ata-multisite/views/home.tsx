@@ -6,7 +6,6 @@ interface Props {
 }
 
 const Home = (props: Props) => {
-
   return (
     <div className={props.className}>
       This is the homepage.

@@ -39,6 +39,10 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       undefined, // Slug is undefined, as we are doing the lookup based on page type
       languageSite
     )) || [];
+
+    if(GetSite().siteSettings.deepSearchNavigation){
+      deepSearchNavigation(navItems, slug, languageSite);
+    }
   
     log.debug(`${slug}  > collectAllPageData > navItems > ${JSON.stringify(navItems)}`);
 
@@ -74,6 +78,8 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
     }
 
     log.debug(`${slug} > collectAllPageData > completed lookup`);
+
+    console.log(`${slug} > collectAllPageData > finalPageData > ${JSON.stringify(navItems)}`);
 
     const finalPageData = { navItems, seoItems, pageComponentData, pageVariant, breadcrumbItems };
 
@@ -168,3 +174,27 @@ export async function collectDynamicLayoutPageComponentData(pageVariant: PageVar
   }
   return pageComponentData;
 }
+
+// For each navitem, we need to grab its ID and do a lookup for any children, add the children to the navitem
+export async function deepSearchNavigation(navItems: any, slug: string, languageSite: LanguageSite) {
+
+  console.log(`${slug}  > deepSearchNavigation > navItems > navItems.length > ${navItems.length}`);
+
+  for (const navItem of navItems) {
+    if (navItem.children) {
+      console.log(`${slug}  > deepSearchNavigation > navItem.id > ${navItem.id}`);
+      await deepSearchNavigation(navItem.children, slug, languageSite);
+    } else {
+      console.log(`${slug}  > deepSearchNavigation > query > ${navItem.id}`);
+      const childNavItems = await getDyanmicCmsDataViaCmsSelector(
+        GetDataLocation("navigationChildren"),
+        undefined,
+        navItem.id,
+        languageSite
+      );
+      navItem.children = childNavItems;
+    }
+  }
+}
+
+

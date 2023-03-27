@@ -13,6 +13,8 @@ export function getDynamicHomepages(HomepageProps: PageDataProps, siteName: stri
     DynamicIndexPage = dynamic<PageDataProps>(() => import('../../../sites/multisite/pages/Homepage').then((module) => module.Homepage), { ssr: true });
   } else if (siteName === 'ata-multisite') {
     DynamicIndexPage = dynamic<PageDataProps>(() => import('../../../sites/ata-multisite/pages/Homepage').then((module) => module.Homepage), { ssr: true });
+  } else if (siteName === 'showcase') {
+    DynamicIndexPage = dynamic<PageDataProps>(() => import('../../../sites/showcase/pages/Homepage').then((module) => module.Homepage), { ssr: true });
   }
 
   const DynamicHomepage = React.memo((props: PageDataProps) => {

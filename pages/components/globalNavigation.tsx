@@ -2,7 +2,6 @@
 import Head from 'next/head'
 
 import { Layout } from "@/ui-base/components/layout"
-import { GetSiteConfig } from '@/ui-base/config/site';
 import { GlobalTailwindNavigationMenu } from '@/ui-base/components/ui/global-navigation';
 
 
@@ -10,7 +9,7 @@ const demoNav = [{"name":"Static","id":"2249abfe-5710-489e-bcbc-43223cad1427","l
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

@@ -3,7 +3,7 @@ import Head from "next/head"
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
 import CountdownDemo from "@/ui-base/components/ui/demo/countdown-demo"
-import { GetSiteConfig } from "@/ui-base/config/site"
+import { GetSiteConfig } from "@/ui-base/lib/services/siteContextService"
 
 const demoJson = [{}]
 const title = "Badge"
@@ -11,7 +11,7 @@ const description = ""
 var data = {};
 export default function BadgePage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

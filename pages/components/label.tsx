@@ -1,7 +1,7 @@
 
 import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
-import { GetSiteConfig } from '@/ui-base/config/site';
+
 import ExampleCode from '@/ui-base/components/ui/code';
 import LabelDemo from '@/ui-base/components/ui/demo/labelDemo';
 
@@ -11,7 +11,7 @@ const description = "The input is below. You need to click into it.";
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

@@ -4,7 +4,6 @@ import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
 import { Tabs } from '@/ui-base/components/ui/tabs';
 import TabsDemo from '@/ui-base/components/ui/demo/tabsDemo';
-import { GetSiteConfig } from '@/ui-base/config/site';
 
 // Use the following variable to control the technical template contents
 const demoJson = [{}];
@@ -13,7 +12,7 @@ const description = "This is a navigation component.";
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

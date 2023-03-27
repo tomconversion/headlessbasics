@@ -1,6 +1,6 @@
+import { GetSiteConfig } from "@/ui-base/lib/services/siteContextService"
 import Head from "next/head"
 import { Layout } from "../../../ui-base/components/layout"
-import { siteConfig } from "../config/site"
 import { COMPONENT_FEATURES, COMPONENT_HERO, COMPONENT_OUR_CLIENT, COMPONENT_STORIES } from "../LandifySiteConstants"
 import Home from "../views/home"
 
@@ -9,13 +9,12 @@ export function Homepage({ data }) {
     <Layout
       className={"flex w-full flex-col items-center"}
       data={data}
-      siteConfig={siteConfig}
     >
       <Head>
-        <title>{`${siteConfig.name} | ${data?.seoItems?.seoTitle}`}</title>
+        <title>{`${GetSiteConfig().name} | ${data?.seoItems?.seoTitle}`}</title>
         <meta
           name="description"
-          content={`${siteConfig.name} | ${data?.seoItems?.seoDescription}`}
+          content={`${GetSiteConfig().name} | ${data?.seoItems?.seoDescription}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

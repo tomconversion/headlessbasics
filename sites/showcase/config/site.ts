@@ -1,4 +1,4 @@
-import { BaseSiteConfig } from "../../../ui-base/config/site"
+import { BaseSiteConfig } from "../../../ui-base/config/SiteConfigInterface"
 
 export const siteConfig: BaseSiteConfig = {
   siteTemplate: "landify", // This matched the folder within the /sites folder
@@ -64,9 +64,9 @@ export const siteConfig: BaseSiteConfig = {
   },
   logo: {
     description: "Next.js",
-    image: "/landify/static/playground_assets/logotype-dark.svg",
-    width: 100,
+    image: "/showcase/logo.jpg",
+    width: 400,
     height: 100,
     title: "Next.js",
-  },
+  }
 }

@@ -2,12 +2,11 @@ import Head from "next/head"
 
 import { Layout } from "@/ui-base/components/layout"
 import { AccordionDemo } from "@/ui-base/components/ui/demo/accordiondemo"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 export default function IndexPage() {
   var data = {};
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

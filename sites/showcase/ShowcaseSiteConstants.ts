@@ -1,62 +1,27 @@
-import { DynamicDataCmsProperties } from "@/ui-base/lib/cms/constants"
 import { SiteComponents, SiteSettings } from "@/ui-base/lib/interfaces/SiteComponentsInterface"
-import { SiteConstantsInterface } from "@/ui-base/lib/interfaces/SiteConstantsInterface"
 
-const ATASiteComponentDataLocations = 
+const ShowcaseSiteComponentDataLocations = 
   [
-    // {
-    //   identifier: "hero",
-    //   snippetLocation: "hero",
-    //   snippetFileName: "hero",
-    //   snippetExport: "hero",
-    //   queryIsFunction: true,
-    //   queryHasVariables: true,
-    //   variableFunction: "variables",
-    //   dataFunctionMapperName: "mapHeroData",
-    // },
-    // {
-    //   identifier: "ourclient",
-    //   snippetLocation: "ourclient",
-    //   snippetFileName: "ourclient",
-    //   snippetExport: "ourclient",
-    //   queryIsFunction: true,
-    //   queryHasVariables: true,
-    //   variableFunction: "variables",
-    //   dataFunctionMapperName: "mapOurClientData",
-    // },
-    // {
-    //   identifier: "features",
-    //   snippetLocation: "features",
-    //   snippetFileName: "features",
-    //   snippetExport: "features",
-    //   queryIsFunction: true,
-    //   queryHasVariables: true,
-    //   variableFunction: "variables",
-    //   dataFunctionMapperName: "mapFeaturesData",
-    // },
+
   ];
 
-export { ATASiteComponentDataLocations }
+export { ShowcaseSiteComponentDataLocations }
 
-export const COMPONENT_HERO: string = "hero"
-export const COMPONENT_OUR_CLIENT: string = "ourclient"
-export const COMPONENT_FEATURES: string = "features"
 
-export const ATAFixedLayouts: SiteComponents = {
+
+export const ShowcaseFixedLayouts: SiteComponents = {
   layouts: [
     {
       identifier: "home",
       components: [
-        // COMPONENT_HERO,
-        // COMPONENT_OUR_CLIENT,
-        // COMPONENT_FEATURES
+
       ],
     },
-  ]
+  ],
 }
 
-export const ATASiteSettings: SiteSettings = {
-  mainSiteLanguage: "us",
+export const ShowcaseSiteSettings: SiteSettings = {
+  mainSiteLanguage: "au",
   languageSites: [
     {
       countryCode: "us",
@@ -65,26 +30,17 @@ export const ATASiteSettings: SiteSettings = {
     },
     {
       countryCode: "au",
-      homepageSlugPrefix: "/au-homepage",
-      shouldLanguageCodeBeAddedToNav: true
+      homepageSlugPrefix: "/",
+      specialSlugPrefix: "/homepage",
+      shouldLanguageCodeBeAddedToNav: false
     },
   ],
-  extraPageTypes: [
-    {
-      identifier: "homepage",
-      frontEndSlug: "",
-      backEndSlug: "",
-      pageVariant: "homepage",
-      cmsType: "homepage",
-      isFixedLayout: true
-    }
-  ],
+  extraPageTypes: [],
   hideStoreButtons: true,
-  siteConfig:{
-    siteTemplate: "ata-multisite", // This matched the folder within the /sites folder
+  siteConfig: {
+    siteTemplate: "showcase", // This matched the folder within the /sites folder
     name: "Headless Basics by Conversion Digital",
-    description:
-      "Get up and running with a basic site quick. Blazingly fast headless.",
+    description: "Get up and running with a basic site quick. Blazingly fast headless.",
     mainNav: [
       {
         title: "Home",
@@ -140,13 +96,14 @@ export const ATASiteSettings: SiteSettings = {
       hero: "/components/hero",
       mediaLogos: "/components/mediaLogos",
       featureSection: "/components/contentBlocks/featureSection",
+      storiesSection: "/components/contentBlocks/storiesSection",
     },
     logo: {
       description: "Next.js",
-      image: "/landify/static/playground_assets/logotype-dark.svg",
-      width: 100,
+      image: "/showcase/logo.jpg",
+      width: 400,
       height: 100,
       title: "Next.js",
-    },
-  } 
+    }
+  }
 }

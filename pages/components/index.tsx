@@ -5,11 +5,12 @@ import { Label } from "@radix-ui/react-label"
 
 import { Layout } from "@/ui-base/components/layout"
 import { buttonVariants } from "@/ui-base/components/ui/button"
-import { GetSiteConfig } from "@/ui-base/config/site"
+import { GetSiteConfig } from "@/ui-base/lib/services/siteContextService"
 
 var data = {}
 
 export default function IndexPage() {
+
   const siteConfig = GetSiteConfig()
 
   const sections = [
@@ -291,7 +292,7 @@ export default function IndexPage() {
   ]
 
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

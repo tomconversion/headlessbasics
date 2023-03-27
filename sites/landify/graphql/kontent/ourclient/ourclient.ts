@@ -1,7 +1,9 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
 import { variablesMultiSiteByIdentifier } from "@/ui-base/lib/cms/_base/tools/common/multiSite"
 import { variablesNavigationBase } from "@/ui-base/lib/cms/_base/tools/navigation/navigation"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
 
+const log = getLogger("headless.graphql.kontent.ourclient.ourclient");
 
 export interface OurClientData {
   name: string
@@ -40,7 +42,7 @@ export function ourclient() {
 
 export function variables(pageIdentifier: PageIdentifier, languageSite:LanguageSite) {
   let variables = variablesNavigationBase(pageIdentifier, languageSite);
-  console.log("variables kontent ourclient", variables);
+  log.debug("variables kontent ourclient", variables);
   return variables;
 }
 
@@ -51,7 +53,7 @@ export default function GetourClientQuery() {
 export function mapOurClientData(data: any, pageIdentifier:PageIdentifier, languageSite:LanguageSite): OurClientData[] {
   const items = data.homepage_All?.items;
   
-  console.log("items kontent mapOurClientData", items)
+  log.debug("items kontent mapOurClientData", items)
 
   const ourClients = [];
 

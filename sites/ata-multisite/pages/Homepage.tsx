@@ -1,5 +1,6 @@
 import { GetSiteConfig } from "@/ui-base/lib/services/siteContextService"
 import Head from "next/head"
+import Link from "next/link"
 import { Layout } from "../../../ui-base/components/layout"
 import { buildMegaMenu } from "../components/MegaMenu"
 import Home from "../views/home"

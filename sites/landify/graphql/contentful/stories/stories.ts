@@ -1,5 +1,8 @@
 import { StoriesCardProps, StoriesSectionProps } from "@/ui-base/components/ui/sections/stories-section"
 import { PageIdentifier } from "@/ui-base/lib/cms/constants"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig";
+
+const log = getLogger("headless.graphql.contentful.stories.stories");
 
 export function stories(pageIdentifier: PageIdentifier) {
   return `query GetPageBySlug($slug: String!) {
@@ -39,7 +42,7 @@ export function stories(pageIdentifier: PageIdentifier) {
 export function variables(pageIdentifier: PageIdentifier) {
   // const result = { slug: pageIdentifier.backEndSlug }
   const result = { slug: "/" }
-  // console.log("ourclient VARIABLE --", result)
+  log.debug("ourclient VARIABLE --", result)
   return result
 }
 

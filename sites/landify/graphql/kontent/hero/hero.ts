@@ -1,6 +1,8 @@
 import { LanguageSite, PageIdentifier } from "@/ui-base/lib/cms/constants"
 import { variablesNavigationBase } from "@/ui-base/lib/cms/_base/tools/navigation/navigation"
+import { getLogger } from "@/ui-base/lib/services/logging/LogConfig"
 
+const log = getLogger("headless.graphql.kontent.hero.hero");
 
 export interface HeroData {
   name: string
@@ -68,7 +70,7 @@ export function mapHeroData(data: any, pageIdentifier:PageIdentifier, languageSi
 
   if(items.length === 0 && items.bodyItems?.items.length === 0) return heroData;
 
-  console.log("kontent hero items", JSON.stringify(items));
+  log.debug("kontent hero items", JSON.stringify(items));
 
   items[0]?.bodyItems?.items?.forEach((item: any) => {
 

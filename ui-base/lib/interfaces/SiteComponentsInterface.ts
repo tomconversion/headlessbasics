@@ -12,6 +12,13 @@ export interface SiteSettings {
   mainSiteLanguage: CountryCode
   languageSites: LanguageSite[]
   extraPageTypes: PageIdentifier[],
+  ecommerceSettings?: EcommerceSettings
+  hideStoreButtons: boolean
+  siteConfig: BaseSiteConfig
+}
+
+export interface EcommerceSettings {
+  hasProducts: boolean,
   hideStoreButtons: boolean
   siteConfig: BaseSiteConfig
 }

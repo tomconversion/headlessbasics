@@ -1,5 +1,8 @@
 import { CmsVariant, CmsVariants, PageIdentifier } from "../cms/constants";
+import { getLogger } from "./logging/LogConfig";
 import { GetSite } from "./siteContextService";
+
+const log = getLogger("headless.cmsContextService");
 
 export function GetCMS(){
     const cmsVariant = process.env.NEXT_PUBLIC_CMS_VARIANT as CmsVariant;
@@ -16,7 +19,7 @@ export function GetPageIdentifier(pageVariant):PageIdentifier{
       ] as PageIdentifier;
 
     if(pageIdentifier === undefined){
-        console.log("GetPageIdentifier > pageIdentifier > ", pageIdentifier, pageVariant);
+        log.debug("GetPageIdentifier > pageIdentifier > ", pageIdentifier, pageVariant);
         let matches = GetSite().siteSettings.extraPageTypes.filter((x) => x.pageVariant === pageVariant);
         if(matches.length > 0){
             return matches[0];

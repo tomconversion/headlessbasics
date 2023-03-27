@@ -1,5 +1,8 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
+import { getLogger } from './logging/LogConfig';
+
+const log = getLogger("headless.services.pageToSiteContextService");
 
 export interface PageDataProps {
   data?: any;

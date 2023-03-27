@@ -45,18 +45,21 @@ const ProductComponent: React.FC<ProductProps> = ({ product }) => {
         height={500}
         className="my-4 mx-auto max-h-[300px] max-w-screen-sm object-contain"
       />
-      <div className="grid w-full max-w-max auto-rows-[100px] grid-cols-1 place-items-center gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {product.productGallery.map((image, index) => (
-          <Image
-            key={index}
-            src={image.url}
-            alt={`Gallery ${index}`}
-            width={500}
-            height={500}
-            onClick={() => handleImageClick(image.url)}
-            className="aspect-square h-full w-auto"
-          />
-        ))}
+      <div className="flex justify-center">
+        <div className="my-4 grid w-full max-w-max auto-rows-[100px] grid-cols-1 place-items-center gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {product.productGallery.map((image, index) => (
+            <div className="h-full w-full" key={index}>
+              <Image
+                src={image.url}
+                alt={`Gallery ${index}`}
+                width={500}
+                height={500}
+                onClick={() => handleImageClick(image.url)}
+                className="aspect-square h-full w-full cursor-pointer rounded-md border object-fill shadow-md"
+              />
+            </div>
+          ))}
+        </div>
       </div>
       <div
         className="my-4"

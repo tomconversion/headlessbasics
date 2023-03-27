@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
 import SelectDemo from '@/ui-base/components/ui/demo/selectDemo';
-import { GetSiteConfig } from '@/ui-base/config/site';
 
 // Use the following variable to control the technical template contents
 const demoJson = [{}];
@@ -12,7 +11,7 @@ const description = "...";
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

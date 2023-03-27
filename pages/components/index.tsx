@@ -5,11 +5,12 @@ import { Label } from "@radix-ui/react-label"
 
 import { Layout } from "@/ui-base/components/layout"
 import { buttonVariants } from "@/ui-base/components/ui/button"
-import { GetSiteConfig } from "@/ui-base/config/site"
+import { GetSiteConfig } from "@/ui-base/lib/services/siteContextService"
+import { GetImageHero, GetShowcaseNavItems } from "../../sites/showcase/lib/services/showcaseDataService"
+import Hero from "@/ui-base/components/ui/hero/Hero"
 
-var data = {}
+export default function ComponentIndex() {
 
-export default function IndexPage() {
   const siteConfig = GetSiteConfig()
 
   const sections = [
@@ -290,46 +291,49 @@ export default function IndexPage() {
     },
   ]
 
+  let data = { data : {navItems : GetShowcaseNavItems() } };
+
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+
+    <Layout
+      className={"flex w-full flex-col items-center"}
+      data={data}
+    >
       <Head>
-        <title>Next.js</title>
+        <title>{`${GetSiteConfig().name}`}</title>
         <meta
-          name="description"
-          content="Next.js template for building apps with Radix UI and Tailwind CSS"
+          name="Headless Basics by Conversion Digital | A front end headless start kit for sites, blogs, and ecommerce. Supporting multiple CMS and headless tools."
+          content={`${GetSiteConfig().name} `}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-        <div className="flex flex-col items-start gap-2">
-          <h2 className="text-3xl font-extrabold leading-tight tracking-tighter">
-            <br className="hidden sm:inline" />
-            Tailwind CSS Based Component Library
-          </h2>
-          <div className="min-w-[500px] max-w-[1080px]">
-            References:
-            <ul className="text-blue-600 visited:text-purple-600 hover:text-blue-800">
-              <li>
-                <a className="" href="https://github.com/shadcn/ui">
-                  {" "}
-                  Shadcn UI (Radix UI Components)
-                  <BackpackIcon className="inline" />
-                </a>{" "}
-              </li>
-              <li>
-                <a href="https://www.radix-ui.com/"> Radix UI</a>
-              </li>
-              <li>
-                <a href="https://daisyui.com/">
-                  {" "}
-                  Daisy UI
-                  <StarFilledIcon className="inline" />
-                </a>
-              </li>
-            </ul>
+      <main className={
+          "flex min-h-screen w-full flex-col items-center overflow-hidden"
+        }>
+
+      <Hero
+        className="min-h-[500px] bg-base-200"
+        style={{
+          backgroundImage:
+            "url("+GetImageHero()+")",
+        }}
+      >
+        <Hero.Overlay className="bg-white/60" />
+        <Hero.Content className="text-center">
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">Component Library</h1>
+            <p className="py-6">
+              This component library contains a collection of components that can be used to build a website or application. 
+              The library is based on Tailwind CSS and React.
+              As new websites are built and new components are needed, they will be added to this library.
+            </p>
+            {/* <Button color="primary">Know More</Button> */}
           </div>
-        </div>
+        </Hero.Content>
+      </Hero>
+          
+      <section className="container grid items-center gap-6 pt-6 pb-8 md:py-10">
         <div className="flex gap-4">
           {/* <Link
             href={siteConfig.links.docs}
@@ -369,7 +373,7 @@ export default function IndexPage() {
                   rel="noreferrer"
                   className={buttonVariants({
                     size: "lg",
-                    variant: "default",
+                    variant: "outline",
                     color: "primary",
                   })}
                 >
@@ -380,6 +384,35 @@ export default function IndexPage() {
           </div>
         ))}
       </section>
+
+      <section  className="container grid items-center gap-6 pt-6 pb-8 md:py-10">
+        <div>
+            References:
+            <ul className="text-blue-600 visited:text-purple-600 hover:text-blue-800">
+              <li>
+                <a className="" href="https://github.com/shadcn/ui">
+                  {" "}
+                  Shadcn UI (Radix UI Components)
+                  <BackpackIcon className="inline" />
+                </a>{" "}
+              </li>
+              <li>
+                <a href="https://www.radix-ui.com/"> Radix UI</a>
+              </li>
+              <li>
+                <a href="https://daisyui.com/">
+                  {" "}
+                  Daisy UI
+                  <StarFilledIcon className="inline" />
+                </a>
+              </li>
+            </ul>
+          </div>
+      </section>
+
+      </main>
     </Layout>
+
+
   )
 }

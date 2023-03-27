@@ -3,7 +3,6 @@ import Head from "next/head"
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
 import KbdDemo from "@/ui-base/components/ui/demo/kbdDemo"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 const demoJson = [{}]
 const title = "Kbd"
@@ -11,7 +10,7 @@ const description = ""
 var data = {};
 export default function KbdPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

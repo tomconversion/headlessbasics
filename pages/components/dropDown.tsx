@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
 import DropdownMenuDemo from '@/ui-base/components/ui/demo/dropDownMenuDemo';
-import { GetSiteConfig } from '@/ui-base/config/site';
 
 const demoJson = [{}];
 const title = "Drop Down Menu";
@@ -11,7 +10,7 @@ const description = "Click on the burger menu for a drop down menu to appear.";
 var data = {};
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

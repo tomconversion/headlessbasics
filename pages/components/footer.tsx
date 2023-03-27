@@ -3,7 +3,6 @@ import Head from "next/head"
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
 import { FooterDemo } from "@/ui-base/components/ui/demo/footer.demo"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 var data = {};
 const demoJson = [
@@ -72,7 +71,7 @@ const description = ""
 var data = {};
 export default function FooterPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

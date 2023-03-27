@@ -1,8 +1,7 @@
 import Breadcrumbs from "@/ui-base/components/ui/breadcrumbs/Breadcrumbs"
-import {
-  detectAndRenderPageComponents,
-  detectAndRenderProductDetails,
-} from "@/ui-base/lib/services/ecommerce/ecommerceRenderService"
+import { renderComponentContent } from "@/ui-base/lib/services/components/pageComponentRenderService"
+import { detectAndRenderPageComponents } from "@/ui-base/lib/services/ecommerce/ecommerceRenderService"
+
 
 interface Props {
   className?: string
@@ -10,7 +9,6 @@ interface Props {
 }
 
 const Pages = (props: Props) => {
-  let productRendering = detectAndRenderProductDetails(props.data?.data)
 
   return (
     <div className={props.className}>
@@ -21,7 +19,7 @@ const Pages = (props: Props) => {
       {/* {subComponentContent}
         {gridPageContent} */}
 
-      {productRendering}
+        {renderComponentContent(props.data?.data)}
 
       <h6 id="oneTwo">Page Template: {props.data?.data?.pageVariant}</h6>
       {detectAndRenderPageComponents(props.data?.data)}

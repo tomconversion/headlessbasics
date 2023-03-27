@@ -1,12 +1,11 @@
 import { Layout } from "@/ui-base/components/layout"
 import AlertDialogDemo from "@/ui-base/components/ui/demo/alert-dialog-demo";
-import { GetSiteConfig } from "@/ui-base/config/site";
 import Head from "next/head"
 
 export default function IndexPage() {
   var data = {};
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

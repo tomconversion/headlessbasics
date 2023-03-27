@@ -3,7 +3,6 @@ import Head from "next/head"
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from "@/ui-base/components/ui/code"
 import ChatBubbleDemo from "@/ui-base/components/ui/demo/chat-bubble-demo"
-import { GetSiteConfig } from "@/ui-base/config/site"
 
 const demoJson = [{}]
 const title = "Chat Bubble"
@@ -12,7 +11,7 @@ const description = ""
 export default function BadgePage() {
   var data = {};
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

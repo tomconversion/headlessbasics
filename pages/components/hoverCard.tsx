@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Layout } from "@/ui-base/components/layout"
 import ExampleCode from '@/ui-base/components/ui/code'
 import HoverCardDemo from '@/ui-base/components/ui/demo/hoverCardDemo';
-import { GetSiteConfig } from '@/ui-base/config/site';
 var data = {};
 const demoJson = [{}];
 const title = "Hover Card";
@@ -11,7 +10,7 @@ const description = "...";
 
 export default function IndexPage() {
   return (
-    <Layout siteConfig={GetSiteConfig()} data={data}>
+    <Layout data={data}>
       <Head>
         <title>Next.js</title>
         <meta

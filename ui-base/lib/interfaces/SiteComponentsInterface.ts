@@ -1,3 +1,4 @@
+import { BaseSiteConfig } from "@/ui-base/config/SiteConfigInterface";
 import { CountryCode, LanguageSite, PageIdentifier, PageVariant } from "../cms/constants";
 
 export interface SiteComponents {
@@ -12,6 +13,8 @@ export interface SiteSettings {
   languageSites: LanguageSite[]
   extraPageTypes: PageIdentifier[],
   ecommerceSettings?: EcommerceSettings
+  hideStoreButtons: boolean
+  siteConfig: BaseSiteConfig
 }
 
 export interface EcommerceSettings {

@@ -10,7 +10,7 @@ import { GetCTAData, GetFeatures, GetImageHero, GetMediaLogos, GetShowcaseNavIte
 export function Homepage({ data }) {
 
   data.data.navItems = GetShowcaseNavItems();
-
+  
   return (
     <Layout
       className={"flex w-full flex-col items-center"}
@@ -39,10 +39,9 @@ export function Homepage({ data }) {
           <Hero.Overlay className="bg-white/60" />
           <Hero.Content className="text-center">
             <div className="max-w-md">
-              <h1 className="text-5xl font-bold">Welcome to Headless Basics</h1>
+              <h1 className="text-5xl font-bold">We support multiple CMS</h1>
               <p className="py-6">
-                Headless basics is a site framework built on Next.JS, Tailwind CSS, Typescript and React.
-                The aim of the project is to provide the building blocks to create a headless site that can be hosted by multiple CMS's.
+                By seperating the GraphQL queries from the UI components, we can support multiple CMS's. A few smarts are needed to make this work, but it's not too hard.
               </p>
               {/* <Button color="primary">Know More</Button> */}
             </div>

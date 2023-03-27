@@ -1,16 +1,19 @@
-import Hero from "@/ui-base/components/ui/hero/Hero"
-import CTASectionThreeColumn from "@/ui-base/components/ui/sections/ctaSectionThreeColumn"
-import FeatureSection from "@/ui-base/components/ui/sections/feature-section"
-import MediaLogos from "@/ui-base/components/ui/sections/media-logos/MediaLogos"
-import { GetSiteConfig } from "@/ui-base/lib/services/siteContextService"
-import Head from "next/head"
-import { Layout } from "../../../ui-base/components/layout"
-import { GetCTAData, GetFeatures, GetImageHero, GetMediaLogos, GetShowcaseNavItems } from "../lib/services/showcaseDataService"
+import { GetFeatures, GetImageHero, GetMediaLogos, GetShowcaseNavItems } from "@/sites/showcase/lib/services/showcaseDataService";
+import { Layout } from "@/ui-base/components/layout";
+import Hero from "@/ui-base/components/ui/hero/Hero";
+import FeatureSection from "@/ui-base/components/ui/sections/feature-section";
+import MediaLogos from "@/ui-base/components/ui/sections/media-logos/MediaLogos";
+import { GetSiteConfig } from "@/ui-base/lib/services/siteContextService";
+import Head from "next/head";
 
-export function Homepage({ data }) {
 
+export default function CMSPage({ data }) {
+
+  if(!data) {
+    data = { data : {}};
+  }
   data.data.navItems = GetShowcaseNavItems();
-
+  
   return (
     <Layout
       className={"flex w-full flex-col items-center"}
@@ -39,10 +42,9 @@ export function Homepage({ data }) {
           <Hero.Overlay className="bg-white/60" />
           <Hero.Content className="text-center">
             <div className="max-w-md">
-              <h1 className="text-5xl font-bold">Welcome to Headless Basics</h1>
+              <h1 className="text-5xl font-bold">We support multiple CMS</h1>
               <p className="py-6">
-                Headless basics is a site framework built on Next.JS, Tailwind CSS, Typescript and React.
-                The aim of the project is to provide the building blocks to create a headless site that can be hosted by multiple CMS's.
+                By seperating the GraphQL queries from the UI components, we can support multiple CMS's. A few smarts are needed to make this work, but it's not too hard.
               </p>
               {/* <Button color="primary">Know More</Button> */}
             </div>
@@ -54,9 +56,7 @@ export function Homepage({ data }) {
           className="max-w-screen-lg"
         />
 
-        <CTASectionThreeColumn
-          data={GetCTAData()}
-        />
+
 
         <FeatureSection data={GetFeatures()} />
 

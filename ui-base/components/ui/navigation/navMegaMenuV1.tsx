@@ -74,7 +74,7 @@ const NavMegaMenuV1 = ({ navItems, className }: NavigationProps) => {
           <div className="w-10 rounded-full">
             <Image
               alt="International Sites"
-              src="/ata-multisite/images/global/world-97864_960_720.png"
+              src="/multisite/images/global/world-97864_960_720.png"
               width={100}
               height={100}
             />
@@ -94,7 +94,7 @@ const NavMegaMenuV1 = ({ navItems, className }: NavigationProps) => {
                   <div className="w-100 rounded-full">
                     <Image
                       alt="International Sites"
-                      src="/ata-multisite/images/global/australia-28586_960_720.png"
+                      src="/multisite/images/global/australia-28586_960_720.png"
                       width={100}
                       height={100}
                     />
@@ -104,7 +104,7 @@ const NavMegaMenuV1 = ({ navItems, className }: NavigationProps) => {
                   <div className="w-100 rounded-full">
                     <Image
                       alt="International Sites"
-                      src="/ata-multisite/images/global/usa-1960922_960_720.jpg"
+                      src="/multisite/images/global/usa-1960922_960_720.jpg"
                       width={100}
                       height={100}
                     />

@@ -43,10 +43,10 @@ export const MultisiteSiteSettings: SiteSettings = {
   extraPageTypes: [],  
   hideStoreButtons: true,
   siteConfig: {
-    siteTemplate: "ata-multisite", 
-    name: "Automatic Technology",
+    siteTemplate: "multisite", 
+    name: "Multisite Example",
     description:
-      "Smart Simple Secure",
+      "Smart Simple",
     mainNav: [
       {
         title: "Home",

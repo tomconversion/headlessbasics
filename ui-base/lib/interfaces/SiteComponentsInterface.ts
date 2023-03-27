@@ -18,7 +18,5 @@ export interface SiteSettings {
 }
 
 export interface EcommerceSettings {
-  hasProducts: boolean,
-  hideStoreButtons: boolean
-  siteConfig: BaseSiteConfig
+  hasProducts: boolean
 }

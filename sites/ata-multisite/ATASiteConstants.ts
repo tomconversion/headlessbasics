@@ -87,9 +87,6 @@ export const ATASiteSettings: SiteSettings = {
       isFixedLayout: true
     }
   ],
-  ecommerceSettings: {
-    hasProducts: true
-  },
   hideStoreButtons: true,
   siteConfig:{
     siteTemplate: "ata-multisite", // This matched the folder within the /sites folder
@@ -159,5 +156,9 @@ export const ATASiteSettings: SiteSettings = {
       height: 100,
       title: "Next.js",
     },
-  } 
+  },
+  ecommerceSettings: {
+    hasProducts: true,
+    
+  },
 }

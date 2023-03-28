@@ -50,15 +50,15 @@ export function GetFeatures(){
           },
           {
             imageSrc: "/landify/static/playground_assets/03.svg",
-            title: "User friendly",
+            title: "Multi-Language",
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.",
+              "Create multi language sites with our baked in Slug prefixing support.",
           },
           {
             imageSrc: "/landify/static/playground_assets/04.svg",
-            title: "Multiple layouts",
+            title: "GraphQL Support",
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed erat nibh tristique ipsum.",
+              "Easily introduce new queries as needed for components and pages using the data layer abstraction.",
           },
           {
             imageSrc: "/landify/static/playground_assets/05.svg",

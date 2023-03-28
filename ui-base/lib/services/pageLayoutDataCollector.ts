@@ -40,7 +40,7 @@ export async function collectAllPageData(pageIdentifier: PageIdentifier, pageVar
       languageSite
     )) || [];
 
-    if(GetSite().siteSettings.deepSearchNavigation){
+    if(GetSite().getSiteSettings().deepSearchNavigation){
       deepSearchNavigation(navItems, slug, languageSite);
     }
   

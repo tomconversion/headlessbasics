@@ -14,9 +14,15 @@ export interface SiteSettings {
   extraPageTypes: PageIdentifier[],
   ecommerceSettings?: EcommerceSettings
   hideStoreButtons: boolean
-  siteConfig: BaseSiteConfig
+  siteConfig: BaseSiteConfig,
+  deepSearchNavigation? : boolean
+  pageSettings?: PageSettings
 }
 
 export interface EcommerceSettings {
   hasProducts: boolean
+}
+
+export interface PageSettings {
+  shouldRenderAllPages: boolean
 }

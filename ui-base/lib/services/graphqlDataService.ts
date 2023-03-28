@@ -18,6 +18,10 @@ const log = getLogger("headless.graphqlDataService");
 
 export async function buildPageData(pageVariant: PageVariant, isDynamic:Boolean, site:LanguageSite, params?: any) {
 
+  if(GetSite().shouldAbortPageDataCollection()){
+    return { data: {} }
+  }
+
   const cmsVariant = GetCMS();
   const cmsVariantSelected = GetCMSVariant();
   // log.debug( "buildPageData > cmsVariantSelected > ", cmsVariantSelected);

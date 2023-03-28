@@ -107,6 +107,7 @@ export const ShowcaseSiteSettings: SiteSettings = {
     }
   },
   pageSettings: {
-    shouldRenderAllPages: false
+    shouldRenderAllPages: false,
+    abortPageDataCollection: true
   }
 }

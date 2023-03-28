@@ -48,6 +48,11 @@ export async function getStaticPaths() {
 
   const log = getLogger("headless.pages.slug");
 
+  const pageSettings = GetSite().getSiteSettings().pageSettings;
+  if(pageSettings && pageSettings?.shouldRenderAllPages === false){
+    return { paths: [], fallback: 'blocking' };
+  }
+
   // We'll pre-render only these paths at build time.
   // { fallback: 'blocking' } will server-render pages
   // on-demand if the path doesn't exist.

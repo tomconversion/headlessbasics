@@ -44,7 +44,7 @@ export default function CMSPage({ data }) {
             <div className="max-w-md">
               <h1 className="text-5xl font-bold">We support multiple CMS</h1>
               <p className="py-6">
-                By seperating the GraphQL queries from the UI components, we can support multiple CMS's. A few smarts are needed to make this work, but it's not too hard.
+                By seperating the GraphQL queries from the UI components, we can support multiple CMS&apos;s. A few smarts are needed to make this work, but it&apos;s not too hard.
               </p>
               {/* <Button color="primary">Know More</Button> */}
             </div>

@@ -161,4 +161,5 @@ export const ATASiteSettings: SiteSettings = {
     hasProducts: true,
     
   },
+  deepSearchNavigation: true
 }

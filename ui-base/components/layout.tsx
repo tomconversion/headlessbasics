@@ -1,6 +1,5 @@
 import { is } from "date-fns/locale"
 import React from "react"
-import { BaseSiteConfig } from "../config/SiteConfigInterface"
 import { SiteHeader } from "./site-header"
 
 interface LayoutProps {

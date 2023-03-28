@@ -105,5 +105,8 @@ export const ShowcaseSiteSettings: SiteSettings = {
       height: 100,
       title: "Next.js",
     }
+  },
+  pageSettings: {
+    shouldRenderAllPages: false
   }
 }

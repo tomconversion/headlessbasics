@@ -1,7 +1,7 @@
-import { BaseSiteConfig } from "../../../ui-base/config/SiteConfigInterface"
+import { BaseSiteConfig } from "@/ui-base/config/site";
 
 export const siteConfig: BaseSiteConfig = {
-  siteTemplate: "landify", // This matched the folder within the /sites folder
+  siteTemplate: "Shocase", // This matched the folder within the /sites folder
   name: "Headless Basics by Conversion Digital",
   description:
     "Get up and running with a basic site quick. Blazingly fast headless.",

@@ -2,7 +2,7 @@ import { ATAFixedLayouts, ATASiteComponentDataLocations, ATASiteSettings } from 
 import { LandifyFixedLayouts, LandifySiteComponentDataLocations, LandifySiteSettings } from "@/sites/landify/LandifySiteConstants";
 import { MultiSiteConstants, MultiSiteFixedLayouts, MultisiteSiteSettings } from "@/sites/multisite/MultiSiteConstants";
 import { ShowcaseFixedLayouts, ShowcaseSiteComponentDataLocations, ShowcaseSiteSettings } from "@/sites/showcase/ShowcaseSiteConstants";
-import { BaseSiteConfig } from "@/ui-base/config/SiteConfigInterface";
+import { BaseSiteConfig } from "@/ui-base/config/site";
 import { SiteConstants } from "../cms/SiteConstants";
 
 export function GetSite(){

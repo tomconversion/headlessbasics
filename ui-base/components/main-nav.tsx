@@ -13,8 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
 import { NavItem } from "../types/nav"
-import { BaseSiteConfig } from "../config/SiteConfigInterface"
 import { cn } from "../lib/util/utils"
+import { BaseSiteConfig } from "../config/site"
 
 interface MainNavProps {
   items?: NavItem[]

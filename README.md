@@ -21,7 +21,7 @@ To install and run the application, follow these steps:
 1. Umbraco Heartcore  (Started - Look in the code)
 2. Contentful         (Started - Look in the code)
 3. Kentico Kontent    (Started - Look in the code)
-4. Sitecore XM Cloud  (Coming Soon)
+4. Sitecore XM Cloud  (Coming Soon )
 
 ## Contributing
 If you'd like to contribute to Headless Basics, feel free to submit a pull request with your changes. Please make sure to follow the existing code style and include tests for any new functionality.

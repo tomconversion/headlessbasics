@@ -1,6 +1,9 @@
 # Headless Basics
 Headless Basics - Next.JS Starter Kit that supports component based page structures across multiple Content Management Systems. Data seperation is maintained between GraphQL and presentation.
 
+## Showcase Site
+[Check out our showcase site]{https://showcase-steel.vercel.app/)
+
 ## Installation
 To install and run the application, follow these steps:
 

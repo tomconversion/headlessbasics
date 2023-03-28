@@ -24,4 +24,12 @@ export class SiteConstants implements SiteConstantsInterface {
     getSiteSettings(): SiteSettings{
       return this.siteSettings;
     }
+
+    shouldRenderAllPages(): boolean {
+      return this.siteSettings.pageSettings?.shouldRenderAllPages || false;
+    }
+    shouldAbortPageDataCollection(): boolean {
+      return this.siteSettings.pageSettings?.abortPageDataCollection || false;
+    }
+        
   }

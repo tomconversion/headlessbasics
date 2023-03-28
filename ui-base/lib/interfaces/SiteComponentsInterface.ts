@@ -24,5 +24,6 @@ export interface EcommerceSettings {
 }
 
 export interface PageSettings {
-  shouldRenderAllPages: boolean
+  shouldRenderAllPages: boolean,
+  abortPageDataCollection: boolean
 }

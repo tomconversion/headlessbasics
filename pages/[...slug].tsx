@@ -48,8 +48,7 @@ export async function getStaticPaths() {
 
   const log = getLogger("headless.pages.slug");
 
-  const pageSettings = GetSite().getSiteSettings().pageSettings;
-  if(pageSettings && pageSettings?.shouldRenderAllPages === false){
+  if(!GetSite().shouldRenderAllPages()){
     return { paths: [], fallback: 'blocking' };
   }
 
